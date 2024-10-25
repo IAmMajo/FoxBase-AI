@@ -67,7 +67,7 @@ deploy-stage:
 deploy-branch:
   extends: .deployments
   rules:
-      - if: $CI_COMMIT_BRANCH != 'main' && $CI_COMMIT_BRANCH != 'stage'
+    - if: $CI_COMMIT_BRANCH != 'main' && $CI_COMMIT_BRANCH != 'stage'
   environment:
     name: branch/$CI_COMMIT_BRANCH
     url: $DYNAMIC_ENVIRONMENT_URL
