@@ -10,7 +10,7 @@ default:
 lint-and-format-job:
   stage: lint-and-format
   script:
-    - npm run lint || lint_exit_code=$?
+    - npm run lint || lint_failed=1
     - npm run format
     - |
       if [[ $(git status --porcelain) ]]; then
@@ -21,7 +21,7 @@ lint-and-format-job:
         exit 1
       fi
     - |
-      if [[ $lint_exit_code != 0 ]]; then
+      if [[ $lint_failed = 1 ]]; then
         echo "Linting errors occured that couldn't be fixed automatically"
         exit 1
       fi
