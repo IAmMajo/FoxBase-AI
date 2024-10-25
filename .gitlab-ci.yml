@@ -38,7 +38,7 @@ build-job:
 .deployments:
   stage: deploy
   script:
-    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai)
+    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_REF_NAME)
     - echo $deploy_output
     - "deploy_url=$(echo $deploy_output | grep -oP '(?<=✨ Deployment alias URL: ).+')"
     - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
