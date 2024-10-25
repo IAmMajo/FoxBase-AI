@@ -1,3 +1,7 @@
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
 stages:
   - lint-and-format
   - build
@@ -18,7 +22,7 @@ lint-and-format-job:
         git config user.name 'GitLab CI'
         git config user.email ci@noreply.gitlab.com
         git commit -am 'Lint and format'
-        git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_REF_NAME
+        git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_BRANCH
         exit 1
       fi
     - |
@@ -38,7 +42,7 @@ build-job:
 .deployments:
   stage: deploy
   script:
-    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_REF_NAME)
+    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH)
     - echo $deploy_output
     - "deploy_url=$(echo $deploy_output | grep -oP '(?<=✨ Deployment alias URL: ).+')"
     - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
@@ -46,7 +50,7 @@ build-job:
 deploy-production:
   extends: .deployments
   rules:
-    - if: $CI_COMMIT_REF_NAME == 'main'
+    - if: $CI_COMMIT_BRANCH == 'main'
   environment:
     name: production
     url: https://foxbaseai.maxoverlack.dev
@@ -54,7 +58,7 @@ deploy-production:
 deploy-stage:
   extends: .deployments
   rules:
-    - if: $CI_COMMIT_REF_NAME == 'stage'
+    - if: $CI_COMMIT_BRANCH == 'stage'
   environment:
     name: stage
     url: https://stage.foxbaseai.maxoverlack.dev
@@ -63,9 +67,9 @@ deploy-stage:
 deploy-branch:
   extends: .deployments
   rules:
-    - if: $CI_COMMIT_REF_NAME != 'main' && $CI_COMMIT_REF_NAME != 'stage'
+      - if: $CI_COMMIT_BRANCH != 'main' && $CI_COMMIT_BRANCH != 'stage'
   environment:
-    name: branch/$CI_COMMIT_REF_SLUG
+    name: branch/$CI_COMMIT_BRANCH
     url: $DYNAMIC_ENVIRONMENT_URL
     deployment_tier: development
   artifacts:
