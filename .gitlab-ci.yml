@@ -6,6 +6,7 @@ stages:
   - lint-and-format
   - build
   - deploy
+  - create-environment
 
 default:
   image: node:20-bookworm
@@ -39,39 +40,61 @@ build-job:
     paths:
       - dist
 
-.deployments:
+deploy-job:
   stage: deploy
   script:
-    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH)
-    - echo $deploy_output
-    - "deploy_url=$(echo $deploy_output | grep -oP '(?<=✨ Deployment alias URL: ).+')"
+    - npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH | tee deploy.log
+  artifacts:
+    paths:
+      - deploy.log
+
+create-environment-commit:
+  stage: create-environment
+  environment:
+    name: commit/$CI_COMMIT_SHORT_SHA $CI_COMMIT_TITLE
+    url: $DYNAMIC_ENVIRONMENT_URL
+    deployment_tier: development
+  script:
+    - "deploy_url=$(grep -oP '(?<=✨ Deployment complete! Take a peek over at ).+' deploy.log)"
     - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
+    - echo 'Creating "commit/$CI_COMMIT_SHORT_SHA $CI_COMMIT_TITLE" environment'
+  artifacts:
+    reports:
+      dotenv: deploy.env
 
-deploy-production:
-  extends: .deployments
-  rules:
-    - if: $CI_COMMIT_BRANCH == 'main'
-  environment:
-    name: production
-    url: https://foxbaseai.maxoverlack.dev
-
-deploy-stage:
-  extends: .deployments
-  rules:
-    - if: $CI_COMMIT_BRANCH == 'stage'
-  environment:
-    name: stage
-    url: https://stage.foxbaseai.maxoverlack.dev
-    deployment_tier: staging
-
-deploy-branch:
-  extends: .deployments
+create-environment-branch:
   rules:
     - if: $CI_COMMIT_BRANCH != 'main' && $CI_COMMIT_BRANCH != 'stage'
+  stage: create-environment
   environment:
     name: branch/$CI_COMMIT_BRANCH
     url: $DYNAMIC_ENVIRONMENT_URL
     deployment_tier: development
+  script:
+    - "deploy_url=$(grep -oP '(?<=✨ Deployment alias URL: ).+') deploy.log)"
+    - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
+    - echo 'Creating "branch/$CI_COMMIT_BRANCH" environment'
   artifacts:
     reports:
       dotenv: deploy.env
+
+create-environment-stage:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'stage'
+  stage: create-environment
+  environment:
+    name: stage
+    url: https://stage.foxbaseai.maxoverlack.dev
+    deployment_tier: staging
+  script:
+    - echo 'Creating "stage" environment'
+
+create-environment-production:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'main'
+  stage: create-environment
+  environment:
+    name: production
+    url: https://foxbaseai.maxoverlack.dev
+  script:
+    - echo 'Creating "production" environment'
