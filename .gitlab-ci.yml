@@ -13,7 +13,7 @@ lint-and-format-job:
     - npm run lint || lint_exit_code=$?
     - npm run format
     - |
-      if [ $(git status --porcelain) ]; then
+      if [[ $(git status --porcelain) ]]; then
         git config user.name "GitLab CI"
         git config user.email ci@noreply.gitlab.com
         git commit -am "Lint and format"
@@ -21,7 +21,7 @@ lint-and-format-job:
         exit 1
       fi
     - |
-      if [ $lint_exit_code != 0 ]; then
+      if [[ $lint_exit_code != 0 ]]; then
         echo "Linting errors occured that couldn't be fixed automatically"
         exit 1
       fi
