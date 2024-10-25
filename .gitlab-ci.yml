@@ -1,6 +1,7 @@
 stages:
   - lint-and-format
   - build
+  - deploy
 
 default:
   image: node:20-bookworm
@@ -14,9 +15,9 @@ lint-and-format-job:
     - npm run format
     - |
       if [[ $(git status --porcelain) ]]; then
-        git config user.name "GitLab CI"
+        git config user.name 'GitLab CI'
         git config user.email ci@noreply.gitlab.com
-        git commit -am "Lint and format"
+        git commit -am 'Lint and format'
         git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_REF_NAME
         exit 1
       fi
@@ -33,3 +34,40 @@ build-job:
   artifacts:
     paths:
       - dist
+
+.deployments:
+  stage: deploy
+  script:
+    - deploy_output=$(npx wrangler pages deploy dist --project-name=foxbaseai)
+    - echo $deploy_output
+    - "deploy_url=$(echo $deploy_output | grep -oP '(?<=✨ Deployment alias URL: ).+')"
+    - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
+
+deploy-production:
+  extends: .deployments
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'main'
+  environment:
+    name: production
+    url: https://foxbaseai.maxoverlack.dev
+
+deploy-stage:
+  extends: .deployments
+  rules:
+    - if: $CI_COMMIT_REF_NAME == 'stage'
+  environment:
+    name: stage
+    url: https://stage.foxbaseai.maxoverlack.dev
+    deployment_tier: staging
+
+deploy-branch:
+  extends: .deployments
+  rules:
+    - if: $CI_COMMIT_REF_NAME != 'main' && $CI_COMMIT_REF_NAME != 'stage'
+  environment:
+    name: branch/$CI_COMMIT_REF_SLUG
+    url: $DYNAMIC_ENVIRONMENT_URL
+    deployment_tier: development
+  artifacts:
+    reports:
+      dotenv: deploy.env
