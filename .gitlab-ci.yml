@@ -1,0 +1,35 @@
+stages:
+  - lint-and-format
+  - build
+
+default:
+  image: node:20-bookworm
+  before_script:
+    - npm ci
+
+lint-and-format-job:
+  stage: lint-and-format
+  script:
+    - npm run lint || lint_failed=1
+    - npm run format
+    - |
+      if [[ $(git status --porcelain) ]]; then
+        git config user.name "GitLab CI"
+        git config user.email ci@noreply.gitlab.com
+        git commit -am "Lint and format"
+        git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_REF_NAME
+        exit 1
+      fi
+    - |
+      if [[ $lint_failed = 1 ]]; then
+        echo "Linting errors occured that couldn't be fixed automatically"
+        exit 1
+      fi
+
+build-job:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
