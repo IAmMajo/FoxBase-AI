@@ -11,7 +11,10 @@ stages:
 default:
   image: node:20-bookworm
   before_script:
-    - npm ci
+    - npm i
+  cache:
+    paths:
+      - node_modules
 
 lint-and-format-job:
   stage: lint-and-format
