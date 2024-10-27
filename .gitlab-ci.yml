@@ -84,7 +84,7 @@ create-environment-stage:
   stage: create-environment
   environment:
     name: stage
-    url: https://stage.foxbaseai.maxoverlack.dev
+    url: https://foxbaseai-stage.maxoverlack.dev
     deployment_tier: staging
   script:
     - echo 'Creating "stage" environment'
