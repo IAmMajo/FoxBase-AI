@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: 'asap';
+  src: url('fonts/Asap.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter.ttf');
+  font-style: normal;
+  font-weight: bold;
+}
 
 body,
 html {
@@ -89,32 +101,28 @@ html {
 /**Font-Sizes**/
 
 .header-title {
-  font-size: var(--fs-header);
   font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-size: var(--fs-header);
 }
 
 h1 {
-  font-size: var(--fs-h1);
   font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-size: var(--fs-h1);
 }
 
 h2 {
-  font-size: var(--fs-h2);
   font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-size: var(--fs-h2);
 }
 
 h3 {
-  font-size: var(--fs-h3);
   font-family: 'Inter', sans-serif;
-  font-weight: bold;
+  font-size: var(--fs-h3);
 }
 
 p {
-  font-size: var(--fs-paragraph);
   font-family: 'asap', sans-serif;
+  font-size: var(--fs-paragraph);
 }
 
 .light-heading {
