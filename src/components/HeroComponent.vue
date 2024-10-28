@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Searchbar from './Searchbar.vue'
+import SearchbarComponent from './SearchbarComponent.vue';
 const headline = 'Finden Sie die'
 const headlineSpan = ' richtige Lösung'
 
@@ -25,7 +25,7 @@ const subheadlineSpan = ' Fallbeispiel'
         }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
       </h1>
 
-      <Searchbar />
+      <SearchbarComponent />
     </div>
   </div>
 </template>
