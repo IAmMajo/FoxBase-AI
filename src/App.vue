@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HeroComponent from './components/HeroComponent.vue'
+</script>
 
 <template>
-  <div>That works</div>
+  <HeroComponent />
 </template>
 
-<style scoped></style>
+<style></style>
