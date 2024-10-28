@@ -14,8 +14,11 @@
     "deploy": "npm run build && wrangler pages deploy ./dist"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
+    "@splinetool/viewer": "^1.9.35",
     "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue3-spline": "^1.0.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241022.0",
