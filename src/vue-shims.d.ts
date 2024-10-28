@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue'
@@ -8,4 +7,3 @@ declare module '*.vue' {
 }
 
 /* eslint-enable @typescript-eslint/no-explicit-any */
-/* eslint-enable @typescript-eslint/explicit-module-boundary-types */
