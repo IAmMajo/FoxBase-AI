@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue'
@@ -7,5 +6,4 @@ declare module '*.vue' {
   export default component
 }
 
-/* eslint-enable @typescript-eslint/no-explicit-any */
-/* eslint-enable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-enable @typescript-eslint/no-empty-object-type */
