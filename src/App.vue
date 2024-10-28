@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HeroComponent from './components/HeroComponent.vue';
+import HeroComponent from './components/HeroComponent.vue'
 </script>
 
 <template>
-  <HeroComponent/>
+  <HeroComponent />
 </template>
 
 <style></style>

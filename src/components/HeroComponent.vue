@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchbarComponent from './SearchbarComponent.vue';
+import SearchbarComponent from './SearchbarComponent.vue'
 const headline = 'Finden Sie die'
 const headlineSpan = ' richtige Lösung'
 
