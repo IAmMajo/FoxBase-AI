@@ -1,4 +1,1 @@
-<template>
-  Welcome Item
-</template>
-
+<template>Welcome Item</template>
