@@ -1,0 +1,103 @@
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - lint-and-format
+  - build
+  - deploy
+  - create-environment
+
+default:
+  image: node:20-bookworm
+  before_script:
+    - npm i
+  cache:
+    paths:
+      - node_modules
+
+lint-and-format-job:
+  stage: lint-and-format
+  script:
+    - npm run lint || lint_failed=1
+    - npm run format
+    - |
+      if [[ $(git status --porcelain) ]]; then
+        git config user.name 'GitLab CI'
+        git config user.email ci@noreply.gitlab.com
+        git commit -am 'Lint and format'
+        git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_BRANCH
+        exit 1
+      fi
+    - |
+      if [[ $lint_failed = 1 ]]; then
+        echo "Linting errors occured that couldn't be fixed automatically"
+        exit 1
+      fi
+
+build-job:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+
+deploy-job:
+  stage: deploy
+  script:
+    - npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH | tee deploy.log
+  artifacts:
+    paths:
+      - deploy.log
+
+create-environment-commit:
+  stage: create-environment
+  environment:
+    name: commit/$CI_COMMIT_SHA
+    url: $DYNAMIC_ENVIRONMENT_URL
+    deployment_tier: development
+  script:
+    - "deploy_url=$(grep -oP '(?<=✨ Deployment complete! Take a peek over at ).+' deploy.log)"
+    - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
+    - echo 'Creating "commit/$CI_COMMIT_SHA" environment'
+  artifacts:
+    reports:
+      dotenv: deploy.env
+
+create-environment-branch:
+  rules:
+    - if: $CI_COMMIT_BRANCH != 'main' && $CI_COMMIT_BRANCH != 'stage'
+  stage: create-environment
+  environment:
+    name: branch/$CI_COMMIT_BRANCH
+    url: $DYNAMIC_ENVIRONMENT_URL
+    deployment_tier: development
+  script:
+    - "deploy_url=$(grep -oP '(?<=✨ Deployment alias URL: ).+' deploy.log)"
+    - echo DYNAMIC_ENVIRONMENT_URL=$deploy_url > deploy.env
+    - echo 'Creating "branch/$CI_COMMIT_BRANCH" environment'
+  artifacts:
+    reports:
+      dotenv: deploy.env
+
+create-environment-stage:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'stage'
+  stage: create-environment
+  environment:
+    name: stage
+    url: https://foxbaseai-stage.maxoverlack.dev
+    deployment_tier: staging
+  script:
+    - echo 'Creating "stage" environment'
+
+create-environment-production:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'main'
+  stage: create-environment
+  environment:
+    name: production
+    url: https://foxbaseai.maxoverlack.dev
+  script:
+    - echo 'Creating "production" environment'
