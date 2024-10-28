@@ -31,7 +31,7 @@ lint-and-format-job:
       fi
     - |
       if [[ $lint_failed = 1 ]]; then
-        echo "Linting errors occured that couldn't be fixed automatically"
+        echo -e "\e[31mLinting errors occurred that couldn't be fixed automatically"
         exit 1
       fi
 
