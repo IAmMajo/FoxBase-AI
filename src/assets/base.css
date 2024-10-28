@@ -33,7 +33,7 @@ html {
   --dark-bg-primary: #021025;
   --dark-bg-secondary: #0f1f31;
   --dark-bg-tertiary: #020420;
-  --dark-bg-search: #474D54;
+  --dark-bg-search: #474d54;
 
   /**Text Colors**/
   --dark-text-primary: #ffffff;
@@ -51,43 +51,40 @@ html {
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
-  
+
   --navbar-height: 8vh;
   --hero-height: 92vh;
-
 }
 
 /*Default Classes*/
 
 /** Debugging Classes **/
-.db-borders{
+.db-borders {
   border: 2px solid green;
 }
 
-.db-red{
+.db-red {
   background-color: rgb(253, 142, 142);
 }
 
-
 /** Flex Classes **/
 
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-column{
+.flex-column {
   flex-direction: column;
 }
 
-.jc-ai-center{
+.jc-ai-center {
   justify-content: center;
   align-items: center;
 }
 
-.gap{
+.gap {
   gap: var(--gap);
 }
-
 
 /**Font-Sizes**/
 
@@ -144,7 +141,7 @@ p {
   color: var(--dark-text-tertiary);
 }
 
-.text-shadow{
+.text-shadow {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
 }
 
@@ -155,79 +152,76 @@ img {
 }
 
 /** Value Classes **/
-.no-spacing{
+.no-spacing {
   margin: 0;
   padding: 0;
 }
 
-
-
 /* Kleine Desktops */
 @media (max-width: 1279px) {
   p {
-      font-size: 17px; 
+    font-size: 17px;
   }
 
-  .header-title{
+  .header-title {
     font-size: 3em;
   }
 
   h1 {
-      font-size: 2.8em;
+    font-size: 2.8em;
   }
 
   h2 {
-      font-size: 2.6em; 
+    font-size: 2.6em;
   }
 
   h3 {
-      font-size: 2.4em; 
+    font-size: 2.4em;
   }
 }
 
 /* Tablets */
 @media (max-width: 768px) {
   p {
-      font-size: 16px; 
+    font-size: 16px;
   }
 
-  .header-title{
+  .header-title {
     font-size: 2.2em;
-
   }
   h1 {
-      font-size: 1.8em; 
+    font-size: 1.8em;
   }
 
   h2 {
-      font-size: 1.6em; 
+    font-size: 1.6em;
   }
 
   h3 {
-      font-size: 1.4em; 
+    font-size: 1.4em;
   }
 }
 
 /* Handys */
 @media (max-width: 480px) {
   p {
-      font-size: 15px; 
+    font-size: 15px;
   }
 
-  .header-title{
+  .header-title {
     font-size: 2em;
   }
 
   h1 {
-      font-size: 1.6em;
+    font-size: 1.6em;
   }
 
   h2 {
-      font-size: 1.4em; 
+    font-size: 1.4em;
   }
 
   h3 {
-      font-size: 1.2em; 
+    font-size: 1.2em;
   }
 }
 
@@ -235,22 +229,22 @@ img {
 
 @media (max-width: 400px) {
   p {
-      font-size: 15px; 
+    font-size: 15px;
   }
 
-  .header-title{
+  .header-title {
     font-size: 1.6em;
   }
 
   h1 {
-      font-size: 1.4em;
+    font-size: 1.4em;
   }
 
   h2 {
-      font-size: 1.2em; 
+    font-size: 1.2em;
   }
 
   h3 {
-      font-size: 1.0em; 
+    font-size: 1em;
   }
 }
