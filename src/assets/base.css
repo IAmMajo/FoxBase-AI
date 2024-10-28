@@ -1,115 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-body,html{
+body,
+html {
   margin: 0;
   padding: 0;
 }
 
 :root {
-
   /*Colors Light Mode*/
 
-    /**Primary Colors**/
-    --light-primary: #8DEEAC;
-    --light-primary-hover: #00C16A;
+  /**Primary Colors**/
+  --light-primary: #8deeac;
+  --light-primary-hover: #00c16a;
 
-    /**Background Colors**/
-    --light-bg-primary: #FFFFFF;
-    --light-bg-secondary: #F4F9FE;
-    --light-bg-tertiary: #FFFFFF;
+  /**Background Colors**/
+  --light-bg-primary: #ffffff;
+  --light-bg-secondary: #f4f9fe;
+  --light-bg-tertiary: #ffffff;
 
-    /**Text Colors**/
-    --light-text-primary: #0F172A;
-    --light-text-secondary: #475569;
-    --light-text-tertiary: #00C16A;
-
+  /**Text Colors**/
+  --light-text-primary: #0f172a;
+  --light-text-secondary: #475569;
+  --light-text-tertiary: #00c16a;
 
   /*Colors Dark Mode*/
 
-    /**Primary Colors**/
-    --dark-primary: #00DC82;
-    --dark-primary-hover: #07B26D;
-    
-    /**Background Colors**/
-    --dark-bg-primary: #021025;
-    --dark-bg-secondary: #0F1F31;
-    --dark-bg-tertiary: #020420;
+  /**Primary Colors**/
+  --dark-primary: #00dc82;
+  --dark-primary-hover: #07b26d;
 
-    /**Text Colors**/
-    --dark-text-primary: #FFFFFF;
-    --dark-text-secondary: #CBD5E1;
-    --dark-text-tertiary: #00DC82;
+  /**Background Colors**/
+  --dark-bg-primary: #021025;
+  --dark-bg-secondary: #0f1f31;
+  --dark-bg-tertiary: #020420;
+
+  /**Text Colors**/
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #cbd5e1;
+  --dark-text-tertiary: #00dc82;
 
   /*Font Sizes */
-    --fs-header: 6rem;
-    --fs-h1: 4.5rem;
-    --fs-h2: 3rem;
-    --fs-h3: 2.5rem;
-    --fs-paragraph: 1.125rem;
+  --fs-header: 6rem;
+  --fs-h1: 4.5rem;
+  --fs-h2: 3rem;
+  --fs-h3: 2.5rem;
+  --fs-paragraph: 1.125rem;
 
   /* Values */
-    --border-radius-default: 12px;
-
+  --border-radius-default: 12px;
 }
 
 /*Default Classes*/
 
 /**Font-Sizes**/
 
-  .header-title{
-    font-size: var(--fs-header);
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-  }
+.header-title {
+  font-size: var(--fs-header);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
 
-  h1{
-    font-size: var(--fs-h1);
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-  }
+h1 {
+  font-size: var(--fs-h1);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
 
-  h2{
-    font-size: var(--fs-h2);
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-  }
+h2 {
+  font-size: var(--fs-h2);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
 
-  h3{
-    font-size: var(--fs-h3);
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-  }
+h3 {
+  font-size: var(--fs-h3);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
 
-  p{
-    font-size: var(--fs-paragraph);
-    font-family: "asap", sans-serif;
-  }
+p {
+  font-size: var(--fs-paragraph);
+  font-family: 'asap', sans-serif;
+}
 
-  .light-heading{
-    color: var(--light-text-primary);
-  }
+.light-heading {
+  color: var(--light-text-primary);
+}
 
-  .light-bottomtext{
-    color: var(--light-text-secondary);
-  }
+.light-bottomtext {
+  color: var(--light-text-secondary);
+}
 
-  .light-highlight{
-    color: var(--light-text-tertiary);
-  }
+.light-highlight {
+  color: var(--light-text-tertiary);
+}
 
-  .dark-heading{
-    color: var(--dark-text-primary)
-  }
+.dark-heading {
+  color: var(--dark-text-primary);
+}
 
-  .dark-bottomtext{
-    color: var(--dark-text-secondary);
-  }
+.dark-bottomtext {
+  color: var(--dark-text-secondary);
+}
 
-  .dark-highlight{
-    color: var(--dark-text-tertiary);
-  }
+.dark-highlight {
+  color: var(--dark-text-tertiary);
+}
 
-  /*Images*/
-  img{
-    border-radius: var(--border-radius-default);
-  }
+/*Images*/
+img {
+  border-radius: var(--border-radius-default);
+}
