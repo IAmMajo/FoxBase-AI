@@ -5,7 +5,6 @@ const headlineSpan = ' richtige Lösung'
 
 const subheadline = 'Für Ihr'
 const subheadlineSpan = ' Fallbeispiel'
-
 </script>
 
 <template>
