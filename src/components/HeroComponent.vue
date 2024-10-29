@@ -5,6 +5,7 @@ const headlineSpan = ' richtige Lösung'
 
 const subheadline = 'Für Ihr'
 const subheadlineSpan = ' Fallbeispiel'
+
 </script>
 
 <template>
@@ -15,6 +16,7 @@ const subheadlineSpan = ' Fallbeispiel'
       src="https://my.spline.design/foxbasestripe-f90a5e89be7191d7e6c082d643111766/"
       frameborder="0"
       allowfullscreen
+      loading="lazy"
     ></iframe>
     <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
       <p class="dark-heading text-shadow header-title no-spacing">
