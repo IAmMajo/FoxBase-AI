@@ -29,7 +29,9 @@ const subheadlineSpan = ' Fallbeispiel'
         }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
       </h1>
 
-      <SearchbarComponent @searchSubmit="(query) => $emit('searchSubmit', query)" />
+      <SearchbarComponent
+        @searchSubmit="query => $emit('searchSubmit', query)"
+      />
     </div>
   </div>
 </template>

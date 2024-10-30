@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const emit = defineEmits(['searchSubmit'])
 
@@ -14,7 +14,12 @@ function onSubmit(event: Event) {
 
 <template>
   <form @submit="onSubmit" class="searchbar-container flex" action="">
-    <input v-model="query" class="searchbar-input" type="text" placeholder="Suche..." />
+    <input
+      v-model="query"
+      class="searchbar-input"
+      type="text"
+      placeholder="Suche..."
+    />
     <a class="flex jc-ai-center" href=""
       ><MagnifyingGlassIcon class="searchbar-icon"
     /></a>
