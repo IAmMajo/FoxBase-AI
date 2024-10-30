@@ -64,6 +64,7 @@ html {
   --gap: 16px;
 
   --navbar-height: 8vh;
+  --logo-size: 6vh;
   --hero-height: 92vh;
 }
 
@@ -90,6 +91,11 @@ html {
 
 .jc-ai-center {
   justify-content: center;
+  align-items: center;
+}
+
+.jc-space-between-ai-center{
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -138,6 +144,10 @@ p {
 
 .dark-heading {
   color: var(--dark-text-primary);
+}
+
+.dark-subheading {
+  color: var(--dark-text-secondary)
 }
 
 .dark-bottomtext {
