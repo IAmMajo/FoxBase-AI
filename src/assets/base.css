@@ -52,7 +52,7 @@ html {
   --dark-text-tertiary: #00dc82;
 
   /*Font Sizes */
-  --fs-header: 6rem;
+  --fs-header: 5.5rem;
   --fs-h1: 4.5rem;
   --fs-h2: 3rem;
   --fs-h3: 2.5rem;
@@ -102,6 +102,7 @@ html {
 .header-title {
   font-family: 'Inter', sans-serif;
   font-size: var(--fs-header);
+  font-weight: bold;
 }
 
 h1 {
