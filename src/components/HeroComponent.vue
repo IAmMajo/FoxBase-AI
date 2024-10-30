@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import SearchbarComponent from './SearchbarComponent.vue'
+
+defineEmits(['searchSubmit'])
+
 const headline = 'Finden Sie die'
 const headlineSpan = ' richtige Lösung'
 
@@ -26,7 +29,9 @@ const subheadlineSpan = ' Fallbeispiel'
         }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
       </h1>
 
-      <SearchbarComponent />
+      <SearchbarComponent
+        @searchSubmit="query => $emit('searchSubmit', query)"
+      />
     </div>
   </div>
 </template>
