@@ -1,23 +1,23 @@
 <script setup lang="ts">
-defineEmits(['searchSubmit'])
+defineEmits(["searchSubmit"]);
 
-const headline = 'Finden Sie die'
-const headlineSpan = ' richtige Lösung'
+const headline = "Finden Sie die";
+const headlineSpan = " richtige Lösung";
 
-const subheadline = 'Für Ihr'
-const subheadlineSpan = ' Fallbeispiel'
+const subheadline = "Für Ihr";
+const subheadlineSpan = " Fallbeispiel";
 </script>
 
 <template>
   <div class="relative">
-    <div class="darkening-layer"></div>
+    <div class="darkening-layer" />
     <iframe
       class="spline-iframe"
       src="https://my.spline.design/foxbasestripe-f90a5e89be7191d7e6c082d643111766/"
       frameborder="0"
       allowfullscreen
       loading="lazy"
-    ></iframe>
+    />
     <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
       <p class="dark-heading text-shadow header-title no-spacing">
         {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
@@ -28,7 +28,7 @@ const subheadlineSpan = ' Fallbeispiel'
       </h1>
 
       <SearchbarComponent
-        @searchSubmit="query => $emit('searchSubmit', query)"
+        @search-submit="(query) => $emit('searchSubmit', query)"
       />
     </div>
   </div>

@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
 
   nitro: {
-    preset: "cloudflare-pages"
+    preset: "cloudflare-pages",
   },
 
   modules: ["nitro-cloudflare-dev", "@nuxt/eslint"],
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: "de" },
       title: "Foxbase AI",
-    }
+    },
   },
 
   css: ["~/assets/main.css"],

@@ -2,7 +2,7 @@ export async function fetchResults(query: string): Promise<Product[]> {
   const { apiUrl, apiToken, collection, resultsLimit } = useAppConfig();
 
   const response = await fetch(`${apiUrl}/collections/${collection}/search`, {
-    method: 'POST',
+    method: "POST",
     headers: {
       Authorization: `Bearer ${apiToken}`,
     },
@@ -10,18 +10,18 @@ export async function fetchResults(query: string): Promise<Product[]> {
       query,
       limit: resultsLimit,
     }),
-  })
+  });
 
-  const json = (await response.json()) as ApiProduct[]
+  const json = (await response.json()) as ApiProduct[];
 
-  return json.map<Product>(product => {
-    const attributes: { [key: string]: string } = {}
+  return json.map<Product>((product) => {
+    const attributes: { [key: string]: string } = {};
 
-    product.payload.Technical_Attributes.split(', ').forEach(attribute => {
-      const [key, value] = attribute.split(': ')
-      attributes[key] = value
-      return attributes
-    })
+    product.payload.Technical_Attributes.split(", ").forEach((attribute) => {
+      const [key, value] = attribute.split(": ");
+      attributes[key] = value;
+      return attributes;
+    });
 
     return {
       id: Number(product.payload.id),
@@ -29,8 +29,8 @@ export async function fetchResults(query: string): Promise<Product[]> {
       category: product.payload.Product_Category,
       description: product.payload.Description,
       attributes,
-      typicalUseCases: product.payload.Typical_Use_Cases.split(', '),
+      typicalUseCases: product.payload.Typical_Use_Cases.split(", "),
       score: product.score,
-    }
-  })
+    };
+  });
 }

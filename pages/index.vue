@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const results = ref<Product[]>([])
+const results = ref<Product[]>([]);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const textResponse = ref('')
+const textResponse = ref("");
 
 async function onSearchSubmit(query: string) {
-  results.value = await fetchResults(query)
-  console.log(results.value)
+  results.value = await fetchResults(query);
+  console.log(results.value);
 }
 </script>
 
 <template>
   <div>
     <NavbarComponent />
-    <HeroComponent @searchSubmit="onSearchSubmit" />
+    <HeroComponent @search-submit="onSearchSubmit" />
   </div>
 </template>
 
