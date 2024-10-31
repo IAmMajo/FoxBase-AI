@@ -1,4 +1,4 @@
-export interface ApiProduct {
+declare interface ApiProduct {
   id: string
   version: number
   score: number

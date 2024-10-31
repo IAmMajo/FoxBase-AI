@@ -1,4 +1,4 @@
-export interface Product {
+declare interface Product {
   id: number
   name: string
   category: string

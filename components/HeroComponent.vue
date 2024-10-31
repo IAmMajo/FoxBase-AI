@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SearchbarComponent from './SearchbarComponent.vue'
-
 defineEmits(['searchSubmit'])
 
 const headline = 'Finden Sie die'

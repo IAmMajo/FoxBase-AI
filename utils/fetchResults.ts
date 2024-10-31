@@ -1,16 +1,14 @@
-import { API_TOKEN, API_URL, COLLECTION, RESULTS_LIMIT } from '@/config'
-import type { ApiProduct } from '@/interfaces/ApiProduct'
-import type { Product } from '@/interfaces/Product'
-
 export async function fetchResults(query: string): Promise<Product[]> {
-  const response = await fetch(`${API_URL}/collections/${COLLECTION}/search`, {
+  const { apiUrl, apiToken, collection, resultsLimit } = useAppConfig();
+
+  const response = await fetch(`${apiUrl}/collections/${collection}/search`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${API_TOKEN}`,
+      Authorization: `Bearer ${apiToken}`,
     },
     body: JSON.stringify({
       query,
-      limit: RESULTS_LIMIT,
+      limit: resultsLimit,
     }),
   })
 
