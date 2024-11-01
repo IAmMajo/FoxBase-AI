@@ -47,7 +47,7 @@ build-job:
 deploy-job:
   stage: deploy
   script:
-    - npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH | tee deploy.log
+    - npm run deploy-only -- --branch=$CI_COMMIT_BRANCH | tee deploy.log
   artifacts:
     paths:
       - deploy.log
