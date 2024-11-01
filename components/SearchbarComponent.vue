@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
+import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-const emit = defineEmits(['searchSubmit'])
+const emit = defineEmits(["searchSubmit"]);
 
-const query = ref('')
+const query = ref("");
 
 function onSubmit(event: Event) {
-  event.preventDefault()
-  emit('searchSubmit', query.value)
+  event.preventDefault();
+  emit("searchSubmit", query.value);
 }
 </script>
 
 <template>
-  <form @submit="onSubmit" class="searchbar-container flex" action="">
+  <form class="searchbar-container flex" action="" @submit="onSubmit">
     <input
       v-model="query"
       class="searchbar-input"
@@ -39,7 +38,7 @@ function onSubmit(event: Event) {
   font-size: var(--fs-paragraph);
   outline: none;
   color: var(--dark-text-primary);
-  font-family: 'asap', sans-serif;
+  font-family: "asap", sans-serif;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 15%);
 }
 

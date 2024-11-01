@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const headingText = 'FoxSearch'
-const spanHeadingText = 'AI'
+const headingText = "FoxSearch";
+const spanHeadingText = "AI";
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const spanHeadingText = 'AI'
     </div>
 
     <div class="flex nav-switch">
-      <div class="nav-thumb"></div>
+      <div class="nav-thumb" />
     </div>
   </nav>
 </template>
