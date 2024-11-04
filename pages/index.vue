@@ -13,7 +13,7 @@ async function onSearchSubmit(query: string) {
   <div>
     <NavbarComponent />
     <HeroComponent @search-submit="onSearchSubmit" />
-    <ResponseCardComponent></ResponseCardComponent>
+    <ResponseCardComponent />
   </div>
 </template>
 
