@@ -70,6 +70,14 @@ html {
 
 /*Default Classes*/
 
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
+}
+
 /** Debugging Classes **/
 .db-borders {
   border: 2px solid green;
