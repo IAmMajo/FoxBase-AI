@@ -43,33 +43,31 @@
       </ul>
     </div>
 
-        <!-- Footer Aside Content -->
-         <div>
-             <div>
-                 kontakt@foxbase.de
-                 +49 211 1586 4066
-                 Kasernenstraße 67
-                 40213 Düsseldorf
-             </div>
-             <div>
-                 <a href="#">Insta</a> <!-- Werden durch Icons ausgetauscht -->
-                 <a href="#">LinkedIn</a> <!-- Werden durch Icons ausgetauscht -->
-                 <a href="#">YouTube</a> <!-- Werden durch Icons ausgetauscht -->
-             </div>
-         </div>
-
-         <!-- Footer Bottom Content -->
-          <div>
-            <p>@ FoxBase GmbH 2024</p>
-
-            <div>
-                <a href="#">Datenschutz</a>
-                <a href="#">Impressum</a>
-            </div>
-          </div>
-          
+    <!-- Footer Aside Content -->
+    <div>
+      <div>
+        kontakt@foxbase.de +49 211 1586 4066 Kasernenstraße 67 40213 Düsseldorf
+      </div>
+      <div>
+        <a href="#">Insta</a>
+        <!-- Werden durch Icons ausgetauscht -->
+        <a href="#">LinkedIn</a>
+        <!-- Werden durch Icons ausgetauscht -->
+        <a href="#">YouTube</a>
+        <!-- Werden durch Icons ausgetauscht -->
+      </div>
     </div>
 
+    <!-- Footer Bottom Content -->
+    <div>
+      <p>@ FoxBase GmbH 2024</p>
+
+      <div>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style></style>
