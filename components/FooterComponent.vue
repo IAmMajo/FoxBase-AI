@@ -61,7 +61,19 @@
                  <a href="#">YouTube</a> <!-- Werden durch Icons ausgetauscht -->
              </div>
          </div>
+
+         <!-- Footer Bottom Content -->
+          <div>
+            <p>@ FoxBase GmbH 2024</p>
+
+            <div>
+                <a href="#">Datenschutz</a>
+                <a href="#">Impressum</a>
+            </div>
+          </div>
+          
     </div>
+
 </template>
 
 <style>
