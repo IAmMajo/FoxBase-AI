@@ -1,16 +1,21 @@
 <script setup lang="ts">
-    const headingText ="FoxSearch"
-    const spanHeadingText = "AI"
+const headingText = 'FoxSearch'
+const spanHeadingText = 'AI'
 </script>
 
-
 <template>
-    <nav class="flex jc-space-between-ai-center">
-
-        <div class="flex jc-ai-center gap">
-            <img class="fox-find-logo" src="./../assets/FoxFindLogo.svg" alt="fox logo">
-            <h3 class="no-spacing dark-subheading">{{headingText}}<span class="dark-highlight">{{spanHeadingText}}</span></h3>
-        </div>
+  <nav class="flex jc-space-between-ai-center">
+    <div class="flex jc-ai-center gap">
+      <img
+        class="fox-find-logo"
+        src="./../assets/FoxFindLogo.svg"
+        alt="fox logo"
+      />
+      <h3 class="no-spacing dark-subheading">
+        {{ headingText
+        }}<span class="dark-highlight">{{ spanHeadingText }}</span>
+      </h3>
+    </div>
 
         
 
@@ -21,7 +26,6 @@
 
 
 </template>
-
 
 <style>
 
