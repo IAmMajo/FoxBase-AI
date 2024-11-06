@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'asap';
-  src: url('fonts/Asap.ttf');
+  font-family: "asap";
+  src: url("fonts/Asap.ttf");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter.ttf');
+  font-family: "Inter";
+  src: url("fonts/inter.ttf");
   font-style: normal;
   font-weight: bold;
 }
@@ -52,7 +52,7 @@ html {
   --dark-text-tertiary: #00dc82;
 
   /*Font Sizes */
-  --fs-header: 6rem;
+  --fs-header: 5.5rem;
   --fs-h1: 4.5rem;
   --fs-h2: 3rem;
   --fs-h3: 2.5rem;
@@ -106,27 +106,28 @@ html {
 /**Font-Sizes**/
 
 .header-title {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-header);
+  font-weight: bold;
 }
 
 h1 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h1);
 }
 
 h2 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h2);
 }
 
 h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h3);
 }
 
 p {
-  font-family: 'asap', sans-serif;
+  font-family: "asap", sans-serif;
   font-size: var(--fs-paragraph);
 }
 
