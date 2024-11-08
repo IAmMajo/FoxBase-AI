@@ -39,7 +39,7 @@ function onArrowDownClicked() {
           class="default-image"
           src="./../assets/defaultImage.svg"
           alt="default image"
-        >
+        />
       </div>
       <div class="feedback-mobile flex">
         <svg
