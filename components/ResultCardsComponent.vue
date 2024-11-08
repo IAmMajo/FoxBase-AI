@@ -45,7 +45,6 @@
 //   },
 // ]);
 
-
 // Test fetchResults -> error
 // const products = ref<Product[]>([]);
 
@@ -58,11 +57,9 @@
 //   }
 // });
 
-
 defineProps<{
-    products: Product[]
-}>()
-
+  products: Product[];
+}>();
 </script>
 
 <template>

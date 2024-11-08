@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 defineProps<{
-    product: Product,
-    index: number
-}>()
+  product: Product;
+  index: number;
+}>();
 
 const isLiked = ref(false);
 const isDisliked = ref(false);
@@ -40,7 +39,7 @@ function onArrowDownClicked() {
           class="default-image"
           src="./../assets/defaultImage.svg"
           alt="default image"
-        >
+        />
       </div>
       <div class="feedback-mobile flex">
         <svg
