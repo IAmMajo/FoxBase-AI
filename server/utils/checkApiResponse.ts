@@ -7,6 +7,6 @@ export default async (response: Response) => {
     data: {
       status: response.status,
       body: await response.text(),
-    }
+    },
   });
 };
