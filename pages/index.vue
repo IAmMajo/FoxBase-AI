@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const results = ref<Product[]>([]);
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const textResponse = ref("");
 
 async function onSearchSubmit(query: string) {
+  results.value = [];
+  textResponse.value = "";
   results.value = await fetchResults(query);
-  console.log(results.value);
+  textResponse.value = await fetchTextResponse(query, results.value);
 }
 </script>
 
@@ -13,6 +14,7 @@ async function onSearchSubmit(query: string) {
   <div>
     <NavbarComponent />
     <HeroComponent @search-submit="onSearchSubmit" />
+    <pre v-if="textResponse">{{ textResponse }}</pre>
     <ResultCardsComponent :products="results" />
   </div>
 </template>
