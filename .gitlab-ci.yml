@@ -9,7 +9,7 @@ stages:
   - create-environment
 
 default:
-  image: node:20-bookworm
+  image: node:22-bookworm
   before_script:
     - npm i
   cache:
@@ -19,7 +19,7 @@ default:
 lint-and-format-job:
   stage: lint-and-format
   script:
-    - npm run lint || lint_failed=1
+    - npm run lint:fix || lint_failed=1
     - npm run format
     - |
       if [[ $(git status --porcelain) ]]; then
@@ -31,13 +31,14 @@ lint-and-format-job:
       fi
     - |
       if [[ $lint_failed = 1 ]]; then
-        echo "Linting errors occured that couldn't be fixed automatically"
+        echo -e "\e[31mLinting errors occurred that couldn't be fixed automatically"
         exit 1
       fi
 
 build-job:
   stage: build
   script:
+    - npm run typecheck
     - npm run build
   artifacts:
     paths:
@@ -46,7 +47,7 @@ build-job:
 deploy-job:
   stage: deploy
   script:
-    - npx wrangler pages deploy dist --project-name=foxbaseai --branch=$CI_COMMIT_BRANCH | tee deploy.log
+    - npm run deploy-only -- --branch=$CI_COMMIT_BRANCH | tee deploy.log
   artifacts:
     paths:
       - deploy.log

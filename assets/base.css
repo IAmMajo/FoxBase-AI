@@ -1,0 +1,268 @@
+@font-face {
+  font-family: "asap";
+  src: url("fonts/Asap.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /*Colors Light Mode*/
+
+  /**Primary Colors**/
+  --light-primary: #8deeac;
+  --light-primary-hover: #00c16a;
+
+  /**Background Colors**/
+  --light-bg-primary: #ffffff;
+  --light-bg-secondary: #f4f9fe;
+  --light-bg-tertiary: #ffffff;
+
+  /**Text Colors**/
+  --light-text-primary: #0f172a;
+  --light-text-secondary: #475569;
+  --light-text-tertiary: #00c16a;
+
+  /*Colors Dark Mode*/
+
+  /**Primary Colors**/
+  --dark-primary: #00dc82;
+  --dark-primary-hover: #07b26d;
+
+  /**Background Colors**/
+  --dark-bg-primary: #021025;
+  --dark-bg-secondary: #0f1f31;
+  --dark-bg-tertiary: #020420;
+  --dark-bg-search: #474d54;
+
+  /**Text Colors**/
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #cbd5e1;
+  --dark-text-tertiary: #00dc82;
+
+  /*Font Sizes */
+  --fs-header: 5.5rem;
+  --fs-h1: 4.5rem;
+  --fs-h2: 3rem;
+  --fs-h3: 2.5rem;
+  --fs-paragraph: 1.125rem;
+
+  /* Values */
+  --border-radius-default: 12px;
+  --border-radius-full: 10000px;
+  --gap: 16px;
+
+  --navbar-height: 8vh;
+  --logo-size: 6vh;
+  --hero-height: 92vh;
+}
+
+/*Default Classes*/
+
+/** Debugging Classes **/
+.db-borders {
+  border: 2px solid green;
+}
+
+.db-red {
+  background-color: rgb(253, 142, 142);
+}
+
+/** Flex Classes **/
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.jc-ai-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.jc-space-between-ai-center {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gap {
+  gap: var(--gap);
+}
+
+/**Font-Sizes**/
+
+.header-title {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-header);
+  font-weight: bold;
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h3);
+}
+
+p {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
+.light-heading {
+  color: var(--light-text-primary);
+}
+
+.light-bottomtext {
+  color: var(--light-text-secondary);
+}
+
+.light-highlight {
+  color: var(--light-text-tertiary);
+}
+
+.dark-heading {
+  color: var(--dark-text-primary);
+}
+
+.dark-subheading {
+  color: var(--dark-text-secondary);
+}
+
+.dark-bottomtext {
+  color: var(--dark-text-secondary);
+}
+
+.dark-highlight {
+  color: var(--dark-text-tertiary);
+}
+
+.text-shadow {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
+}
+
+/*Images*/
+
+img {
+  border-radius: var(--border-radius-default);
+}
+
+/** Value Classes **/
+.no-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+/* Kleine Desktops */
+@media (max-width: 1279px) {
+  p {
+    font-size: 17px;
+  }
+
+  .header-title {
+    font-size: 3em;
+  }
+
+  h1 {
+    font-size: 2.8em;
+  }
+
+  h2 {
+    font-size: 2.6em;
+  }
+
+  h3 {
+    font-size: 2.4em;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  p {
+    font-size: 16px;
+  }
+
+  .header-title {
+    font-size: 2.2em;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+}
+
+/* Handys */
+@media (max-width: 480px) {
+  p {
+    font-size: 15px;
+  }
+
+  .header-title {
+    font-size: 2em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+}
+
+/* kleine Handys */
+
+@media (max-width: 400px) {
+  p {
+    font-size: 15px;
+  }
+
+  .header-title {
+    font-size: 1.6em;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+}
