@@ -2,7 +2,7 @@ import checkApiResponse from "../utils/checkApiResponse";
 
 export default defineEventHandler(async (event) => {
   const { apiUrl, resultsLimit } = useAppConfig();
-  const { apiToken, collection } = useRuntimeConfig();
+  const { apiToken, collection } = useRuntimeConfig(event);
 
   const response = await fetch(`${apiUrl}/collections/${collection}/search`, {
     method: "POST",
