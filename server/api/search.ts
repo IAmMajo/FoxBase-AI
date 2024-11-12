@@ -1,13 +1,12 @@
 import checkApiResponse from "../utils/checkApiResponse";
 
 export default defineEventHandler(async (event) => {
-  const { apiUrl, resultsLimit } = useAppConfig();
-  const { apiToken, collection } = useRuntimeConfig(event);
+  const { apiUrl, collection, resultsLimit } = useAppConfig();
 
   const response = await fetch(`${apiUrl}/collections/${collection}/search`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${apiToken}`,
+      Authorization: `Bearer ${event.context.cloudflare.env.API_TOKEN}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
