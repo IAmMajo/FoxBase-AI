@@ -14,7 +14,7 @@ async function onSearchSubmit(query: string) {
   <div>
     <NavbarComponent />
     <HeroComponent @search-submit="onSearchSubmit" />
-    <p v-if="textResponse">{{ textResponse }}</p>
+    <pre v-if="textResponse">{{ textResponse }}</pre>
     <ResultCardsComponent :products="results" />
   </div>
 </template>
