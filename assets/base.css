@@ -141,6 +141,11 @@ html {
   align-items: center;
 }
 
+.jc-start-ai-center {
+  justify-content: start;
+  align-items: center;
+}
+
 .jc-space-between-ai-center {
   justify-content: space-between;
   align-items: center;
@@ -235,6 +240,15 @@ img {
 .full-size {
   height: 100%;
   width: 100%;
+}
+
+.half-width {
+  height: 100%;
+  width: 50%;
+}
+
+.p-2vw {
+  padding: 2vw;
 }
 
 /* Kleine Desktops */
