@@ -78,30 +78,29 @@ html {
   position: absolute;
 }
 
-.t-0{
+.t-0 {
   top: 0;
 }
 
-.l-0{
+.l-0 {
   left: 0;
 }
 
-.b-0{
+.b-0 {
   bottom: 0;
 }
 
-.z-1{
+.z-1 {
   z-index: 1;
 }
 
-.z-2{
+.z-2 {
   z-index: 2;
 }
 
-.z-100{
+.z-100 {
   z-index: 100;
 }
-
 
 /** Debugging Classes **/
 .db-borders {
@@ -192,7 +191,7 @@ p {
   color: var(--dark-text-tertiary);
 }
 
-.footer-bottom-container{
+.footer-bottom-container {
   background-color: #303947;
 }
 
@@ -200,7 +199,7 @@ p {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
 }
 
-footer{
+footer {
   overflow: hidden;
   height: 60vh;
   background-color: var(--dark-bg-secondary);
