@@ -70,12 +70,15 @@ html {
 
 /*Default Classes*/
 
+/** position Classes **/
 .relative {
   position: relative;
+  overflow: hidden;
 }
 
 .absolute {
   position: absolute;
+  overflow: hidden;
 }
 
 .t-0 {
@@ -215,6 +218,11 @@ img {
 .no-spacing {
   margin: 0;
   padding: 0;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
 }
 
 /* Kleine Desktops */
