@@ -81,23 +81,21 @@ html {
   overflow: hidden;
 }
 
-.t-0{
+.t-0 {
   top: 0;
 }
 
-.l-0{
+.l-0 {
   left: 0;
 }
 
-.z-2{
+.z-2 {
   z-index: -2;
 }
 
-.z-1{
+.z-1 {
   z-index: -1;
 }
-
-
 
 /** Debugging Classes **/
 .db-borders {
@@ -204,11 +202,10 @@ img {
   padding: 0;
 }
 
-.full-size{
+.full-size {
   height: 100%;
   width: 100%;
 }
-
 
 /* Kleine Desktops */
 @media (max-width: 1279px) {

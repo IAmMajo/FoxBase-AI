@@ -13,9 +13,7 @@ const subheadlineSpan = " Fallbeispiel";
     <div class="darkening-layer" />
 
     <div class="absolute z-2 t-0 l-0 full-size">
-
-      <div class="waves"></div>
-
+      <div class="waves" />
     </div>
 
     <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
@@ -56,7 +54,7 @@ const subheadlineSpan = " Fallbeispiel";
   width: 100%;
 }
 
-.waves{
+.waves {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -68,35 +66,33 @@ const subheadlineSpan = " Fallbeispiel";
 }
 
 .waves::before,
-  .waves::after{
-    content: '';
-    position: absolute;
-    width: 300vw;
-    height: 300vw;
-    top: -65vw;
-    left: 50%;
-    border-radius: 44%;
-    transform: translate(-50%, -75%);
-  }
+.waves::after {
+  content: "";
+  position: absolute;
+  width: 300vw;
+  height: 300vw;
+  top: -65vw;
+  left: 50%;
+  border-radius: 44%;
+  transform: translate(-50%, -75%);
+}
 
-.waves::before{
+.waves::before {
   background: var(--dark-bg-primary);
   animation: waves 45s linear infinite;
 }
-.waves::after{
+.waves::after {
   background: #02102564;
   animation: waves 75s linear infinite;
 }
 
-
-@keyframes waves{
-  0%{
+@keyframes waves {
+  0% {
     transform: translate(-50%, -75%) rotate(0deg);
   }
 
-  100%{
+  100% {
     transform: translate(-50%, -75%) rotate(360deg);
   }
 }
-
 </style>
