@@ -70,6 +70,35 @@ html {
 
 /*Default Classes*/
 
+/** position Classes **/
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.absolute {
+  position: absolute;
+  overflow: hidden;
+}
+
+.t-0{
+  top: 0;
+}
+
+.l-0{
+  left: 0;
+}
+
+.z-2{
+  z-index: -2;
+}
+
+.z-1{
+  z-index: -1;
+}
+
+
+
 /** Debugging Classes **/
 .db-borders {
   border: 2px solid green;
@@ -174,6 +203,12 @@ img {
   margin: 0;
   padding: 0;
 }
+
+.full-size{
+  height: 100%;
+  width: 100%;
+}
+
 
 /* Kleine Desktops */
 @media (max-width: 1279px) {

@@ -11,13 +11,13 @@ const subheadlineSpan = " Fallbeispiel";
 <template>
   <div class="relative">
     <div class="darkening-layer" />
-    <iframe
-      class="spline-iframe"
-      src="https://my.spline.design/foxbasestripe-f90a5e89be7191d7e6c082d643111766/"
-      frameborder="0"
-      allowfullscreen
-      loading="lazy"
-    />
+
+    <div class="absolute z-2 t-0 l-0 full-size">
+
+      <div class="waves"></div>
+
+    </div>
+
     <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
       <p class="dark-heading text-shadow header-title no-spacing">
         {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
@@ -37,29 +37,12 @@ const subheadlineSpan = " Fallbeispiel";
 <style>
 .darkening-layer {
   position: absolute;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border: none;
   z-index: -1;
   background-color: #00000038;
-}
-
-.spline-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  z-index: -2;
-}
-
-.relative {
-  position: relative;
-  overflow: hidden;
 }
 
 .bg {
@@ -72,4 +55,48 @@ const subheadlineSpan = " Fallbeispiel";
   height: var(--hero-height);
   width: 100%;
 }
+
+.waves{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: var(--dark-primary);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 50ms;
+}
+
+.waves::before,
+  .waves::after{
+    content: '';
+    position: absolute;
+    width: 300vw;
+    height: 300vw;
+    top: -65vw;
+    left: 50%;
+    border-radius: 44%;
+    transform: translate(-50%, -75%);
+  }
+
+.waves::before{
+  background: var(--dark-bg-primary);
+  animation: waves 45s linear infinite;
+}
+.waves::after{
+  background: #02102564;
+  animation: waves 75s linear infinite;
+}
+
+
+@keyframes waves{
+  0%{
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+
+  100%{
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
 </style>
