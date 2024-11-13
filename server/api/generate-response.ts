@@ -1,3 +1,4 @@
+import { micromark } from "micromark";
 import checkApiResponse from "../utils/checkApiResponse";
 
 export default defineEventHandler(async (event) => {
@@ -23,5 +24,7 @@ export default defineEventHandler(async (event) => {
   });
   await checkApiResponse(response);
 
-  return response.text();
+  const json = (await response.json()) as TextResponse;
+
+  return JSON.stringify({ response: micromark(json.response) });
 });
