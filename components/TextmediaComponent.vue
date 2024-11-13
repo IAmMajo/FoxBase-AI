@@ -8,7 +8,7 @@ export default {
     titleHighlight: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     image: {
       type: String,
@@ -17,7 +17,7 @@ export default {
     bottomText: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
   },
 };
@@ -26,7 +26,7 @@ export default {
 <template>
   <div class="text-media-container flex">
     <div class="half-width flex jc-ai-center p-2vw">
-      <img class="full-size" :src="image" alt="Image">
+      <img class="full-size" :src="image" alt="Image" />
     </div>
     <div class="half-width flex jc-start-ai-center p-2vw">
       <div>

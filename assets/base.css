@@ -141,7 +141,7 @@ html {
   align-items: center;
 }
 
-.jc-start-ai-center{
+.jc-start-ai-center {
   justify-content: start;
   align-items: center;
 }
@@ -242,12 +242,12 @@ img {
   width: 100%;
 }
 
-.half-width{
+.half-width {
   height: 100%;
   width: 50%;
 }
 
-.p-2vw{
+.p-2vw {
   padding: 2vw;
 }
 
