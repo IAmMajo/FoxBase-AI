@@ -12,7 +12,7 @@ const subheadlineSpan = " Fallbeispiel";
   <div class="relative">
     <div class="darkening-layer" />
 
-    <div class="absolute z-2 t-0 l-0 full-size">
+    <div class="absolute z-negative-2 t-0 l-0 full-size">
       <div class="waves" />
     </div>
 

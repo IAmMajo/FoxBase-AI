@@ -17,6 +17,10 @@ html {
   padding: 0;
 }
 
+::-webkit-scrollbar{
+  width: 0;
+}
+
 :root {
   /*Colors Light Mode*/
 
@@ -91,6 +95,14 @@ html {
 
 .b-0 {
   bottom: 0;
+}
+
+.z-negative-1{
+  z-index: -1;
+}
+
+.z-negative-2{
+  z-index: -2;
 }
 
 .z-1 {
