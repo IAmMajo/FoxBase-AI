@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const text =
-  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut";
+defineProps<{ text: string }>();
 </script>
 
 <template>
@@ -8,16 +7,8 @@ const text =
     <h3 class="dark-heading no-spacing">Basierend auf Ihrer Anfrage...</h3>
   </div>
   <div class="response-container flex jc-ai-center">
-    <div class="response-box flex jc-ai-center">
-      <p class="dark-bottomtext no-spacing">
-        Lorem <b>ipsum</b> dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-        elitr, sed diam nonumy eirmod tempor invidunt ut
-      </p>
-    </div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div class="response-box flex jc-ai-center dark-bottomtext" v-html="text" />
   </div>
   <div class="response-header flex jc-ai-center">
     <h3 class="dark-heading no-spacing">
