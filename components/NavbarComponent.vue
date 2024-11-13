@@ -17,7 +17,7 @@ const spanHeadingText = "AI";
       </h3>
     </div>
 
-    <div class="flex nav-switch">
+    <div class="flex nav-switch gradient-green-dark">
       <div class="nav-thumb" />
     </div>
   </nav>
@@ -38,25 +38,36 @@ nav {
   padding: 0 1%;
 }
 
+.gradient-green-dark {
+  background: rgb(0, 176, 104);
+  background: linear-gradient(
+    -105deg,
+    rgba(0, 176, 104, 1) 0%,
+    rgba(0, 220, 128, 1) 100%
+  );
+}
+
+.searchbar {
+  height: 2rem;
+  width: 30rem;
+  border-radius: var(--border-radius-full);
+}
+
 .nav-switch {
   align-items: center;
   justify-content: end;
 
-  background: var(--dark-primary);
-  background: linear-gradient(
-    65,
-    rgba(254, 254, 254, 0) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
   border-radius: var(--border-radius-full);
-  padding: 0 0.2rem;
-  height: var(--fs-h3);
-  width: calc(var(--fs-h3) + 2rem);
+  padding: 0 0.3rem;
+  height: calc(var(--fs-h3) - 0.5rem);
+  width: calc(var(--fs-h3) + 0.5rem);
 }
 .nav-thumb {
-  background: #0a8652; /*var(--dark-primary);*/
+  background: var(--dark-primary);
   border-radius: var(--border-radius-full);
-  height: calc(var(--fs-h3) - 0.5rem);
-  width: calc(var(--fs-h3) - 0.5rem);
+
+  /* thumb size: 1.5rem * 1.5rem */
+  height: calc(var(--fs-h3) - 1rem);
+  width: calc(var(--fs-h3) - 1rem);
 }
 </style>
