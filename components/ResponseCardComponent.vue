@@ -7,8 +7,10 @@ defineProps<{ text: string }>();
     <h3 class="dark-heading no-spacing">Basierend auf Ihrer Anfrage...</h3>
   </div>
   <div class="response-container flex jc-ai-center">
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div class="response-box flex jc-ai-center dark-bottomtext" v-html="text" />
+    <div class="response-box flex jc-ai-center dark-bottomtext">
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div class="dark-bottomtext" v-html="text" />
+    </div>
   </div>
   <div class="response-header flex jc-ai-center">
     <h3 class="dark-heading no-spacing">
