@@ -7,13 +7,13 @@ export default defineNuxtConfig({
     preset: "cloudflare-pages",
   },
 
-  modules: ["nitro-cloudflare-dev", "@nuxt/eslint", '@primevue/nuxt-module'],
+  modules: ["nitro-cloudflare-dev", "@nuxt/eslint", "@primevue/nuxt-module"],
   devServer: { host: "" },
 
   primevue: {
     options: {
-      ripple: true
-    }
+      ripple: true,
+    },
   },
 
   app: {
@@ -24,9 +24,9 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/node_modules/primevue/resources/themes/foxbase_dark/theme.css',
-    '~/node_modules/primeicons/primeicons.css',
-    '~/node_modules/primeflex/primeflex.css',
-    "~/assets/main.css"
+    "~/node_modules/primevue/resources/themes/foxbase_dark/theme.css",
+    "~/node_modules/primeicons/primeicons.css",
+    "~/node_modules/primeflex/primeflex.css",
+    "~/assets/main.css",
   ],
 });
