@@ -3,10 +3,5 @@ const { id } = useRoute().params;
 </script>
 
 <template>
-<div>
-
-User Page {{ id }}
-
-</div>
-
+  <div>User Page {{ id }}</div>
 </template>

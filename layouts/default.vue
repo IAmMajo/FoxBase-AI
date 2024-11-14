@@ -5,18 +5,24 @@
         <div class="flex flex-row flex-wrap">
           <div class="w-15rem flex align-items-center flex-wrap">
             <img
-        class="fox-find-logo"
-        src="./../assets/FoxFindLogo.svg"
-        alt="fox logo"
-        width="35"
-        heigt="40"
-        viewBox="0 0 35 40"
-      />
+              class="fox-find-logo"
+              src="./../assets/FoxFindLogo.svg"
+              alt="fox logo"
+              width="35"
+              heigt="40"
+              viewBox="0 0 35 40"
+            />
             <span class="font-semibold text-2xl text-primary">FoxBase AI</span>
           </div>
 
           <div class="">
-            <Button icon="pi pi-bars" severity="secondary" aria-label="Bookmark" text @click="menuMain = !menuMain" />
+            <Button
+              icon="pi pi-bars"
+              severity="secondary"
+              aria-label="Bookmark"
+              text
+              @click="menuMain = !menuMain"
+            />
           </div>
         </div>
       </div>
@@ -24,18 +30,24 @@
       <div class="block md:hidden">
         <div class="grid">
           <div class="col-fixed" style="width: 35px">
-            <Button icon="pi pi-bars" severity="secondary" aria-label="Bookmark" text @click="menuMainMobile = !menuMainMobile" />
+            <Button
+              icon="pi pi-bars"
+              severity="secondary"
+              aria-label="Bookmark"
+              text
+              @click="menuMainMobile = !menuMainMobile"
+            />
           </div>
 
           <div class="col flex align-items-center justify-content-center">
             <img
-        class="fox-find-logo"
-        src="./../assets/FoxFindLogo.svg"
-        alt="fox logo"
-        width="35"
-        heigt="40"
-        viewBox="0 0 35 40"
-      />
+              class="fox-find-logo"
+              src="./../assets/FoxFindLogo.svg"
+              alt="fox logo"
+              width="35"
+              heigt="40"
+              viewBox="0 0 35 40"
+            />
             <span class="font-semibold text-2xl text-primary">FoxBase AI</span>
           </div>
         </div>
@@ -43,10 +55,26 @@
     </template>
     <template #end>
       <div class="flex align-items-center gap-2">
-        <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" shape="circle" @click="toggleMenuProfile" aria-haspopup="true" aria-controls="overlay_menu" />
-        <Menu ref="menuProfile" id="overlay_menu" :model="menuProfileItems" :popup="true">
+        <Avatar
+          image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+          shape="circle"
+          aria-haspopup="true"
+          aria-controls="overlay_menu"
+          @click="toggleMenuProfile"
+        />
+        <Menu
+          id="overlay_menu"
+          ref="menuProfile"
+          :model="menuProfileItems"
+          :popup="true"
+        >
           <template #item="{ item, props }">
-            <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+            <router-link
+              v-if="item.route"
+              v-slot="{ href, navigate }"
+              :to="item.route"
+              custom
+            >
               <a v-ripple :href="href" v-bind="props.action" @click="navigate">
                 <span :class="item.icon" />
                 <span class="ml-2">{{ item.label }}</span>
@@ -58,7 +86,12 @@
     </template>
   </Menubar>
 
-  <Sidebar v-model:visible="menuMain" :modal="false" :dismissable="false" :baseZIndex="100">
+  <Sidebar
+    v-model:visible="menuMain"
+    :modal="false"
+    :dismissable="false"
+    :base-z-index="100"
+  >
     <template #container="{ closeCallback }">
       <div class="flex flex-column h-full">
         <mainMenu />
@@ -66,23 +99,32 @@
     </template>
   </Sidebar>
 
-  <Sidebar v-model:visible="menuMainMobile" :baseZIndex="1001">
+  <Sidebar v-model:visible="menuMainMobile" :base-z-index="1001">
     <template #container="{ closeCallback }">
       <div class="flex flex-column h-full">
-        <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
+        <div
+          class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0"
+        >
           <span class="inline-flex align-items-center gap-2">
             <img
-        class="fox-find-logo"
-        src="./../assets/FoxFindLogo.svg"
-        alt="fox logo"
-        width="35"
-        heigt="40"
-        viewBox="0 0 35 40"
-      />
+              class="fox-find-logo"
+              src="./../assets/FoxFindLogo.svg"
+              alt="fox logo"
+              width="35"
+              heigt="40"
+              viewBox="0 0 35 40"
+            />
             <span class="font-semibold text-2xl text-primary">Foxbase AI</span>
           </span>
           <span>
-            <Button type="button" @click="closeCallback" icon="pi pi-times" rounded outlined class="h-2rem w-2rem"></Button>
+            <Button
+              type="button"
+              icon="pi pi-times"
+              rounded
+              outlined
+              class="h-2rem w-2rem"
+              @click="closeCallback"
+            />
           </span>
         </div>
         <mainMenu />
@@ -90,10 +132,12 @@
     </template>
   </Sidebar>
 
-  <div class="py-6 pr-3 md:pr-6" :class="menuMain ? 'container-main' : 'pl-3 md:pl-6'">
+  <div
+    class="py-6 pr-3 md:pr-6"
+    :class="menuMain ? 'container-main' : 'pl-3 md:pl-6'"
+  >
     <NuxtPage />
   </div>
-
 </template>
 
 <script setup>
@@ -162,12 +206,12 @@ body {
   position: sticky;
   z-index: 1000;
   background: var(--surface-100);
-  border:none;
+  border: none;
 }
 
-.p-sidebar{
+.p-sidebar {
   background: var(--surface-300);
-  border:none;
+  border: none;
 }
 .container-main {
   padding-left: 22.5rem;

@@ -1,3 +1,3 @@
 export default defineNuxtRouteMiddleware(() => {
-    setPageLayout('custom')
-  });
+  setPageLayout("custom");
+});
