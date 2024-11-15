@@ -17,6 +17,10 @@ html {
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 :root {
   /*Colors Light Mode*/
 
@@ -70,6 +74,49 @@ html {
 
 /*Default Classes*/
 
+/** position Classes **/
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.absolute {
+  position: absolute;
+  overflow: hidden;
+}
+
+.t-0 {
+  top: 0;
+}
+
+.l-0 {
+  left: 0;
+}
+
+.b-0 {
+  bottom: 0;
+}
+
+.z-negative-1 {
+  z-index: -1;
+}
+
+.z-negative-2 {
+  z-index: -2;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-100 {
+  z-index: 100;
+}
+
 /** Debugging Classes **/
 .db-borders {
   border: 2px solid green;
@@ -91,6 +138,11 @@ html {
 
 .jc-ai-center {
   justify-content: center;
+  align-items: center;
+}
+
+.jc-start-ai-center {
+  justify-content: start;
   align-items: center;
 }
 
@@ -159,8 +211,18 @@ p {
   color: var(--dark-text-tertiary);
 }
 
+.footer-bottom-container {
+  background-color: #303947;
+}
+
 .text-shadow {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
+}
+
+footer {
+  overflow: hidden;
+  height: 60vh;
+  background-color: var(--dark-bg-secondary);
 }
 
 /*Images*/
@@ -173,6 +235,20 @@ img {
 .no-spacing {
   margin: 0;
   padding: 0;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
+.half-width {
+  height: 100%;
+  width: 50%;
+}
+
+.p-2vw {
+  padding: 2vw;
 }
 
 /* Kleine Desktops */

@@ -4,12 +4,13 @@ definePageMeta({
 });
 
 const results = ref<Product[]>([]);
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const textResponse = ref("");
 
 async function onSearchSubmit(query: string) {
+  results.value = [];
+  textResponse.value = "";
   results.value = await fetchResults(query);
-  console.log(results.value);
+  textResponse.value = await fetchTextResponse(query, results.value);
 }
 </script>
 
@@ -17,6 +18,10 @@ async function onSearchSubmit(query: string) {
   <div>
     <NavbarComponent />
     <HeroComponent @search-submit="onSearchSubmit" />
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div v-if="textResponse" v-html="textResponse" />
+    <ResultCardsComponent :products="results" />
+    <FooterComponent />
   </div>
 </template>
 
