@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
 
   css: [
-    "~/node_modules/primevue/resources/themes/foxbase_dark/theme.css",
+    "~/assets/foxbase_dark/theme.css",
     "~/node_modules/primeicons/primeicons.css",
     "~/node_modules/primeflex/primeflex.css",
     "~/assets/main.css",
