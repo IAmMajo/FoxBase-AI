@@ -15,7 +15,10 @@
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "create-migration": "wrangler d1 migrations create DB",
+    "list-migrations": "wrangler d1 migrations list DB",
+    "migrate": "wrangler d1 migrations apply DB"
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
