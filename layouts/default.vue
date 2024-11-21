@@ -1,6 +1,5 @@
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
-  <div class="h-full">
     <Menubar>
       <template #start>
         <div class="hidden md:block">
@@ -146,7 +145,7 @@
         </div>
       </template>
     </Sidebar>
-  </div>
+
 
   <div
     class="py-6 pr-3 md:pr-6"
