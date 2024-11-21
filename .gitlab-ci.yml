@@ -5,6 +5,7 @@ workflow:
 stages:
   - lint-and-format
   - build
+  - migrate
   - deploy
   - create-environment
 
@@ -43,6 +44,20 @@ build-job:
   artifacts:
     paths:
       - dist
+
+migrate-stage:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'stage'
+  stage: migrate
+  script:
+    - npm run migrate -- --remote
+
+migrate-production:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'main'
+  stage: migrate
+  script:
+    - npm run migrate -- --env=production --remote
 
 deploy-job:
   stage: deploy

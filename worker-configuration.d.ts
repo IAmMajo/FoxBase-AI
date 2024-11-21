@@ -2,4 +2,5 @@
 
 interface Env {
   API_TOKEN: string;
+  DB: D1Database;
 }

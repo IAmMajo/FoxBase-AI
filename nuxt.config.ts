@@ -6,6 +6,13 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: "cloudflare-pages",
+    experimental: { database: true },
+    database: {
+      default: {
+        connector: "cloudflare-d1",
+        options: { bindingName: "DB" },
+      },
+    },
   },
 
   modules: ["nitro-cloudflare-dev", "@nuxt/eslint", "@primevue/nuxt-module"],
