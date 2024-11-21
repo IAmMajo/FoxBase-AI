@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: "cloudflare-pages",
-  }, 
+  },
 
   modules: ["nitro-cloudflare-dev", "@nuxt/eslint", "@primevue/nuxt-module"],
   devServer: { host: "" },
@@ -23,14 +23,14 @@ export default defineNuxtConfig({
       theme: {
         preset: MyPreset,
         options: {
-          darkModeSelector: '.my-app-dark'
-        }
-      }
-    }
+          darkModeSelector: ".my-app-dark",
+        },
+      },
+    },
   },
 
   css: [
-  "~/node_modules/primeicons/primeicons.css",
-  "~/node_modules/primeflex/primeflex.css",
+    "~/node_modules/primeicons/primeicons.css",
+    "~/node_modules/primeflex/primeflex.css",
   ],
 });
