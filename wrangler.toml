@@ -8,7 +8,6 @@ pages_build_output_dir = "./dist"
 binding = "DB"
 database_name = "foxbaseai-stage"
 database_id = "04a8714f-ecec-4df0-a307-52d813a3f5f6"
-preview_database_id = "foxbaseai"
 
 [[env.production.d1_databases]]
 binding = "DB"
