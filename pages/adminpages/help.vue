@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 function toggleDarkMode() {
-    document.documentElement.classList.toggle('my-app-dark');
+  document.documentElement.classList.toggle("my-app-dark");
 }
 </script>
 
@@ -12,8 +12,7 @@ function toggleDarkMode() {
         Benötigen Sie Hilfe? Dann kontaktieren Sie uns doch über
         testmail@test.com.
       </p>
-     <div> <Button label="Toggle Dark Mode" @click="toggleDarkMode()" /></div>
+      <div><Button label="Toggle Dark Mode" @click="toggleDarkMode()" /></div>
     </template>
   </Card>
 </template>
-
