@@ -17,7 +17,7 @@ export default defineEventHandler(async (/* event */) => {
    * const body = await readValidatedBody(event, (body) =>
    *   settingSchema.parse(body),
    * );
-   * 
+   *
    * const db = useDatabase();
    * const result = await db.sql<DbExecResult>`
    *   INSERT INTO settings (name, value) VALUES (${body.name}, ${body.value})
