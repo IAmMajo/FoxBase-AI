@@ -1,5 +1,6 @@
+import Aura from '@primevue/themes/aura';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { MyPreset } from "./assets/mytheme";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: {
-        preset: MyPreset,
+        preset: Aura,
         options: {
           darkModeSelector: ".my-app-dark",
         },
@@ -36,8 +37,5 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    "~/node_modules/primeicons/primeicons.css",
-    "~/node_modules/primeflex/primeflex.css",
-  ],
+  css: ["~/assets/main.css"],
 });

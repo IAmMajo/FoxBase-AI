@@ -150,7 +150,7 @@ const toast = useToast();
 
 const totalSize = ref(0);
 const totalSizePercent = ref(0);
-const files = ref([]);
+const fileList = ref([]);
 
 const onRemoveTemplatingFile = (file, removeFileCallback, index) => {
   removeFileCallback(index);
@@ -158,15 +158,9 @@ const onRemoveTemplatingFile = (file, removeFileCallback, index) => {
   totalSizePercent.value = totalSize.value / 10;
 };
 
-const onClearTemplatingUpload = (clear) => {
-  clear();
-  totalSize.value = 0;
-  totalSizePercent.value = 0;
-};
-
 const onSelectedFiles = (event) => {
-  files.value = event.files;
-  files.value.forEach((file) => {
+  fileList.value = event.files;
+  fileList.value.forEach((file) => {
     totalSize.value += parseInt(formatSize(file.size));
   });
 };

@@ -26,7 +26,7 @@ const query = ref("");
 
 <style>
 .searchbar-input {
-  height: 68px;
+  height: 70px;
   border: none;
   flex: 1;
   margin: 0;

@@ -117,6 +117,10 @@ html {
   z-index: 100;
 }
 
+.py-6 {
+  padding: 6vh 0;
+}
+
 /** Debugging Classes **/
 .db-borders {
   border: 2px solid green;
@@ -250,6 +254,7 @@ img {
 .p-2vw {
   padding: 2vw;
 }
+
 
 /* Kleine Desktops */
 @media (max-width: 1279px) {
