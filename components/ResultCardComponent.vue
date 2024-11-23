@@ -51,8 +51,7 @@ function onArrowDownClicked() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           @click="onArrowUpClicked"
-        >
-        </svg>
+        ></svg>
         <svg
           class="arrowDown"
           :class="{ dislikedStyle: isDisliked }"
@@ -62,8 +61,7 @@ function onArrowDownClicked() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           @click="onArrowDownClicked"
-        >
-        </svg>
+        ></svg>
       </div>
     </div>
     <div class="info-card flex flex-column gap">
@@ -145,7 +143,7 @@ function onArrowDownClicked() {
   --color-line: color-mix(in srgb, var(--dark-bg-search), transparent 30%);
   --result-card-width: 50vw;
   --result-card-height: 22vh;
-  --padding-result-card: 4vh 0; 
+  --padding-result-card: 4vh 0;
 }
 
 .gapSmall {
