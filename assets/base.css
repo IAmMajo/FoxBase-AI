@@ -117,6 +117,10 @@ html {
   z-index: 100;
 }
 
+.py-6 {
+  padding: 6vh 0;
+}
+
 /** Debugging Classes **/
 .db-borders {
   border: 2px solid green;

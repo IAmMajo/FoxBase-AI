@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "custom",
+});
+
 const results = ref<Product[]>([]);
 const textResponse = ref("");
 

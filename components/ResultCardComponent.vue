@@ -51,13 +51,7 @@ function onArrowDownClicked() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           @click="onArrowUpClicked"
-        >
-          <path
-            d="M4.0197 12.7831V7.57207C4.0197 7.05001 3.59649 6.62759 3.07443 6.62759H2.24752C1.39231 6.62759 0.976724 5.58236 1.59844 4.99512L6.06249 0.778662C6.42023 0.440767 6.97736 0.433845 7.34338 0.762746L12.0357 4.97921C12.6804 5.55849 12.2706 6.62759 11.4039 6.62759H10.0453C9.52325 6.62759 9.10003 7.05001 9.10003 7.57207V12.7831C9.10003 14.6465 4.0197 14.6465 4.0197 12.7831Z"
-            stroke="#cbd5e1"
-            stroke-width="1"
-          />
-        </svg>
+        ></svg>
         <svg
           class="arrowDown"
           :class="{ dislikedStyle: isDisliked }"
@@ -67,13 +61,7 @@ function onArrowDownClicked() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           @click="onArrowDownClicked"
-        >
-          <path
-            d="M9.72053 2.57819V7.78926C9.72053 8.31132 10.1437 8.73374 10.6658 8.73374H11.4927C12.3479 8.73374 12.7635 9.77897 12.1418 10.3662L7.67774 14.5827C7.32001 14.9206 6.76288 14.9275 6.39686 14.5986L1.70453 10.3821C1.05987 9.80284 1.46965 8.73374 2.33634 8.73374H3.69493C4.21699 8.73374 4.6402 8.31132 4.6402 7.78926V2.57819C4.6402 0.714822 9.72053 0.714822 9.72053 2.57819Z"
-            stroke="#cbd5e1"
-            stroke-width="1"
-          />
-        </svg>
+        ></svg>
       </div>
     </div>
     <div class="info-card flex flex-column gap">
@@ -154,7 +142,8 @@ function onArrowDownClicked() {
 :root {
   --color-line: color-mix(in srgb, var(--dark-bg-search), transparent 30%);
   --result-card-width: 50vw;
-  --result-card-height: 175px;
+  --result-card-height: 22vh;
+  --padding-result-card: 4vh 0;
 }
 
 .gapSmall {
@@ -206,12 +195,13 @@ function onArrowDownClicked() {
 
 .img-container {
   aspect-ratio: 1 / 1;
-  height: 100%;
+  height: 80%;
+  margin: 18px 0 0 0;
   border-radius: var(--border-radius-default);
   background-color: var(--light-bg-primary);
 }
 .default-image {
-  height: 100%;
+  height: %;
 }
 
 .info-card {

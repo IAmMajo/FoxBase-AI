@@ -34,7 +34,7 @@ const spanHeadingText = "AI";
 nav {
   background-color: var(--dark-bg-primary);
   height: var(--navbar-height);
-  width: 98%;
+  width: 100%;
   padding: 0 1%;
 }
 
