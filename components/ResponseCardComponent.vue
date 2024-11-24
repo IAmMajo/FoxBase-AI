@@ -4,7 +4,6 @@ defineProps<{ text: string }>();
 
 <template>
   <div class="response-header flex jc-ai-center">
-    <h3 class="dark-heading no-spacing">Basierend auf Ihrer Anfrage...</h3>
   </div>
   <div class="response-container flex jc-ai-center">
     <div class="response-box flex jc-ai-center dark-bottomtext">
@@ -13,9 +12,6 @@ defineProps<{ text: string }>();
     </div>
   </div>
   <div class="response-header flex jc-ai-center">
-    <h3 class="dark-heading no-spacing">
-      ... empfehlen wir Ihnen folgende Produkte:
-    </h3>
   </div>
 </template>
 
@@ -30,7 +26,9 @@ defineProps<{ text: string }>();
 }
 
 .response-container {
-  height: 26vh;
+  height: auto;
+  min-height: 12vh;
+  padding: 5vh;
   background-color: var(--dark-bg-primary);
 }
 
