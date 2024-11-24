@@ -19,7 +19,7 @@ const query = ref("");
       placeholder="Suche..."
     />
     <button type="submit" class="submit-btn flex jc-ai-center">
-      <MagnifyingGlassIcon class="searchbar-icon"/>
+      <MagnifyingGlassIcon class="searchbar-icon" />
     </button>
   </form>
 </template>
@@ -41,7 +41,7 @@ const query = ref("");
   box-shadow: 0 4px 14px rgba(0, 0, 0, 15%);
 }
 
-.searchbar-container .submit-btn{
+.searchbar-container .submit-btn {
   background-color: var(--dark-bg-search);
   border: none;
   border-top-right-radius: 1000px;
