@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { NuxtError } from '#app';
+
 definePageMeta({
   layout: "custom",
 });
@@ -26,7 +28,8 @@ async function handleLogin() {
   });
 
   if (!result.ok) {
-    errorMessage.value = (await result.json()).message;
+    const body = (await result.json()) as NuxtError;
+    errorMessage.value = body.message;
   } else {
     reloadNuxtApp();
   }

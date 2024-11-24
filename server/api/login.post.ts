@@ -21,6 +21,6 @@ export default defineEventHandler(async (event) => {
   await setUserSession(
     event,
     { user: { username: body.username } },
-    { password: event.context.cloudflare.env.SESSION_PASSWORD },
+    { password: event.context.cloudflare.env.SESSION_PASSWORD as string },
   );
 });
