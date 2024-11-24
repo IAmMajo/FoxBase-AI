@@ -18,9 +18,9 @@ const query = ref("");
       type="text"
       placeholder="Suche..."
     />
-    <a class="flex jc-ai-center" href=""
-      ><MagnifyingGlassIcon class="searchbar-icon"
-    /></a>
+    <button type="submit" class="submit-btn flex jc-ai-center">
+      <MagnifyingGlassIcon class="searchbar-icon" />
+    </button>
   </form>
 </template>
 
@@ -41,21 +41,22 @@ const query = ref("");
   box-shadow: 0 4px 14px rgba(0, 0, 0, 15%);
 }
 
+.searchbar-container .submit-btn {
+  background-color: var(--dark-bg-search);
+  border: none;
+  border-top-right-radius: 1000px;
+  border-bottom-right-radius: 1000px;
+  height: 70px;
+  color: var(--dark-text-secondary);
+  padding-right: 20px;
+}
+
 .searchbar-container {
   margin: 70px 0;
   height: 80px;
   width: 65%;
   border-radius: var(--border-radius-full);
 }
-.searchbar-container a {
-  height: 70px;
-  width: 68px;
-  color: var(--dark-text-secondary);
-  background-color: var(--dark-bg-search);
-  border-top-right-radius: var(--border-radius-full);
-  border-bottom-right-radius: var(--border-radius-full);
-}
-
 .searchbar-icon {
   height: 30px;
   width: 30px;
