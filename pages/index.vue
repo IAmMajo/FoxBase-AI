@@ -17,7 +17,7 @@ async function onSearchSubmit(query: string) {
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-if="textResponse" v-html="textResponse" />
     <ResultCardsComponent :products="results" />
-    <FooterComponent/>
+    <FooterComponent />
   </div>
 </template>
 

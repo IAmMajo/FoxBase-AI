@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <footer class="relative flex jc-ai-center">
@@ -73,9 +71,9 @@
         <p>40213 Düsseldorf</p>
       </div>
       <div class="footer-sm flex gap">
-        <a href="#"><i class="pi pi-instagram"></i></a>
-        <a href="#"><i class="pi pi-linkedin"></i></a>
-        <a href="#"><i class="pi pi-youtube"></i></a>
+        <a href="#"><i class="pi pi-instagram" /></a>
+        <a href="#"><i class="pi pi-linkedin" /></a>
+        <a href="#"><i class="pi pi-youtube" /></a>
       </div>
     </div>
 
@@ -95,24 +93,24 @@
 </template>
 
 <style>
-footer{
+footer {
   color: var(--dark-text-primary);
 }
 
-footer ul{
+footer ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-footer ul li a{
+footer ul li a {
   color: var(--dark-text-secondary);
   text-decoration: none;
   font-family: "Inter", sans-serif;
   font-size: var(--fs-p);
 }
 
-footer ul li a:hover{
+footer ul li a:hover {
   color: #adb5bf;
 }
 
@@ -120,9 +118,9 @@ footer ul li a:hover{
   bottom: 5;
 }
 
-.footer-sm a{
+.footer-sm a {
   font-size: 26px;
-  color: #0F1F31;
+  color: #0f1f31;
   text-decoration: none;
 }
 
@@ -157,12 +155,12 @@ footer ul li a:hover{
 .footer-aside-content {
   margin: 0 0 70px 20px;
   padding: 14px;
-  border: 3px solid #0F1F31;
-  color: #0F1F31;
+  border: 3px solid #0f1f31;
+  color: #0f1f31;
   border-radius: var(--border-radius-default);
 }
 
-.footer-locations p{
+.footer-locations p {
   margin: 6px 0;
   padding: 0;
 }
