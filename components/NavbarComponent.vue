@@ -24,7 +24,7 @@ const spanHeadingText = "AI";
 </template>
 
 <style>
-.logo-text{
+.logo-text {
   font-size: 1.8rem;
 }
 .fox-find-logo {
