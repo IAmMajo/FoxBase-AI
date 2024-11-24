@@ -187,6 +187,11 @@ p {
   font-size: var(--fs-paragraph);
 }
 
+ul {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
 .light-heading {
   color: var(--light-text-primary);
 }
