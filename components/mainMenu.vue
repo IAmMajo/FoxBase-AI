@@ -122,42 +122,13 @@
         <li>
           <a
             v-ripple
-            v-styleclass="{
-              selector: '@next',
-              enterClass: 'hidden',
-              enterActiveClass: 'slidedown',
-              leaveToClass: 'hidden',
-              leaveActiveClass: 'slideup',
-            }"
             class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+            @click="navigateTo('/admin/users')"
           >
-            <i class="pi pi-chart-line mr-2"></i>
-            <span class="font-medium">Reports</span>
-            <i class="pi pi-chevron-down ml-auto"></i>
+            <i class="pi pi-users mr-2"></i>
+            <span class="font-medium">Users</span>
           </a>
         </li>
-        <ul
-          class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
-        >
-          <li>
-            <a
-              v-ripple
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-shopping-cart mr-2"></i>
-              <span class="font-medium">Käufe</span>
-            </a>
-          </li>
-          <li>
-            <a
-              v-ripple
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-thumbs-up mr-2"></i>
-              <span class="font-medium">Bewertungen</span>
-            </a>
-          </li>
-        </ul>
         <li>
           <a
             v-ripple
