@@ -16,7 +16,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["nitro-cloudflare-dev", "@nuxt/eslint", "@primevue/nuxt-module"],
+  modules: [
+    "nitro-cloudflare-dev",
+    "@nuxt/eslint",
+    "@primevue/nuxt-module",
+    "nuxt-auth-utils",
+  ],
   devServer: { host: "" },
 
   app: {
@@ -38,4 +43,8 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/main.css"],
+
+  runtimeConfig: {
+    sessionPassword: "09b9a55311684b00ac269c0b24fc15ff",
+  },
 });
