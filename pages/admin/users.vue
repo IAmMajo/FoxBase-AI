@@ -3,9 +3,7 @@ await $fetch<User[]>("/api/users");
 </script>
 
 <template>
-  <div>
-    Page: admin/users
-  </div>
+  <div>Page: admin/users</div>
 </template>
 
 <style scoped></style>
