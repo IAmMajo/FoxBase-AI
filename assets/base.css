@@ -62,6 +62,7 @@ html {
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
+  --gap-lg: 56px;
 
   --navbar-height: 8vh;
   --logo-size: 6vh;
@@ -136,6 +137,9 @@ html {
 
 .gap {
   gap: var(--gap);
+}
+.gap-lg {
+  gap: var(--gap-lg);
 }
 
 /**Font-Sizes**/

@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>
 
 <template>
   <footer class="relative flex jc-ai-center">
@@ -20,7 +22,7 @@
     />
 
     <!-- Footer Main Content -->
-    <div class="footer-main-content flex gap">
+    <div class="footer-main-content flex gap-lg">
       <div>
         <p><b>Unsere Plattformen</b></p>
         <ul>
@@ -64,19 +66,16 @@
 
     <!-- Footer Aside Content -->
     <div class="absolute footer-aside-content l-0 b-0 z-100 flex flex-column">
-      <div class="footer-locaitons">
+      <div class="footer-locations">
         <p>kontakt@foxbase.de</p>
         <p>+49 211 1586 4066</p>
         <p>Kasernenstraße 67</p>
         <p>40213 Düsseldorf</p>
       </div>
-      <div>
-        <a href="#">Insta</a>
-        <!-- Werden durch Icons ausgetauscht -->
-        <a href="#">LinkedIn</a>
-        <!-- Werden durch Icons ausgetauscht -->
-        <a href="#">YouTube</a>
-        <!-- Werden durch Icons ausgetauscht -->
+      <div class="footer-sm flex gap">
+        <a href="#"><i class="pi pi-instagram"></i></a>
+        <a href="#"><i class="pi pi-linkedin"></i></a>
+        <a href="#"><i class="pi pi-youtube"></i></a>
       </div>
     </div>
 
@@ -96,15 +95,35 @@
 </template>
 
 <style>
+footer{
+  color: var(--dark-text-primary);
+}
+
+footer ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer ul li a{
+  color: var(--dark-text-secondary);
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-p);
+}
+
+footer ul li a:hover{
+  color: #adb5bf;
+}
+
 .b-5 {
   bottom: 5;
 }
 
-.footer-locations {
-}
-
-.footer-locaitons p {
-  margin: 0;
+.footer-sm a{
+  font-size: 26px;
+  color: #0F1F31;
+  text-decoration: none;
 }
 
 .footer-wave {
@@ -136,6 +155,15 @@
 }
 
 .footer-aside-content {
-  margin-bottom: 70px;
+  margin: 0 0 70px 20px;
+  padding: 14px;
+  border: 3px solid #0F1F31;
+  color: #0F1F31;
+  border-radius: var(--border-radius-default);
+}
+
+.footer-locations p{
+  margin: 6px 0;
+  padding: 0;
 }
 </style>
