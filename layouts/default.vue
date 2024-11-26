@@ -3,6 +3,7 @@ import { ref } from "vue";
 import "~/node_modules/primeflex/primeflex.css";
 import "~/node_modules/primeicons/primeicons.css";
 
+
 const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
@@ -194,7 +195,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
 
     <div
       class="py-6 pr-3 md:pr-6"
-      :class="menuMain ? 'container-main' : 'pl-3 md:pl-6'"
+      :class="menuMain ? 'container-main' : 'pl-3 md:pl-6 container-main'"
     >
       <NuxtPage />
     </div>
@@ -229,6 +230,7 @@ html {
   font-family: "Asap", sans-serif;
   font-weight: 600;
   padding-left: 22.5rem;
+  color: #2D4054;
 }
 
 @media screen and (max-width: 768px) {
