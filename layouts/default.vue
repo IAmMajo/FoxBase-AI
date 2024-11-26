@@ -41,9 +41,6 @@ onMounted(() => {
   });
 });
 
-const toggleMenuProfile = (event: MouseEvent) => {
-  menuProfile.value.toggle(event);
-};
 </script>
 
 <template>
