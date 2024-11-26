@@ -67,6 +67,9 @@ html {
   --border-radius-full: 10000px;
   --gap: 16px;
 
+  /* Shading */
+  --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
+
   --navbar-height: 8vh;
   --logo-size: 6vh;
   --hero-height: 92vh;
@@ -155,6 +158,15 @@ html {
   align-items: center;
 }
 
+.jc-space-between-ai-start {
+  justify-content: space-between;
+  align-items: start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .gap {
   gap: var(--gap);
 }
@@ -226,6 +238,14 @@ ul {
 
 .text-shadow {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
+}
+
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
+.br-default {
+  border-radius: var(--border-radius-default);
 }
 
 footer {

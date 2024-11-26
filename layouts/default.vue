@@ -44,10 +44,6 @@ onMounted(() => {
     }
   });
 });
-
-const toggleMenuProfile = (event: MouseEvent) => {
-  menuProfile.value.toggle(event);
-};
 </script>
 
 <template>
@@ -55,21 +51,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
     <Menubar>
       <template #start>
         <div class="hidden md:block">
-          <div class="flex flex-row flex-wrap">
-            <div class="w-15rem flex align-items-center flex-wrap">
-              <img
-                class="fox-find-logo"
-                src="./../assets/FoxFindLogo.svg"
-                alt="fox logo"
-                width="35"
-                heigt="40"
-                viewBox="0 0 35 40"
-              />
-              <span class="font-semibold text-2xl text-primary">
-                FoxBase AI
-              </span>
-            </div>
-
+          <div class="flex flex-row gap">
             <div class="flex jc-ai-center">
               <Button
                 icon="pi pi-bars"
@@ -78,6 +60,19 @@ const toggleMenuProfile = (event: MouseEvent) => {
                 text
                 @click="menuMain = !menuMain"
               />
+            </div>
+            <div class="w-15rem flex align-items-center">
+              <img
+                class="fox-find-logo"
+                src="./../assets/FoxFindLogo.svg"
+                alt="fox logo"
+                width="20"
+                heigt="30"
+                viewBox="0 0 20 30"
+              />
+              <span class="font-semibold text-2xl text-primary">
+                FoxBase AI
+              </span>
             </div>
           </div>
         </div>
@@ -117,7 +112,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
             class="pi pi-user"
             aria-haspopup="true"
             aria-controls="overlay_menu"
-            @click="toggleMenuProfile"
+            @click="menuProfile.value.toggle($event)"
           />
           <Menu
             id="overlay_menu"
@@ -201,7 +196,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
 
     <div
       class="py-6 pr-3 md:pr-6"
-      :class="menuMain ? 'container-main' : 'pl-3 md:pl-6'"
+      :class="menuMain ? 'container-main' : 'pl-3 md:pl-6 container-main'"
     >
       <NuxtPage />
     </div>
@@ -236,6 +231,7 @@ html {
   font-family: "Asap", sans-serif;
   font-weight: 600;
   padding-left: 22.5rem;
+  color: #2d4054;
 }
 
 @media screen and (max-width: 768px) {
