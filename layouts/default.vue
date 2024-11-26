@@ -40,7 +40,6 @@ onMounted(() => {
     }
   });
 });
-
 </script>
 
 <template>
