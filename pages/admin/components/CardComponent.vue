@@ -3,23 +3,23 @@ export default {
   props: {
     title: {
       type: String,
-      Required: true,
+      required: true,
     },
     value: {
-      type: Number,
-      Required: true,
+      type: String,
+      required: true,
     },
     bottomValue: {
-      type: Number,
-      Required: true,
+      type: String,
+      required: true,
     },
     bottomText: {
       type: String,
-      Required: true,
+      required: true,
     },
     icon: {
       type: String,
-      Required: false,
+      required: false,
       default: "pi-shopping-cart",
     },
   },
