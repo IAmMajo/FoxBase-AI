@@ -50,14 +50,14 @@ migrate-stage:
     - if: $CI_COMMIT_BRANCH == 'stage'
   stage: migrate
   script:
-    - npm run migrate -- --remote
+    - npx wrangler d1 migrations apply DB --remote
 
 migrate-production:
   rules:
     - if: $CI_COMMIT_BRANCH == 'main'
   stage: migrate
   script:
-    - npm run migrate -- --env=production --remote
+    - npx wrangler d1 migrations apply DB --env=production --remote
 
 deploy-job:
   stage: deploy
