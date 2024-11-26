@@ -68,7 +68,8 @@ html {
   --gap: 16px;
 
   /* Shading */
-  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   --navbar-height: 8vh;
   --logo-size: 6vh;
@@ -163,7 +164,7 @@ html {
   align-items: start;
 }
 
-.flex-wrap{
+.flex-wrap {
   flex-wrap: wrap;
 }
 
@@ -240,11 +241,11 @@ ul {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: var(--box-shadow);
 }
 
-.br-default{
+.br-default {
   border-radius: var(--border-radius-default);
 }
 
