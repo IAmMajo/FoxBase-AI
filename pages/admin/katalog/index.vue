@@ -1,15 +1,10 @@
-
-
-<script>
-
-
-</script>
+<script></script>
 
 <template>
-    <h2>Katalog</h2>
-    <p>Auf dieser Seite wird er aktuelle Warenkatalog aufgelistet.</p>
-    <h3>CSV Upload</h3>
-    <div class="card">
+  <h2>Katalog</h2>
+  <p>Auf dieser Seite wird er aktuelle Warenkatalog aufgelistet.</p>
+  <h3>CSV Upload</h3>
+  <div class="card">
     <Toast />
     <FileUpload
       name="demo[]"
@@ -150,6 +145,4 @@
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>
