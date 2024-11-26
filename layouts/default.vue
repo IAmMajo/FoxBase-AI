@@ -74,7 +74,6 @@ const toggleMenuProfile = (event: MouseEvent) => {
                 FoxBase AI
               </span>
             </div>
-
           </div>
         </div>
 
@@ -109,7 +108,6 @@ const toggleMenuProfile = (event: MouseEvent) => {
 
       <template #end>
         <div class="flex align-items-center gap-2">
-          
           <Menu
             id="overlay_menu"
             ref="menuProfile"
