@@ -112,7 +112,7 @@ onMounted(() => {
             class="pi pi-user"
             aria-haspopup="true"
             aria-controls="overlay_menu"
-            @click="toggleMenuProfile"
+            @click="menuProfile.value.toggle($event)"
           />
           <Menu
             id="overlay_menu"
