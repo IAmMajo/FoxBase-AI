@@ -3,7 +3,6 @@ import { ref } from "vue";
 import "~/node_modules/primeflex/primeflex.css";
 import "~/node_modules/primeicons/primeicons.css";
 
-
 const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
@@ -230,7 +229,7 @@ html {
   font-family: "Asap", sans-serif;
   font-weight: 600;
   padding-left: 22.5rem;
-  color: #2D4054;
+  color: #2d4054;
 }
 
 @media screen and (max-width: 768px) {
