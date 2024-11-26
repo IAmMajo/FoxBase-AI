@@ -1,25 +1,29 @@
 <script lang="ts" setup>
+import "primeflex/primeflex.css";
+import "primeicons/primeicons.css";
+import type { MenuItem } from "primevue/menuitem";
 import { ref } from "vue";
-import "~/node_modules/primeflex/primeflex.css";
-import "~/node_modules/primeicons/primeicons.css";
 
 const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
 
-const menuProfileItems = ref([
+const menuProfileItems = ref<MenuItem[]>([
   {
     label: "Profil",
     items: [
       {
-        label: "Einstellungen",
-        icon: "pi pi-cog",
-        route: "/settings",
+        label: "Change password",
+        icon: "pi pi-key",
+        route: "/admin/change-password",
       },
       {
-        label: "Ausloggen",
+        label: "Logout",
         icon: "pi pi-sign-out",
-        route: "/logout",
+        command: async () => {
+          await useUserSession().clear();
+          navigateTo("/admin/login");
+        },
       },
     ],
   },
@@ -109,12 +113,8 @@ const toggleMenuProfile = (event: MouseEvent) => {
 
       <template #end>
         <div class="flex align-items-center gap-2">
-          <Avatar
-            image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-            width="35"
-            heigt="40"
-            viewBox="0 0 35 40"
-            shape="circle"
+          <span
+            class="pi pi-user"
             aria-haspopup="true"
             aria-controls="overlay_menu"
             @click="toggleMenuProfile"
@@ -126,13 +126,16 @@ const toggleMenuProfile = (event: MouseEvent) => {
             :popup="true"
           >
             <template #item="{ item, props }">
-              <router-link
+              <NuxtLink
                 v-if="item.route"
                 v-slot="{ href, navigate }"
                 :to="item.route"
                 custom
               >
-                <a
+                <Button
+                  class="justify-content-start"
+                  as="a"
+                  link
                   v-ripple
                   :href="href"
                   v-bind="props.action"
@@ -140,8 +143,12 @@ const toggleMenuProfile = (event: MouseEvent) => {
                 >
                   <span :class="item.icon" />
                   <span class="ml-2">{{ item.label }}</span>
-                </a>
-              </router-link>
+                </Button>
+              </NuxtLink>
+              <Button v-if="!item.route" link v-ripple v-bind="props.action">
+                <span :class="item.icon" />
+                <span class="ml-2">{{ item.label }}</span>
+              </Button>
             </template>
           </Menu>
         </div>

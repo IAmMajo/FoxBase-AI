@@ -2,8 +2,7 @@ export default defineNuxtRouteMiddleware((to) => {
   if (!to.path.startsWith("/admin")) {
     return;
   }
-  const { loggedIn } = useUserSession();
-  console.log(loggedIn);
+  const loggedIn = useUserSession().loggedIn;
   if (!loggedIn.value && to.path !== "/admin/login") {
     return navigateTo("/admin/login");
   }
