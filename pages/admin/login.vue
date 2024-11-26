@@ -39,37 +39,43 @@ async function handleLogin() {
 </script>
 
 <template>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form @submit.prevent="handleLogin">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <InputText
-          id="username"
-          v-model="username"
-          placeholder="Enter your username"
-          class="p-inputtext-lg"
+  <div class="full-size flex jc-ai-center">
+
+    <div class="login-container box-shadow flex flex-column jc-ai-center p-5 br-default">
+      <h2>Login</h2>
+      <form class="flex flex-column jc-ai-center gap" @submit.prevent="handleLogin">
+        <div class="form-group flex flex-column jc-ai-center">
+          <label for="username"><b>Username</b></label>
+          <InputText
+            id="username"
+            v-model="username"
+            placeholder="Enter your username"
+            class="p-inputtext-lg"
+          />
+        </div>
+        <div class="form-group flex flex-column jc-ai-center">
+          <label for="password"><b>Password</b></label>
+          <Password
+            id="password"
+            v-model="password"
+            :feedback="false"
+            placeholder="Enter your password"
+            toggle-mask
+          />
+        </div>
+        <Button
+          label="Login"
+          icon="pi pi-sign-in"
+          type="submit"
+          class="p-button-lg p-button-primary"
         />
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <Password
-          id="password"
-          v-model="password"
-          :feedback="false"
-          placeholder="Enter your password"
-          toggle-mask
-        />
-      </div>
-      <Button
-        label="Login"
-        icon="pi pi-sign-in"
-        type="submit"
-        class="p-button-lg p-button-primary"
-      />
-    </form>
-    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+      </form>
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+    </div>
   </div>
 </template>
 
-<style />
+<style>
+
+
+</style>
