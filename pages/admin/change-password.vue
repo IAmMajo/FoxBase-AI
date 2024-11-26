@@ -8,13 +8,19 @@ const newPassword = ref("");
 const rNewPassword = ref("");
 async function handlePasswordChange() {
   // Basic validation
-  if (!username.value || !password.value || !newPassword.value || !rNewPassword.value) {
+  if (
+    !username.value ||
+    !password.value ||
+    !newPassword.value ||
+    !rNewPassword.value
+  ) {
     errorMessage.value = "Please fill out all fields.";
     return;
   }
 
   if (newPassword.value !== rNewPassword.value) {
-    errorMessage.value = "You need to enter the same new password in both fields";
+    errorMessage.value =
+      "You need to enter the same new password in both fields";
     return;
   }
 
@@ -39,9 +45,8 @@ async function handlePasswordChange() {
     const body = (await result.json()) as NuxtError;
     errorMessage.value = body.message;
     return;
-  }
-  else{
-    errorMessage.value = "Password changed successfully"
+  } else {
+    errorMessage.value = "Password changed successfully";
   }
 }
 </script>
