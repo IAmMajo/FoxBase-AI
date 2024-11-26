@@ -133,10 +133,10 @@ const toggleMenuProfile = (event: MouseEvent) => {
                 custom
               >
                 <Button
+                  v-ripple
                   class="justify-content-start"
                   as="a"
                   link
-                  v-ripple
                   :href="href"
                   v-bind="props.action"
                   @click="navigate"
@@ -145,7 +145,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
                   <span class="ml-2">{{ item.label }}</span>
                 </Button>
               </NuxtLink>
-              <Button v-if="!item.route" link v-ripple v-bind="props.action">
+              <Button v-if="!item.route" v-ripple link v-bind="props.action">
                 <span :class="item.icon" />
                 <span class="ml-2">{{ item.label }}</span>
               </Button>
