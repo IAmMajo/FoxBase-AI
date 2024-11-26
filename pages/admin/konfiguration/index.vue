@@ -16,7 +16,6 @@ export default {
 
 <template>
   <div>
-
     <h2>Konfiguration</h2>
     <p>
       Auf dieser Seite können Konfiguraiton über das Aussehen und Verhalten der
@@ -28,32 +27,32 @@ export default {
         <ColorPicker v-model="primary" name="primaryColor" />
         <p>Primary</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="backgroundPrimary" name="backgroundPrimary" />
         <p>Hintergrund 1</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="backgroundSecondary" name="backgroundSecondary" />
         <p>Hintergrund 2</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="backgroundTertiary" name="backgroundTertiary" />
         <p>Hintergrund 3</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="textPrimary" name="textPrimary" />
         <p>Text 1</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="textSecondary" name="textSecondary" />
         <p>Text 2</p>
       </div>
-  
+
       <div class="flex flex-column jc-ai-center color-field">
         <ColorPicker v-model="textTertiary" name="textTertiary" />
         <p>Text 3</p>
