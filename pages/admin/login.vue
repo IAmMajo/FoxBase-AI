@@ -9,6 +9,8 @@ const errorMessage = ref("");
 const username = ref("");
 const password = ref("");
 
+const fetchUserSession = useUserSession().fetch;
+
 async function handleLogin() {
   // Basic validation
   console.log(username.value + " " + password.value);
@@ -30,9 +32,10 @@ async function handleLogin() {
   if (!result.ok) {
     const body = (await result.json()) as NuxtError;
     errorMessage.value = body.message;
-  } else {
-    reloadNuxtApp();
+    return;
   }
+  await fetchUserSession();
+  navigateTo("/admin");
 }
 </script>
 
