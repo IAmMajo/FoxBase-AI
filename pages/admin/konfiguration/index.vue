@@ -15,46 +15,49 @@ export default {
 </script>
 
 <template>
-  <h2>Konfiguration</h2>
-  <p>
-    Auf dieser Seite können Konfiguraiton über das Aussehen und Verhalten der
-    Seite festgelegt werden.
-  </p>
-  <h3>Farbpalette</h3>
-  <div class="flex jc-around-ai-center gap">
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="primary" name="primaryColor" />
-      <p>Primary</p>
-    </div>
+  <div>
 
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="backgroundPrimary" name="backgroundPrimary" />
-      <p>Hintergrund 1</p>
-    </div>
-
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="backgroundSecondary" name="backgroundSecondary" />
-      <p>Hintergrund 2</p>
-    </div>
-
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="backgroundTertiary" name="backgroundTertiary" />
-      <p>Hintergrund 3</p>
-    </div>
-
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="textPrimary" name="textPrimary" />
-      <p>Text 1</p>
-    </div>
-
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="textSecondary" name="textSecondary" />
-      <p>Text 2</p>
-    </div>
-
-    <div class="flex flex-column jc-ai-center color-field">
-      <ColorPicker v-model="textTertiary" name="textTertiary" />
-      <p>Text 3</p>
+    <h2>Konfiguration</h2>
+    <p>
+      Auf dieser Seite können Konfiguraiton über das Aussehen und Verhalten der
+      Seite festgelegt werden.
+    </p>
+    <h3>Farbpalette</h3>
+    <div class="flex jc-around-ai-center gap">
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="primary" name="primaryColor" />
+        <p>Primary</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="backgroundPrimary" name="backgroundPrimary" />
+        <p>Hintergrund 1</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="backgroundSecondary" name="backgroundSecondary" />
+        <p>Hintergrund 2</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="backgroundTertiary" name="backgroundTertiary" />
+        <p>Hintergrund 3</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="textPrimary" name="textPrimary" />
+        <p>Text 1</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="textSecondary" name="textSecondary" />
+        <p>Text 2</p>
+      </div>
+  
+      <div class="flex flex-column jc-ai-center color-field">
+        <ColorPicker v-model="textTertiary" name="textTertiary" />
+        <p>Text 3</p>
+      </div>
     </div>
   </div>
 </template>
