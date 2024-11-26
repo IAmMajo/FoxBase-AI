@@ -13,7 +13,6 @@ const fetchUserSession = useUserSession().fetch;
 
 async function handleLogin() {
   // Basic validation
-  console.log(username.value + " " + password.value);
   if (!username.value || !password.value) {
     errorMessage.value = "Please fill out all fields.";
     return;
