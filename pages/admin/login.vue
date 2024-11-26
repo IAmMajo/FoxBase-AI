@@ -40,10 +40,14 @@ async function handleLogin() {
 
 <template>
   <div class="full-size flex jc-ai-center">
-
-    <div class="login-container box-shadow flex flex-column jc-ai-center p-5 br-default">
+    <div
+      class="login-container box-shadow flex flex-column jc-ai-center p-5 br-default"
+    >
       <h2>Login</h2>
-      <form class="flex flex-column jc-ai-center gap" @submit.prevent="handleLogin">
+      <form
+        class="flex flex-column jc-ai-center gap"
+        @submit.prevent="handleLogin"
+      >
         <div class="form-group flex flex-column jc-ai-center">
           <label for="username"><b>Username</b></label>
           <InputText
@@ -75,7 +79,4 @@ async function handleLogin() {
   </div>
 </template>
 
-<style>
-
-
-</style>
+<style></style>
