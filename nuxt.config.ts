@@ -45,6 +45,8 @@ export default defineNuxtConfig({
   css: ["~/assets/main.css"],
 
   runtimeConfig: {
-    sessionPassword: "09b9a55311684b00ac269c0b24fc15ff",
+    session: {
+      password: "09b9a55311684b00ac269c0b24fc15ff",
+    },
   },
 });
