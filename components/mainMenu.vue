@@ -1,143 +1,17 @@
+<script setup lang="ts">
+import NavListElement from '~/pages/admin/components/NavListElement.vue';
+</script>
+
+
 <template>
   <div class="overflow-y-auto">
     <ul class="list-none p-3 m-0">
       <ul class="list-none p-0 m-0 overflow-hidden">
-        <li>
-          <a
-            v-ripple
-            class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-          >
-            <i class="pi pi-home mr-2"></i>
-            <span class="font-medium">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a
-            v-ripple
-            v-styleclass="{
-              selector: '@next',
-              enterClass: 'hidden',
-              enterActiveClass: 'slidedown',
-              leaveToClass: 'hidden',
-              leaveActiveClass: 'slideup',
-            }"
-            class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-          >
-            <i class="pi pi-cog mr-2"></i>
-            <span class="font-medium">Konfiguration</span>
-            <i class="pi pi-chevron-down ml-auto"></i>
-          </a>
-        </li>
-        <ul
-          class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
-        >
-          <li>
-            <a
-              v-ripple
-              v-styleclass="{
-                selector: '@next',
-                enterClass: 'hidden',
-                enterActiveClass: 'slidedown',
-                leaveToClass: 'hidden',
-                leaveActiveClass: 'slideup',
-              }"
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-cog mr-2"></i>
-              <span class="font-medium">Konfig1</span>
-              <i class="pi pi-chevron-down ml-auto"></i>
-            </a>
-          </li>
-          <ul
-            class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
-          >
-            <li>
-              <a
-                v-ripple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-              >
-                <i class="pi pi-cog mr-2"></i>
-                <span class="font-medium">Farbtest</span>
-              </a>
-            </li>
-            <li>
-              <a
-                v-ripple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-              >
-                <i class="pi pi-cog mr-2"></i>
-                <span class="font-medium">Unterkonfig2</span>
-              </a>
-            </li>
-          </ul>
-          <li>
-            <a
-              v-ripple
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-cog mr-2"></i>
-              <span class="font-medium">Konfig2</span>
-            </a>
-          </li>
-        </ul>
-        <li>
-          <a
-            v-ripple
-            v-styleclass="{
-              selector: '@next',
-              enterClass: 'hidden',
-              enterActiveClass: 'slidedown',
-              leaveToClass: 'hidden',
-              leaveActiveClass: 'slideup',
-            }"
-            class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-          >
-            <i class="pi pi-shop mr-2"></i>
-            <span class="font-medium">Katalog</span>
-            <i class="pi pi-chevron-down ml-auto"></i>
-          </a>
-        </li>
-        <ul
-          class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
-        >
-          <li>
-            <a
-              v-ripple
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-th-large mr-2"></i>
-              <span class="font-medium">Übersicht</span>
-            </a>
-          </li>
-          <li>
-            <a
-              v-ripple
-              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            >
-              <i class="pi pi-upload mr-2"></i>
-              <span class="font-medium">CSV Upload</span>
-            </a>
-          </li>
-        </ul>
-        <li>
-          <a
-            v-ripple
-            class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-            @click="navigateTo('/admin/users')"
-          >
-            <i class="pi pi-users mr-2"></i>
-            <span class="font-medium">Users</span>
-          </a>
-        </li>
-        <li>
-          <a
-            v-ripple
-            class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-          >
-            <i class="pi pi-question mr-2"></i>
-            <span class="font-medium">Hilfe</span>
-          </a>
-        </li>
+        <NavListElement title="Dashboard" link="/admin" icon="pi-home"/>
+        <NavListElement title="Konfiguration" link="/admin/konfiguration" icon="pi-cog"/>
+        <NavListElement title="Katalog" link="/admin/katalog" icon="pi-shop"/>
+        <NavListElement title="Users" link="/admin/user" icon="pi-user"/>
+        <NavListElement title="Hilfe" link="/admin/help" icon="pi-question"/>
       </ul>
     </ul>
   </div>
@@ -148,10 +22,6 @@
       v-ripple
       class="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
     >
-      <Avatar
-        image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-        shape="circle"
-      />
       <span class="font-bold">Maxine Mustermann</span>
     </a>
   </div>

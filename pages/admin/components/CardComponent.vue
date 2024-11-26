@@ -35,7 +35,7 @@ export default {
         >
         <div class="text-xl">{{ value }}</div>
       </div>
-      <div class="icon-container flex jc-ai-center db-red">
+      <div class="icon-container flex jc-ai-center">
         <i :class="['pi', icon, 'text-xl']"></i>
       </div>
     </div>

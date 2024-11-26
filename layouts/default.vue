@@ -51,21 +51,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
     <Menubar>
       <template #start>
         <div class="hidden md:block">
-          <div class="flex flex-row flex-wrap">
-            <div class="w-15rem flex align-items-center flex-wrap">
-              <img
-                class="fox-find-logo"
-                src="./../assets/FoxFindLogo.svg"
-                alt="fox logo"
-                width="35"
-                heigt="40"
-                viewBox="0 0 35 40"
-              />
-              <span class="font-semibold text-2xl text-primary">
-                FoxBase AI
-              </span>
-            </div>
-
+          <div class="flex flex-row gap">
             <div class="flex jc-ai-center">
               <Button
                 icon="pi pi-bars"
@@ -75,6 +61,20 @@ const toggleMenuProfile = (event: MouseEvent) => {
                 @click="menuMain = !menuMain"
               />
             </div>
+            <div class="w-15rem flex align-items-center">
+              <img
+                class="fox-find-logo"
+                src="./../assets/FoxFindLogo.svg"
+                alt="fox logo"
+                width="20"
+                heigt="30"
+                viewBox="0 0 20 30"
+              />
+              <span class="font-semibold text-2xl text-primary">
+                FoxBase AI
+              </span>
+            </div>
+
           </div>
         </div>
 
@@ -109,16 +109,7 @@ const toggleMenuProfile = (event: MouseEvent) => {
 
       <template #end>
         <div class="flex align-items-center gap-2">
-          <Avatar
-            image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-            width="35"
-            heigt="40"
-            viewBox="0 0 35 40"
-            shape="circle"
-            aria-haspopup="true"
-            aria-controls="overlay_menu"
-            @click="toggleMenuProfile"
-          />
+          
           <Menu
             id="overlay_menu"
             ref="menuProfile"
