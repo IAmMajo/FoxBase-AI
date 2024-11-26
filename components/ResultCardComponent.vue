@@ -201,7 +201,7 @@ function onArrowDownClicked() {
   background-color: var(--light-bg-primary);
 }
 .default-image {
-  height: %;
+  height: 100%;
 }
 
 .info-card {
