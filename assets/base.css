@@ -17,6 +17,10 @@ html {
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 :root {
   /*Colors Light Mode*/
 
@@ -63,12 +67,62 @@ html {
   --border-radius-full: 10000px;
   --gap: 16px;
 
+  /* Shading */
+  --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
+
   --navbar-height: 8vh;
   --logo-size: 6vh;
   --hero-height: 92vh;
 }
 
 /*Default Classes*/
+
+/** position Classes **/
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.absolute {
+  position: absolute;
+  overflow: hidden;
+}
+
+.t-0 {
+  top: 0;
+}
+
+.l-0 {
+  left: 0;
+}
+
+.b-0 {
+  bottom: 0;
+}
+
+.z-negative-1 {
+  z-index: -1;
+}
+
+.z-negative-2 {
+  z-index: -2;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-100 {
+  z-index: 100;
+}
+
+.py-6 {
+  padding: 6vh 0;
+}
 
 /** Debugging Classes **/
 .db-borders {
@@ -94,9 +148,23 @@ html {
   align-items: center;
 }
 
+.jc-start-ai-center {
+  justify-content: start;
+  align-items: center;
+}
+
 .jc-space-between-ai-center {
   justify-content: space-between;
   align-items: center;
+}
+
+.jc-space-between-ai-start {
+  justify-content: space-between;
+  align-items: start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .gap {
@@ -131,6 +199,16 @@ p {
   font-size: var(--fs-paragraph);
 }
 
+label {
+  font-size: 22px;
+  font-family: "asap", sans-serif;
+}
+
+ul {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
 .light-heading {
   color: var(--light-text-primary);
 }
@@ -159,8 +237,26 @@ p {
   color: var(--dark-text-tertiary);
 }
 
+.footer-bottom-container {
+  background-color: #303947;
+}
+
 .text-shadow {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
+}
+
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
+.br-default {
+  border-radius: var(--border-radius-default);
+}
+
+footer {
+  overflow: hidden;
+  height: 60vh;
+  background-color: var(--dark-bg-secondary);
 }
 
 /*Images*/
@@ -173,6 +269,20 @@ img {
 .no-spacing {
   margin: 0;
   padding: 0;
+}
+
+.full-size {
+  height: 100vh;
+  width: 100vw;
+}
+
+.half-width {
+  height: 100%;
+  width: 50%;
+}
+
+.p-2vw {
+  padding: 2vw;
 }
 
 /* Kleine Desktops */

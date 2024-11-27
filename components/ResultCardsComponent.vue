@@ -63,7 +63,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="result-container flex flex-column jc-ai-center gap">
+  <div class="result-container flex flex-column jc-ai-center gap py-6">
     <ResultCardComponent
       v-for="(product, index) in products"
       :key="product.id"

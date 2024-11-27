@@ -11,7 +11,7 @@ const spanHeadingText = "AI";
         src="./../assets/FoxFindLogo.svg"
         alt="fox logo"
       />
-      <h3 class="no-spacing dark-subheading">
+      <h3 class="no-spacing dark-subheading logo-text">
         {{ headingText
         }}<span class="dark-highlight">{{ spanHeadingText }}</span>
       </h3>
@@ -24,9 +24,12 @@ const spanHeadingText = "AI";
 </template>
 
 <style>
+.logo-text {
+  font-size: 1.8rem;
+}
 .fox-find-logo {
-  height: calc(var(--fs-h3) + 1rem); /*Größe abhängig von der h3 font-size*/
-  width: calc(var(--fs-h3) + 1rem);
+  height: calc(1.8rem + 1rem); /*Größe abhängig von der h3 font-size*/
+  width: calc(1.8rem + 1rem);
   object-fit: cover;
   border-radius: 0px; /*Ausnahme für das Logo*/
 }
@@ -34,7 +37,7 @@ const spanHeadingText = "AI";
 nav {
   background-color: var(--dark-bg-primary);
   height: var(--navbar-height);
-  width: 98%;
+  width: 100%;
   padding: 0 1%;
 }
 
@@ -59,15 +62,15 @@ nav {
 
   border-radius: var(--border-radius-full);
   padding: 0 0.3rem;
-  height: calc(var(--fs-h3) - 0.5rem);
-  width: calc(var(--fs-h3) + 0.5rem);
+  height: calc(var(--fs-h3) - 0.8rem);
+  width: calc(var(--fs-h3) + 0.9rem);
 }
 .nav-thumb {
   background: var(--dark-primary);
   border-radius: var(--border-radius-full);
 
   /* thumb size: 1.5rem * 1.5rem */
-  height: calc(var(--fs-h3) - 1rem);
-  width: calc(var(--fs-h3) - 1rem);
+  height: calc(var(--fs-h3) - 0.8rem);
+  width: calc(var(--fs-h3) - 0.8rem);
 }
 </style>
