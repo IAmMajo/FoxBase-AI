@@ -21,6 +21,14 @@ export default {
       Auf dieser Seite können Konfiguraiton über das Aussehen und Verhalten der
       Seite festgelegt werden.
     </p>
+
+    <h3>Preview</h3>
+    <div class="preview-container flex flex-column jc-ai-center" :style="{backgroundColor: backgroundSecondary}">
+      <h2 :style="{color: textPrimary}">Das ist der Titel</h2>
+      <p :style="{color: textSecondary}">Das ist Bottom Text</p>
+      <button class="">Das ist ein Button</button>
+
+    </div>
     <h3>Farbpalette</h3>
     <div class="flex jc-around-ai-center gap">
       <div class="flex flex-column jc-ai-center color-field">
@@ -62,6 +70,13 @@ export default {
 </template>
 
 <style>
+.preview-container{
+  height: 70vh;
+  width: 75%;
+  border-radius: var(--border-radius-default);
+  box-shadow: var(--box-shadow);
+}
+
 .p-colorpicker-preview {
   height: 50px !important;
   width: 50px !important;
