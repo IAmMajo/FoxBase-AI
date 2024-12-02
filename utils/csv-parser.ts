@@ -1,14 +1,14 @@
-export function parseCSV(csvString) {
+export function parseCSV<T = Record<string, string | null>>(csvString: string): T[] {
   const rows = csvString.split("\n");
   const headers = rows[0]?.split(",");
   if (!headers) return []; // Wenn Header leer, gib leeres Array zurück
 
   return rows.slice(1).map((row) => {
-    const values = [];
+    const values: string[] = [];
     let current = "";
     let insideQuotes = false;
 
-    for (let char of row) {
+    for (const char of row) {
       if (char === '"' && !insideQuotes) {
         insideQuotes = true;
       } else if (char === '"' && insideQuotes) {
@@ -22,10 +22,10 @@ export function parseCSV(csvString) {
     }
     values.push(current.trim());
 
-    const obj = {};
+    const obj: Record<string, string | null> = {};
     headers.forEach((header, index) => {
       obj[header.trim()] = values[index] || null;
     });
-    return obj;
+    return obj as T;
   });
 }

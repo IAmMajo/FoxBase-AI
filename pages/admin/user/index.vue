@@ -1,5 +1,5 @@
 <script>
-import { parseCSV } from "../components/csv-parser"; // Importiere die Funktion
+import { parseCSV } from "../../../utils/csv-parser"; // Importiere die Funktion
 
 export default {
   data() {
