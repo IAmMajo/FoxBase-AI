@@ -23,11 +23,13 @@ export default {
     </p>
 
     <h3>Preview</h3>
-    <div class="preview-container flex flex-column jc-ai-center" :style="{backgroundColor: backgroundSecondary}">
-      <h2 :style="{color: textPrimary}">Das ist der Titel</h2>
-      <p :style="{color: textSecondary}">Das ist Bottom Text</p>
+    <div
+      class="preview-container flex flex-column jc-ai-center"
+      :style="{ backgroundColor: backgroundSecondary }"
+    >
+      <h2 :style="{ color: textPrimary }">Das ist der Titel</h2>
+      <p :style="{ color: textSecondary }">Das ist Bottom Text</p>
       <button class="">Das ist ein Button</button>
-
     </div>
     <h3>Farbpalette</h3>
     <div class="flex jc-around-ai-center gap">
@@ -70,7 +72,7 @@ export default {
 </template>
 
 <style>
-.preview-container{
+.preview-container {
   height: 70vh;
   width: 75%;
   border-radius: var(--border-radius-default);
