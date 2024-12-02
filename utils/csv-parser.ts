@@ -1,4 +1,6 @@
-export function parseCSV<T = Record<string, string | null>>(csvString: string): T[] {
+export function parseCSV<T = Record<string, string | null>>(
+  csvString: string,
+): T[] {
   const rows = csvString.split("\n");
   const headers = rows[0]?.split(",");
   if (!headers) return []; // Wenn Header leer, gib leeres Array zurück
