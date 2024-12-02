@@ -36,33 +36,31 @@ export default {
 };
 </script>
 
-
 <template>
   <div>
     <!-- Titel -->
     <h2>Benutzerverwaltung</h2>
 
     <!-- Plus-Button und Datei-Upload -->
-    <div style="margin-bottom: 1rem; display: flex; gap: 1rem;">
+    <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
       <label for="file-upload" class="upload-button">Neue CSV hochladen</label>
       <input
         id="file-upload"
         type="file"
         accept=".csv"
+        style="display: none"
         @change="onFileChange"
-        style="display: none;"
       />
     </div>
 
     <!-- PrimeVue DataTable -->
-    <DataTable :value="users" stripedRows tableStyle="min-width: 50rem">
+    <DataTable :value="users" striped-rows table-style="min-width: 50rem">
       <Column field="id" header="ID"></Column>
       <Column field="name" header="Name"></Column>
       <Column field="role" header="Rolle"></Column>
     </DataTable>
   </div>
 </template>
-
 
 <style scoped>
 .upload-button {
