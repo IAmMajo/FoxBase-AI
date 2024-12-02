@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { parseCSV } from "../../../utils/csv-parser";
 import { Dialog, InputText, Button } from "primevue";
 
-
 const users = ref([]);
 const dialogVisible = ref(false); // Steuert die Sichtbarkeit des Dialogs
 const newUser = ref({ id: "", name: "", role: "" }); // Temporäre Daten für den neuen Eintrag
@@ -62,7 +61,11 @@ function addUser() {
         style="display: none"
         @change="onFileChange"
       />
-      <Button label="Neuen Benutzer hinzufügen" class="p-button" @click="dialogVisible = true" />
+      <Button
+        label="Neuen Benutzer hinzufügen"
+        class="p-button"
+        @click="dialogVisible = true"
+      />
     </div>
 
     <!-- PrimeVue DataTable -->
@@ -74,8 +77,8 @@ function addUser() {
 
     <!-- Dialog für neuen Benutzer -->
     <Dialog
-      header="Neuen Benutzer hinzufügen"
       v-model:visible="dialogVisible"
+      header="Neuen Benutzer hinzufügen"
       style="width: 30vw"
       modal
       draggable="false"
@@ -83,19 +86,23 @@ function addUser() {
       <div class="p-fluid">
         <div class="field flex flex-column">
           <label for="id">ID</label>
-          <InputText v-model="newUser.id" id="id" />
+          <InputText id="id" v-model="newUser.id" />
         </div>
         <div class="field flex flex-column">
           <label for="name">Name</label>
-          <InputText v-model="newUser.name" id="name" />
+          <InputText id="name" v-model="newUser.name" />
         </div>
         <div class="field flex flex-column">
           <label for="role">Rolle</label>
-          <InputText v-model="newUser.role" id="role" />
+          <InputText id="role" v-model="newUser.role" />
         </div>
       </div>
       <div class="p-dialog-footer">
-        <Button label="Abbrechen" class="p-button-text" @click="dialogVisible = false" />
+        <Button
+          label="Abbrechen"
+          class="p-button-text"
+          @click="dialogVisible = false"
+        />
         <Button label="Hinzufügen" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>
@@ -103,12 +110,11 @@ function addUser() {
 </template>
 
 <style>
-
-.p-dialog-header span{
+.p-dialog-header span {
   font-family: "Inter", sans-serif;
 }
 
-.p-button{
+.p-button {
   background-color: var(--dark-primary);
   color: white;
   padding: 10px 15px;
@@ -137,11 +143,11 @@ function addUser() {
   margin-bottom: 1rem;
 }
 
-.field label{
+.field label {
   font-size: 16px;
 }
 
-.p-dialog-footer{
+.p-dialog-footer {
   padding-right: 0;
   font-family: "Inter", sans-serif;
 }
