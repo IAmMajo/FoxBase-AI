@@ -60,6 +60,8 @@ html {
   --fs-h1: 4.5rem;
   --fs-h2: 3rem;
   --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
   --fs-paragraph: 1.125rem;
 
   /* Values */
@@ -192,6 +194,16 @@ h2 {
 h3 {
   font-family: "Inter", sans-serif;
   font-size: var(--fs-h3);
+}
+
+h4 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h4);
+}
+
+h5 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h5);
 }
 
 p {
