@@ -25,8 +25,7 @@ const query = ref("");
 </template>
 
 <style>
-
-.submit-btn{
+.submit-btn {
   width: 60px;
 }
 
