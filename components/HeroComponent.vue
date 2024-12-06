@@ -6,6 +6,8 @@ const headlineSpan = " richtige Lösung";
 
 const subheadline = "Für Ihr";
 const subheadlineSpan = " Fallbeispiel";
+
+
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const subheadlineSpan = " Fallbeispiel";
       <div class="waves" />
     </div>
 
-    <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
+    <div data-aos="fade-up" class="flex flex-column gap hero-size debugging-red jc-ai-center">
       <p class="dark-heading text-shadow header-title no-spacing">
         {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
       </p>
@@ -33,6 +35,10 @@ const subheadlineSpan = " Fallbeispiel";
 </template>
 
 <style>
+
+.hero-size span{
+  font-family: "Inter", sans-serif;
+}
 .darkening-layer {
   position: absolute;
   top: 0;

@@ -25,6 +25,11 @@ const query = ref("");
 </template>
 
 <style>
+
+.submit-btn{
+  width: 60px;
+}
+
 .searchbar-input {
   height: 70px;
   border: none;
