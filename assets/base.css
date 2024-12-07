@@ -90,6 +90,10 @@ html {
   overflow: hidden;
 }
 
+.mt{
+  margin-top: 22px;
+}
+
 .t-0 {
   top: 0;
 }
@@ -221,6 +225,10 @@ ul {
   font-size: var(--fs-paragraph);
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 .light-heading {
   color: var(--light-text-primary);
 }
@@ -246,7 +254,7 @@ ul {
 }
 
 .dark-highlight {
-  color: var(--dark-text-tertiary);
+  color: var(--dark-primary);
 }
 
 .footer-bottom-container {

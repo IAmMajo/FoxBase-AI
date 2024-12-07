@@ -1,14 +1,31 @@
-<script>
-export default {
-  data() {
-    return {
-      primary: "#00DC82",
-      backgroundSecondary: "#0F1F31",
-      textPrimary: "#FFFFFF",
-      textSecondary: "#CBD5E1",
-    };
-  },
-};
+<script setup lang="ts">
+const primary = ref("#00DC82");
+const backgroundSecondary = ref("#0F1F31");
+const textPrimary = ref("#FFFFFF");
+const textSecondary = ref("#CBD5E1");
+
+const { data } = await useFetch<{ [key: string]: string }>("/api/settings");
+const value = data.value;
+if (value) {
+  primary.value = value.colorPrimary;
+  backgroundSecondary.value = value.colorBackgroundSecondary;
+  textPrimary.value = value.colorTextPrimary;
+  textSecondary.value = value.colorTextSecondary;
+}
+
+async function onSave() {
+  const success = await patchSettings([
+    { name: "colorPrimary", value: primary.value },
+    { name: "colorBackgroundSecondary", value: backgroundSecondary.value },
+    { name: "colorTextPrimary", value: textPrimary.value },
+    { name: "colorTextSecondary", value: textSecondary.value },
+  ]);
+  if (success) {
+    console.log("Speichern erfolgreich")
+  } else {
+    console.log("Speichern fehlgeschlagen")
+  }
+}
 </script>
 
 <template>
@@ -75,6 +92,9 @@ export default {
             <input id="textSecondary" v-model="textSecondary" type="color" />
             <label for="textSecondary">Texte</label>
           </div>
+        </div>
+        <div class="flex jc-ai-center w-100 mt">
+         <button class="p-button bold-text" @click="onSave()">Speichern</button>
         </div>
       </div>
     </div>
