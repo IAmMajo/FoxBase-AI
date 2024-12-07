@@ -1,9 +1,11 @@
 import { z } from "zod";
 
-const settingSchema = z.array(z.object({
-  name: z.string(),
-  value: z.string(),
-}));
+const settingSchema = z.array(
+  z.object({
+    name: z.string(),
+    value: z.string(),
+  }),
+);
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);

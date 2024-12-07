@@ -14,7 +14,10 @@ onMounted(() => {
   }
   const documentStyle = document.documentElement.style;
   documentStyle.setProperty("--dark-primary", value.colorPrimary);
-  documentStyle.setProperty("--dark-bg-secondary", value.colorBackgroundSecondary);
+  documentStyle.setProperty(
+    "--dark-bg-secondary",
+    value.colorBackgroundSecondary,
+  );
   documentStyle.setProperty("--dark-text-primary", value.colorTextPrimary);
   documentStyle.setProperty("--dark-text-secondary", value.colorTextSecondary);
 });
