@@ -31,75 +31,19 @@ function onArrowDownClicked() {
 </script>
 
 <template>
-  <span v-if="index != 0" class="horizontal-line" />
-  <div class="result-card flex jc-ai-center gap">
-    <div class="left-mobile flex flex-column">
-      <div class="img-container flex jc-ai-center">
-        <img
-          class="default-image"
-          src="./../assets/defaultImage.svg"
-          alt="default image"
-        />
-      </div>
-      <div class="feedback-mobile flex">
-        <svg
-          class="arrowUp"
-          :class="{ likedStyle: isLiked }"
-          width="14"
-          height="16"
-          viewBox="0 0 13 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          @click="onArrowUpClicked"
-        ></svg>
-        <svg
-          class="arrowDown"
-          :class="{ dislikedStyle: isDisliked }"
-          width="14"
-          height="16"
-          viewBox="0 0 13 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          @click="onArrowDownClicked"
-        ></svg>
-      </div>
-    </div>
-    <div class="info-card flex flex-column gap">
-      <p class="title dark-heading no-spacing">{{ product.name }}</p>
+  <div data-aos="fade-up">
 
-      <div class="flex flex-column gapSmall">
-        <div class="category-attributes flex">
-          <span class="dot" />
-          <p class="dark-bottomtext no-spacing">
-            Type: <span class="dark-heading">{{ product.category }}</span>
-          </p>
+    <span v-if="index != 0" class="horizontal-line" />
+    <div class="result-card flex jc-ai-center gap">
+      <div class="left-mobile flex flex-column">
+        <div class="img-container flex jc-ai-center">
+          <img
+            class="default-image"
+            src="./../assets/defaultImage.svg"
+            alt="default image"
+          />
         </div>
-        <span class="line-mobile" />
-        <div class="category-attributes flex">
-          <span class="dot" />
-          <div class="attributes flex gapSmall">
-            <template
-              v-for="(value, key, indexAttributes) in product.attributes"
-              :key="key"
-            >
-              <span v-if="indexAttributes != 0" class="vertical-line" />
-              <p class="dark-bottomtext no-spacing">
-                {{ key }}:
-                <span class="dark-heading">{{ value }}</span>
-              </p>
-            </template>
-          </div>
-        </div>
-      </div>
-      <div class="use-cases flex gap">
-        <p
-          v-for="(useCase, indexUseCase) in product.typicalUseCases"
-          :key="indexUseCase"
-          class="light-highlight no-spacing"
-        >
-          {{ useCase }}
-        </p>
-        <div class="feedback flex">
+        <div class="feedback-mobile flex">
           <svg
             class="arrowUp"
             :class="{ likedStyle: isLiked }"
@@ -109,13 +53,7 @@ function onArrowDownClicked() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             @click="onArrowUpClicked"
-          >
-            <path
-              d="M4.0197 12.7831V7.57207C4.0197 7.05001 3.59649 6.62759 3.07443 6.62759H2.24752C1.39231 6.62759 0.976724 5.58236 1.59844 4.99512L6.06249 0.778662C6.42023 0.440767 6.97736 0.433845 7.34338 0.762746L12.0357 4.97921C12.6804 5.55849 12.2706 6.62759 11.4039 6.62759H10.0453C9.52325 6.62759 9.10003 7.05001 9.10003 7.57207V12.7831C9.10003 14.6465 4.0197 14.6465 4.0197 12.7831Z"
-              stroke="#cbd5e1"
-              stroke-width="1"
-            />
-          </svg>
+          ></svg>
           <svg
             class="arrowDown"
             :class="{ dislikedStyle: isDisliked }"
@@ -125,13 +63,78 @@ function onArrowDownClicked() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             @click="onArrowDownClicked"
+          ></svg>
+        </div>
+      </div>
+      <div class="info-card flex flex-column gap">
+        <p class="title bold-sm-text dark-heading no-spacing">{{ product.name }}</p>
+  
+        <div class="flex flex-column gapSmall">
+          <div class="category-attributes flex">
+            <span class="dot" />
+            <p class="dark-bottomtext no-spacing">
+              Type: <span class="dark-heading">{{ product.category }}</span>
+            </p>
+          </div>
+          <span class="line-mobile" />
+          <div class="category-attributes flex">
+            <span class="dot" />
+            <div class="attributes flex gapSmall">
+              <template
+                v-for="(value, key, indexAttributes) in product.attributes"
+                :key="key"
+              >
+                <span v-if="indexAttributes != 0" class="vertical-line" />
+                <p class="dark-bottomtext no-spacing">
+                  {{ key }}:
+                  <span class="dark-heading">{{ value }}</span>
+                </p>
+              </template>
+            </div>
+          </div>
+        </div>
+        <div class="use-cases flex gap">
+          <p
+            v-for="(useCase, indexUseCase) in product.typicalUseCases"
+            :key="indexUseCase"
+            class="light-highlight no-spacing"
           >
-            <path
-              d="M9.72053 2.57819V7.78926C9.72053 8.31132 10.1437 8.73374 10.6658 8.73374H11.4927C12.3479 8.73374 12.7635 9.77897 12.1418 10.3662L7.67774 14.5827C7.32001 14.9206 6.76288 14.9275 6.39686 14.5986L1.70453 10.3821C1.05987 9.80284 1.46965 8.73374 2.33634 8.73374H3.69493C4.21699 8.73374 4.6402 8.31132 4.6402 7.78926V2.57819C4.6402 0.714822 9.72053 0.714822 9.72053 2.57819Z"
-              stroke="#cbd5e1"
-              stroke-width="1"
-            />
-          </svg>
+            {{ useCase }}
+          </p>
+          <div class="feedback flex">
+            <svg
+              class="arrowUp"
+              :class="{ likedStyle: isLiked }"
+              width="14"
+              height="16"
+              viewBox="0 0 13 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              @click="onArrowUpClicked"
+            >
+              <path
+                d="M4.0197 12.7831V7.57207C4.0197 7.05001 3.59649 6.62759 3.07443 6.62759H2.24752C1.39231 6.62759 0.976724 5.58236 1.59844 4.99512L6.06249 0.778662C6.42023 0.440767 6.97736 0.433845 7.34338 0.762746L12.0357 4.97921C12.6804 5.55849 12.2706 6.62759 11.4039 6.62759H10.0453C9.52325 6.62759 9.10003 7.05001 9.10003 7.57207V12.7831C9.10003 14.6465 4.0197 14.6465 4.0197 12.7831Z"
+                stroke="#cbd5e1"
+                stroke-width="1"
+              />
+            </svg>
+            <svg
+              class="arrowDown"
+              :class="{ dislikedStyle: isDisliked }"
+              width="14"
+              height="16"
+              viewBox="0 0 13 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              @click="onArrowDownClicked"
+            >
+              <path
+                d="M9.72053 2.57819V7.78926C9.72053 8.31132 10.1437 8.73374 10.6658 8.73374H11.4927C12.3479 8.73374 12.7635 9.77897 12.1418 10.3662L7.67774 14.5827C7.32001 14.9206 6.76288 14.9275 6.39686 14.5986L1.70453 10.3821C1.05987 9.80284 1.46965 8.73374 2.33634 8.73374H3.69493C4.21699 8.73374 4.6402 8.31132 4.6402 7.78926V2.57819C4.6402 0.714822 9.72053 0.714822 9.72053 2.57819Z"
+                stroke="#cbd5e1"
+                stroke-width="1"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -191,8 +194,7 @@ function onArrowDownClicked() {
 
 .img-container {
   aspect-ratio: 1 / 1;
-  height: 80%;
-  margin: 18px 0 0 0;
+  height: calc(var(--result-card-height) - 3vh);
   border-radius: var(--border-radius-default);
   background-color: var(--light-bg-primary);
 }
@@ -233,6 +235,7 @@ function onArrowDownClicked() {
   margin-top: auto;
 }
 .use-cases p {
+  font-weight: 600;
   color: color-mix(in srgb, var(--dark-primary), transparent 20%);
 }
 

@@ -230,8 +230,16 @@ ul {
   font-size: var(--fs-paragraph);
 }
 
+ol {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
 .bold-text {
   font-weight: bold;
+}
+.bold-sm-text{
+  font-weight: 600;
 }
 
 .light-heading {
