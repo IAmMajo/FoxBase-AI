@@ -16,7 +16,10 @@ const subheadlineSpan = " Fallbeispiel";
       <div class="waves" />
     </div>
 
-    <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
+    <div
+      data-aos="fade-up"
+      class="flex flex-column gap hero-size debugging-red jc-ai-center"
+    >
       <p class="dark-heading text-shadow header-title no-spacing">
         {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
       </p>
@@ -33,6 +36,9 @@ const subheadlineSpan = " Fallbeispiel";
 </template>
 
 <style>
+.hero-size span {
+  font-family: "Inter", sans-serif;
+}
 .darkening-layer {
   position: absolute;
   top: 0;
@@ -78,11 +84,11 @@ const subheadlineSpan = " Fallbeispiel";
 }
 
 .waves::before {
-  background: var(--dark-bg-primary);
+  background: var(--dark-bg-secondary);
   animation: waves 45s linear infinite;
 }
 .waves::after {
-  background: #02102564;
+  background: #0210254b;
   animation: waves 75s linear infinite;
 }
 
