@@ -1,25 +1,19 @@
 <script setup lang="ts">
-const primary = ref("#00DC82");
-const backgroundSecondary = ref("#0F1F31");
-const textPrimary = ref("#FFFFFF");
-const textSecondary = ref("#CBD5E1");
-
-const { data } = await useFetch<{ [key: string]: string }>("/api/settings");
-const value = data.value;
-if (value) {
-  primary.value = value.colorPrimary;
-  backgroundSecondary.value = value.colorBackgroundSecondary;
-  textPrimary.value = value.colorTextPrimary;
-  textSecondary.value = value.colorTextSecondary;
-}
+const { data } = await useFetch<Record<string, string>>("/api/settings");
+const primary = ref(data.value?.colorPrimary || "#00DC82");
+const backgroundSecondary = ref(
+  data.value?.colorBackgroundSecondary || "#0F1F31",
+);
+const textPrimary = ref(data.value?.colorTextPrimary || "#FFFFFF");
+const textSecondary = ref(data.value?.colorTextSecondary || "#CBD5E1");
 
 async function onSave() {
-  const success = await patchSettings([
-    { name: "colorPrimary", value: primary.value },
-    { name: "colorBackgroundSecondary", value: backgroundSecondary.value },
-    { name: "colorTextPrimary", value: textPrimary.value },
-    { name: "colorTextSecondary", value: textSecondary.value },
-  ]);
+  const success = await patchSettings({
+    colorPrimary: primary.value,
+    colorBackgroundSecondary: backgroundSecondary.value,
+    colorTextPrimary: textPrimary.value,
+    colorTextSecondary: textSecondary.value,
+  });
   if (success) {
     console.log("Speichern erfolgreich");
   } else {

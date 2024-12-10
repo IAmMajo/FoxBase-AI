@@ -84,11 +84,11 @@ const subheadlineSpan = " Fallbeispiel";
 }
 
 .waves::before {
-  background: var(--dark-bg-primary);
+  background: var(--dark-bg-secondary);
   animation: waves 45s linear infinite;
 }
 .waves::after {
-  background: #02102564;
+  background: #0210254b;
   animation: waves 75s linear infinite;
 }
 

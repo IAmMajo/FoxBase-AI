@@ -1,11 +1,6 @@
 import { z } from "zod";
 
-const settingSchema = z.array(
-  z.object({
-    name: z.string(),
-    value: z.string(),
-  }),
-);
+const settingSchema = z.record(z.string());
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
@@ -13,11 +8,12 @@ export default defineEventHandler(async (event) => {
     settingSchema.parse(body),
   );
 
+  const settings = Object.entries(body);
   const db = useDatabase();
-  for (const setting of body) {
+  for (const [name, value] of settings) {
     const result = await db.sql<DbExecResult>`
-      INSERT INTO settings (name, value) VALUES (${setting.name}, ${setting.value})
-      ON CONFLICT (name) DO UPDATE SET value = ${setting.value}
+      INSERT INTO settings (name, value) VALUES (${name}, ${value})
+      ON CONFLICT (name) DO UPDATE SET value = ${value}
     `;
     if (!result.success) {
       throw createError("Something went wrong during database operation");
