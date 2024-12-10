@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const newCatalog = ref({ name: "", description: "" });
 const catalogs = ref([]);
 const dialogVisible = ref(false);
@@ -16,7 +16,7 @@ const deleteName = ref("");
 async function loadCatalogs() {
   console.log("Catalog loading");
   //for some reson it tries to load admin/api...
-  const results: any = await fetch(`/api/catalog/table`, {
+  const results = await fetch(`/api/catalog/table`, {
     method: "GET",
   })
     .then((response) => response.json())
@@ -55,7 +55,7 @@ function handleOpenNewCollection() {
   dialogVisible.value = true;
   newCatalog.value = { name: "", description: "" };
 }
-function onFileChange(event: any) {
+function onFileChange(event) {
   // console.log(event.target);
   if (!event) {
     return;
