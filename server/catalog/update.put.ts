@@ -3,7 +3,7 @@ import { z } from "zod";
 const uploadSchema = z.object({
   collectionName: z.string(),
   collectionCreator: z.string(),
-  updateDescription: z.string()
+  updateDescription: z.string(),
 });
 
 export default defineEventHandler(async (event) => {
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   const body = await readValidatedBody(event, (body) =>
     uploadSchema.parse(body),
   );
-  const {rows} = await useDatabase().sql<DbResult<Collection>>`
+  const { rows } = await useDatabase().sql<DbResult<Collection>>`
    SELECT collection_key 
    FROM collection_creator_relation 
    WHERE collection_name = ${body.collectionName}
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     body: JSON.stringify({
       id: rows.results[0].key,
       description: body.updateDescription,
-      payload: {}
+      payload: {},
     }),
   });
   //during dev
