@@ -24,7 +24,7 @@ defineProps<{ text: string }>();
   border-radius: var(--border-radius-default);
 }
 
-.shade-layer{
+.shade-layer {
   background-color: var(--dark-primary);
   opacity: 5%;
 }

@@ -21,12 +21,11 @@ const spanHeadingText = "AI";
     </div>
 
     <!--Light / Dark Button-->
-    <div class="light-dark-switch flex jc-ai-center z-2"> 
+    <div class="light-dark-switch flex jc-ai-center z-2">
       <div class="nav-icon-container flex jc-ai-center">
-        <SunIcon/>
-      </div>  
+        <SunIcon />
+      </div>
     </div>
-
   </nav>
 </template>
 
@@ -41,7 +40,7 @@ const spanHeadingText = "AI";
   border-radius: 0px; /*Ausnahme für das Logo*/
 }
 
-.fox-find-logo{
+.fox-find-logo {
   margin-left: var(--gap);
 }
 
@@ -51,7 +50,7 @@ nav {
   width: 100%;
 }
 
-.nav-icon-container{
+.nav-icon-container {
   height: 90%;
   width: 90%;
   color: var(--dark-primary);
@@ -59,7 +58,7 @@ nav {
   transition: 1.4s ease transform;
 }
 
-.light-dark-switch{
+.light-dark-switch {
   margin-right: var(--gap);
   background-color: var(--dark-bg-secondary);
   height: 4vh;
@@ -68,11 +67,10 @@ nav {
   box-shadow: var(--box-shadow);
 }
 
-.light-dark-switch:hover .nav-icon-container{
+.light-dark-switch:hover .nav-icon-container {
   cursor: pointer;
   transform: rotate(160deg);
 }
-
 
 /*
 
@@ -92,9 +90,6 @@ nav {
   width: 30rem;
   border-radius: var(--border-radius-full);
 }
-
-
-
 
 .nav-switch {
   align-items: center;

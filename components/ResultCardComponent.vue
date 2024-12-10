@@ -186,11 +186,7 @@ function onArrowDownClicked() {
 .result-card:hover {
   border-radius: var(--border-radius-default);
   box-shadow: 0px 0px 0px 1px var(--dark-primary) inset;
-  background-color: color-mix(
-    in srgb,
-    var(--dark-primary),
-    transparent 95%
-  );
+  background-color: color-mix(in srgb, var(--dark-primary), transparent 95%);
 }
 
 .img-container {

@@ -178,8 +178,7 @@ html {
   gap: var(--gap);
 }
 
-
-.darkening-layer-secondary{
+.darkening-layer-secondary {
   background-color: rgba(0, 0, 0, 0.137);
 }
 
@@ -263,7 +262,7 @@ ul {
   color: var(--dark-primary);
 }
 
-.bg-secondary{
+.bg-secondary {
   background-color: var(--dark-bg-secondary);
 }
 
@@ -306,7 +305,7 @@ img {
   width: 100vw;
 }
 
-.full-size-percent{
+.full-size-percent {
   height: 100%;
   width: 100%;
 }
