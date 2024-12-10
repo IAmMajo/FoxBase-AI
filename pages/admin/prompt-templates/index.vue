@@ -8,7 +8,7 @@ const prompts = ref([
   {
     id: 0,
     text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!",
-    user: "Max Mustermann"
+    user: "Max Mustermann",
   },
 ]);
 
@@ -91,7 +91,9 @@ const deletePrompt = () => {
       </template>
 
       <template #end>
-        <label for="file-upload" class="upload-button button">CSV hochladen</label>
+        <label for="file-upload" class="upload-button button"
+          >CSV hochladen</label
+        >
         <input
           id="file-upload"
           type="file"
@@ -125,13 +127,17 @@ const deletePrompt = () => {
       table-style="min-width: 50rem"
       @row-edit-save="onRowEditSave"
     >
-      <Column field="id" header="ID" style="font-weight: normal;"></Column>
-      <Column field="text" header="Prompt" style="font-weight: normal;">
+      <Column field="id" header="ID" style="font-weight: normal"></Column>
+      <Column field="text" header="Prompt" style="font-weight: normal">
         <template #editor="{ data, field }">
           <Textarea v-model="data[field]" rows="4" cols="80" fluid />
         </template>
       </Column>
-      <Column field="user" header="Benutzer" style="font-weight: normal;"></Column>
+      <Column
+        field="user"
+        header="Benutzer"
+        style="font-weight: normal"
+      ></Column>
       <Column
         :row-editor="true"
         style="width: 10%; min-width: 8rem"
@@ -160,7 +166,9 @@ const deletePrompt = () => {
       <div class="flex flex-column gap">
         <div class="flex items-center gap-4">
           <i class="pi pi-exclamation-triangle !text-3xl" />
-          <span v-if="selectedPrompt" style="font-family:Inter, sans-serif; font-weight: normal;"
+          <span
+            v-if="selectedPrompt"
+            style="font-family: Inter, sans-serif; font-weight: normal"
             >Bist du sicher, dass du die Prompt-Template löschen möchtest?</span
           >
         </div>
@@ -172,7 +180,12 @@ const deletePrompt = () => {
             text
             @click="deletePromptDialog = false"
           />
-          <Button label="Ja" icon="pi pi-check" class="flex gap p-button button" @click="deletePrompt" />
+          <Button
+            label="Ja"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="deletePrompt"
+          />
         </div>
       </div>
     </Dialog>
@@ -193,7 +206,7 @@ const deletePrompt = () => {
             required="true"
             rows="4"
             cols="20"
-            style="font-family:Inter, sans-serif; font-weight: normal;"
+            style="font-family: Inter, sans-serif; font-weight: normal"
             autofocus
             :invalid="submitted && !newPrompt.text"
             fluid
@@ -268,7 +281,9 @@ const deletePrompt = () => {
     transparent 60%
   ) !important;
   color: var(--light-primary-hover) !important;
-  border: 1px, solid var(--light-primary-hover) !important;
+  border:
+    1px,
+    solid var(--light-primary-hover) !important;
 }
 
 .cancel-button {
@@ -288,7 +303,9 @@ const deletePrompt = () => {
     transparent 90%
   ) !important;
   color: var(--light-text-secondary) !important;
-  border: 1px, solid var(--p-message-error-simple-color) !important;
+  border:
+    1px,
+    solid var(--p-message-error-simple-color) !important;
 }
 
 .field {
