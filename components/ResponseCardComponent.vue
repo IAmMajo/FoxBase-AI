@@ -4,10 +4,12 @@ defineProps<{ text: string }>();
 
 <template>
   <div class="response-header flex jc-ai-center" />
-  <div class="response-container flex jc-ai-center">
-    <div class="response-box flex jc-ai-center dark-bottomtext">
+  <div class="response-container flex jc-ai-center relative">
+    <div class="darkening-layer-secondary full-size-percent absolute z-0"></div>
+    <div class="response-box flex jc-ai-center dark-bottomtext relative">
+      <div class="shade-layer absolute full-size-percent"></div>
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="dark-bottomtext" v-html="text" />
+      <div class="dark-bottomtext z-2" v-html="text" />
     </div>
   </div>
   <div class="response-header flex jc-ai-center" />
@@ -15,7 +17,6 @@ defineProps<{ text: string }>();
 
 <style>
 .response-box {
-  background-color: #00dc8011;
   border: 2px solid var(--dark-primary);
   padding: var(--gap);
   width: 65vw;
@@ -23,14 +24,19 @@ defineProps<{ text: string }>();
   border-radius: var(--border-radius-default);
 }
 
+.shade-layer{
+  background-color: var(--dark-primary);
+  opacity: 5%;
+}
+
 .response-container {
   height: auto;
   min-height: 12vh;
   padding: 5vh;
-  background-color: var(--dark-bg-primary);
+  background-color: var(--dark-bg-secondary);
 }
 
 .response-header {
-  background-color: var(--dark-bg-primary);
+  background-color: var(--dark-bg-secondary);
 }
 </style>

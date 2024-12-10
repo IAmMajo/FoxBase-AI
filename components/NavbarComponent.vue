@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { SunIcon } from "@heroicons/vue/24/outline";
+
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
 </script>
 
 <template>
-  <nav class="flex jc-space-between-ai-center">
-    <div class="flex jc-ai-center gap">
+  <nav class="flex jc-space-between-ai-center relative z-1">
+    <div class="darkening-layer-secondary absolute full-size-percent"></div>
+    <div class="flex jc-ai-center gap z-2">
       <img
         class="fox-find-logo"
         src="./../assets/FoxFindLogo.svg"
@@ -17,9 +20,13 @@ const spanHeadingText = "AI";
       </h3>
     </div>
 
-    <div class="flex nav-switch gradient-green-dark">
-      <div class="nav-thumb" />
+    <!--Light / Dark Button-->
+    <div class="light-dark-switch flex jc-ai-center z-2"> 
+      <div class="nav-icon-container flex jc-ai-center">
+        <SunIcon/>
+      </div>  
     </div>
+
   </nav>
 </template>
 
@@ -34,12 +41,40 @@ const spanHeadingText = "AI";
   border-radius: 0px; /*Ausnahme für das Logo*/
 }
 
+.fox-find-logo{
+  margin-left: var(--gap);
+}
+
 nav {
-  background-color: var(--dark-bg-primary);
+  background-color: var(--dark-bg-secondary);
   height: var(--navbar-height);
   width: 100%;
-  padding: 0 1%;
 }
+
+.nav-icon-container{
+  height: 90%;
+  width: 90%;
+  color: var(--dark-primary);
+  transform: rotate(0deg);
+  transition: 1.4s ease transform;
+}
+
+.light-dark-switch{
+  margin-right: var(--gap);
+  background-color: var(--dark-bg-secondary);
+  height: 4vh;
+  width: 4vh;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow);
+}
+
+.light-dark-switch:hover .nav-icon-container{
+  cursor: pointer;
+  transform: rotate(160deg);
+}
+
+
+/*
 
 .gradient-green-dark {
   background: rgb(0, 176, 104);
@@ -50,11 +85,16 @@ nav {
   );
 }
 
+*/
+
 .searchbar {
   height: 2rem;
   width: 30rem;
   border-radius: var(--border-radius-full);
 }
+
+
+
 
 .nav-switch {
   align-items: center;

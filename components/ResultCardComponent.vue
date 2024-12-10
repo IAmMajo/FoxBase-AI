@@ -188,8 +188,8 @@ function onArrowDownClicked() {
   box-shadow: 0px 0px 0px 1px var(--dark-primary) inset;
   background-color: color-mix(
     in srgb,
-    var(--dark-primary-hover),
-    transparent 92%
+    var(--dark-primary),
+    transparent 95%
   );
 }
 
@@ -259,7 +259,7 @@ function onArrowDownClicked() {
 }
 
 .arrowUp:hover path {
-  stroke: var(--dark-primary-hover);
+  stroke: var(--dark-primary);
   /* fill: color-mix(in srgb, var(--dark-primary), transparent 80%); */
 }
 .arrowDown:hover path {

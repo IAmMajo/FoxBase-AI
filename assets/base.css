@@ -65,6 +65,7 @@ html {
   --fs-paragraph: 1.125rem;
 
   /* Values */
+  --border-radius-sm: 8px;
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
@@ -177,6 +178,11 @@ html {
   gap: var(--gap);
 }
 
+
+.darkening-layer-secondary{
+  background-color: rgba(0, 0, 0, 0.137);
+}
+
 /**Font-Sizes**/
 
 .header-title {
@@ -257,6 +263,10 @@ ul {
   color: var(--dark-primary);
 }
 
+.bg-secondary{
+  background-color: var(--dark-bg-secondary);
+}
+
 .footer-bottom-container {
   background-color: #303947;
 }
@@ -294,6 +304,11 @@ img {
 .full-size {
   height: 100vh;
   width: 100vw;
+}
+
+.full-size-percent{
+  height: 100%;
+  width: 100%;
 }
 
 .half-width {
