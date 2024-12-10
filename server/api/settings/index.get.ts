@@ -7,6 +7,6 @@ export default defineEventHandler(async () => {
   }
 
   const settings: { [key: string]: string } = {};
-  rows.results.forEach((result) => settings[result.name] = result.value);
+  rows.results.forEach((result) => (settings[result.name] = result.value));
   return settings;
 });
