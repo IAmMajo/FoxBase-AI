@@ -6,7 +6,7 @@ const uploadSchema = z.object({
   collectionContent: z.string(),
 });
 
-export default defineEventHandler(async (event) => { 
+export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
   const { apiUrl } = useAppConfig();

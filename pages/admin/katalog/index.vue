@@ -1,7 +1,4 @@
 <script setup lang="ts">
-
-
-
 const newCatalog = ref({ name: "", description: "" });
 const catalogs = ref([]);
 const dialogVisible = ref(false);
@@ -20,11 +17,10 @@ async function loadCatalogs() {
   console.log("Catalog loading");
   //for some reson it tries to load admin/api...
   const results: any = await fetch(`/api/catalog/table`, {
-    method: "GET"
+    method: "GET",
   })
-    .then(response => response.json())
-    .then(body => body
-    );
+    .then((response) => response.json())
+    .then((body) => body);
 
   catalogs.value = results.results;
 }
@@ -46,15 +42,14 @@ async function handleNewCollection() {
   if (results.status === 401) {
     infoTextNew.value = "You are not authorized for this action";
   } else if (!results.ok) {
-    infoTextNew.value = "Something went wrong during Collection creation. \r\n Status: " + results.status;
+    infoTextNew.value =
+      "Something went wrong during Collection creation. \r\n Status: " +
+      results.status;
   } else {
     dialogVisible.value = false;
     loadCatalogs();
   }
 }
-
-
-
 
 function handleOpenNewCollection() {
   dialogVisible.value = true;
@@ -71,7 +66,6 @@ function onFileChange(event: any) {
     files.value = csvData;
   };
   reader.readAsText(event.target.files[0]);
-
 }
 async function updateCollection() {
   const result = await fetch(`/api/catalog/update`, {
@@ -82,14 +76,16 @@ async function updateCollection() {
     body: JSON.stringify({
       collectionName: updateCatalog.value.name,
       updateDescription: updateCatalog.value.description,
-      collectionContent: files.value
-    })
+      collectionContent: files.value,
+    }),
   });
 
   if (result.status === 401) {
     infoTextNew.value = "You are not authorized for this action";
   } else if (!result.ok) {
-    infoTextNew.value = "Something went wrong during Collection creation. \r\n Status: " + result.status;
+    infoTextNew.value =
+      "Something went wrong during Collection creation. \r\n Status: " +
+      result.status;
   } else {
     updateVisible.value = false;
   }
@@ -97,7 +93,7 @@ async function updateCollection() {
 
 function handleOpenUpdateCollection() {
   updateVisible.value = true;
-  updateCatalog.value = { name: "", description: "" }
+  updateCatalog.value = { name: "", description: "" };
 }
 function handleOpenDeleteCollection() {
   deleteVisible.value = true;
@@ -110,14 +106,16 @@ async function deleteCollection() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      collectionName: deleteName.value
-    })
+      collectionName: deleteName.value,
+    }),
   });
 
   if (result.status === 401) {
     deleteInfoText.value = "You are not authorized for this action";
   } else if (!result.ok) {
-    deleteInfoText.value = "Something went wrong during Collection creation. \r\n Status: " + result.status;
+    deleteInfoText.value =
+      "Something went wrong during Collection creation. \r\n Status: " +
+      result.status;
   } else {
     deleteVisible.value = false;
     loadCatalogs();
@@ -140,10 +138,19 @@ loadCatalogs();
       </DataTable>
     </div>
     <div>
-
-      <Button label="New Collection" class="p-button" @click="handleOpenNewCollection" />
+      <Button
+        label="New Collection"
+        class="p-button"
+        @click="handleOpenNewCollection"
+      />
       <!-- Dialog for new collection -->
-      <Dialog v-model:visible="dialogVisible" header="Create new collection" style="width: 30vw" modal :draggable=false>
+      <Dialog
+        v-model:visible="dialogVisible"
+        header="Create new collection"
+        style="width: 30vw"
+        modal
+        :draggable="false"
+      >
         <div class="p-fluid">
           <div class="field flex flex-column">
             <label for="name">Name</label>
@@ -156,14 +163,32 @@ loadCatalogs();
         </div>
         <div class="p-dialog-footer">
           <div v-if="infoTextNew">{{ infoTextNew }}</div>
-          <Button label="Cancel" class="p-button-text" @click="dialogVisible = false" />
-          <Button label="Create" class="p-button-primary" @click="handleNewCollection" />
+          <Button
+            label="Cancel"
+            class="p-button-text"
+            @click="dialogVisible = false"
+          />
+          <Button
+            label="Create"
+            class="p-button-primary"
+            @click="handleNewCollection"
+          />
         </div>
       </Dialog>
 
-      <Button label="Update Collection" class="p-button" @click="handleOpenUpdateCollection" />
+      <Button
+        label="Update Collection"
+        class="p-button"
+        @click="handleOpenUpdateCollection"
+      />
       <!-- Dialog for update collection -->
-      <Dialog v-model:visible="updateVisible" header="Update collection" style="width: 30vw" modal :draggable=false>
+      <Dialog
+        v-model:visible="updateVisible"
+        header="Update collection"
+        style="width: 30vw"
+        modal
+        :draggable="false"
+      >
         <div class="p-fluid">
           <div class="field flex flex-column">
             <label for="name">Name</label>
@@ -175,18 +200,41 @@ loadCatalogs();
           </div>
         </div>
         <label for="file-upload" class="upload-button">Upload new CSV</label>
-        <input id="file-upload" type="file" style="display: none;" accept=".csv" @change="onFileChange" />
+        <input
+          id="file-upload"
+          type="file"
+          style="display: none"
+          accept=".csv"
+          @change="onFileChange"
+        />
         <div class="p-dialog-footer">
           <div v-if="updateInfoText">{{ updateInfoText }}</div>
-          <Button label="Cancel" class="p-button-text" @click="updateVisible = false" />
-          <Button label="Update" class="p-button-primary" @click="updateCollection" />
+          <Button
+            label="Cancel"
+            class="p-button-text"
+            @click="updateVisible = false"
+          />
+          <Button
+            label="Update"
+            class="p-button-primary"
+            @click="updateCollection"
+          />
         </div>
       </Dialog>
 
-
-      <Button label="Delete Collection" class="delete-button" @click="handleOpenDeleteCollection" />
+      <Button
+        label="Delete Collection"
+        class="delete-button"
+        @click="handleOpenDeleteCollection"
+      />
       <!-- Dialog for delete collection -->
-      <Dialog v-model:visible="deleteVisible" header="Delete collection" style="width: 30vw" modal :draggable=false>
+      <Dialog
+        v-model:visible="deleteVisible"
+        header="Delete collection"
+        style="width: 30vw"
+        modal
+        :draggable="false"
+      >
         <div class="p-fluid">
           <div class="field flex flex-column">
             <label for="name">Name</label>
@@ -195,8 +243,16 @@ loadCatalogs();
         </div>
         <div class="p-dialog-footer">
           <div v-if="deleteInfoText">{{ deleteInfoText }}</div>
-          <Button label="Cancel" class="p-button-text" @click="deleteVisible = false" />
-          <Button label="Delete" class="delete-button" @click="deleteCollection" />
+          <Button
+            label="Cancel"
+            class="p-button-text"
+            @click="deleteVisible = false"
+          />
+          <Button
+            label="Delete"
+            class="delete-button"
+            @click="deleteCollection"
+          />
         </div>
       </Dialog>
     </div>
