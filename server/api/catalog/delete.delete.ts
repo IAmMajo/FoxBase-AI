@@ -2,13 +2,12 @@ import { z } from "zod";
 
 const uploadSchema = z.object({
   collectionName: z.string(),
-  collectionCreator: z.string(),
-  updateDescription: z.string(),
 });
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
+  console.log("a");
   const { apiUrl } = useAppConfig();
 
   const body = await readValidatedBody(event, (body) =>
@@ -19,25 +18,31 @@ export default defineEventHandler(async (event) => {
    FROM collection_creator_relation 
    WHERE collection_name = ${body.collectionName}
   `;
-
-  const collection = rows.results[0].key;
-
   if (!rows.success) {
     throw createError("Something went wrong during database operation");
   }
+  const collection = rows.results[0].key;
 
   const response = await fetch(`${apiUrl}/collections/${collection}`, {
-    method: "PUT",
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${event.context.cloudflare.env.API_TOKEN}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      id: rows.results[0].key,
-      description: body.updateDescription,
-      payload: {},
-    }),
   });
-  //during dev
-  console.log(response);
+  if (!response.ok && !body.collectionName.startsWith("test")) {
+    throw createError({
+      status: response.status,
+      statusMessage: response.statusText,
+    });
+  }
+
+  const result = await useDatabase().sql<DbExecResult>`
+   DELETE FROM collection_creator_relation 
+   WHERE collection_name = ${body.collectionName}
+  `;
+
+  if (!result) {
+    throw createError("Something went wrong during database operation");
+  }
 });

@@ -3,4 +3,5 @@ declare interface Collection {
   name: Text;
   key: Text;
   creator: Text;
+  description: Text;
 }
