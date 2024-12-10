@@ -1,4 +1,4 @@
--- Migration number: 0004 	 2024-12-10T16:21:52.446Z
+-- Migration number: 0005 	 2024-12-10T22:44:18.719Z
 
 CREATE TABLE prompts (
   id INTEGER PRIMARY KEY,
