@@ -3,14 +3,14 @@ import { ref } from "vue";
 import { parseCSV } from "../../../utils/csv-parser";
 import { Dialog, Button, Textarea } from "primevue";
 
-const prompts = ref([]);
-// const prompts = ref([
-//   {
-//     id: 0,
-//     text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!",
-//     user: "Max Mustermann"
-//   },
-// ]);
+// const prompts = ref([]);
+const prompts = ref([
+  {
+    id: 0,
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!",
+    user: "Max Mustermann",
+  },
+]);
 
 const dialogVisible = ref(false); // Steuert die Sichtbarkeit des Dialogs
 const deletePromptDialog = ref(false); // For confirming deletion
@@ -85,13 +85,15 @@ const deletePrompt = () => {
         <Button
           label="Neue Template"
           icon="pi pi-plus"
-          class="flex gap p-button"
+          class="flex gap p-button button"
           @click="dialogVisible = true"
         />
       </template>
 
       <template #end>
-        <label for="file-upload" class="upload-button">CSV hochladen</label>
+        <label for="file-upload" class="upload-button button"
+          >CSV hochladen</label
+        >
         <input
           id="file-upload"
           type="file"
@@ -125,13 +127,17 @@ const deletePrompt = () => {
       table-style="min-width: 50rem"
       @row-edit-save="onRowEditSave"
     >
-      <Column field="id" header="ID"></Column>
-      <Column field="text" header="Prompt">
+      <Column field="id" header="ID" style="font-weight: normal"></Column>
+      <Column field="text" header="Prompt" style="font-weight: normal">
         <template #editor="{ data, field }">
           <Textarea v-model="data[field]" rows="4" cols="80" fluid />
         </template>
       </Column>
-      <Column field="user" header="Benutzer"></Column>
+      <Column
+        field="user"
+        header="Benutzer"
+        style="font-weight: normal"
+      ></Column>
       <Column
         :row-editor="true"
         style="width: 10%; min-width: 8rem"
@@ -160,7 +166,9 @@ const deletePrompt = () => {
       <div class="flex flex-column gap">
         <div class="flex items-center gap-4">
           <i class="pi pi-exclamation-triangle !text-3xl" />
-          <span v-if="selectedPrompt"
+          <span
+            v-if="selectedPrompt"
+            style="font-family: Inter, sans-serif; font-weight: normal"
             >Bist du sicher, dass du die Prompt-Template löschen möchtest?</span
           >
         </div>
@@ -168,30 +176,37 @@ const deletePrompt = () => {
           <Button
             label="Nein"
             icon="pi pi-times"
+            class="flex gap p-button cancel-button"
             text
             @click="deletePromptDialog = false"
           />
-          <Button label="Ja" icon="pi pi-check" @click="deletePrompt" />
+          <Button
+            label="Ja"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="deletePrompt"
+          />
         </div>
       </div>
     </Dialog>
 
     <Dialog
       v-model:visible="dialogVisible"
-      header="Neue text-Template hinzufügen"
+      header="Neue Prompt-Template hinzufügen"
       style="width: 30vw"
       modal
       draggable="false"
     >
       <div class="flex flex-column gap">
         <div class="field">
-          <label for="text" class="block font-bold mb-3">text</label>
+          <label for="text" class="block font-bold mb-3">Prompt</label>
           <Textarea
             id="text"
             v-model="newPrompt.text"
             required="true"
             rows="4"
             cols="20"
+            style="font-family: Inter, sans-serif; font-weight: normal"
             autofocus
             :invalid="submitted && !newPrompt.text"
             fluid
@@ -204,12 +219,12 @@ const deletePrompt = () => {
         <div class="p-dialog-footer">
           <Button
             label="Abbrechen"
-            class="p-button-text"
+            class="p-button-text cancel-button"
             @click="dialogVisible = false"
           />
           <Button
             label="Hinzufügen"
-            class="p-button-primary"
+            class="p-button-primary button"
             @click="addPrompt"
           />
         </div>
@@ -219,24 +234,28 @@ const deletePrompt = () => {
 </template>
 
 <style>
+:root {
+  --p-message-error-simple-color: #dc2626;
+}
+
 .p-dialog-header span {
   font-family: "Inter", sans-serif;
 }
 
 .p-button {
-  /* background-color: var(--dark-primary); */
-  /* color: white; */
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   display: inline-block;
-  /* border: 1px solid var(--dark-primary); */
+}
+
+.p-button:not(:hover) {
+  background-color: transparent;
 }
 
 .upload-button {
-  background-color: var(--dark-primary);
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
@@ -248,6 +267,45 @@ const deletePrompt = () => {
 
 .upload-button:hover {
   background-color: var(--dark-primary-hover);
+}
+
+.button {
+  background-color: var(--light-primary-hover) !important;
+  border-color: var(--light-primary-hover) !important;
+}
+
+.button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--light-primary),
+    transparent 60%
+  ) !important;
+  color: var(--light-primary-hover) !important;
+  border:
+    1px,
+    solid var(--light-primary-hover) !important;
+}
+
+.cancel-button {
+  background-color: var(--light-bg-secondary) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--light-text-secondary),
+    transparent 80%
+  ) !important;
+  color: var(--light-text-secondary) !important;
+}
+
+.cancel-button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--p-message-error-simple-color),
+    transparent 90%
+  ) !important;
+  color: var(--light-text-secondary) !important;
+  border:
+    1px,
+    solid var(--p-message-error-simple-color) !important;
 }
 
 .field {
