@@ -32,7 +32,6 @@ function onArrowDownClicked() {
 
 <template>
   <div data-aos="fade-up">
-
     <span v-if="index != 0" class="horizontal-line" />
     <div class="result-card flex jc-ai-center gap">
       <div class="left-mobile flex flex-column">
@@ -67,8 +66,10 @@ function onArrowDownClicked() {
         </div>
       </div>
       <div class="info-card flex flex-column gap">
-        <p class="title bold-sm-text dark-heading no-spacing">{{ product.name }}</p>
-  
+        <p class="title bold-sm-text dark-heading no-spacing">
+          {{ product.name }}
+        </p>
+
         <div class="flex flex-column gapSmall">
           <div class="category-attributes flex">
             <span class="dot" />
