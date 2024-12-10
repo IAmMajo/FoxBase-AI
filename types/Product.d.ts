@@ -3,7 +3,7 @@ declare interface Product {
   name: string;
   category: string;
   description: string;
-  attributes: { [key: string]: string };
+  attributes: Record<string, string>;
   typicalUseCases: string[];
   score: number;
 }
