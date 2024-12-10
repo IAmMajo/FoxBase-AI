@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   const json = (await response.json()) as ApiProduct[];
 
   return json.map<Product>((product) => {
-    const attributes: { [key: string]: string } = {};
+    const attributes: Record<string, string> = {};
 
     product.payload.Technical_Attributes.split(", ").forEach((attribute) => {
       const [key, value] = attribute.split(": ");

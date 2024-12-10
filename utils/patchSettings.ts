@@ -1,4 +1,4 @@
-export default async (settings: Setting[]): Promise<boolean> => {
+export default async (settings: Record<string, string>): Promise<boolean> => {
   const response = await fetch(`/api/settings`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
