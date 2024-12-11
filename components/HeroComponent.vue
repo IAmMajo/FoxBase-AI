@@ -1,11 +1,20 @@
 <script setup lang="ts">
 defineEmits(["searchSubmit"]);
 
+const { data } = await useFetch<string[]>("/api/prompts");
+
 const headline = "Finden Sie die";
 const headlineSpan = " richtige Lösung";
 
 const subheadline = "Für Ihr";
 const subheadlineSpan = " Fallbeispiel";
+
+async function onSearchInput(query: string) {
+  const prompts = await fetchPrompts(query);
+  if (prompts.length) {
+    data.value = prompts;
+  }
+}
 </script>
 
 <template>
@@ -16,7 +25,10 @@ const subheadlineSpan = " Fallbeispiel";
       <div class="waves" />
     </div>
 
-    <div class="flex flex-column gap hero-size debugging-red jc-ai-center">
+    <div
+      data-aos="fade-up"
+      class="flex flex-column gap hero-size debugging-red jc-ai-center"
+    >
       <p class="dark-heading text-shadow header-title no-spacing">
         {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
       </p>
@@ -25,14 +37,27 @@ const subheadlineSpan = " Fallbeispiel";
         }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
       </h1>
 
-      <SearchbarComponent
-        @search-submit="(query) => $emit('searchSubmit', query)"
-      />
+      <div class="searchbar-wrapper flex flex-column gap">
+        <PromptSuggestionsComponent v-if="data" :prompts="data" />
+        <SearchbarComponent
+          @search-input="onSearchInput"
+          @search-submit="(query) => $emit('searchSubmit', query)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+.hero-size span {
+  font-family: "Inter", sans-serif;
+}
+
+.searchbar-wrapper {
+  margin: 70px 0;
+  width: 65%;
+}
+
 .darkening-layer {
   position: absolute;
   top: 0;
@@ -78,11 +103,11 @@ const subheadlineSpan = " Fallbeispiel";
 }
 
 .waves::before {
-  background: var(--dark-bg-primary);
+  background: var(--dark-bg-secondary);
   animation: waves 45s linear infinite;
 }
 .waves::after {
-  background: #02102564;
+  background: #0210254b;
   animation: waves 75s linear infinite;
 }
 

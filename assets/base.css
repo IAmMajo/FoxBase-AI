@@ -60,9 +60,12 @@ html {
   --fs-h1: 4.5rem;
   --fs-h2: 3rem;
   --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
   --fs-paragraph: 1.125rem;
 
   /* Values */
+  --border-radius-sm: 8px;
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
@@ -86,6 +89,10 @@ html {
 .absolute {
   position: absolute;
   overflow: hidden;
+}
+
+.mt {
+  margin-top: 22px;
 }
 
 .t-0 {
@@ -171,6 +178,10 @@ html {
   gap: var(--gap);
 }
 
+.darkening-layer-secondary {
+  background-color: rgba(0, 0, 0, 0.137);
+}
+
 /**Font-Sizes**/
 
 .header-title {
@@ -194,6 +205,16 @@ h3 {
   font-size: var(--fs-h3);
 }
 
+h4 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h4);
+}
+
+h5 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h5);
+}
+
 p {
   font-family: "asap", sans-serif;
   font-size: var(--fs-paragraph);
@@ -207,6 +228,18 @@ label {
 ul {
   font-family: "asap", sans-serif;
   font-size: var(--fs-paragraph);
+}
+
+ol {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
+.bold-text {
+  font-weight: bold;
+}
+.bold-sm-text {
+  font-weight: 600;
 }
 
 .light-heading {
@@ -234,7 +267,11 @@ ul {
 }
 
 .dark-highlight {
-  color: var(--dark-text-tertiary);
+  color: var(--dark-primary);
+}
+
+.bg-secondary {
+  background-color: var(--dark-bg-secondary);
 }
 
 .footer-bottom-container {
@@ -274,6 +311,11 @@ img {
 .full-size {
   height: 100vh;
   width: 100vw;
+}
+
+.full-size-percent {
+  height: 100%;
+  width: 100%;
 }
 
 .half-width {

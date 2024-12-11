@@ -18,5 +18,7 @@ export default defineEventHandler(async (event) => {
   if (!(await verifyPassword(rows.results[0].password, body.password))) {
     throw createError({ status: 401, message: "Invalid username or password" });
   }
-  await setUserSession(event, { user: { username: body.username } });
+  await setUserSession(event, {
+    user: { id: rows.results[0].id, username: body.username },
+  });
 });
