@@ -135,15 +135,13 @@
   bottom: 5;
 }
 
-
-
 .footer-locaitons p {
   margin: 0;
 }
 
 .footer-wave {
   position: absolute;
-  transform: scaleX(200%)
+  transform: scaleX(200%);
 }
 
 .footer-main-content {
