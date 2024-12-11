@@ -130,6 +130,7 @@ const deletePrompt = async () => {
             outlined
             rounded
             severity="danger"
+            class="delete-button"
             @click="confirmDeletePrompt(slotProps.data)"
           />
         </template>
@@ -218,15 +219,17 @@ const deletePrompt = async () => {
 }
 
 .p-button {
+  background-color: var(--dark-primary);
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   display: inline-block;
+  border-color: var(--dark-primary);
 }
 
-.p-button:not(:hover) {
+.delete-button:not(:hover) {
   background-color: transparent;
 }
 
@@ -241,24 +244,24 @@ const deletePrompt = async () => {
 }
 
 .upload-button:hover {
-  background-color: var(--dark-primary-hover);
+  background-color: var(--dark-primary);
 }
 
 .button {
-  background-color: var(--light-primary-hover) !important;
-  border-color: var(--light-primary-hover) !important;
+  background-color: var(--dark-primary) !important;
+  border-color: var(--dark-primary) !important;
 }
 
 .button:hover {
   background-color: color-mix(
     in srgb,
-    var(--light-primary),
-    transparent 60%
+    var(--dark-primary),
+    transparent 85%
   ) !important;
-  color: var(--light-primary-hover) !important;
+  color: var(--dark-primary) !important;
   border:
     1px,
-    solid var(--light-primary-hover) !important;
+    solid var(--dark-primary) !important;
 }
 
 .cancel-button {
