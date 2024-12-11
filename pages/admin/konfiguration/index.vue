@@ -88,9 +88,7 @@ async function onSave() {
           </div>
         </div>
         <div class="flex jc-ai-center w-100 mt">
-          <button class="p-button bold-text" @click="onSave">
-            Speichern
-          </button>
+          <button class="p-button bold-text" @click="onSave">Speichern</button>
         </div>
       </div>
     </div>
