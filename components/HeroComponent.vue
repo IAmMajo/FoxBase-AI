@@ -44,7 +44,6 @@ async function onSearchInput(query: string) {
           @search-submit="(query) => $emit('searchSubmit', query)"
         />
       </div>
-      
     </div>
   </div>
 </template>
