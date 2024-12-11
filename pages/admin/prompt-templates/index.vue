@@ -1,75 +1,52 @@
-<script setup>
-import { ref } from "vue";
-import { parseCSV } from "../../../utils/csv-parser";
-import { Dialog, Button, Textarea } from "primevue";
+<script setup lang="ts">
+import type { DataTableRowEditSaveEvent } from "primevue";
+import deletePromptDb from "~/utils/deletePrompt";
 
-// const prompts = ref([]);
-const prompts = ref([
-  {
-    id: 0,
-    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!",
-    user: "Max Mustermann",
-  },
-]);
+const { data: prompts } = await useFetch<Prompt[]>("/api/prompts?page=1");
 
 const dialogVisible = ref(false); // Steuert die Sichtbarkeit des Dialogs
 const deletePromptDialog = ref(false); // For confirming deletion
-const selectedPrompt = ref(null); // Stores the prompt to be deleted
+const selectedPrompt = ref<Prompt | null>(null); // Stores the prompt to be deleted
 
-const newPrompt = ref({ id: "", text: "", user: "" }); // Temporäre Daten für den neuen Eintrag
+const newPrompt = ref(""); // Temporäre Daten für den neuen Eintrag
 
 const editingRows = ref([]);
-const onRowEditSave = (event) => {
+const onRowEditSave = async (event: DataTableRowEditSaveEvent) => {
   const { newData, index } = event;
 
-  prompts.value[index] = newData;
+  prompts.value![index] = await putPrompt(newData);
 };
 
-// Default CSV laden
-loadDefaultCSV();
-
-async function loadDefaultCSV() {
-  try {
-    const response = await fetch("/default.csv");
-    if (!response.ok) throw new Error("Fehler beim Laden der Datei.");
-    const csvData = await response.text();
-    users.value = parseCSV(csvData);
-  } catch (error) {
-    console.error("Fehler beim Laden der Default-CSV:", error);
-  }
-}
-
 // Datei hochladen
-function onFileChange(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const csvData = e.target.result;
-      users.value = parseCSV(csvData);
-    };
-    reader.readAsText(file);
+function onFileChange(event: Event) {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (!file) {
+    return;
   }
 }
 
 // Neuen text hinzufügen
-function addPrompt() {
-  if (newPrompt.value.text) {
-    prompts.value.push({ ...newPrompt.value }); // Neuen text zur Liste hinzufügen
-    newPrompt.value = { id: "", text: "", user: "" }; // Formular zurücksetzen
+async function addPrompt() {
+  if (newPrompt.value) {
+    const prompt = await postPrompt(newPrompt.value);
+    prompts.value?.push(prompt); // Neuen text zur Liste hinzufügen
+    newPrompt.value = ""; // Formular zurücksetzen
     dialogVisible.value = false; // Dialog schließen
   } else {
     alert("Bitte alle Felder ausfüllen!"); // Alternativ kann eine elegantere Validierung implementiert werden
   }
 }
 
-const confirmDeletePrompt = (prompt) => {
+const confirmDeletePrompt = (prompt: Prompt) => {
   selectedPrompt.value = prompt;
   deletePromptDialog.value = true;
 };
 
-const deletePrompt = () => {
-  prompts.value = prompts.value.filter((p) => p.id !== selectedPrompt.value.id);
+const deletePrompt = async () => {
+  await deletePromptDb(selectedPrompt.value!.id);
+  prompts.value = prompts.value!.filter(
+    (p) => p.id !== selectedPrompt.value!.id,
+  );
   selectedPrompt.value = null;
   deletePromptDialog.value = false;
 };
@@ -109,6 +86,7 @@ const deletePrompt = () => {
 
     <!-- PrimeVue DataTable -->
     <DataTable
+      v-if="prompts"
       v-model:editing-rows="editingRows"
       :value="prompts"
       edit-mode="row"
@@ -116,6 +94,7 @@ const deletePrompt = () => {
       :pt="{
         table: { style: 'min-width: 50rem' },
         column: {
+          // @ts-expect-error
           bodycell: ({ state }) => ({
             style:
               state['d_editing'] &&
@@ -196,25 +175,21 @@ const deletePrompt = () => {
       header="Neue Prompt-Template hinzufügen"
       style="width: 30vw"
       modal
-      draggable="false"
+      :draggable="false"
     >
       <div class="flex flex-column gap">
         <div class="field">
           <label for="text" class="block font-bold mb-3">Prompt</label>
           <Textarea
             id="text"
-            v-model="newPrompt.text"
+            v-model="newPrompt"
             required="true"
             rows="4"
             cols="20"
             style="font-family: Inter, sans-serif; font-weight: normal"
             autofocus
-            :invalid="submitted && !newPrompt.text"
             fluid
           />
-          <small v-if="submitted && !newPrompt.text" class="text-red-500"
-            >Prompt wird benötigt.</small
-          >
         </div>
 
         <div class="p-dialog-footer">

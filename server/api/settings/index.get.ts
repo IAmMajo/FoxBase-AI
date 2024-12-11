@@ -1,12 +1,12 @@
 export default defineEventHandler(async () => {
-  const db = useDatabase();
-  const { rows } = await db.sql<DbResult<Setting>>`SELECT * FROM settings`;
+  const { rows } = await useDatabase().sql<
+    DbResult<Setting>
+  >`SELECT * FROM settings`;
   if (!rows.success) {
     throw createError("Something went wrong during database operation");
   }
+
   const settings: Record<string, string> = {};
-  for (const row of rows.results) {
-    settings[row.name] = row.value;
-  }
+  rows.results.forEach((result) => (settings[result.name] = result.value));
   return settings;
 });
