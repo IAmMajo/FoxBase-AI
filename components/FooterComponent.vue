@@ -135,8 +135,7 @@
   bottom: 5;
 }
 
-.footer-locations {
-}
+
 
 .footer-locaitons p {
   margin: 0;
@@ -144,7 +143,7 @@
 
 .footer-wave {
   position: absolute;
-  width: 102%;
+  transform: scaleX(200%)
 }
 
 .footer-main-content {
