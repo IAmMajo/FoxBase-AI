@@ -1,18 +1,24 @@
 import { z } from "zod";
 
+const routeParamsSchema = z.object({
+  promptId: z.coerce.number().int().positive(),
+});
 const promptSchema = z.object({ text: z.string() });
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<Prompt> => {
   await requireUserSession(event);
-  const body = await readValidatedBody(event, (body) =>
+  const { promptId } = await getValidatedRouterParams(event, (routeParams) =>
+    routeParamsSchema.parse(routeParams),
+  );
+  const { text } = await readValidatedBody(event, (body) =>
     promptSchema.parse(body),
   );
-  const session = await getUserSession(event);
+  const { user } = await getUserSession(event);
   const result = await useDatabase().sql<DbExecResult>`
-    UPDATE prompts SET text = ${body.text}, user = ${session.user.id}
-    WHERE id = ${getRouterParam(event, "promptId")}
+    UPDATE prompts SET text = ${text}, user = ${user.id} WHERE id = ${promptId}
   `;
   if (!result.success) {
     throw createError("Something went wrong during database operation");
   }
+  return { id: promptId, text: text, user: user.username };
 });

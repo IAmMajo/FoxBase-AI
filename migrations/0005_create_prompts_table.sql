@@ -18,7 +18,7 @@ CREATE VIRTUAL TABLE prompts_fts USING fts5(
 -- https://www.sqlite.org/fts5.html#external_content_tables
 
 CREATE TRIGGER prompts_ai AFTER INSERT ON prompts BEGIN
-  INSERT INTO prompts_fts (rowid, text) VALUES (LAST_INSERT_ROWID(), new.text);
+  INSERT INTO prompts_fts (rowid, text) VALUES (new.id, new.text);
 END;
 
 CREATE TRIGGER prompts_au AFTER UPDATE ON prompts BEGIN
