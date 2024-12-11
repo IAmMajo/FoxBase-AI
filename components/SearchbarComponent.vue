@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-defineEmits(["searchSubmit"]);
+defineEmits(["searchInput", "searchSubmit"]);
 
 const query = ref("");
 </script>
@@ -17,6 +17,7 @@ const query = ref("");
       class="searchbar-input"
       type="text"
       placeholder="Suche..."
+      @input="$emit('searchInput', query)"
     />
     <button type="submit" class="submit-btn flex jc-ai-center">
       <MagnifyingGlassIcon class="searchbar-icon" />
@@ -55,12 +56,6 @@ const query = ref("");
   padding-right: 20px;
 }
 
-.searchbar-container {
-  margin: 70px 0;
-  height: 80px;
-  width: 65%;
-  border-radius: var(--border-radius-full);
-}
 .searchbar-icon {
   height: 30px;
   width: 30px;

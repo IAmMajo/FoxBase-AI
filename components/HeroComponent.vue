@@ -1,11 +1,20 @@
 <script setup lang="ts">
 defineEmits(["searchSubmit"]);
 
+const { data } = await useFetch<string[]>("/api/prompts");
+
 const headline = "Finden Sie die";
 const headlineSpan = " richtige Lösung";
 
 const subheadline = "Für Ihr";
 const subheadlineSpan = " Fallbeispiel";
+
+async function onSearchInput(query: string) {
+  const prompts = await fetchPrompts(query);
+  if (prompts.length) {
+    data.value = prompts;
+  }
+}
 </script>
 
 <template>
@@ -28,9 +37,14 @@ const subheadlineSpan = " Fallbeispiel";
         }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
       </h1>
 
-      <SearchbarComponent
-        @search-submit="(query) => $emit('searchSubmit', query)"
-      />
+      <div class="searchbar-wrapper flex flex-column gap">
+        <PromptSuggestionsComponent v-if="data" :prompts="data" />
+        <SearchbarComponent
+          @search-input="onSearchInput"
+          @search-submit="(query) => $emit('searchSubmit', query)"
+        />
+      </div>
+      
     </div>
   </div>
 </template>
@@ -39,6 +53,12 @@ const subheadlineSpan = " Fallbeispiel";
 .hero-size span {
   font-family: "Inter", sans-serif;
 }
+
+.searchbar-wrapper {
+  margin: 70px 0;
+  width: 65%;
+}
+
 .darkening-layer {
   position: absolute;
   top: 0;
