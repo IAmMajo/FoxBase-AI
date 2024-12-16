@@ -23,8 +23,6 @@ async function onSave() {
     saveStatus.value = null;
   }, 3000);
 
-
-
   if (success) {
     console.log("Speichern erfolgreich");
   } else {
@@ -49,28 +47,36 @@ async function onSave() {
         :style="{ backgroundColor: backgroundSecondary }"
       >
         <nav class="relative flex jc-space-between-ai-center relative t-0 px-4">
-          <div class="darkening-layer-secondary absolute full-size-percent"></div>
-         
-         
+          <div
+            class="darkening-layer-secondary absolute full-size-percent"
+          ></div>
+
           <div>
-            <div class="flex" >
-              <h5 :style="{color: textPrimary}">FoxSearch</h5>
-              <h5 :style="{color: primary}">AI</h5>            
+            <div class="flex">
+              <h5 :style="{ color: textPrimary }">FoxSearch</h5>
+              <h5 :style="{ color: primary }">AI</h5>
             </div>
           </div>
-          <button class="flex jc-ai-center" :style="{backgroundColor: primary, height: '50%'}" > <p>Test</p></button>
+          <button
+            class="flex jc-ai-center"
+            :style="{ backgroundColor: primary, height: '50%' }"
+          >
+            <p>Test</p>
+          </button>
         </nav>
 
-        <div class="nav-preview-content-container flex flex-column jc-ai-center">
+        <div
+          class="nav-preview-content-container flex flex-column jc-ai-center"
+        >
           <h2 :style="{ color: textPrimary }">Das ist der Titel</h2>
           <p :style="{ color: textSecondary }">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, sequi
-            eligendi modi minus veritatis quasi. Est veniam at laborum, excepturi
-            eum natus dolorum velit repudiandae. Laudantium quas provident ab
-            facilis quos culpa, impedit deleniti atque cupiditate eos iure, totam
-            officia reprehenderit vitae sint odio quis qui aut pariatur
-            consequatur placeat consequuntur, harum facere inventore. Ullam nihil
-            unde corrupti quidem quo.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+            sequi eligendi modi minus veritatis quasi. Est veniam at laborum,
+            excepturi eum natus dolorum velit repudiandae. Laudantium quas
+            provident ab facilis quos culpa, impedit deleniti atque cupiditate
+            eos iure, totam officia reprehenderit vitae sint odio quis qui aut
+            pariatur consequatur placeat consequuntur, harum facere inventore.
+            Ullam nihil unde corrupti quidem quo.
           </p>
           <div class="flex jc-ai-center gap">
             <button
@@ -79,10 +85,13 @@ async function onSave() {
             >
               Das ist ein runder Button
             </button>
-            <button class="button-preview" :style="{ backgroundColor: primary }">
+            <button
+              class="button-preview"
+              :style="{ backgroundColor: primary }"
+            >
               Das ist ein eckiger Button
             </button>
-        </div>
+          </div>
         </div>
       </div>
 
@@ -118,21 +127,27 @@ async function onSave() {
         </div>
 
         <div class="confirm-container mt">
-
-          <div v-if="saveStatus === 'sucess'" data-aos="fade-up" class="confirm-green flex jc-ai-center">
+          <div
+            v-if="saveStatus === 'sucess'"
+            data-aos="fade-up"
+            class="confirm-green flex jc-ai-center"
+          >
             <div class="icon-container flex jc-ai-center">
               <div class="green-icon pi pi-check text-xl"></div>
             </div>
             <p class="flex-grow text-center">Speichern erfolgreich</p>
           </div>
 
-          <div v-if="saveStatus === 'error'" data-aos="fade-up" class="confirm-red flex jc-ai-center">
+          <div
+            v-if="saveStatus === 'error'"
+            data-aos="fade-up"
+            class="confirm-red flex jc-ai-center"
+          >
             <div class="icon-container-red flex jc-ai-center">
               <div class="red-icon pi pi-times text-xl"></div>
             </div>
             <p class="flex-grow text-center">Speichern fehlgeschlagen</p>
           </div>
-
         </div>
       </div>
     </div>
@@ -140,16 +155,15 @@ async function onSave() {
 </template>
 
 <style>
-
-.dot{
-  height: 10px;  
+.dot {
+  height: 10px;
   width: 10px;
 }
 
-.green-icon{
+.green-icon {
   color: #00dc82;
 }
-.red-icon{
+.red-icon {
   color: #dc0025;
 }
 
@@ -160,7 +174,7 @@ async function onSave() {
   border-radius: 8px;
 }
 
-.confirm-green{
+.confirm-green {
   background-color: #00dc802c;
   height: 50%;
   width: 100%;
@@ -169,7 +183,7 @@ async function onSave() {
   border-radius: var(--border-radius-default);
 }
 
-.confirm-red{
+.confirm-red {
   background-color: #dc00252c;
   height: 50%;
   width: 100%;
@@ -178,21 +192,19 @@ async function onSave() {
   border-radius: var(--border-radius-default);
 }
 
-.confirm-container{
+.confirm-container {
   height: 15vh;
   width: 100%;
 }
 
-
-.nav-preview-content-container{
-  flex-grow: 1; 
+.nav-preview-content-container {
+  flex-grow: 1;
   text-align: center;
 }
 
-.nav-preview-content-container p{
+.nav-preview-content-container p {
   width: 80%;
 }
-
 
 .button-preview {
   margin-top: 20px;
@@ -216,12 +228,12 @@ async function onSave() {
   box-shadow: var(--box-shadow);
 }
 
-.preview-container nav{
+.preview-container nav {
   height: 10%;
   background-color: var(--dark-bg-seconndary);
 }
 
-.preview-container nav button{
+.preview-container nav button {
   height: 60%;
   padding: 0 22px;
   border-radius: 6px;
