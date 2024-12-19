@@ -47,13 +47,14 @@ async function onSave() {
         :style="{ backgroundColor: backgroundSecondary }"
       >
         <nav class="relative flex jc-space-between-ai-center relative t-0">
-          <div class="darkening-layer-secondary absolute full-size-percent"></div>
-         
-         
+          <div
+            class="darkening-layer-secondary absolute full-size-percent"
+          ></div>
+
           <div>
-            <div style="padding-left: 2vh;" class="flex" >
-              <h5 :style="{color: textPrimary}">FoxSearch</h5>
-              <h5 :style="{color: primary}">AI</h5>            
+            <div style="padding-left: 2vh" class="flex">
+              <h5 :style="{ color: textPrimary }">FoxSearch</h5>
+              <h5 :style="{ color: primary }">AI</h5>
             </div>
           </div>
           <button
@@ -147,9 +148,6 @@ async function onSave() {
             </div>
             <p class="flex-grow text-center">Speichern fehlgeschlagen</p>
           </div>
-
-          
-
         </div>
       </div>
     </div>
@@ -230,7 +228,7 @@ async function onSave() {
   box-shadow: var(--box-shadow);
 }
 
-.preview-container nav{
+.preview-container nav {
   width: 100%;
   height: 10%;
   background-color: var(--dark-bg-seconndary);
