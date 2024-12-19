@@ -127,7 +127,7 @@ html {
   z-index: 100;
 }
 
-.px-4{
+.px-4 {
   padding: 0 4vw;
 }
 
@@ -178,7 +178,7 @@ html {
   flex-wrap: wrap;
 }
 
-.flex-grow{
+.flex-grow {
   flex-grow: 1;
 }
 
