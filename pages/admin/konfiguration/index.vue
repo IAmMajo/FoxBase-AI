@@ -48,12 +48,12 @@ async function onSave() {
         class="preview-container flex flex-column jc-start-ai-center relative z-1"
         :style="{ backgroundColor: backgroundSecondary }"
       >
-        <nav class="relative flex jc-space-between-ai-center relative t-0 px-4">
+        <nav class="relative flex jc-space-between-ai-center relative t-0">
           <div class="darkening-layer-secondary absolute full-size-percent"></div>
          
          
           <div>
-            <div class="flex" >
+            <div style="padding-left: 2vh;" class="flex" >
               <h5 :style="{color: textPrimary}">FoxSearch</h5>
               <h5 :style="{color: primary}">AI</h5>            
             </div>
@@ -86,9 +86,9 @@ async function onSave() {
         </div>
       </div>
 
-      <div class="flex flex-column" style="width: 22%">
+      <div class="flex jc-ai-center flex-column" style="width: 22%">
         <h5>Farbpalette</h5>
-        <div class="flex jc-around-ai-center gap flex-wrap">
+        <div class="flex jc-ai-center gap flex-wrap">
           <div class="flex flex-column jc-ai-center color-field">
             <input id="primary" v-model="primary" type="color" />
             <label for="primary">Primary</label>
@@ -132,6 +132,8 @@ async function onSave() {
             </div>
             <p class="flex-grow text-center">Speichern fehlgeschlagen</p>
           </div>
+
+          
 
         </div>
       </div>
@@ -217,6 +219,7 @@ async function onSave() {
 }
 
 .preview-container nav{
+  width: 100%;
   height: 10%;
   background-color: var(--dark-bg-seconndary);
 }
@@ -224,6 +227,7 @@ async function onSave() {
 .preview-container nav button{
   height: 60%;
   padding: 0 22px;
+  margin-right: 2vh;
   border-radius: 6px;
   border: none;
   font-weight: 500;
