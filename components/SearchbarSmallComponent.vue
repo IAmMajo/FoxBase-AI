@@ -2,7 +2,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
 onMounted(() => {
-  const searchState = false;
+  let searchState = false;
   const searchSmBtn = document.getElementById("search-btn-sm");
 
   searchSmBtn.addEventListener("click", function () {
