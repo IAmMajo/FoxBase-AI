@@ -21,7 +21,7 @@ const spanHeadingText = "AI";
     </div>
 
     <div class="flex jc-ai-center gap z-2">
-      <SearchbarSmallComponent/>
+      <SearchbarSmallComponent />
       <!--Light / Dark Button-->
       <div class="light-dark-switch flex jc-ai-center z-2">
         <div class="nav-icon-container flex jc-ai-center">
@@ -29,7 +29,6 @@ const spanHeadingText = "AI";
         </div>
       </div>
     </div>
-    
   </nav>
 </template>
 
