@@ -20,12 +20,16 @@ const spanHeadingText = "AI";
       </h3>
     </div>
 
-    <!--Light / Dark Button-->
-    <div class="light-dark-switch flex jc-ai-center z-2">
-      <div class="nav-icon-container flex jc-ai-center">
-        <SunIcon />
+    <div class="flex jc-ai-center gap z-2">
+      <SearchbarSmallComponent/>
+      <!--Light / Dark Button-->
+      <div class="light-dark-switch flex jc-ai-center z-2">
+        <div class="nav-icon-container flex jc-ai-center">
+          <SunIcon />
+        </div>
       </div>
     </div>
+    
   </nav>
 </template>
 
