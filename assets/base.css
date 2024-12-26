@@ -22,23 +22,10 @@ html {
 }
 
 :root {
-  /*Colors Light Mode*/
 
-  /**Primary Colors**/
-  --light-primary: #8deeac;
-  --light-primary-hover: #00c16a;
-
-  /**Background Colors**/
-  --light-bg-primary: #ffffff;
-  --light-bg-secondary: #f4f9fe;
-  --light-bg-tertiary: #ffffff;
-
-  /**Text Colors**/
-  --light-text-primary: #0f172a;
-  --light-text-secondary: #475569;
-  --light-text-tertiary: #00c16a;
-
-  /*Colors Dark Mode*/
+  /********************/
+  /*Colors Dark Mode***/
+  /********************/
 
   /**Primary Colors**/
   --dark-primary: #00dc82;
@@ -77,6 +64,58 @@ html {
   --logo-size: 6vh;
   --hero-height: 92vh;
 }
+
+
+:root.light {
+  /********************/
+  /*Colors Light Mode**/
+  /********************/
+
+  /**Primary Colors**/
+  --dark-primary: #8deeac;
+  --dark-primary-hover: #00c16a;
+
+  /**Background Colors**/
+  --dark-bg-primary: #ffffff;
+  --dark-bg-secondary: #f4f9fe;
+  --dark-bg-tertiary: #ffffff;
+
+  /**Text Colors**/
+  --dark-text-primary: #0f172a;
+  --dark-text-secondary: #475569;
+  --dark-text-tertiary: #00c16a;
+
+  /*Font Sizes */
+  --fs-header: 5.5rem;
+  --fs-h1: 4.5rem;
+  --fs-h2: 3rem;
+  --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
+  --fs-paragraph: 1.125rem;
+
+  /* Values */
+  --border-radius-sm: 8px;
+  --border-radius-default: 12px;
+  --border-radius-full: 10000px;
+  --gap: 16px;
+
+  /* Shading */
+  --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
+
+  --navbar-height: 8vh;
+  --logo-size: 6vh;
+  --hero-height: 92vh;
+}
+
+
+
+
+
+
+
+
+
 
 /*Default Classes*/
 

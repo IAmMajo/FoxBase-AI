@@ -1,8 +1,32 @@
-<script setup lang="ts">
+<script setup>
 import { SunIcon } from "@heroicons/vue/24/outline";
 
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
+
+onMounted(() => {
+  const toggleBtn = document.getElementById("toggle-button");
+  const root = document.documentElement; // Das <html>-Tag
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      // Prüfen, ob der Dark Mode aktiv ist
+      const isDarkMode = root.classList.contains("dark");
+
+      if (isDarkMode) {
+        root.classList.remove("dark");
+        root.classList.add("light");
+        console.log("Switched to Light Mode");
+      } else {
+        root.classList.remove("light");
+        root.classList.add("dark");
+        console.log("Switched to Dark Mode");
+      }
+    });
+  } else {
+    console.error("Button not found!");
+  }
+});
 </script>
 
 <template>
@@ -22,12 +46,16 @@ const spanHeadingText = "AI";
 
     <div class="flex jc-ai-center gap z-2">
       <SearchbarSmallComponent />
+
+
       <!--Light / Dark Button-->
-      <div class="light-dark-switch flex jc-ai-center z-2">
+      <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
         <div class="nav-icon-container flex jc-ai-center">
           <SunIcon />
         </div>
       </div>
+
+
     </div>
   </nav>
 </template>
