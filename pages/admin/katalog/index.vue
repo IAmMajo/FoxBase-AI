@@ -127,26 +127,19 @@ loadCatalogs();
 
 <template>
   <div>
-    <h2>Catalog</h2>
+    <h2>Katalog</h2>
     <div>
-      <h3>Current Collections</h3>
-      <!-- PrimeVue DataTable -->
-      <DataTable :value="catalogs" striped-rows table-style="min-width: 50rem">
-        <Column field="collection_name" header="Name" />
-        <Column field="collection_description" header="Description" />
-        <Column field="collection_creator" header="Creator" />
-      </DataTable>
-    </div>
-    <div>
+      <h3>Aktuelle Collections</h3>
+      <div class="flex gap">
       <Button
-        label="New Collection"
-        class="p-button"
+        label="Neue Collection"
+        style="border: 1px solid transparent;" class="upload-button button"
         @click="handleOpenNewCollection"
       />
       <!-- Dialog for new collection -->
       <Dialog
         v-model:visible="dialogVisible"
-        header="Create new collection"
+        header="Neue Collection erstellen"
         style="width: 30vw"
         modal
         :draggable="false"
@@ -157,34 +150,34 @@ loadCatalogs();
             <InputText id="name" v-model="newCatalog.name" />
           </div>
           <div class="field flex flex-column">
-            <label for="description">Description</label>
+            <label for="description">Beschreibung</label>
             <InputText id="description" v-model="newCatalog.description" />
           </div>
         </div>
         <div class="p-dialog-footer">
           <div v-if="infoTextNew">{{ infoTextNew }}</div>
           <Button
-            label="Cancel"
-            class="p-button-text"
+            label="Abbrechen"
+            style="border: 1px solid transparent;" class="upload-button button"
             @click="dialogVisible = false"
           />
           <Button
-            label="Create"
-            class="p-button-primary"
+            label="Erstellen"
+            style="border: 1px solid transparent;" class="upload-button button"
             @click="handleNewCollection"
           />
         </div>
       </Dialog>
 
       <Button
-        label="Update Collection"
-        class="p-button"
+        label="Collection aktualisieren"
+        style="border: 1px solid transparent;" class="upload-button button"
         @click="handleOpenUpdateCollection"
       />
       <!-- Dialog for update collection -->
       <Dialog
         v-model:visible="updateVisible"
-        header="Update collection"
+        header="Collection aktualisieren"
         style="width: 30vw"
         modal
         :draggable="false"
@@ -195,11 +188,11 @@ loadCatalogs();
             <InputText id="name" v-model="updateCatalog.name" />
           </div>
           <div class="field flex flex-column">
-            <label for="description">Description</label>
+            <label for="description">Beschreibung</label>
             <InputText id="description" v-model="updateCatalog.description" />
           </div>
         </div>
-        <label for="file-upload" class="upload-button">Upload new CSV</label>
+        <label for="file-upload" class="upload-button">CSV Upload</label>
         <input
           id="file-upload"
           type="file"
@@ -210,13 +203,13 @@ loadCatalogs();
         <div class="p-dialog-footer">
           <div v-if="updateInfoText">{{ updateInfoText }}</div>
           <Button
-            label="Cancel"
-            class="p-button-text"
+            label="Abbrechen"
+            style="border: 1px solid transparent;" class="upload-button button"
             @click="updateVisible = false"
           />
           <Button
             label="Update"
-            class="p-button-primary"
+            style="border: 1px solid transparent;" class="upload-button button"
             @click="updateCollection"
           />
         </div>
@@ -256,12 +249,21 @@ loadCatalogs();
         </div>
       </Dialog>
     </div>
+      <!-- PrimeVue DataTable -->
+      <DataTable :value="catalogs" striped-rows table-style="min-width: 50rem">
+        <Column field="collection_name" header="Name" />
+        <Column field="collection_description" header="Description" />
+        <Column field="collection_creator" header="Creator" />
+      </DataTable>
+    </div>
+    
   </div>
 </template>
 
 <style scoped>
+
 .delete-button {
-  background-color: rgb(162, 9, 9);
+  background-color: rgba(243, 96, 96, 1);
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
@@ -269,10 +271,12 @@ loadCatalogs();
   cursor: pointer;
   text-align: center;
   display: inline-block;
-  border: 1px rgb(116, 52, 6);
+  border: 1px solid rgba(243, 96, 96, 1);
 }
 
 .delete-button:hover {
-  background-color: rgb(111, 7, 7);
+  background-color: rgba(243, 96, 96, 0.5);
+  color: rgba(243, 96, 96, 1);
+  border: 1px solid rgba(243, 96, 96, 1);
 }
 </style>

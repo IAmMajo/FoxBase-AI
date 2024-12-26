@@ -130,7 +130,7 @@ const deletePrompt = async () => {
             outlined
             rounded
             severity="danger"
-            class="delete-button"
+            class="delete-button flex jc-ai-center"
             @click="confirmDeletePrompt(slotProps.data)"
           />
         </template>
@@ -139,7 +139,7 @@ const deletePrompt = async () => {
 
     <Dialog
       v-model:visible="deletePromptDialog"
-      :style="{ width: '450px' }"
+      :style="{ width: '450px'}"
       header="Bestätigung"
       :modal="true"
     >
