@@ -5,7 +5,6 @@ defineProps<{
   query: string;
 }>();
 defineEmits(["searchInput", "searchSubmit"]);
-
 </script>
 
 <template>
