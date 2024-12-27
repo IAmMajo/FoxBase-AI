@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-function toggleDarkMode() {
-  document.documentElement.classList.toggle("my-app-dark");
-}
+
 </script>
 
 <template>

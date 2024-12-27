@@ -1,33 +1,12 @@
 <script lang="ts" setup>
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
-import type { MenuItem } from "primevue/menuitem";
 import { ref } from "vue";
 
-const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
 
-const menuProfileItems = ref<MenuItem[]>([
-  {
-    label: "Profil",
-    items: [
-      {
-        label: "Change password",
-        icon: "pi pi-key",
-        route: "/admin/change-password",
-      },
-      {
-        label: "Logout",
-        icon: "pi pi-sign-out",
-        command: async () => {
-          await useUserSession().clear();
-          navigateTo("/admin/login");
-        },
-      },
-    ],
-  },
-]);
+
 
 onMounted(() => {
   if (window.innerWidth < 768) {
