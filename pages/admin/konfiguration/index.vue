@@ -124,7 +124,13 @@ async function onSave() {
           </div>
         </div>
         <div class="flex jc-ai-center w-100 mt">
-          <button style="border: 1px solid transparent;" class="upload-button button bold-text" @click="onSave">Speichern</button>
+          <button
+            style="border: 1px solid transparent"
+            class="upload-button button bold-text"
+            @click="onSave"
+          >
+            Speichern
+          </button>
         </div>
 
         <div class="confirm-container mt">

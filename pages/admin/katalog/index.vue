@@ -131,124 +131,130 @@ loadCatalogs();
     <div>
       <h3>Aktuelle Collections</h3>
       <div class="flex gap">
-      <Button
-        label="Neue Collection"
-        style="border: 1px solid transparent;" class="upload-button button"
-        @click="handleOpenNewCollection"
-      />
-      <!-- Dialog for new collection -->
-      <Dialog
-        v-model:visible="dialogVisible"
-        header="Neue Collection erstellen"
-        style="width: 30vw"
-        modal
-        :draggable="false"
-      >
-        <div class="p-fluid">
-          <div class="field flex flex-column">
-            <label for="name">Name</label>
-            <InputText id="name" v-model="newCatalog.name" />
-          </div>
-          <div class="field flex flex-column">
-            <label for="description">Beschreibung</label>
-            <InputText id="description" v-model="newCatalog.description" />
-          </div>
-        </div>
-        <div class="p-dialog-footer">
-          <div v-if="infoTextNew">{{ infoTextNew }}</div>
-          <Button
-            label="Abbrechen"
-            style="border: 1px solid transparent;" class="upload-button button"
-            @click="dialogVisible = false"
-          />
-          <Button
-            label="Erstellen"
-            style="border: 1px solid transparent;" class="upload-button button"
-            @click="handleNewCollection"
-          />
-        </div>
-      </Dialog>
-
-      <Button
-        label="Collection aktualisieren"
-        style="border: 1px solid transparent;" class="upload-button button"
-        @click="handleOpenUpdateCollection"
-      />
-      <!-- Dialog for update collection -->
-      <Dialog
-        v-model:visible="updateVisible"
-        header="Collection aktualisieren"
-        style="width: 30vw"
-        modal
-        :draggable="false"
-      >
-        <div class="p-fluid">
-          <div class="field flex flex-column">
-            <label for="name">Name</label>
-            <InputText id="name" v-model="updateCatalog.name" />
-          </div>
-          <div class="field flex flex-column">
-            <label for="description">Beschreibung</label>
-            <InputText id="description" v-model="updateCatalog.description" />
-          </div>
-        </div>
-        <label for="file-upload" class="upload-button">CSV Upload</label>
-        <input
-          id="file-upload"
-          type="file"
-          style="display: none"
-          accept=".csv"
-          @change="onFileChange"
+        <Button
+          label="Neue Collection"
+          style="border: 1px solid transparent"
+          class="upload-button button"
+          @click="handleOpenNewCollection"
         />
-        <div class="p-dialog-footer">
-          <div v-if="updateInfoText">{{ updateInfoText }}</div>
-          <Button
-            label="Abbrechen"
-            style="border: 1px solid transparent;" class="upload-button button"
-            @click="updateVisible = false"
-          />
-          <Button
-            label="Update"
-            style="border: 1px solid transparent;" class="upload-button button"
-            @click="updateCollection"
-          />
-        </div>
-      </Dialog>
-
-      <Button
-        label="Delete Collection"
-        class="delete-button"
-        @click="handleOpenDeleteCollection"
-      />
-      <!-- Dialog for delete collection -->
-      <Dialog
-        v-model:visible="deleteVisible"
-        header="Delete collection"
-        style="width: 30vw"
-        modal
-        :draggable="false"
-      >
-        <div class="p-fluid">
-          <div class="field flex flex-column">
-            <label for="name">Name</label>
-            <InputText id="name" v-model="deleteName" />
+        <!-- Dialog for new collection -->
+        <Dialog
+          v-model:visible="dialogVisible"
+          header="Neue Collection erstellen"
+          style="width: 30vw"
+          modal
+          :draggable="false"
+        >
+          <div class="p-fluid">
+            <div class="field flex flex-column">
+              <label for="name">Name</label>
+              <InputText id="name" v-model="newCatalog.name" />
+            </div>
+            <div class="field flex flex-column">
+              <label for="description">Beschreibung</label>
+              <InputText id="description" v-model="newCatalog.description" />
+            </div>
           </div>
-        </div>
-        <div class="p-dialog-footer">
-          <div v-if="deleteInfoText">{{ deleteInfoText }}</div>
-          <Button
-            label="Cancel"
-            class="p-button-text"
-            @click="deleteVisible = false"
+          <div class="p-dialog-footer">
+            <div v-if="infoTextNew">{{ infoTextNew }}</div>
+            <Button
+              label="Abbrechen"
+              style="border: 1px solid transparent"
+              class="upload-button button"
+              @click="dialogVisible = false"
+            />
+            <Button
+              label="Erstellen"
+              style="border: 1px solid transparent"
+              class="upload-button button"
+              @click="handleNewCollection"
+            />
+          </div>
+        </Dialog>
+
+        <Button
+          label="Collection aktualisieren"
+          style="border: 1px solid transparent"
+          class="upload-button button"
+          @click="handleOpenUpdateCollection"
+        />
+        <!-- Dialog for update collection -->
+        <Dialog
+          v-model:visible="updateVisible"
+          header="Collection aktualisieren"
+          style="width: 30vw"
+          modal
+          :draggable="false"
+        >
+          <div class="p-fluid">
+            <div class="field flex flex-column">
+              <label for="name">Name</label>
+              <InputText id="name" v-model="updateCatalog.name" />
+            </div>
+            <div class="field flex flex-column">
+              <label for="description">Beschreibung</label>
+              <InputText id="description" v-model="updateCatalog.description" />
+            </div>
+          </div>
+          <label for="file-upload" class="upload-button">CSV Upload</label>
+          <input
+            id="file-upload"
+            type="file"
+            style="display: none"
+            accept=".csv"
+            @change="onFileChange"
           />
-          <Button
-            label="Delete"
-            class="delete-button"
-            @click="deleteCollection"
-          />
-        </div>
-      </Dialog>
-    </div>
+          <div class="p-dialog-footer">
+            <div v-if="updateInfoText">{{ updateInfoText }}</div>
+            <Button
+              label="Abbrechen"
+              style="border: 1px solid transparent"
+              class="upload-button button"
+              @click="updateVisible = false"
+            />
+            <Button
+              label="Update"
+              style="border: 1px solid transparent"
+              class="upload-button button"
+              @click="updateCollection"
+            />
+          </div>
+        </Dialog>
+
+        <Button
+          label="Delete Collection"
+          class="delete-button"
+          @click="handleOpenDeleteCollection"
+        />
+        <!-- Dialog for delete collection -->
+        <Dialog
+          v-model:visible="deleteVisible"
+          header="Delete collection"
+          style="width: 30vw"
+          modal
+          :draggable="false"
+        >
+          <div class="p-fluid">
+            <div class="field flex flex-column">
+              <label for="name">Name</label>
+              <InputText id="name" v-model="deleteName" />
+            </div>
+          </div>
+          <div class="p-dialog-footer">
+            <div v-if="deleteInfoText">{{ deleteInfoText }}</div>
+            <Button
+              label="Cancel"
+              class="p-button-text"
+              @click="deleteVisible = false"
+            />
+            <Button
+              label="Delete"
+              class="delete-button"
+              @click="deleteCollection"
+            />
+          </div>
+        </Dialog>
+      </div>
       <!-- PrimeVue DataTable -->
       <DataTable :value="catalogs" striped-rows table-style="min-width: 50rem">
         <Column field="collection_name" header="Name" />
@@ -256,12 +262,10 @@ loadCatalogs();
         <Column field="collection_creator" header="Creator" />
       </DataTable>
     </div>
-    
   </div>
 </template>
 
 <style scoped>
-
 .delete-button {
   background-color: rgba(243, 96, 96, 1);
   color: white;
