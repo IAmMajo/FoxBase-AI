@@ -9,7 +9,6 @@ const textSecondary = ref(data.value?.colorTextSecondary || "#CBD5E1");
 
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
-
 async function onSave() {
   const success = await patchSettings({
     colorPrimary: primary.value,
