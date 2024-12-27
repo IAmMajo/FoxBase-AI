@@ -139,7 +139,7 @@ const deletePrompt = async () => {
 
     <Dialog
       v-model:visible="deletePromptDialog"
-      :style="{ width: '450px'}"
+      :style="{ width: '450px' }"
       header="Bestätigung"
       :modal="true"
     >

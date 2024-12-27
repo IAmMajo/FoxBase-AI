@@ -162,8 +162,7 @@ onMounted(() => {
 </template>
 
 <style>
-
-.fox-find-logo-admin{
+.fox-find-logo-admin {
   height: 5vh;
   width: 5vh;
 }
