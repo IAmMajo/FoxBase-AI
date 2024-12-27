@@ -3,6 +3,7 @@
 </script>
 
 <template>
+  <div>
   <h1>Hilfe</h1>
   <p>Hier könnten Datenschutz und Impressum unseres Produkts stehen</p>
   <!--
@@ -15,4 +16,5 @@
       </Card>
       
   -->
+  </div>
 </template>
