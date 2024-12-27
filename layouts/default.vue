@@ -1,10 +1,33 @@
 <script lang="ts" setup>
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
+import type { MenuItem } from "primevue/menuitem";
 import { ref } from "vue";
 
+const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
+
+const menuProfileItems = ref<MenuItem[]>([
+  {
+    label: "Profil",
+    items: [
+      {
+        label: "Change password",
+        icon: "pi pi-key",
+        route: "/admin/change-password",
+      },
+      {
+        label: "Logout",
+        icon: "pi pi-sign-out",
+        command: async () => {
+          await useUserSession().clear();
+          navigateTo("/admin/login");
+        },
+      },
+    ],
+  },
+]);
 
 onMounted(() => {
   if (window.innerWidth < 768) {
@@ -81,6 +104,49 @@ onMounted(() => {
               </span>
             </div>
           </div>
+        </div>
+      </template>
+
+      <template #end>
+        <div class="flex align-items-center gap-2">
+          <span
+            class="pi pi-user"
+            aria-haspopup="true"
+            aria-controls="overlay_menu"
+            @click="menuProfile.toggle($event)"
+          />
+          <Menu
+            id="overlay_menu"
+            ref="menuProfile"
+            :model="menuProfileItems"
+            :popup="true"
+          >
+            <template #item="{ item, props }">
+              <NuxtLink
+                v-if="item.route"
+                v-slot="{ href, navigate }"
+                :to="item.route"
+                custom
+              >
+                <Button
+                  v-ripple
+                  class="justify-content-start"
+                  as="a"
+                  link
+                  :href="href"
+                  v-bind="props.action"
+                  @click="navigate"
+                >
+                  <span :class="item.icon" />
+                  <span class="ml-2">{{ item.label }}</span>
+                </Button>
+              </NuxtLink>
+              <Button v-if="!item.route" v-ripple link v-bind="props.action">
+                <span :class="item.icon" />
+                <span class="ml-2">{{ item.label }}</span>
+              </Button>
+            </template>
+          </Menu>
         </div>
       </template>
     </Menubar>
