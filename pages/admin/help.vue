@@ -2,9 +2,9 @@
 
 <template>
   <div>
-  <h1>Hilfe</h1>
-  <p>Hier könnten Datenschutz und Impressum unseres Produkts stehen</p>
-  <!--
+    <h1>Hilfe</h1>
+    <p>Hier könnten Datenschutz und Impressum unseres Produkts stehen</p>
+    <!--
       <Card>
         <template #title>Hilfe</template>
         <template #content>
@@ -13,6 +13,5 @@
         </template>
       </Card>
       
-  -->
-  </div>
+  --></div>
 </template>
