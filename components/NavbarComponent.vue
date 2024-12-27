@@ -3,6 +3,20 @@ import { SunIcon } from "@heroicons/vue/24/outline";
 
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
+
+
+// Search Promptverwaltung
+defineEmits(["searchSubmit"]);
+const { data } = await useFetch<string[]>("/api/prompts");
+
+async function onSearchInput(query: string) {
+  const prompts = await fetchPrompts(query);
+  if (prompts.length) {
+    data.value = prompts;
+  }
+}
+
+
 </script>
 
 <template>
@@ -21,7 +35,11 @@ const spanHeadingText = "AI";
     </div>
 
     <div class="flex jc-ai-center gap z-2">
-      <SearchbarSmallComponent />
+      <SearchbarSmallComponent 
+      @search-input="onSearchInput"
+      @search-submit="(query) => $emit('searchSubmit', query)"
+      />
+
       <!--Light / Dark Button-->
       <div class="light-dark-switch flex jc-ai-center z-2">
         <div class="nav-icon-container flex jc-ai-center">

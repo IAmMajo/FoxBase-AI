@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
+//Scroll Handler
+const scrollToSearchState = () => {
+  const searchStateElement = document.getElementById("searchState");
+  if (searchStateElement) {
+    searchStateElement.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+
+
 defineEmits(["searchInput", "searchSubmit"]);
 
 const query = ref("");
@@ -10,7 +20,7 @@ const query = ref("");
   <form
     class="searchbar-container flex"
     action=""
-    @submit.prevent="$emit('searchSubmit', query)"
+    @submit.prevent="$emit('searchSubmit', query); scrollToSearchState()"
   >
     <input
       v-model="query"
@@ -20,7 +30,7 @@ const query = ref("");
       @input="$emit('searchInput', query)"
     />
     <button type="submit" class="submit-btn flex jc-ai-center">
-      <MagnifyingGlassIcon class="searchbar-icon" />
+        <MagnifyingGlassIcon class="searchbar-icon" />
     </button>
   </form>
 </template>
@@ -59,6 +69,7 @@ const query = ref("");
 .searchbar-icon {
   height: 30px;
   width: 30px;
+  color: var(--dark-text-secondary);
 }
 
 @media (max-width: 1279px) {
