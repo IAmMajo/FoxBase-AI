@@ -21,7 +21,8 @@ const { prompts } = defineProps<{
   overflow: auto;
 }
 .chip {
-  padding: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
   border-radius: var(--border-radius-full);
   white-space: nowrap;
 }
