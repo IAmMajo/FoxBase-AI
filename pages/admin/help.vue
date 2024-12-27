@@ -15,5 +15,6 @@ function toggleDarkMode() {
           <div><Button label="Toggle Dark Mode" @click="toggleDarkMode()" /></div>
         </template>
       </Card>
+      
   -->
 </template>
