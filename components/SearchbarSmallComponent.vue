@@ -1,33 +1,27 @@
-<script setup>
+<script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-// Searchprompt Set Up
+const { query } = defineProps<{
+  query: string;
+}>();
 defineEmits(["searchInput", "searchSubmit"]);
-const query = ref("");
 
-// Front-End JavaScript
-onMounted(() => {
-  // Erfassen von IDs
-  const inputContainerSm = document.getElementById("search-input-navsmall");
-  const searchButtonSm = document.getElementById("search-btn-sm");
-  let searchNavSmallBool = false;
+let collapsed = true;
 
-  // Klick Eventlistener für den Searchbutton
-  searchButtonSm.addEventListener("click", function (event) {
-    event.preventDefault();
-    //Basierend auf SearchBool wird dann das Input Feld ein- oder ausgefahren
-    if (!searchNavSmallBool) {
-      inputContainerSm.style.width = "15vw";
-      inputContainerSm.style.borderBottom =
-        "1.5px solid var(--dark-text-secondary)";
-      searchNavSmallBool = true;
-    } else {
-      inputContainerSm.style.width = "0vw";
-      inputContainerSm.style.borderBottom = "none";
-      searchNavSmallBool = false;
-    }
-  });
-});
+const width = ref("0vw");
+const borderBottom = ref("none");
+
+function onClick(event: MouseEvent) {
+  collapsed = !collapsed;
+  if (collapsed) {
+    width.value = "0vw";
+    borderBottom.value = "none";
+    return;
+  }
+  event.preventDefault();
+  width.value = "15vw";
+  borderBottom.value = "1.5px solid var(--dark-text-secondary)";
+}
 </script>
 
 <template>
@@ -35,20 +29,22 @@ onMounted(() => {
     id="search-container-sm"
     action=""
     class="flex"
-    @submit.prevent="$emit('searchSubmit', query)"
+    @submit.prevent="$emit('searchSubmit')"
   >
     <input
       id="search-input-navsmall"
-      v-model="query"
       class="search-input-sm"
+      :style="{ width, borderBottom }"
       type="text"
       placeholder="Suche..."
-      @input="$emit('searchInput', query)"
+      :value="query"
+      @input="$emit('searchInput', $event)"
     />
     <button
       id="search-btn-sm"
       type="submit"
       class="submit-btn-sm flex jc-ai-center"
+      @click="onClick"
     >
       <MagnifyingGlassIcon class="searchbar-icon-sm" />
     </button>

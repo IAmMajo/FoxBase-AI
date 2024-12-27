@@ -5,7 +5,7 @@ const { prompts } = defineProps<{
 </script>
 
 <template>
-  <div class="prompt-suggestions flex gap">
+  <div v-if="prompts.length" class="prompt-suggestions flex gap">
     <p
       v-for="(prompt, index) in prompts"
       :key="index"
