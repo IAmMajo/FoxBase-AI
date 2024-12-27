@@ -6,8 +6,6 @@ import { ref } from "vue";
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
 
-
-
 onMounted(() => {
   if (window.innerWidth < 768) {
     menuMain.value = false;
