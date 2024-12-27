@@ -1,33 +1,10 @@
 <script lang="ts" setup>
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
-import type { MenuItem } from "primevue/menuitem";
 import { ref } from "vue";
 
-const menuProfile = ref();
 const menuMain = ref(false);
 const menuMainMobile = ref(false);
-
-const menuProfileItems = ref<MenuItem[]>([
-  {
-    label: "Profil",
-    items: [
-      {
-        label: "Change password",
-        icon: "pi pi-key",
-        route: "/admin/change-password",
-      },
-      {
-        label: "Logout",
-        icon: "pi pi-sign-out",
-        command: async () => {
-          await useUserSession().clear();
-          navigateTo("/admin/login");
-        },
-      },
-    ],
-  },
-]);
 
 onMounted(() => {
   if (window.innerWidth < 768) {
@@ -54,6 +31,7 @@ onMounted(() => {
           <div class="flex flex-row gap">
             <div class="flex jc-ai-center">
               <Button
+                class="flex jc-ai-center"
                 icon="pi pi-bars"
                 severity="secondary"
                 aria-label="Bookmark"
@@ -63,12 +41,12 @@ onMounted(() => {
             </div>
             <div class="w-15rem flex align-items-center">
               <img
-                class="fox-find-logo"
+                class="fox-find-logo-admin"
                 src="./../assets/FoxFindLogo.svg"
                 alt="fox logo"
                 width="20"
-                heigt="30"
-                viewBox="0 0 20 30"
+                heigt="20"
+                viewBox="0 0 20 20"
               />
               <span class="font-semibold text-2xl text-primary">
                 FoxBase AI
@@ -105,49 +83,6 @@ onMounted(() => {
           </div>
         </div>
       </template>
-
-      <template #end>
-        <div class="flex align-items-center gap-2">
-          <span
-            class="pi pi-user"
-            aria-haspopup="true"
-            aria-controls="overlay_menu"
-            @click="menuProfile.toggle($event)"
-          />
-          <Menu
-            id="overlay_menu"
-            ref="menuProfile"
-            :model="menuProfileItems"
-            :popup="true"
-          >
-            <template #item="{ item, props }">
-              <NuxtLink
-                v-if="item.route"
-                v-slot="{ href, navigate }"
-                :to="item.route"
-                custom
-              >
-                <Button
-                  v-ripple
-                  class="justify-content-start"
-                  as="a"
-                  link
-                  :href="href"
-                  v-bind="props.action"
-                  @click="navigate"
-                >
-                  <span :class="item.icon" />
-                  <span class="ml-2">{{ item.label }}</span>
-                </Button>
-              </NuxtLink>
-              <Button v-if="!item.route" v-ripple link v-bind="props.action">
-                <span :class="item.icon" />
-                <span class="ml-2">{{ item.label }}</span>
-              </Button>
-            </template>
-          </Menu>
-        </div>
-      </template>
     </Menubar>
 
     <Sidebar
@@ -169,7 +104,7 @@ onMounted(() => {
           >
             <span class="inline-flex align-items-center gap-2">
               <img
-                class="fox-find-logo"
+                class="fox-find-logo-admin"
                 src="./../assets/FoxFindLogo.svg"
                 alt="fox logo"
                 width="35"
@@ -204,6 +139,10 @@ onMounted(() => {
 </template>
 
 <style>
+.fox-find-logo-admin {
+  height: 5vh;
+  width: 5vh;
+}
 html {
   font-size: 14px;
 }
