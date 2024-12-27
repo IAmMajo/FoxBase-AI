@@ -9,8 +9,6 @@ const scrollToSearchState = () => {
   }
 };
 
-
-
 defineEmits(["searchInput", "searchSubmit"]);
 
 const query = ref("");
@@ -20,7 +18,10 @@ const query = ref("");
   <form
     class="searchbar-container flex"
     action=""
-    @submit.prevent="$emit('searchSubmit', query); scrollToSearchState()"
+    @submit.prevent="
+      $emit('searchSubmit', query);
+      scrollToSearchState();
+    "
   >
     <input
       v-model="query"
@@ -30,7 +31,7 @@ const query = ref("");
       @input="$emit('searchInput', query)"
     />
     <button type="submit" class="submit-btn flex jc-ai-center">
-        <MagnifyingGlassIcon class="searchbar-icon" />
+      <MagnifyingGlassIcon class="searchbar-icon" />
     </button>
   </form>
 </template>
