@@ -28,6 +28,13 @@ function onArrowDownClicked() {
     // api call
   }
 }
+
+// Funktion, um das Label basierend auf dem Produkt-Score zu bestimmen
+function getLabel(score: number): string {
+  if (score > 0.8) return "Best";
+  if (score > 0.5) return "Better";
+  return "Good";
+}
 </script>
 
 <template>
@@ -66,9 +73,15 @@ function onArrowDownClicked() {
         </div>
       </div>
       <div class="info-card flex flex-column gap">
-        <p class="title bold-sm-text dark-heading no-spacing">
-          {{ product.name }}
-        </p>
+        <div class="flex jc-start-ai-center gap">
+          <p class="title bold-sm-text dark-heading no-spacing">
+            {{ product.name }}
+          </p>
+
+          <label class="label-result" for="">{{
+            getLabel(product.score)
+          }}</label>
+        </div>
 
         <div class="flex flex-column gapSmall">
           <div class="category-attributes flex">

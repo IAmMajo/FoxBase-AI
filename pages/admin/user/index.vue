@@ -53,7 +53,12 @@ function addUser() {
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <label for="file-upload" class="upload-button">Neue CSV hochladen</label>
+      <label
+        for="file-upload"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        >Neue CSV hochladen</label
+      >
       <input
         id="file-upload"
         type="file"
@@ -63,7 +68,8 @@ function addUser() {
       />
       <Button
         label="Neuen Benutzer hinzufügen"
-        class="p-button"
+        style="border: 1px solid transparent"
+        class="upload-button button"
         @click="dialogVisible = true"
       />
     </div>
