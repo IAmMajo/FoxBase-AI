@@ -174,6 +174,23 @@ html.light :root {
   gap: 8px;
 }
 
+.label-result{
+  background-color: var(--dark-primary);
+  color: var(--dark-text-primary);
+  padding: 6px 16px;
+  font-size: 16px;
+  border-radius: 1000px;
+}
+
+html.light .label-result{
+  background-color: var(--light-primary);
+  color: var(--dark-text-primary);
+  padding: 6px 16px;
+  font-size: 16px;
+  border-radius: 1000px;
+}
+
+
 /*////////////////////////////////////////*/
 
 .vertical-line {
