@@ -68,6 +68,16 @@ async function onSearchInput(query: string) {
   background-color: #00000038;
 }
 
+html.light .darkening-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #e0e0e038;
+}
+
 .bg {
   height: 100%;
   width: 100%;
@@ -90,6 +100,17 @@ async function onSearchInput(query: string) {
   transition: 50ms;
 }
 
+html.light .waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: var(--light-primary);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 50ms;
+}
+
 .waves::before,
 .waves::after {
   content: "";
@@ -106,8 +127,19 @@ async function onSearchInput(query: string) {
   background: var(--dark-bg-secondary);
   animation: waves 45s linear infinite;
 }
+
+html.light .waves::before {
+  background: var(--light-bg-secondary);
+  animation: waves 45s linear infinite;
+}
+
 .waves::after {
   background: #0210254b;
+  animation: waves 75s linear infinite;
+}
+
+html.light .waves::after {
+  background: #ffffff;
   animation: waves 75s linear infinite;
 }
 
