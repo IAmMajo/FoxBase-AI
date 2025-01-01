@@ -150,6 +150,13 @@ function onArrowDownClicked() {
   --padding-result-card: 4vh 0;
 }
 
+html.light :root {
+  --color-line: color-mix(in srgb, var(--light-bg-search), transparent 30%);
+  --result-card-width: 50vw;
+  --result-card-height: 22vh;
+  --padding-result-card: 4vh 0;
+}
+
 .gapSmall {
   gap: 8px;
 }
@@ -159,6 +166,11 @@ function onArrowDownClicked() {
 .vertical-line {
   height: auto;
   border-right: 1.5px solid var(--dark-bg-search);
+}
+
+html.light .vertical-line{
+  height: auto;
+  border-right: 1.5px solid var(--light-bg-search);
 }
 
 .horizontal-line {
@@ -172,6 +184,14 @@ function onArrowDownClicked() {
   margin: 5px;
   border-radius: var(--border-radius-full);
   background-color: var(--dark-primary);
+}
+
+html.light .dot {
+  aspect-ratio: 1 / 1;
+  height: 10px; 
+  margin: 5px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--light-primary);
 }
 
 .line-mobile {

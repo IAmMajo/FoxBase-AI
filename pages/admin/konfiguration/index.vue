@@ -4,35 +4,38 @@ const { data } = await useFetch<Record<string, string>>("/api/settings");
 
 
 // Dark Mode Constants
-const primary = ref(data.value?.colorPrimary || "#00DC82");
-const backgroundSecondary = ref(
-  data.value?.colorBackgroundSecondary || "#0F1F31",
-);
-const textPrimary = ref(data.value?.colorTextPrimary || "#FFFFFF");
-const textSecondary = ref(data.value?.colorTextSecondary || "#CBD5E1");
+const primary = ref(hslToHex(data.value?.colorPrimary) || "#00DC82");
+const backgroundSecondary = ref(hslToHex(data.value?.colorBackgroundSecondary) || "#0F1F31");
+const textPrimary = ref(hslToHex(data.value?.colorTextPrimary) || "#FFFFFF");
+const textSecondary = ref(hslToHex(data.value?.colorTextSecondary) || "#CBD5E1");
+
 
 // Light Mode Constants
-const lightPrimary = ref(getLightModeColor(primary.value) || "#8deeac");
-const lightBackgroundSecondary = ref(getLightModeColor(backgroundSecondary.value) || "#f4f9fe");
-const lightTextPrimary = ref(getLightModeColor(textPrimary.value) || "#0f172a");
-const lightTextSecondary = ref(getLightModeColor(textSecondary.value) || "#0f172a");
+const lightPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorPrimary)));
+const lightBackground = ref(hslToHex(generateComplementaryColor(data.value?.colorBackgroundSecondary)));
+const lightTextPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextPrimary)));
+const lightTextSecondary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)));
 
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
 async function onSave() {
   const success = await patchSettings({
-    colorPrimary: primary.value,
-    colorBackgroundSecondary: backgroundSecondary.value,
-    colorTextPrimary: textPrimary.value,
-    colorTextSecondary: textSecondary.value,
-    colorLightPrimary: lightPrimary.value,
-    colorLightBackgroundSecondary: lightBackgroundSecondary.value,
-    colorLightTextPrimary: lightTextPrimary.value,
-    colorLightTextSecondary: lightTextSecondary.value
+
+    // Dark Mode Colors
+    colorPrimary: hexToHsl(primary.value),
+    colorBackgroundSecondary: hexToHsl(backgroundSecondary.value),
+    colorTextPrimary: hexToHsl(textPrimary.value),
+    colorTextSecondary: hexToHsl(textSecondary.value),
+
+    // Light Mode Colors
+    colorLightPrimary: hexToHsl(lightPrimary.value),
+    colorLightBackground: hexToHsl(lightBackground.value),
+    colorLightTextPrimary: hexToHsl(lightTextPrimary.value),
+    colorlightTextSecondary: hexToHsl(lightTextSecondary.value)
   });
 
   saveStatus.value = success ? "sucess" : "error";
-
+  
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
@@ -127,7 +130,7 @@ async function onSave() {
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textPrimary" v-model="textPrimary" type="color" />
+            <input id="textPrimary" v-model="textPrimary" type="color"/>
             <label for="textPrimary">Überschriften</label>
           </div>
 
@@ -136,28 +139,26 @@ async function onSave() {
             <label for="textSecondary">Texte</label>
           </div>
 
-          <!--Light Mode Palette-->
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="primary" v-model="lightPrimary" type="color" disabled/>
-            <label for="primary">Primary (Light)</label>
+            <input id="textSecondary" v-model="lightPrimary" type="color"/>
+            <label for="textSecondary">Light Primary</label>
           </div>
+
           <div class="flex flex-column jc-ai-center color-field">
-            <input
-              id="backgroundSecondary"
-              v-model="lightBackgroundSecondary"
-              type="color"
-              disabled
-            />
-            <label for="backgroundSecondary">Hintergrund (Light)</label>
+            <input id="textSecondary" v-model="lightBackground" type="color"/>
+            <label for="textSecondary">Light Background</label>
           </div>
+
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textPrimary" v-model="lightTextPrimary" type="color" disabled/>
-            <label for="textPrimary">Überschriften (Light)</label>
+            <input id="textSecondary" v-model="lightTextPrimary" type="color"/>
+            <label for="textSecondary">Light Überschriften</label>
           </div>
+
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightTextSecondary" type="color" disabled/>
-            <label for="textSecondary">Texte (Light)</label>
+            <input id="textSecondary" v-model="lightTextSecondary" type="color"/>
+            <label for="textSecondary">Light Text</label>
           </div>
+       
         </div>
         <div class="flex jc-ai-center w-100 mt">
           <button class="p-button bold-text" @click="onSave">Speichern</button>

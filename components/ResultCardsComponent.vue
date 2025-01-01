@@ -81,6 +81,11 @@ defineProps<{
   background-color: var(--dark-bg-secondary);
 }
 
+html.light .result-container{
+  background-color: var(--light-bg-secondary);
+
+}
+
 @media (max-width: 480px) {
   .result-container {
     padding-top: 20px;
