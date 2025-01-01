@@ -45,7 +45,10 @@ onMounted(() => {
     </div>
 
     <div class="flex jc-ai-center gap z-2">
-      <SearchbarSmallComponent />
+
+      <!--
+        <SearchbarSmallComponent />
+      -->
 
       <!--Light / Dark Button-->
       <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
