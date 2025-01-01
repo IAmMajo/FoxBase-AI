@@ -17,4 +17,20 @@ export default defineNuxtPlugin(async () => {
     "--dark-text-secondary",
     data.value?.colorTextSecondary || null,
   );
+  documentStyle.setProperty(
+    "--light-primary",
+    data.value?.colorLightPrimary || null,
+  );
+  documentStyle.setProperty(
+    "--light-bg-secondary",
+    data.value?.colorLightBackground || null,
+  );
+  documentStyle.setProperty(
+    "--light-text-primary",
+    data.value?.colorLightTextPrimary || null,
+  );
+  documentStyle.setProperty(
+    "--light-text-secondary",
+    data.value?.colorLightTextSecondary || null,
+  );
 });
