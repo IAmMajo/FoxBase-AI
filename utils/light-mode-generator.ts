@@ -1,119 +1,131 @@
+export function hexToHsl(hex: string): string {
 
-export function rgbToHsl(r: number, g: number, b: number): { h: number, s: number, l: number } {
-  r /= 255;
-  g /= 255;
-  b /= 255;
+  // Konvertieren des Hexstrings zu RGB Werten
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
 
+  // Den Farbkanal mit dem höchsten Wert speichern (max)
+  // Den Farbkanal mit dem geringsten Wert speichern (min)
+  // Das Delta der beiden Werte um H und S zu ermitteln
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const delta = max - min;
 
+  // Errechnen von H mittels delta und den erfassten rgb Werten
   let h = 0;
-  let s = 0;
-  let l = (max + min) / 2;
-
   if (delta !== 0) {
     if (max === r) {
-      h = (g - b) / delta;
+      h = ((g - b) / delta + (g < b ? 6 : 0)) % 6;
     } else if (max === g) {
       h = (b - r) / delta + 2;
     } else {
       h = (r - g) / delta + 4;
     }
-    s = delta / (1 - Math.abs(2 * l - 1));
+    h = Math.round(h * 60);
   }
 
-  h = (h * 60) % 360;
-  if (h < 0) h += 360;
+  // Errechnen von L
+  const l = (max + min) / 2;
 
-  s = isNaN(s) ? 0 : s;
+  // Errechnen von S
+  const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
-  return { h, s, l };
+  const result = `hsl(${h}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+  return result;
 }
-export function hslToRgb(h: number, s: number, l: number): { r: number, g: number, b: number } {
-  h /= 360;
-  s /= 100;
-  l /= 100;
+
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+export function hslToHex(hsl: string | undefined): string {
+
+  // HSL in der Form "hsl(h, s%, l%)"
+  const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
+
+  if (!match) {
+      throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
+  }
+
+  const [h, s, l] = match.slice(1).map(Number);
+
+  const saturation = s / 100;
+  const lightness = l / 100;
+
+  const c = (1 - Math.abs(2 * lightness - 1)) * saturation;
+  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+  const m = lightness - c / 2;
 
   let r = 0, g = 0, b = 0;
 
-  if (s === 0) {
-    r = g = b = l; // achromatic
-  } else {
-    const hue2rgb = (p: number, q: number, t: number) => {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 3) return q;
-      if (t < 1 / 2) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    };
-
-    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    const p = 2 * l - q;
-
-    r = hue2rgb(p, q, h + 1 / 3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1 / 3);
+  if (h >= 0 && h < 60) {
+      r = c; g = x; b = 0;
+  } else if (h >= 60 && h < 120) {
+      r = x; g = c; b = 0;
+  } else if (h >= 120 && h < 180) {
+      r = 0; g = c; b = x;
+  } else if (h >= 180 && h < 240) {
+      r = 0; g = x; b = c;
+  } else if (h >= 240 && h < 300) {
+      r = x; g = 0; b = c;
+  } else if (h >= 300 && h < 360) {
+      r = c; g = 0; b = x;
   }
 
-  return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+
+  
+  const result = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`
+  console.log ("Neue Light HEX Wert: " + result)
+  return result;
 }
 
-export function getLightModeColor(color: string): string {
-  const rgb = hexToRgb(color);
-  const { h, s, l } = rgbToHsl(rgb.r, rgb.g, rgb.b);
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
-  let newH = h; // Farbton bleibt gleich
-  let newL = l;
-  let newS = s;
+// Komplementäre Farbpalette generieren
+export function generateComplementaryColor(color:string | undefined) {
 
-  if (l <= 0.2) {
-    // Sehr dunkle Farben: Aufhellung forcieren
-    newL = Math.min(l + 0.5, 0.9); // Starke Aufhellung
-    newS = Math.max(s, 0.5); // Sättigung erhöhen, um lebendige Farben zu erzeugen
-    newH = (h < 30 || h > 330) ? 210 : h; // Farbton Richtung Blau verschieben, falls zu nah an Rot
-  } else if (l > 0.2 && l <= 0.5) {
-    // Mittel-dunkle Farben: Moderate Aufhellung
-    newL = Math.min(l + 0.3, 0.85);
-    newS = Math.max(s, 0.4); // Sättigung sichern
-  } else if (l > 0.5) {
-    // Helle Farben: Leichte Änderungen
-    newL = Math.min(l + 0.2, 1.0);
-    newS = Math.max(s, 0.6); // Kräftigere Farben
+  // Sicherheitscheck, ob eine Farbe im HSL Format übergeben wurde
+  const match = color?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
+  if (!match) {
+      throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
   }
 
-  // Textfarben (nahe Schwarz oder Weiß)
-  if (s <= 0.1) {
-    if (l < 0.1) {
-      // Fast Schwarz → Helles Grau
-      newL = 0.85;
-      newS = 0;
-    } else if (l > 0.9) {
-      // Fast Weiß → Mittleres Grau
-      newL = 0.15;
-      newS = 0;
+  // In die Bestandteile aufteilen
+  const [h, s, l] = match.slice(1).map(Number);
+
+  // Initialisieren eines Vergleichswerts für die Abfrage danach
+  let compare; // Wenn l <= 50, dann 50 | Wenn l > 50, dann 100
+  let result; // Resultat initialisieren
+
+
+  // Wenn l kleiner / gleich 50 ist, dann geht die Farbe Richtung schwarz
+  if(l <= 50){
+    compare = 50;
+    result = Math.abs(l - compare);
+    result = result + compare;
+  } 
+  // Wenn l größer als 50 ist, geht die Farbe Richtung weiß
+  else if (l > 50){
+    compare = 100;
+    result = Math.abs(l - compare);
+    result = result + 25 // Helle Farben etwas heller machen
+
+    //Wenn die Helligkeit dadurch über 100 steigt, dann muss diese gecappt werden
+    if (result > 100) {
+      result = 100
     }
-  }
+    }
 
-  const { r, g, b } = hslToRgb(newH, newS * 100, newL * 100);
-  return rgbToHex(r, g, b);
-}
+  //Neuen L Wert in HSL einsortieren einsortieren
+  const newHSL = `hsl(${h}, ${s}%, ${result}%)`
+  console.log("Neuer Light HSL Wert: " + newHSL);
 
-
-
-
-
-function hexToRgb(hex: string): { r: number, g: number, b: number } {
-  const match = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!match) throw new Error("Invalid hex color format");
-  return {
-    r: parseInt(match[1], 16),
-    g: parseInt(match[2], 16),
-    b: parseInt(match[3], 16),
-  };
-}
-
-function rgbToHex(r: number, g: number, b: number): string {
-  return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1).toUpperCase()}`;
+  // Ergebnis ausgeben
+  return newHSL;
 }
