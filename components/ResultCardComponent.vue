@@ -168,7 +168,7 @@ html.light :root {
   border-right: 1.5px solid var(--dark-bg-search);
 }
 
-html.light .vertical-line{
+html.light .vertical-line {
   height: auto;
   border-right: 1.5px solid var(--light-bg-search);
 }
@@ -188,7 +188,7 @@ html.light .vertical-line{
 
 html.light .dot {
   aspect-ratio: 1 / 1;
-  height: 10px; 
+  height: 10px;
   margin: 5px;
   border-radius: var(--border-radius-full);
   background-color: var(--light-primary);

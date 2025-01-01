@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 const { data } = await useFetch<Record<string, string>>("/api/settings");
-
 
 // Dark Mode Constants
 const primary = ref(hslToHex(data.value?.colorPrimary) || "#00DC82");
-const backgroundSecondary = ref(hslToHex(data.value?.colorBackgroundSecondary) || "#0F1F31");
+const backgroundSecondary = ref(
+  hslToHex(data.value?.colorBackgroundSecondary) || "#0F1F31",
+);
 const textPrimary = ref(hslToHex(data.value?.colorTextPrimary) || "#FFFFFF");
-const textSecondary = ref(hslToHex(data.value?.colorTextSecondary) || "#CBD5E1");
-
+const textSecondary = ref(
+  hslToHex(data.value?.colorTextSecondary) || "#CBD5E1",
+);
 
 // Light Mode Constants
-const lightPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorPrimary)));
-const lightBackground = ref(hslToHex(generateComplementaryColor(data.value?.colorBackgroundSecondary)));
-const lightTextPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextPrimary)));
-const lightTextSecondary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)));
+const lightPrimary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorPrimary)),
+);
+const lightBackground = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorBackgroundSecondary)),
+);
+const lightTextPrimary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorTextPrimary)),
+);
+const lightTextSecondary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)),
+);
 
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
 async function onSave() {
   const success = await patchSettings({
-
     // Dark Mode Colors
     colorPrimary: hexToHsl(primary.value),
     colorBackgroundSecondary: hexToHsl(backgroundSecondary.value),
@@ -31,11 +40,11 @@ async function onSave() {
     colorLightPrimary: hexToHsl(lightPrimary.value),
     colorLightBackground: hexToHsl(lightBackground.value),
     colorLightTextPrimary: hexToHsl(lightTextPrimary.value),
-    colorlightTextSecondary: hexToHsl(lightTextSecondary.value)
+    colorlightTextSecondary: hexToHsl(lightTextSecondary.value),
   });
 
   saveStatus.value = success ? "sucess" : "error";
-  
+
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
@@ -130,7 +139,7 @@ async function onSave() {
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textPrimary" v-model="textPrimary" type="color"/>
+            <input id="textPrimary" v-model="textPrimary" type="color" />
             <label for="textPrimary">Überschriften</label>
           </div>
 
@@ -140,25 +149,28 @@ async function onSave() {
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightPrimary" type="color"/>
+            <input id="textSecondary" v-model="lightPrimary" type="color" />
             <label for="textSecondary">Light Primary</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightBackground" type="color"/>
+            <input id="textSecondary" v-model="lightBackground" type="color" />
             <label for="textSecondary">Light Background</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightTextPrimary" type="color"/>
+            <input id="textSecondary" v-model="lightTextPrimary" type="color" />
             <label for="textSecondary">Light Überschriften</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightTextSecondary" type="color"/>
+            <input
+              id="textSecondary"
+              v-model="lightTextSecondary"
+              type="color"
+            />
             <label for="textSecondary">Light Text</label>
           </div>
-       
         </div>
         <div class="flex jc-ai-center w-100 mt">
           <button class="p-button bold-text" @click="onSave">Speichern</button>

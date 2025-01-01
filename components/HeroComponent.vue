@@ -68,7 +68,7 @@ async function onSearchInput(query: string) {
   background-color: #00000038;
 }
 
-html.light .darkening-layer{
+html.light .darkening-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -100,7 +100,7 @@ html.light .darkening-layer{
   transition: 50ms;
 }
 
-html.light .waves{
+html.light .waves {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -128,7 +128,7 @@ html.light .waves{
   animation: waves 45s linear infinite;
 }
 
-html.light .waves::before{
+html.light .waves::before {
   background: var(--light-bg-secondary);
   animation: waves 45s linear infinite;
 }
@@ -138,7 +138,7 @@ html.light .waves::before{
   animation: waves 75s linear infinite;
 }
 
-html.light .waves::after{
+html.light .waves::after {
   background: #ffffff;
   animation: waves 75s linear infinite;
 }

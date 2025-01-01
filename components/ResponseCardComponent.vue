@@ -30,8 +30,6 @@ html.light .response-box {
   border-radius: var(--border-radius-default);
 }
 
-
-
 .shade-layer {
   background-color: var(--dark-primary);
   opacity: 5%;
@@ -49,7 +47,7 @@ html.light .shade-layer {
   background-color: var(--dark-bg-secondary);
 }
 
-html.light .response-container{
+html.light .response-container {
   height: auto;
   min-height: 12vh;
   padding: 5vh;
@@ -64,8 +62,7 @@ html.light .response-header {
   background-color: var(--light-bg-secondary);
 }
 
-
-.color-response-card{
+.color-response-card {
   color: var(--dark-text-secondary);
 }
 
