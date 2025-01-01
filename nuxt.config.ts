@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: "de", class: 'dark'},
+      htmlAttrs: { lang: "de", class: "dark" },
       title: "Foxbase AI",
     },
   },

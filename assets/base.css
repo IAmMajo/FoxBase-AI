@@ -22,7 +22,6 @@ html {
 }
 
 :root {
-
   /********************/
   /*Colors Dark Mode***/
   /********************/
@@ -66,25 +65,24 @@ html {
 }
 
 :root.light {
-/********************/
-/*Colors Light Mode**/
-/********************/
+  /********************/
+  /*Colors Light Mode**/
+  /********************/
 
-/**Primary Colors**/
---light-primary: hsl(146, 68%, 75%);
---light-primary-hover: hsl(158, 100%, 38%);
+  /**Primary Colors**/
+  --light-primary: hsl(146, 68%, 75%);
+  --light-primary-hover: hsl(158, 100%, 38%);
 
-/**Background Colors**/
---light-bg-primary: hsl(0, 0%, 100%);
---light-bg-secondary: hsl(210, 75%, 97%);
---light-bg-tertiary: hsl(0, 0%, 100%);
---light-bg-search: hsl(206, 18%, 75%);
+  /**Background Colors**/
+  --light-bg-primary: hsl(0, 0%, 100%);
+  --light-bg-secondary: hsl(210, 75%, 97%);
+  --light-bg-tertiary: hsl(0, 0%, 100%);
+  --light-bg-search: hsl(206, 18%, 75%);
 
-
-/**Text Colors**/
---light-text-primary: hsl(213, 71%, 13%);
---light-text-secondary: hsl(214, 27%, 34%);
---light-text-tertiary: hsl(158, 100%, 38%);
+  /**Text Colors**/
+  --light-text-primary: hsl(213, 71%, 13%);
+  --light-text-secondary: hsl(214, 27%, 34%);
+  --light-text-tertiary: hsl(158, 100%, 38%);
 
   /*Font Sizes */
   --fs-header: 5.5rem;
@@ -221,7 +219,7 @@ html {
   background-color: rgba(0, 0, 0, 0.137);
 }
 
-html.light .darkening-layer-secondary{
+html.light .darkening-layer-secondary {
   background-color: rgba(255, 255, 255, 0.589);
 }
 
@@ -289,7 +287,7 @@ ol {
   color: var(--dark-text-primary);
 }
 
-html.light .dark-heading{
+html.light .dark-heading {
   color: var(--light-text-primary);
 }
 
@@ -297,7 +295,7 @@ html.light .dark-heading{
   color: var(--dark-text-primary);
 }
 
-html.light .dark-subheading{
+html.light .dark-subheading {
   color: var(--light-text-primary);
 }
 
@@ -305,7 +303,7 @@ html.light .dark-subheading{
   color: var(--dark-text-secondary);
 }
 
-html.light .dark-bottomtext{
+html.light .dark-bottomtext {
   color: var(--light-text-secondary);
 }
 
@@ -313,7 +311,7 @@ html.light .dark-bottomtext{
   color: var(--dark-primary);
 }
 
-html.light .dark-highlight{
+html.light .dark-highlight {
   color: var(--light-primary);
 }
 
@@ -321,7 +319,7 @@ html.light .dark-highlight{
   background-color: var(--dark-bg-secondary);
 }
 
-html.light .bg-secondary{
+html.light .bg-secondary {
   background-color: var(--light-bg-secondary);
 }
 
@@ -347,7 +345,7 @@ footer {
   background-color: var(--dark-bg-secondary);
 }
 
-html.light footer{
+html.light footer {
   overflow: hidden;
   height: 60vh;
   background-color: var(--light-bg-secondary);

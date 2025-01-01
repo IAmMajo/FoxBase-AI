@@ -10,7 +10,6 @@ onMounted(() => {
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-
       // Prüfen, ob der Dark Mode aktiv ist
       const isDarkMode = root.classList.contains("dark");
 
@@ -26,7 +25,7 @@ onMounted(() => {
     });
   } else {
     console.error("Button not found!");
-  };
+  }
 });
 </script>
 
@@ -48,15 +47,12 @@ onMounted(() => {
     <div class="flex jc-ai-center gap z-2">
       <SearchbarSmallComponent />
 
-
       <!--Light / Dark Button-->
       <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
         <div class="nav-icon-container flex jc-ai-center">
           <SunIcon />
         </div>
       </div>
-
-
     </div>
   </nav>
 </template>
@@ -132,34 +128,34 @@ nav {
   width: calc(var(--fs-h3) - 0.8rem);
 }
 
-  /*******************************/
-  /* Light Mode */
-  /*******************************/
+/*******************************/
+/* Light Mode */
+/*******************************/
 
-  html.light nav {
+html.light nav {
   background-color: var(--light-bg-secondary);
   height: var(--navbar-height);
   width: 100%;
-  }
+}
 
-  html.light .light-dark-switch {
-    margin-right: var(--gap);
-    background-color: var(--light-bg-secondary);
-    height: 4vh;
-    width: 4vh;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--box-shadow);
-  }
+html.light .light-dark-switch {
+  margin-right: var(--gap);
+  background-color: var(--light-bg-secondary);
+  height: 4vh;
+  width: 4vh;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow);
+}
 
-  html.light .nav-icon-container {
-    height: 90%;
-    width: 90%;
-    color: var(--light-primary);
-    transform: rotate(0deg);
-    transition: 1.4s ease transform;
-  }
+html.light .nav-icon-container {
+  height: 90%;
+  width: 90%;
+  color: var(--light-primary);
+  transform: rotate(0deg);
+  transition: 1.4s ease transform;
+}
 
-  html.light .nav-thumb {
+html.light .nav-thumb {
   background: var(--light-primary);
   border-radius: var(--border-radius-full);
 
@@ -167,6 +163,4 @@ nav {
   height: calc(var(--fs-h3) - 0.8rem);
   width: calc(var(--fs-h3) - 0.8rem);
 }
-
-
 </style>
