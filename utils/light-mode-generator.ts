@@ -46,7 +46,7 @@ export function hslToHex(hsl: string | undefined): string {
     return noLightColors; 
   }
 
-  const [h, s, l] = match?.slice(1).map(Number);
+  const [h, s, l] = match.slice(1).map(Number);
 
   const saturation = s / 100;
   const lightness = l / 100;
