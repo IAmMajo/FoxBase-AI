@@ -41,12 +41,12 @@ export function hexToHsl(hex: string): string {
 export function hslToHex(hsl: string | undefined): string {
   // HSL in der Form "hsl(h, s%, l%)"
   const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
-
+  const noLightColors = "hsl(0, 100%, 100%)";
   if (!match) {
-    throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
+    return noLightColors; 
   }
 
-  const [h, s, l] = match.slice(1).map(Number);
+  const [h, s, l] = match?.slice(1).map(Number);
 
   const saturation = s / 100;
   const lightness = l / 100;
