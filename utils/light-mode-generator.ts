@@ -41,7 +41,7 @@ export function hexToHsl(hex: string): string {
 export function hslToHex(hsl: string | undefined): string {
   // HSL in der Form "hsl(h, s%, l%)"
   const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
-  const noLightColors = "hsl(0, 100%, 100%)";
+  const noLightColors = "#FFFFFF";
   if (!match) {
     return noLightColors;
   }
@@ -102,8 +102,9 @@ export function hslToHex(hsl: string | undefined): string {
 export function generateComplementaryColor(color: string | undefined) {
   // Sicherheitscheck, ob eine Farbe im HSL Format übergeben wurde
   const match = color?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
+  const noLightColor = "hsl(0, 100%, 100%)";
   if (!match) {
-    throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
+    return noLightColor;
   }
 
   // In die Bestandteile aufteilen
