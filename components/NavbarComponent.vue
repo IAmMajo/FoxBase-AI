@@ -45,7 +45,6 @@ onMounted(() => {
     </div>
 
     <div class="flex jc-ai-center gap z-2">
-
       <!--
         <SearchbarSmallComponent />
       -->
