@@ -43,7 +43,7 @@ export function hslToHex(hsl: string | undefined): string {
   const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
   const noLightColors = "hsl(0, 100%, 100%)";
   if (!match) {
-    return noLightColors; 
+    return noLightColors;
   }
 
   const [h, s, l] = match.slice(1).map(Number);
