@@ -1,8 +1,6 @@
 <script setup>
 import { SunIcon } from "@heroicons/vue/24/outline";
 
-
-
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
 

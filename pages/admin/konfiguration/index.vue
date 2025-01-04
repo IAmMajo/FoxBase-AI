@@ -28,9 +28,8 @@ const lightTextSecondary = ref(
 
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 
-let checkState = ref(data.value?.showPaletteSwitch);
-let stringCheckState = stringToBoolean(checkState);
-
+const checkState = ref(data.value?.showPaletteSwitch);
+const stringCheckState = stringToBoolean(checkState);
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
@@ -50,8 +49,7 @@ async function onSave() {
     colorlightTextSecondary: hexToHsl(lightTextSecondary.value),
 
     // Check, ob der Button im FE angezeigt werden soll
-    showPaletteSwitch: boolToString(stringCheckState)
-
+    showPaletteSwitch: boolToString(stringCheckState),
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -60,7 +58,6 @@ async function onSave() {
     saveStatus.value = null;
   }, 3000);
 }
-
 </script>
 
 <template>
@@ -180,14 +177,18 @@ async function onSave() {
 
           <div class="full-width checkbox-container">
             <div class="flex gap jc-start-ai-center">
-              <input name="Lightmode" type="checkbox" v-model="stringCheckState">
+              <input
+                v-model="stringCheckState"
+                name="Lightmode"
+                type="checkbox"
+              />
               <label for="Lightmode">Wechselbutton</label>
             </div>
-            <p>Wird diese Funktion aktiviert, haben die User die Möglichkeit
-              über die Navbar die Farbpalette zu wechseln.
+            <p>
+              Wird diese Funktion aktiviert, haben die User die Möglichkeit über
+              die Navbar die Farbpalette zu wechseln.
             </p>
           </div>
-
         </div>
         <div class="flex jc-ai-center w-100 mt">
           <button
@@ -228,8 +229,7 @@ async function onSave() {
 </template>
 
 <style>
-
-input[type="checkbox"]{
+input[type="checkbox"] {
   width: 20px;
   height: 20px;
 }
@@ -238,7 +238,7 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-.checkbox-container label{
+.checkbox-container label {
   font-size: 18px;
 }
 
