@@ -26,6 +26,13 @@ const lightTextSecondary = ref(
   hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)),
 );
 
+// Checkbox State, um den Button im FE anzuzeigen, oder nicht
+
+let checkState = ref(data.value?.showPaletteSwitch);
+let stringCheckState = stringToBoolean(checkState);
+
+
+// Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
 async function onSave() {
@@ -41,6 +48,10 @@ async function onSave() {
     colorLightBackground: hexToHsl(lightBackground.value),
     colorLightTextPrimary: hexToHsl(lightTextPrimary.value),
     colorlightTextSecondary: hexToHsl(lightTextSecondary.value),
+
+    // Check, ob der Button im FE angezeigt werden soll
+    showPaletteSwitch: boolToString(stringCheckState)
+
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -48,13 +59,8 @@ async function onSave() {
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
-
-  if (success) {
-    console.log("Speichern erfolgreich");
-  } else {
-    console.log("Speichern fehlgeschlagen");
-  }
 }
+
 </script>
 
 <template>
@@ -171,6 +177,17 @@ async function onSave() {
             />
             <label for="textSecondary">Light Text</label>
           </div>
+
+          <div class="full-width checkbox-container">
+            <div class="flex gap jc-start-ai-center">
+              <input name="Lightmode" type="checkbox" v-model="stringCheckState">
+              <label for="Lightmode">Wechselbutton</label>
+            </div>
+            <p>Wird diese Funktion aktiviert, haben die User die Möglichkeit
+              über die Navbar die Farbpalette zu wechseln.
+            </p>
+          </div>
+
         </div>
         <div class="flex jc-ai-center w-100 mt">
           <button
@@ -211,6 +228,20 @@ async function onSave() {
 </template>
 
 <style>
+
+input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+.checkbox-container label{
+  font-size: 18px;
+}
+
 .dot {
   height: 10px;
   width: 10px;

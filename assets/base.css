@@ -357,6 +357,12 @@ img {
 }
 
 /** Value Classes **/
+
+.display-none{
+  height: 0px;
+  width: 0px;
+}
+
 .no-spacing {
   margin: 0;
   padding: 0;
@@ -372,6 +378,9 @@ img {
   width: 100%;
 }
 
+.full-width{
+  width: 100%;
+}
 .half-width {
   height: 100%;
   width: 50%;

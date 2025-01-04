@@ -1,8 +1,20 @@
+
+
 export default defineNuxtPlugin(async () => {
   const { data } = await useFetch<Record<string, string>>("/api/settings");
   if (!import.meta.client) {
     return;
   }
+
+  // Light / Dark Mode Switch anzeigen
+  const toggleBtn = document.getElementById("toggle-button")
+  const navState = data.value?.showPaletteSwitch;
+
+  if(navState == "false"){
+    toggleBtn?.classList.add("display-none");
+    toggleBtn?.classList.remove("light-dark-switch");
+  }
+
   const documentStyle = document.documentElement.style;
   documentStyle.setProperty("--dark-primary", data.value?.colorPrimary || null);
   documentStyle.setProperty(
