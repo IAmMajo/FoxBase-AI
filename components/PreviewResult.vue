@@ -1,27 +1,20 @@
 <script>
-    export default {
-        props: {
-            primaryColor: {
-                type: "string",
-                required: false
-            },
-            textColor:{
-                type: "string",
-                required: false
-            }
-            
-        }
-    }
+export default {
+  props: {
+    primaryColor: {
+      type: string,
+      required: false,
+    },
+    textColor: {
+      type: string,
+      required: false,
+    },
+  },
+};
 </script>
 
 <template>
-    <div>
-        PreviewCOntainer
-    </div>
+  <div>PreviewCOntainer</div>
 </template>
 
-
-<style>
-
-
-</style>
+<style></style>
