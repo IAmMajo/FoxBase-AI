@@ -14,7 +14,7 @@ export default defineNuxtPlugin(async () => {
     toggleBtn?.classList.remove("light-dark-switch");
   }
 
-  if(navState == "true") {
+  if (navState == "true") {
     console.log("Nav State = true");
     toggleBtn?.classList.remove("display-none");
     toggleBtn?.classList.add("light-dark-switch");
