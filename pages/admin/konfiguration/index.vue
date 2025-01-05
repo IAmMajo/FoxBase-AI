@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { ref } from "vue";
 const { data } = await useFetch<Record<string, string>>("/api/settings");
 
@@ -69,8 +70,14 @@ async function onSave() {
     </p>
 
     <h3>Preview</h3>
+    <div>
+      <PreviewContainer/> 
 
+    </div>
     <div class="flex gap">
+
+      
+
       <div
         class="preview-container flex flex-column jc-start-ai-center relative z-1"
         :style="{ backgroundColor: backgroundSecondary }"
@@ -284,7 +291,7 @@ input[type="checkbox"]:hover {
   width: 100%;
 }
 
-.nav-preview-content-container {
+.nav-preview-content-container{
   flex-grow: 1;
   text-align: center;
 }
