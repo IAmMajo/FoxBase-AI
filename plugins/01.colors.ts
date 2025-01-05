@@ -9,8 +9,15 @@ export default defineNuxtPlugin(async () => {
   const navState = data.value?.showPaletteSwitch;
 
   if (navState == "false") {
+    console.log("Nav State = false");
     toggleBtn?.classList.add("display-none");
     toggleBtn?.classList.remove("light-dark-switch");
+  }
+
+  if(navState == "true") {
+    console.log("Nav State = true");
+    toggleBtn?.classList.remove("display-none");
+    toggleBtn?.classList.add("light-dark-switch");
   }
 
   const documentStyle = document.documentElement.style;
