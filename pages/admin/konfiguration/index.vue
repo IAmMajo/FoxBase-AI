@@ -139,6 +139,7 @@ async function onSave() {
               v-model="backgroundSecondary"
               type="color"
             />
+            
             <label for="backgroundSecondary">Hintergrund</label>
           </div>
 
