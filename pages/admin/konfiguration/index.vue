@@ -28,7 +28,7 @@ const lightTextSecondary = ref(
 
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 const checkState = ref(data.value?.showPaletteSwitch);
-let stringCheckState = stringToBoolean(checkState);
+const stringCheckState = stringToBoolean(checkState);
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
