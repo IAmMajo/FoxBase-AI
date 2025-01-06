@@ -28,7 +28,7 @@ const lightTextSecondary = ref(
 
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 const checkState = ref(data.value?.showPaletteSwitch);
-const stringCheckState = stringToBoolean(checkState);
+let stringCheckState = stringToBoolean(checkState);
 console.log("CheckState " + checkState.value);
 console.log("StringCheckState " + stringCheckState);
 
@@ -50,7 +50,7 @@ async function onSave() {
     colorlightTextSecondary: hexToHsl(lightTextSecondary.value),
 
     // Check, ob der Button im FE angezeigt werden soll
-    showPaletteSwitch: boolToString(stringCheckState),
+    showPaletteSwitch: boolToString(stringCheckState)
   });
 
   saveStatus.value = success ? "sucess" : "error";
