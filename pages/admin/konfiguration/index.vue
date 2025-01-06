@@ -28,7 +28,7 @@ const lightTextSecondary = ref(
 
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 const checkState = ref(data.value?.showPaletteSwitch);
-const stringCheckState = stringToBoolean(checkState);
+let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 console.log("CheckState " + checkState.value);
 console.log("StringCheckState " + stringCheckState);
 
