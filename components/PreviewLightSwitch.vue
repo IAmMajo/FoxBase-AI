@@ -1,19 +1,12 @@
 <script>
-export default {
-  props: {
-    ButtonBgColor: {
-      type: string,
-      required: false,
-    },
-  },
-};
+
 </script>
 
 <template>
   <button class="flex jc-ai-center">
     <div class="preview-icon-container relative flex jc-ai-center">
       <div class="darkening-layer-secondary absolute full-size-percent"></div>
-      <i :style="{ color: textColor || 'white' }" class="pi pi-sun"></i>
+      <i :style="{ color: 'white' }" class="pi pi-sun"></i>
     </div>
   </button>
 </template>

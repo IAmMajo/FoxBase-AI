@@ -1,20 +1,5 @@
 <script>
-export default {
-  props: {
-    primaryColor: {
-      type: string,
-      required: false,
-    },
-    headingColor: {
-      type: string,
-      required: false,
-    },
-    textColor: {
-      type: string,
-      required: false,
-    },
-  },
-};
+
 </script>
 
 <template>
@@ -36,11 +21,11 @@ export default {
     <div class="flex jc-ai-center gap">
       <button
         class="button-preview rounded"
-        :style="{ backgroundColor: primary }"
+        :style="{ backgroundColor: 'white' }"
       >
         Das ist ein runder Button
       </button>
-      <button class="button-preview" :style="{ backgroundColor: primary }">
+      <button class="button-preview" :style="{ backgroundColor: 'white' }">
         Das ist ein eckiger Button
       </button>
     </div>
