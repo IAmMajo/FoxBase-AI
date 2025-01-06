@@ -28,9 +28,9 @@ const lightTextSecondary = ref(
 
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 const checkState = ref(data.value?.showPaletteSwitch);
-let stringCheckState = stringToBoolean(checkState);
-console.log("CheckState " + checkState)
-console.log("StringCheckState " + stringCheckState)
+const stringCheckState = stringToBoolean(checkState);
+console.log("CheckState " + checkState.value);
+console.log("StringCheckState " + stringCheckState);
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
@@ -141,7 +141,7 @@ async function onSave() {
               v-model="backgroundSecondary"
               type="color"
             />
-            
+
             <label for="backgroundSecondary">Hintergrund</label>
           </div>
 
