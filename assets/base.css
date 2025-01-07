@@ -56,6 +56,7 @@ html {
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
+  --gap-lg: 56px;
 
   /* Shading */
   --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
@@ -214,6 +215,9 @@ html {
 
 .gap {
   gap: var(--gap);
+}
+.gap-lg {
+  gap: var(--gap-lg);
 }
 
 .darkening-layer-secondary {
