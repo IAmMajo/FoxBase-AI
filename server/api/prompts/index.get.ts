@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
   let result: DbResult<Prompt> | null = null;
   if (q) {
     result = await db.sql`
-      SELECT * FROM prompts_fts WHERE prompts_fts MATCH ${q}
+      SELECT * FROM prompts_fts WHERE prompts_fts MATCH ${q} AND text != ${q}
       ORDER BY rank LIMIT ${promptsLimit}
     `;
   } else {

@@ -3,7 +3,7 @@ defineProps<{
   prompts: string[];
   query: string;
 }>();
-defineEmits(["searchInput", "searchSubmit"]);
+defineEmits(["promptClick", "searchInput", "searchSubmit"]);
 
 const headline = "Finden Sie die";
 const headlineSpan = " richtige Lösung";
@@ -33,7 +33,10 @@ const subheadlineSpan = " Fallbeispiel";
       </h1>
 
       <div class="searchbar-wrapper flex flex-column gap">
-        <PromptSuggestionsComponent :prompts="prompts" />
+        <PromptSuggestionsComponent
+          :prompts="prompts"
+          @prompt-click="(event) => $emit('promptClick', event)"
+        />
         <SearchbarComponent
           :query="query"
           @search-input="(event) => $emit('searchInput', event)"

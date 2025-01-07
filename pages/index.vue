@@ -4,16 +4,25 @@ definePageMeta({
 });
 
 const { data: prompts } = await useFetch<string[]>("/api/prompts");
+const filteredPrompts = ref<string[]>(prompts.value ?? []);
 const query = ref("");
 const textResponse = ref("");
 const results = ref<Product[]>([]);
 
-async function onSearchInput(event: InputEvent) {
+function onPromptClick(event: MouseEvent) {	
+  onSearchInput(event);
+  onSearchSubmit();
+}
+
+async function onSearchInput(event: UIEvent) {
   query.value = (event.target as HTMLInputElement).value;
   const newPrompts = await fetchPrompts(query.value);
   if (newPrompts.length) {
     prompts.value = newPrompts;
   }
+  filteredPrompts.value = (prompts.value ?? []).filter(
+    (prompt) => prompt !== query.value,
+  );
 }
 
 async function onSearchSubmit() {
@@ -38,8 +47,9 @@ async function onSearchSubmit() {
       @search-submit="onSearchSubmit"
     />
     <HeroComponent
-      :prompts="prompts ?? []"
+      :prompts="filteredPrompts"
       :query="query"
+      @prompt-click="onPromptClick"
       @search-input="onSearchInput"
       @search-submit="onSearchSubmit"
     />
