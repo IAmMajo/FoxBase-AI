@@ -15,13 +15,24 @@
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "create-migration": "wrangler d1 migrations create DB",
+    "migrate": "wrangler d1 migrations apply DB --local"
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
     "@nuxt/eslint": "^0.6.1",
+    "@primevue/forms": "^4.2.1",
+    "@primevue/nuxt-module": "^4.2.2",
+    "@primevue/themes": "^4.2.2",
+    "aos": "^2.3.4",
+    "chart.js": "^4.4.6",
     "micromark": "^4.0.1",
     "nuxt": "^3.13.2",
+    "nuxt-auth-utils": "^0.5.5",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.2",
     "vue": "latest",
     "vue-router": "latest"
   },
@@ -29,6 +40,7 @@
     "@cloudflare/workers-types": "^4.20241022.0",
     "nitro-cloudflare-dev": "^0.2.1",
     "prettier": "3.3.3",
+    "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3",
     "vue-tsc": "^2.1.10",
     "wrangler": "^3.84.1"

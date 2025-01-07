@@ -26,5 +26,5 @@ export default defineEventHandler(async (event) => {
 
   const json = (await response.json()) as TextResponse;
 
-  return JSON.stringify({ response: micromark(json.response) });
+  return { response: micromark(json.response) };
 });

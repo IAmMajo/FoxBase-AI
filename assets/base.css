@@ -17,52 +17,91 @@ html {
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 :root {
-  /*Colors Light Mode*/
+  /********************/
+  /*Colors Dark Mode***/
+  /********************/
 
   /**Primary Colors**/
-  --light-primary: #8deeac;
-  --light-primary-hover: #00c16a;
+  --dark-primary: hsl(154, 100%, 43%);
+  --dark-primary-hover: hsl(154, 94%, 38%);
 
   /**Background Colors**/
-  --light-bg-primary: #ffffff;
-  --light-bg-secondary: #f4f9fe;
-  --light-bg-tertiary: #ffffff;
+  --dark-bg-primary: hsl(213, 92%, 7%);
+  --dark-bg-secondary: hsl(211, 45%, 12%);
+  --dark-bg-tertiary: hsl(240, 86%, 7%);
+  --dark-bg-search: hsl(210, 9%, 30%);
 
   /**Text Colors**/
-  --light-text-primary: #0f172a;
-  --light-text-secondary: #475569;
-  --light-text-tertiary: #00c16a;
-
-  /*Colors Dark Mode*/
-
-  /**Primary Colors**/
-  --dark-primary: #00dc82;
-  --dark-primary-hover: #07b26d;
-
-  /**Background Colors**/
-  --dark-bg-primary: #021025;
-  --dark-bg-secondary: #0f1f31;
-  --dark-bg-tertiary: #020420;
-  --dark-bg-search: #474d54;
-
-  /**Text Colors**/
-  --dark-text-primary: #ffffff;
-  --dark-text-secondary: #cbd5e1;
-  --dark-text-tertiary: #00dc82;
+  --dark-text-primary: hsl(0, 0%, 100%);
+  --dark-text-secondary: hsl(210, 27%, 83%);
+  --dark-text-tertiary: hsl(154, 100%, 43%);
 
   /*Font Sizes */
   --fs-header: 5.5rem;
   --fs-h1: 4.5rem;
   --fs-h2: 3rem;
   --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
   --fs-paragraph: 1.125rem;
 
   /* Values */
+  --border-radius-sm: 8px;
   --border-radius-default: 12px;
   --border-radius-full: 10000px;
   --gap: 16px;
   --gap-lg: 56px;
+
+  /* Shading */
+  --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
+
+  --navbar-height: 8vh;
+  --logo-size: 6vh;
+  --hero-height: 92vh;
+}
+
+:root.light {
+  /********************/
+  /*Colors Light Mode**/
+  /********************/
+
+  /**Primary Colors**/
+  --light-primary: hsl(146, 68%, 75%);
+  --light-primary-hover: hsl(158, 100%, 38%);
+
+  /**Background Colors**/
+  --light-bg-primary: hsl(0, 0%, 100%);
+  --light-bg-secondary: hsl(210, 75%, 97%);
+  --light-bg-tertiary: hsl(0, 0%, 100%);
+  --light-bg-search: hsl(206, 18%, 75%);
+
+  /**Text Colors**/
+  --light-text-primary: hsl(213, 71%, 13%);
+  --light-text-secondary: hsl(214, 27%, 34%);
+  --light-text-tertiary: hsl(158, 100%, 38%);
+
+  /*Font Sizes */
+  --fs-header: 5.5rem;
+  --fs-h1: 4.5rem;
+  --fs-h2: 3rem;
+  --fs-h3: 2.5rem;
+  --fs-h4: 2rem;
+  --fs-h5: 1.5rem;
+  --fs-paragraph: 1.125rem;
+
+  /* Values */
+  --border-radius-sm: 8px;
+  --border-radius-default: 12px;
+  --border-radius-full: 10000px;
+  --gap: 16px;
+
+  /* Shading */
+  --box-shadow: 0 4px 16px -1px rgba(0, 0, 0, 0.1);
 
   --navbar-height: 8vh;
   --logo-size: 6vh;
@@ -82,6 +121,10 @@ html {
   overflow: hidden;
 }
 
+.mt {
+  margin-top: 22px;
+}
+
 .t-0 {
   top: 0;
 }
@@ -94,6 +137,14 @@ html {
   bottom: 0;
 }
 
+.z-negative-1 {
+  z-index: -1;
+}
+
+.z-negative-2 {
+  z-index: -2;
+}
+
 .z-1 {
   z-index: 1;
 }
@@ -104,6 +155,14 @@ html {
 
 .z-100 {
   z-index: 100;
+}
+
+.px-4 {
+  padding: 0 4vw;
+}
+
+.py-6 {
+  padding: 6vh 0;
 }
 
 /** Debugging Classes **/
@@ -130,9 +189,27 @@ html {
   align-items: center;
 }
 
+.jc-start-ai-center {
+  justify-content: start;
+  align-items: center;
+}
+
 .jc-space-between-ai-center {
   justify-content: space-between;
   align-items: center;
+}
+
+.jc-space-between-ai-start {
+  justify-content: space-between;
+  align-items: start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .gap {
@@ -140,6 +217,14 @@ html {
 }
 .gap-lg {
   gap: var(--gap-lg);
+}
+
+.darkening-layer-secondary {
+  background-color: rgba(0, 0, 0, 0.137);
+}
+
+html.light .darkening-layer-secondary {
+  background-color: rgba(255, 255, 255, 0.589);
 }
 
 /**Font-Sizes**/
@@ -165,37 +250,81 @@ h3 {
   font-size: var(--fs-h3);
 }
 
+h4 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h4);
+}
+
+h5 {
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-h5);
+}
+
 p {
   font-family: "asap", sans-serif;
   font-size: var(--fs-paragraph);
 }
 
-.light-heading {
-  color: var(--light-text-primary);
+label {
+  font-size: 22px;
+  font-family: "asap", sans-serif;
 }
 
-.light-bottomtext {
-  color: var(--light-text-secondary);
+ul {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
 }
 
-.light-highlight {
-  color: var(--light-text-tertiary);
+ol {
+  font-family: "asap", sans-serif;
+  font-size: var(--fs-paragraph);
+}
+
+.bold-text {
+  font-weight: bold;
+}
+.bold-sm-text {
+  font-weight: 600;
 }
 
 .dark-heading {
   color: var(--dark-text-primary);
 }
 
+html.light .dark-heading {
+  color: var(--light-text-primary);
+}
+
 .dark-subheading {
-  color: var(--dark-text-secondary);
+  color: var(--dark-text-primary);
+}
+
+html.light .dark-subheading {
+  color: var(--light-text-primary);
 }
 
 .dark-bottomtext {
   color: var(--dark-text-secondary);
 }
 
+html.light .dark-bottomtext {
+  color: var(--light-text-secondary);
+}
+
 .dark-highlight {
-  color: var(--dark-text-tertiary);
+  color: var(--dark-primary);
+}
+
+html.light .dark-highlight {
+  color: var(--light-primary);
+}
+
+.bg-secondary {
+  background-color: var(--dark-bg-secondary);
+}
+
+html.light .bg-secondary {
+  background-color: var(--light-bg-secondary);
 }
 
 .footer-bottom-container {
@@ -206,27 +335,63 @@ p {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 35%);
 }
 
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
+.br-default {
+  border-radius: var(--border-radius-default);
+}
+
 footer {
   overflow: hidden;
   height: 60vh;
   background-color: var(--dark-bg-secondary);
 }
 
-/*Images*/
+html.light footer {
+  overflow: hidden;
+  height: 60vh;
+  background-color: var(--light-bg-secondary);
+}
 
+/*Images*/
 img {
   border-radius: var(--border-radius-default);
 }
 
 /** Value Classes **/
+
+.display-none {
+  height: 0px;
+  width: 0px;
+}
+
 .no-spacing {
   margin: 0;
   padding: 0;
 }
 
 .full-size {
+  height: 100vh;
+  width: 100vw;
+}
+
+.full-size-percent {
   height: 100%;
   width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+.half-width {
+  height: 100%;
+  width: 50%;
+}
+
+.p-2vw {
+  padding: 2vw;
 }
 
 /* Kleine Desktops */

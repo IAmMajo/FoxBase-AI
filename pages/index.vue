@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "custom",
+});
 const results = ref<Product[]>([]);
 const textResponse = ref("");
 
@@ -14,8 +17,7 @@ async function onSearchSubmit(query: string) {
   <div>
     <NavbarComponent />
     <HeroComponent @search-submit="onSearchSubmit" />
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-if="textResponse" v-html="textResponse" />
+    <ResponseCardComponent v-if="results.length" :text="textResponse" />
     <ResultCardsComponent :products="results" />
     <FooterComponent />
   </div>
