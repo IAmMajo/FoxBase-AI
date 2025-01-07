@@ -41,9 +41,9 @@ export function hexToHsl(hex: string): string {
 export function hslToHex(hsl: string | undefined): string {
   // HSL in der Form "hsl(h, s%, l%)"
   const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
-
+  const noLightColors = "#FFFFFF";
   if (!match) {
-    throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
+    return noLightColors;
   }
 
   const [h, s, l] = match.slice(1).map(Number);
@@ -90,7 +90,6 @@ export function hslToHex(hsl: string | undefined): string {
   b = Math.round((b + m) * 255);
 
   const result = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
-  console.log("Neue Light HEX Wert: " + result);
   return result;
 }
 
@@ -102,8 +101,9 @@ export function hslToHex(hsl: string | undefined): string {
 export function generateComplementaryColor(color: string | undefined) {
   // Sicherheitscheck, ob eine Farbe im HSL Format übergeben wurde
   const match = color?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
+  const noLightColor = "hsl(0, 100%, 100%)";
   if (!match) {
-    throw new Error("Ungültiges HSL-Format. Erwartet: 'hsl(h, s%, l%)'");
+    return noLightColor;
   }
 
   // In die Bestandteile aufteilen
@@ -133,7 +133,6 @@ export function generateComplementaryColor(color: string | undefined) {
 
   //Neuen L Wert in HSL einsortieren einsortieren
   const newHSL = `hsl(${h}, ${s}%, ${result}%)`;
-  console.log("Neuer Light HSL Wert: " + newHSL);
 
   // Ergebnis ausgeben
   return newHSL;

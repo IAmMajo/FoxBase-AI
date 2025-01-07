@@ -21,11 +21,9 @@ onMounted(() => {
       if (isDarkMode) {
         root.classList.remove("dark");
         root.classList.add("light");
-        console.log("Switched to Light Mode"); //Testing
       } else {
         root.classList.remove("light");
         root.classList.add("dark");
-        console.log("Switched to Dark Mode"); //Testing
       }
     });
   } else {
