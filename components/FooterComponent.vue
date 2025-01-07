@@ -100,9 +100,19 @@
         <p>40213 Düsseldorf</p>
       </div>
       <div class="footer-sm flex gap">
-        <a href="#"><i class="pi pi-instagram" /></a>
-        <a href="#"><i class="pi pi-linkedin" /></a>
-        <a href="#"><i class="pi pi-youtube" /></a>
+        <a href="https://www.instagram.com/foxbase_gmbh/" target="_blank"
+          ><i class="pi pi-instagram text-xl"
+        /></a>
+        <a
+          href="https://www.linkedin.com/company/foxbase/?originalSubdomain=de"
+          target="_blank"
+          ><i class="pi pi-linkedin text-xl"
+        /></a>
+        <a
+          href="https://www.youtube.com/@foxbasegmbh4512/videos"
+          target="_blank"
+          ><i class="pi pi-youtube text-xl"
+        /></a>
       </div>
     </div>
 
@@ -174,9 +184,16 @@ footer ul li a:hover {
 }
 
 .footer-sm a {
-  font-size: 26px;
-  color: #0f1f31;
+  color: var(--dark-text-primary);
   text-decoration: none;
+}
+
+html.light .footer-sm a {
+  color: var(--light-text-primary);
+}
+
+.footer a i {
+  font-size: 30px;
 }
 
 .footer-wave {
