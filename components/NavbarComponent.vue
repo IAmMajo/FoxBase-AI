@@ -1,5 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { SunIcon } from "@heroicons/vue/24/outline";
+
+defineProps<{
+  query: string;
+}>();
+defineEmits(["searchInput", "searchSubmit"]);
 
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
@@ -43,9 +48,11 @@ onMounted(() => {
     </div>
 
     <div class="flex jc-ai-center gap z-2">
-      <!--
-        <SearchbarSmallComponent />
-      -->
+      <SearchbarSmallComponent
+        :query="query"
+        @search-input="(event) => $emit('searchInput', event)"
+        @search-submit="$emit('searchSubmit')"
+      />
 
       <!--Light / Dark Button-->
       <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
