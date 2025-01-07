@@ -1,29 +1,50 @@
-<script setup>
+<script setup lang="ts">
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
-onMounted(() => {
-  let searchState = false;
-  const searchSmBtn = document.getElementById("search-btn-sm");
+const { query } = defineProps<{
+  query: string;
+}>();
+defineEmits(["searchInput", "searchSubmit"]);
 
-  searchSmBtn.addEventListener("click", function () {
-    if (searchState) {
-      searchState = false;
-      console.log("Searchstate ist aus");
-    } else {
-      searchState = true;
-      console.log("Searchstate ist an");
-    }
-  });
-});
+let collapsed = true;
+
+const width = ref("0vw");
+const borderBottom = ref("none");
+
+function onClick(event: MouseEvent) {
+  collapsed = !collapsed;
+  if (collapsed) {
+    width.value = "0vw";
+    borderBottom.value = "none";
+    return;
+  }
+  event.preventDefault();
+  width.value = "15vw";
+  borderBottom.value = "1.5px solid var(--dark-text-secondary)";
+}
 </script>
 
 <template>
-  <form action="" class="flex">
-    <input class="search-input-sm" type="text" placeholder="Suche..." />
+  <form
+    id="search-container-sm"
+    action=""
+    class="flex"
+    @submit.prevent="$emit('searchSubmit')"
+  >
+    <input
+      id="search-input-navsmall"
+      class="search-input-sm"
+      :style="{ width, borderBottom }"
+      type="text"
+      placeholder="Suche..."
+      :value="query"
+      @input="$emit('searchInput', $event)"
+    />
     <button
       id="search-btn-sm"
       type="submit"
       class="submit-btn-sm flex jc-ai-center"
+      @click="onClick"
     >
       <MagnifyingGlassIcon class="searchbar-icon-sm" />
     </button>
@@ -31,13 +52,19 @@ onMounted(() => {
 </template>
 
 <style>
+/* Standardzustand vor dem ersten Click auf den Searchbtn */
 .search-input-sm {
-  width: 15vw;
+  color: var(--dark-text-secondary);
+  font-size: 14px;
+  width: 0vw;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--dark-text-secondary);
+  transition: 0.75s ease;
 }
-
+.search-input-sm:focus {
+  outline: none;
+  border-bottom: 1.5px solid var(--dark-text-secondary);
+}
 .submit-btn-sm {
   width: 35px;
   height: 35px;

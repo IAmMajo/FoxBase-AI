@@ -5,7 +5,7 @@ const { prompts } = defineProps<{
 </script>
 
 <template>
-  <div class="prompt-suggestions flex gap">
+  <div v-if="prompts.length" class="prompt-suggestions flex gap">
     <p
       v-for="(prompt, index) in prompts"
       :key="index"
@@ -21,7 +21,8 @@ const { prompts } = defineProps<{
   overflow: auto;
 }
 .chip {
-  padding: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
   border-radius: var(--border-radius-full);
   white-space: nowrap;
 }

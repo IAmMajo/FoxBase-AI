@@ -63,7 +63,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="result-container flex flex-column jc-ai-center gap py-6 relative">
+  <div
+    id="searchState"
+    class="result-container flex flex-column jc-ai-center gap py-6 relative"
+  >
     <div class="darkening-layer-secondary full-size-percent absolute z-0"></div>
     <div class="relative z-1">
       <ResultCardComponent

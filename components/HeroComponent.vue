@@ -1,20 +1,15 @@
 <script setup lang="ts">
-defineEmits(["searchSubmit"]);
-
-const { data } = await useFetch<string[]>("/api/prompts");
+defineProps<{
+  prompts: string[];
+  query: string;
+}>();
+defineEmits(["searchInput", "searchSubmit"]);
 
 const headline = "Finden Sie die";
 const headlineSpan = " richtige Lösung";
 
 const subheadline = "Für Ihr";
 const subheadlineSpan = " Fallbeispiel";
-
-async function onSearchInput(query: string) {
-  const prompts = await fetchPrompts(query);
-  if (prompts.length) {
-    data.value = prompts;
-  }
-}
 </script>
 
 <template>
@@ -38,10 +33,11 @@ async function onSearchInput(query: string) {
       </h1>
 
       <div class="searchbar-wrapper flex flex-column gap">
-        <PromptSuggestionsComponent v-if="data" :prompts="data" />
+        <PromptSuggestionsComponent :prompts="prompts" />
         <SearchbarComponent
-          @search-input="onSearchInput"
-          @search-submit="(query) => $emit('searchSubmit', query)"
+          :query="query"
+          @search-input="(event) => $emit('searchInput', event)"
+          @search-submit="$emit('searchSubmit')"
         />
       </div>
     </div>
