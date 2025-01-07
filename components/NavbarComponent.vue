@@ -9,17 +9,6 @@ defineEmits(["searchInput", "searchSubmit"]);
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
 
-// Search Promptverwaltung
-defineEmits(["searchSubmit"]);
-const { data } = await useFetch<string[]>("/api/prompts");
-
-async function onSearchInput(query: string) {
-  const prompts = await fetchPrompts(query);
-  if (prompts.length) {
-    data.value = prompts;
-  }
-}
-
 onMounted(() => {
   const toggleBtn = document.getElementById("toggle-button");
   const root = document.documentElement; // Das <html>-Tag
@@ -63,8 +52,8 @@ onMounted(() => {
     <div class="flex jc-ai-center gap z-2">
       <SearchbarSmallComponent
         :query="query"
-        @search-input="onSearchInput"
-        @search-submit="(query) => $emit('searchSubmit', query)"
+        @search-input="(event) => $emit('searchInput', event)"
+        @search-submit="$emit('searchSubmit')"
       />
 
       <!--Light / Dark Button-->
