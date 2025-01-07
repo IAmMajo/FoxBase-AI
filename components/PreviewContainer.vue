@@ -1,10 +1,8 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div class="preview-container-redesign relative">
-    <PreviewNavbar/>
+    <PreviewNavbar />
     <PreviewContent />
     <PreviewResult />
   </div>

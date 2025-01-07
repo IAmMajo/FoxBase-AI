@@ -1,6 +1,4 @@
-<script>
-
-</script>
+<script></script>
 
 <template>
   <nav class="relative flex t-0">
@@ -10,8 +8,8 @@
       <div>
         <div style="padding-left: 2vh" class="flex">
           <!-- Verwende die Props direkt im Template  -->
-          <h5 :style="{ color:'black' }">FoxSearch</h5>
-          <h5 :style="{ color:'black' }">AI</h5>
+          <h5 :style="{ color: 'black' }">FoxSearch</h5>
+          <h5 :style="{ color: 'black' }">AI</h5>
         </div>
       </div>
       <div style="padding-right: 2vh">
