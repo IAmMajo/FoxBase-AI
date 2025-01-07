@@ -193,7 +193,7 @@ html {
   align-items: center;
 }
 
-.jc-center-ai-start{
+.jc-center-ai-start {
   justify-content: center;
   align-items: start;
 }
@@ -225,7 +225,7 @@ html {
   gap: var(--gap);
 }
 
-.gap-sm{
+.gap-sm {
   gap: var(--gap-sm);
 }
 

@@ -30,11 +30,6 @@ const lightTextSecondary = ref(
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
-
-
-
-
-
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
@@ -74,14 +69,13 @@ async function onSave() {
 
     <h3>Preview</h3>
     <div class="flex jc-center-ai-start gap">
-  
-        <PreviewContainer 
-          :Primary="primary"
-          :Background="backgroundSecondary"
-          :Text="textPrimary"
-          :TextSecondary="textSecondary"
-          :buttonState = "stringCheckState"
-        />
+      <PreviewContainer
+        :Primary="primary"
+        :Background="backgroundSecondary"
+        :Text="textPrimary"
+        :TextSecondary="textSecondary"
+        :button-state="stringCheckState"
+      />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
         <h5>Farbpalette</h5>

@@ -1,17 +1,14 @@
 <script setup lang="ts">
-
 defineProps<{
   primaryColor: string;
   textColor: string;
   backgroundColor: string;
 }>();
-
-
 </script>
 
 <template>
   <div
-    :style = "{backgroundColor: backgroundColor}"
+    :style="{ backgroundColor: backgroundColor }"
     class="redesign-nav-preview-content-container flex flex-column jc-ai-center"
   >
     <h1 class="mb-0" :style="{ color: textColor }">
@@ -21,10 +18,7 @@ defineProps<{
       Das ist die <span :style="{ color: primaryColor }">Subline</span>
     </h2>
 
-
-    <PreviewSearchbar class="mb-5"/>
-
-    
+    <PreviewSearchbar class="mb-5" />
   </div>
 </template>
 

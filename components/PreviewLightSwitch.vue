@@ -3,20 +3,20 @@ defineProps<{
   primaryColor: string;
   navState: boolean | undefined;
 }>();
-
 </script>
 
 <template>
   <div>
-    <div v-if=navState >
+    <div v-if="navState">
       <button class="flex jc-ai-center">
         <div class="preview-icon-container relative flex jc-ai-center">
-          <div class="darkening-layer-secondary absolute full-size-percent"></div>
+          <div
+            class="darkening-layer-secondary absolute full-size-percent"
+          ></div>
           <i :style="{ color: primaryColor || 'white' }" class="pi pi-sun"></i>
         </div>
       </button>
     </div>
-
   </div>
 </template>
 

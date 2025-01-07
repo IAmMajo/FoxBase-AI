@@ -1,22 +1,49 @@
 <script setup lang="ts">
-  defineProps<{
+defineProps<{
   Primary: string;
   Background: string;
   Text: string;
   TextSecondary: string;
   buttonState: boolean | undefined;
 }>();
-
 </script>
 
 <template>
   <div class="preview-container-redesign relative">
-    <PreviewNavbar :navState = buttonState :backgroundColor = "Background" :textColor = "TextSecondary" :primaryColor = "Primary"/>
-    <PreviewContent :backgroundColor = "Background" :textColor = "Text" :primaryColor = "Primary"/>
-    <PreviewResponse :backgroundColor = "Background" :textColor = "Text" :primaryColor ="Primary"/>
-    <PreviewResult :textColor = "Text" :primaryColor="Primary" :textSecondaryColor="TextSecondary" :backgroundColor="Background"/>
-    <PreviewResult :textColor = "Text" :primaryColor="Primary" :textSecondaryColor="TextSecondary" :backgroundColor="Background"/>
-    <PreviewResult :textColor = "Text" :primaryColor="Primary" :textSecondaryColor="TextSecondary" :backgroundColor="Background"/>
+    <PreviewNavbar
+      :nav-state="buttonState"
+      :background-color="Background"
+      :text-color="TextSecondary"
+      :primary-color="Primary"
+    />
+    <PreviewContent
+      :background-color="Background"
+      :text-color="Text"
+      :primary-color="Primary"
+    />
+    <PreviewResponse
+      :background-color="Background"
+      :text-color="Text"
+      :primary-color="Primary"
+    />
+    <PreviewResult
+      :text-color="Text"
+      :primary-color="Primary"
+      :text-secondary-color="TextSecondary"
+      :background-color="Background"
+    />
+    <PreviewResult
+      :text-color="Text"
+      :primary-color="Primary"
+      :text-secondary-color="TextSecondary"
+      :background-color="Background"
+    />
+    <PreviewResult
+      :text-color="Text"
+      :primary-color="Primary"
+      :text-secondary-color="TextSecondary"
+      :background-color="Background"
+    />
   </div>
 </template>
 
