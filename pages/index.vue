@@ -9,7 +9,7 @@ const query = ref("");
 const textResponse = ref("");
 const results = ref<Product[]>([]);
 
-function onPromptClick(event: MouseEvent) {	
+function onPromptClick(event: MouseEvent) {
   onSearchInput(event);
   onSearchSubmit();
 }
