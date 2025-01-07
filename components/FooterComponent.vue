@@ -16,7 +16,7 @@
       <path
         d="M431.904 119.439C214.695 154.421 227.265 80.4591 0 102.948V0H1437V36.5C1396.27 23.5066 1344.5 26.5 1302.25 53.4728C1234.03 97.0274 1017.16 102.948 961.352 90.454C905.541 77.9604 805.987 32.9832 690.343 67.9654C574.699 102.948 649.114 84.457 431.904 119.439Z"
         fill="var(--dark-primary)"
-        />
+      />
     </svg>
 
     <!-- dunkel-Foreground -->
@@ -30,7 +30,7 @@
     >
       <path
         d="M386.5 97.0713C324 59.2172 263 20.9884 0 0V226H1433C1433 226 1161 183.648 1134 177.652C1107 171.655 886.5 97.0713 694 115.061C568.896 126.753 449 134.925 386.5 97.0713Z"
-        />
+      />
     </svg>
 
     <!-- dunkelBG -->
@@ -125,17 +125,15 @@
 </template>
 
 <style>
-
-.footer-new-heading{
-
+.footer-new-heading {
   font-size: 1.3rem;
 }
 
-.bottom-wave-color{
+.bottom-wave-color {
   fill: var(--dark-bg-primary);
 }
 
-html.light .bottom-wave-color{
+html.light .bottom-wave-color {
   fill: var(--light-bg-primary);
 }
 
@@ -143,7 +141,7 @@ footer {
   color: var(--dark-text-primary);
 }
 
-html.light footer{
+html.light footer {
   color: var(--light-text-primary);
 }
 
@@ -166,7 +164,6 @@ html.light footer ul li a {
   font-family: "Inter", sans-serif;
   font-size: var(--fs-p);
 }
-
 
 footer ul li a:hover {
   color: #adb5bf;
@@ -244,7 +241,7 @@ html.light .footer-bottom-container {
   border-radius: var(--border-radius-default);
 }
 
-html.light .footer-aside-content{
+html.light .footer-aside-content {
   margin: 0 0 70px 20px;
   padding: 14px;
   border: 3px solid var(--light-text-primary);
