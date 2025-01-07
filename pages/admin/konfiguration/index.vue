@@ -29,8 +29,11 @@ const lightTextSecondary = ref(
 // Checkbox State, um den Button im FE anzuzeigen, oder nicht
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
-console.log("CheckState " + checkState.value);
-console.log("StringCheckState " + stringCheckState);
+
+
+
+
+
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
@@ -70,62 +73,15 @@ async function onSave() {
     </p>
 
     <h3>Preview</h3>
-    <div>
-      <PreviewContainer />
-    </div>
-    <div class="flex gap">
-      <div
-        class="preview-container flex flex-column jc-start-ai-center relative z-1"
-        :style="{ backgroundColor: backgroundSecondary }"
-      >
-        <nav class="relative flex jc-space-between-ai-center relative t-0">
-          <div
-            class="darkening-layer-secondary absolute full-size-percent"
-          ></div>
-
-          <div>
-            <div style="padding-left: 2vh" class="flex">
-              <h5 :style="{ color: textPrimary }">FoxSearch</h5>
-              <h5 :style="{ color: primary }">AI</h5>
-            </div>
-          </div>
-          <button
-            class="flex jc-ai-center"
-            :style="{ backgroundColor: primary, height: '50%' }"
-          >
-            <p>Test</p>
-          </button>
-        </nav>
-
-        <div
-          class="nav-preview-content-container flex flex-column jc-ai-center"
-        >
-          <h2 :style="{ color: textPrimary }">Das ist der Titel</h2>
-          <p :style="{ color: textSecondary }">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
-            sequi eligendi modi minus veritatis quasi. Est veniam at laborum,
-            excepturi eum natus dolorum velit repudiandae. Laudantium quas
-            provident ab facilis quos culpa, impedit deleniti atque cupiditate
-            eos iure, totam officia reprehenderit vitae sint odio quis qui aut
-            pariatur consequatur placeat consequuntur, harum facere inventore.
-            Ullam nihil unde corrupti quidem quo.
-          </p>
-          <div class="flex jc-ai-center gap">
-            <button
-              class="button-preview rounded"
-              :style="{ backgroundColor: primary }"
-            >
-              Das ist ein runder Button
-            </button>
-            <button
-              class="button-preview"
-              :style="{ backgroundColor: primary }"
-            >
-              Das ist ein eckiger Button
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="flex jc-center-ai-start gap">
+  
+        <PreviewContainer 
+          :Primary="primary"
+          :Background="backgroundSecondary"
+          :Text="textPrimary"
+          :TextSecondary="textSecondary"
+          :buttonState = "stringCheckState"
+        />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
         <h5>Farbpalette</h5>

@@ -1,12 +1,23 @@
-<script></script>
+<script setup lang="ts">
+defineProps<{
+  primaryColor: string;
+  navState: boolean | undefined;
+}>();
+
+</script>
 
 <template>
-  <button class="flex jc-ai-center">
-    <div class="preview-icon-container relative flex jc-ai-center">
-      <div class="darkening-layer-secondary absolute full-size-percent"></div>
-      <i :style="{ color: 'white' }" class="pi pi-sun"></i>
+  <div>
+    <div v-if=navState >
+      <button class="flex jc-ai-center">
+        <div class="preview-icon-container relative flex jc-ai-center">
+          <div class="darkening-layer-secondary absolute full-size-percent"></div>
+          <i :style="{ color: primaryColor || 'white' }" class="pi pi-sun"></i>
+        </div>
+      </button>
     </div>
-  </button>
+
+  </div>
 </template>
 
 <style>
@@ -17,6 +28,8 @@
   font-weight: 500;
   cursor: pointer;
   background: none;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow);
 }
 
 .preview-icon-container {
