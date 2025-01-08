@@ -1,20 +1,15 @@
 <script setup lang="ts">
-defineEmits(["searchSubmit"]);
-
-const { data } = await useFetch<string[]>("/api/prompts");
+defineProps<{
+  prompts: string[];
+  query: string;
+}>();
+defineEmits(["promptClick", "searchInput", "searchSubmit"]);
 
 const headline = "Finden Sie die";
 const headlineSpan = " richtige Lösung";
 
 const subheadline = "Für Ihr";
 const subheadlineSpan = " Fallbeispiel";
-
-async function onSearchInput(query: string) {
-  const prompts = await fetchPrompts(query);
-  if (prompts.length) {
-    data.value = prompts;
-  }
-}
 </script>
 
 <template>
@@ -38,10 +33,14 @@ async function onSearchInput(query: string) {
       </h1>
 
       <div class="searchbar-wrapper flex flex-column gap">
-        <PromptSuggestionsComponent v-if="data" :prompts="data" />
+        <PromptSuggestionsComponent
+          :prompts="prompts"
+          @prompt-click="(event) => $emit('promptClick', event)"
+        />
         <SearchbarComponent
-          @search-input="onSearchInput"
-          @search-submit="(query) => $emit('searchSubmit', query)"
+          :query="query"
+          @search-input="(event) => $emit('searchInput', event)"
+          @search-submit="$emit('searchSubmit')"
         />
       </div>
     </div>
@@ -68,6 +67,16 @@ async function onSearchInput(query: string) {
   background-color: #00000038;
 }
 
+html.light .darkening-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #e0e0e038;
+}
+
 .bg {
   height: 100%;
   width: 100%;
@@ -90,6 +99,17 @@ async function onSearchInput(query: string) {
   transition: 50ms;
 }
 
+html.light .waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: var(--light-primary);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 50ms;
+}
+
 .waves::before,
 .waves::after {
   content: "";
@@ -106,8 +126,19 @@ async function onSearchInput(query: string) {
   background: var(--dark-bg-secondary);
   animation: waves 45s linear infinite;
 }
+
+html.light .waves::before {
+  background: var(--light-bg-secondary);
+  animation: waves 45s linear infinite;
+}
+
 .waves::after {
   background: #0210254b;
+  animation: waves 75s linear infinite;
+}
+
+html.light .waves::after {
+  background: #ffffff;
   animation: waves 75s linear infinite;
 }
 

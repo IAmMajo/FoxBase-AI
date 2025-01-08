@@ -28,6 +28,13 @@ function onArrowDownClicked() {
     // api call
   }
 }
+
+// Funktion, um das Label basierend auf dem Produkt-Score zu bestimmen
+function getLabel(score: number): string {
+  if (score > 0.8) return "Best";
+  if (score > 0.5) return "Better";
+  return "Good";
+}
 </script>
 
 <template>
@@ -66,9 +73,15 @@ function onArrowDownClicked() {
         </div>
       </div>
       <div class="info-card flex flex-column gap">
-        <p class="title bold-sm-text dark-heading no-spacing">
-          {{ product.name }}
-        </p>
+        <div class="flex jc-start-ai-center gap">
+          <p class="title bold-sm-text dark-heading no-spacing">
+            {{ product.name }}
+          </p>
+
+          <label class="label-result" for="">{{
+            getLabel(product.score)
+          }}</label>
+        </div>
 
         <div class="flex flex-column gapSmall">
           <div class="category-attributes flex">
@@ -150,8 +163,31 @@ function onArrowDownClicked() {
   --padding-result-card: 4vh 0;
 }
 
+html.light :root {
+  --color-line: color-mix(in srgb, var(--light-bg-search), transparent 30%);
+  --result-card-width: 50vw;
+  --result-card-height: 22vh;
+  --padding-result-card: 4vh 0;
+}
+
 .gapSmall {
   gap: 8px;
+}
+
+.label-result {
+  background-color: var(--dark-primary);
+  color: var(--dark-text-primary);
+  padding: 6px 16px;
+  font-size: 16px;
+  border-radius: 1000px;
+}
+
+html.light .label-result {
+  background-color: var(--light-primary);
+  color: var(--dark-text-primary);
+  padding: 6px 16px;
+  font-size: 16px;
+  border-radius: 1000px;
 }
 
 /*////////////////////////////////////////*/
@@ -159,6 +195,11 @@ function onArrowDownClicked() {
 .vertical-line {
   height: auto;
   border-right: 1.5px solid var(--dark-bg-search);
+}
+
+html.light .vertical-line {
+  height: auto;
+  border-right: 1.5px solid var(--light-bg-search);
 }
 
 .horizontal-line {
@@ -172,6 +213,14 @@ function onArrowDownClicked() {
   margin: 5px;
   border-radius: var(--border-radius-full);
   background-color: var(--dark-primary);
+}
+
+html.light .dot {
+  aspect-ratio: 1 / 1;
+  height: 10px;
+  margin: 5px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--light-primary);
 }
 
 .line-mobile {

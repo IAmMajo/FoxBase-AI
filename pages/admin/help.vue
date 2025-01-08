@@ -1,18 +1,17 @@
-<script lang="ts" setup>
-function toggleDarkMode() {
-  document.documentElement.classList.toggle("my-app-dark");
-}
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <Card>
-    <template #title>Hilfe</template>
-    <template #content>
-      <p class="m-0">
-        Benötigen Sie Hilfe? Dann kontaktieren Sie uns doch über
-        testmail@test.com.
-      </p>
-      <div><Button label="Toggle Dark Mode" @click="toggleDarkMode()" /></div>
-    </template>
-  </Card>
+  <div>
+    <h1>Hilfe</h1>
+    <p>Hier könnten Datenschutz und Impressum unseres Produkts stehen</p>
+    <!--
+      <Card>
+        <template #title>Hilfe</template>
+        <template #content>
+
+          <div><Button label="Toggle Dark Mode" @click="toggleDarkMode()" /></div>
+        </template>
+      </Card>
+      
+  --></div>
 </template>

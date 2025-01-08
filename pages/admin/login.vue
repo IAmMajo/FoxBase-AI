@@ -90,7 +90,7 @@ async function handleLogin() {
         <Button
           label="Anmelden"
           type="submit"
-          class="button p-button-lg p-button-primary"
+          class="p-button-lg p-button-primary"
         />
       </form>
 

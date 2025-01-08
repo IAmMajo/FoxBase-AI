@@ -130,7 +130,7 @@ const deletePrompt = async () => {
             outlined
             rounded
             severity="danger"
-            class="delete-button"
+            class="delete-button flex jc-ai-center"
             @click="confirmDeletePrompt(slotProps.data)"
           />
         </template>

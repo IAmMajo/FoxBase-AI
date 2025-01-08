@@ -2,17 +2,19 @@
 const { prompts } = defineProps<{
   prompts: string[];
 }>();
+defineEmits(["promptClick"]);
 </script>
 
 <template>
-  <div class="prompt-suggestions flex gap">
-    <p
+  <div v-if="prompts.length" class="prompt-suggestions flex gap">
+    <input
       v-for="(prompt, index) in prompts"
       :key="index"
-      class="chip dark-subheading bg-secondary"
-    >
-      {{ prompt }}
-    </p>
+      class="dark-subheading bg-secondary"
+      type="button"
+      :value="prompt"
+      @click="$emit('promptClick', $event)"
+    />
   </div>
 </template>
 
@@ -20,12 +22,12 @@ const { prompts } = defineProps<{
 .prompt-suggestions {
   overflow: auto;
 }
-.chip {
-  padding: 8px;
+input {
+  padding: 8px 16px;
+  font-size: 16px;
   border-radius: var(--border-radius-full);
   white-space: nowrap;
-}
-p {
-  margin: 0;
+  font-family: "asap", sans-serif;
+  border-style: none;
 }
 </style>
