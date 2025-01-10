@@ -8,7 +8,6 @@ defineEmits(["searchInput", "searchSubmit"]);
 
 const headingText = "FoxSearch";
 const spanHeadingText = "AI";
-
 </script>
 
 <template>
@@ -33,7 +32,7 @@ const spanHeadingText = "AI";
         @search-submit="$emit('searchSubmit')"
       />
 
-      <LightDarkSwitchComponent/>
+      <LightDarkSwitchComponent />
     </div>
   </nav>
 </template>
