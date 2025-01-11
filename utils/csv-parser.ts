@@ -1,7 +1,6 @@
 export function parseCSV<T = Record<string, string | null>>(
   csvString: string,
 ): T[] {
-
   // CSV-String in Zeilen unterteilen
   const rows = csvString.split("\n");
   // Die Header Zeile entfernen, wenn diese denn vorhanden ist
@@ -18,11 +17,11 @@ export function parseCSV<T = Record<string, string | null>>(
       // Start über " erkannt
       if (char === '"' && !insideQuotes) {
         insideQuotes = true;
-      } 
+      }
       // Ende über weiteres " erkannt
       else if (char === '"' && insideQuotes) {
         insideQuotes = false;
-      } 
+      }
       // Wenn ein Komma außerhalb von Anführungszeichen gefunden wird, ist der aktuelle Wert abgeschlossen
       else if (char === "," && !insideQuotes) {
         values.push(current.trim());
