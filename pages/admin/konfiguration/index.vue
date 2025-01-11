@@ -78,6 +78,36 @@ async function onSave() {
       />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
+
+        <h5>Texte im Hero</h5>
+        <form action="" style="width: 100%;">
+
+          <div class="heroset-input-container">
+            <FloatLabel variant="in">
+              <InputText class="heroset-input"  id="in_label1" variant="filled" />
+              <label for="in_label1">Hero Top</label>
+            </FloatLabel>
+            <div class="flex jc-start-ai-center">
+              <input name="TopHighlight" type="checkbox">
+              <label for="TopHighlight">Letztes Wort hervorheben</label>
+            </div>
+          </div>
+
+          <div class="mt heroset-input-container">
+            <FloatLabel variant="in">
+              <InputText class="heroset-input" id="in_label2" variant="filled"/>
+              <label for="in_label2">Hero Bottom</label>
+            </FloatLabel>
+            
+            <div class="flex jc-start-ai-center">
+              <input name="BottomHighlight" type="checkbox">
+              <label for="BottomHighlight">Letztes Wort hervorheben</label>
+            </div>
+
+          </div>
+          
+        </form>
+
         <h5>Farbpalette</h5>
         <div class="flex jc-ai-center gap flex-wrap">
           <div class="flex flex-column jc-ai-center color-field">
@@ -183,6 +213,20 @@ async function onSave() {
 </template>
 
 <style>
+
+.heroset-input-container{
+  
+}
+
+.heroset-input-container label{
+  font-size: 16px;
+}
+
+.heroset-input{
+  width: 50%;
+}
+
+
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
