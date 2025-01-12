@@ -151,4 +151,20 @@ html.light .waves::after {
     transform: translate(-50%, -75%) rotate(360deg);
   }
 }
+
+@media (max-width: 360px) {
+  .searchbar-wrapper {
+    width: 80%;
+  }
+
+  .header-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 340px) {
+  .header-title {
+    text-align: center;
+  }
+}
 </style>

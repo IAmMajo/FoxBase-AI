@@ -66,6 +66,7 @@ onMounted(() => {
 
 <style>
 /** Non-Color Classes **/
+
 .logo-text {
   font-size: 1.8rem;
 }
@@ -169,5 +170,40 @@ html.light .nav-thumb {
   /* thumb size: 1.5rem * 1.5rem */
   height: calc(var(--fs-h3) - 0.8rem);
   width: calc(var(--fs-h3) - 0.8rem);
+}
+
+/* MEDIA QUERIES */
+
+/* Handies */
+@media (max-width: 360px) {
+  .logo-text {
+    font-size: 0rem;
+  }
+
+  .fox-find-logo {
+    height: 35px;
+    width: 35px;
+  }
+}
+@media (min-width: 361px) and (max-width: 600px) {
+  .logo-text {
+    font-size: 0rem;
+  }
+
+  .fox-find-logo {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+/* Small Desktops */
+@media (min-width: 601px) and (max-width: 1000px) {
+  .fox-find-logo {
+    height: 45px;
+    width: 45px;
+  }
+  .logo-text {
+    font-size: 1.2rem;
+  }
 }
 </style>

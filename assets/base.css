@@ -478,7 +478,7 @@ img {
 
 /* kleine Handys */
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   p {
     font-size: 15px;
   }
@@ -489,6 +489,29 @@ img {
 
   h1 {
     font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 600px) {
+  p {
+    font-size: 15px;
+  }
+
+  .header-title {
+    font-size: 1.3em;
+    text-align: justify;
+  }
+
+  h1 {
+    font-size: 1.2em;
   }
 
   h2 {
