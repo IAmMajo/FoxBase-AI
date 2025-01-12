@@ -1,20 +1,67 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import { Dialog, InputText, Button } from "primevue";
+import { Dialog, InputText, Button, Password, Select } from "primevue";
 
-const users = ref([]);
+interface User {
+  id: number;
+  name: string;
+  role: string;
+}
+
+const users = ref<User[]>([]);
+const deleteDialogVis = ref(false);
 const dialogVisible = ref(false); // Controlls dialog visibility
-const newUser = ref({ id: "", name: "", role: "" }); // Temporary Data for new Entry
+const newUser = ref({ name: "Max Musterman", role: "admin", password: "Password" }); // Temporary Data for new Entry
+const selectedUser = ref<User | null>(null);
 
-// Neuen Benutzer hinzufügen
-function addUser() {
-  if (newUser.value.id && newUser.value.name && newUser.value.role) {
-    users.value.push({ ...newUser.value });
-    newUser.value = { id: "", name: "", role: "" };
+
+async function addUser() {
+  if (newUser.value!.name && newUser.value!.role && newUser.value!.password) {
+
+    const createdUser = await fetch(`/api/users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: newUser.value.name, password: newUser.value.password, role: newUser.value.role }),
+    }).then(json => json.json() as Promise<User>);
+    console.log(createdUser);
+    users.value = users.value!.filter(
+      (p) => p.id !== createdUser.id,
+    );
+    users.value?.push({ ...createdUser });
     dialogVisible.value = false;
   } else {
     alert("Please fill all fields!");
   }
+}
+
+fillUserTable();
+
+async function fillUserTable() {
+  users.value = await fetch(`/api/users`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+  }).then(json => json.json() as Promise<User[]>);
+
+}
+
+const confirmDeleteUser = (user: User) => {
+  selectedUser.value = user;
+  deleteDialogVis.value = true;
+};
+
+const deleteUser = async () => {
+  await deleteUserDB(selectedUser.value!.id);
+  users.value = users.value!.filter(
+    (p) => p.id !== selectedUser.value!.id,
+  );
+  selectedUser.value = null;
+  deleteDialogVis.value = false;
+};
+
+async function deleteUserDB
+  (id: number) {
+  const response = await fetch(`/api/prompts/${id}`, { method: "DELETE" });
+  return response.ok;
 }
 </script>
 
@@ -25,12 +72,8 @@ function addUser() {
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <Button
-        label="Add new User"
-        style="border: 1px solid transparent"
-        class="upload-button button"
-        @click="dialogVisible = true"
-      />
+      <Button label="Add or Edit User" style="border: 1px solid transparent" class="upload-button button"
+        @click="dialogVisible = true" />
     </div>
 
     <!-- PrimeVue DataTable -->
@@ -38,36 +81,50 @@ function addUser() {
       <Column field="id" header="ID"></Column>
       <Column field="name" header="Name"></Column>
       <Column field="role" header="Role"></Column>
+      <Column :exportable="false">
+        <template #body="slotProps">
+          <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2"  @click="editingRows.push(slotProps.data)" /> -->
+          <Button icon="pi pi-trash" outlined rounded severity="danger" class="delete-button flex jc-ai-center"
+            @click="confirmDeleteUser(slotProps.data)" />
+        </template>
+      </Column>
     </DataTable>
 
-    <!-- Dialog für neuen Benutzer -->
-    <Dialog
-      v-model:visible="dialogVisible"
-      header="Add new User"
-      style="width: 30vw"
-      modal
-      draggable="false"
-    >
-      <div class="p-fluid">
-        <div class="field flex flex-column">
-          <label for="id">ID</label>
-          <InputText id="id" v-model="newUser.id" />
+    <Dialog v-model:visible="deleteDialogVis" :style="{ width: '450px' }" header="Bestätigung" :modal="true">
+      <div class="flex flex-column gap">
+        <div class="flex items-center gap-4">
+          <i class="pi pi-exclamation-triangle !text-3xl" />
+          <span v-if="selectedUser" style="font-family: Inter, sans-serif; font-weight: normal">Are you sure that you
+            want
+            to delete the prompt template?</span>
         </div>
+        <div class="p-dialog-footer">
+          <Button label="No" icon="pi pi-times" class="flex gap p-button cancel-button" text
+            @click="deleteDialogVis = false" />
+          <Button label="Yes" icon="pi pi-check" class="flex gap p-button button" @click="deleteUser" />
+        </div>
+      </div>
+    </Dialog>
+
+    <!-- Dialog für neuen Benutzer -->
+    <Dialog v-model:visible="dialogVisible" header="Add new User" style="width: 30vw" modal :draggable=false>
+      <div class="p-fluid">
         <div class="field flex flex-column">
           <label for="name">Name</label>
           <InputText id="name" v-model="newUser.name" />
         </div>
         <div class="field flex flex-column">
-          <label for="role">Rolle</label>
-          <InputText id="role" v-model="newUser.role" />
+          <label for="role">Role</label>
+          <Select id="role" v-model="newUser.role" :options="['admin', 'curator', 'observer']">
+          </Select>
+        </div>
+        <div class="field flex flex-column">
+          <label for="password">Password</label>
+          <InputText id="password" v-model="newUser.password" />
         </div>
       </div>
       <div class="p-dialog-footer">
-        <Button
-          label="Cancel"
-          class="p-button"
-          @click="dialogVisible = false"
-        />
+        <Button label="Cancel" class="p-button" @click="dialogVisible = false" />
         <Button label="Confirm" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>
