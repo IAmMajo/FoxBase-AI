@@ -40,7 +40,7 @@ async function handleImportCollection() {
       results.status;
   } else {
     dialogVisible.value = false;
-    const json = await results.json() as Collection;
+    const json = (await results.json()) as Collection;
     (collections.value ?? []).push(json);
   }
 }
@@ -159,7 +159,6 @@ async function deleteCollection() {
       </div>
       <!-- PrimeVue DataTable -->
       <DataTable
-        
         :value="collections"
         striped-rows
         table-style="min-width: 50rem"
@@ -172,14 +171,14 @@ async function deleteCollection() {
         <Column field="collection_key" header="Key" />
         <Column>
           <template #body="{ data }">
-              <Button
-                icon="pi pi-trash"
-                outlined
-                rounded
-                severity="danger"
-                class="delete-button flex jc-ai-center"
-                @click="confirmDeletePrompt(data)"
-              />
+            <Button
+              icon="pi pi-trash"
+              outlined
+              rounded
+              severity="danger"
+              class="delete-button flex jc-ai-center"
+              @click="confirmDeletePrompt(data)"
+            />
           </template>
         </Column>
       </DataTable>
@@ -188,7 +187,7 @@ async function deleteCollection() {
 </template>
 
 <style scoped>
-  .delete-button:not(:hover) {
-    background-color: transparent;
-  }
+.delete-button:not(:hover) {
+  background-color: transparent;
+}
 </style>

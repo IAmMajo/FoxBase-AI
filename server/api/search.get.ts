@@ -31,15 +31,9 @@ export default defineEventHandler(async (event) => {
       WHERE collection = ${collection.id}
       AND foxbase_id = ${product.id}
     `;
-
   }
 
-
-
   return json.map<Product>((product) => {
-    
-
-
     const attributes: Record<string, string> = {};
 
     product.payload.Technical_Attributes.split(", ").forEach((attribute) => {

@@ -58,7 +58,7 @@ async function deleteCollection() {
   } else {
     deleteVisible.value = false;
     collections.value = collections.value!.filter(
-      (collection) => collection.id !== deleteId.value
+      (collection) => collection.id !== deleteId.value,
     );
   }
 }
