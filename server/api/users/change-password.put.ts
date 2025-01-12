@@ -10,12 +10,12 @@ const userSchema = z.object({
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
-  if (!await checkUserAuthority(await getUserSession(event), ['admin'])) {
-      throw createError({
-        status: 401,
-        statusMessage: 'You are not authorized for this action',
-      });
-    }
+  if (!(await checkUserAuthority(await getUserSession(event), ["admin"]))) {
+    throw createError({
+      status: 401,
+      statusMessage: "You are not authorized for this action",
+    });
+  }
 
   const body = await readValidatedBody(event, (body) => userSchema.parse(body));
   //checks if you give the correct original password as extra security measure

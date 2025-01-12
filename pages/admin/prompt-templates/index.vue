@@ -25,7 +25,7 @@ async function addPrompt() {
     if (!result.ok) {
       return;
     }
-    const prompt = result.json() as Promise<Prompt>
+    const prompt = result.json() as Promise<Prompt>;
     prompts.value?.push(await prompt);
     newPrompt.value = "";
   } else {
@@ -40,14 +40,13 @@ const confirmDeletePrompt = (prompt: Prompt) => {
 
 const deletePrompt = async () => {
   deletePromptDialog.value = false;
-  if (!await deletePromptDb(selectedPrompt.value!.id)) {
+  if (!(await deletePromptDb(selectedPrompt.value!.id))) {
     return;
   }
   prompts.value = prompts.value!.filter(
     (p) => p.id !== selectedPrompt.value!.id,
   );
   selectedPrompt.value = null;
-  
 };
 </script>
 

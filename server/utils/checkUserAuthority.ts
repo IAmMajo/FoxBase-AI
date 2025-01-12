@@ -1,4 +1,4 @@
-import { UserSession } from "#auth-utils";
+import type { UserSession } from "#auth-utils";
 
 export default async function checkUserAuthority(
   session: UserSession,
@@ -13,7 +13,7 @@ export default async function checkUserAuthority(
     throw rows.error;
   }
 
-  var auth = false;
+  let auth = false;
   neededRole.forEach((element) => {
     if (element == rows.results[0].role) {
       auth = true;

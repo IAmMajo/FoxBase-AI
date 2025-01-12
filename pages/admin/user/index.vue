@@ -34,7 +34,9 @@ async function addUser() {
       return;
     }
     const createdUser = fetchResult.json() as Promise<User>;
-    users.value = users.value!.filter(async (p) => p.id !== (await createdUser).id);
+    users.value = users.value!.filter(
+      async (p) => p.id !== (await createdUser).id,
+    );
     users.value?.push(await { ...createdUser });
     dialogVisible.value = false;
   } else {
@@ -58,7 +60,7 @@ const confirmDeleteUser = (user: User) => {
 
 const deleteUser = async () => {
   deleteDialogVis.value = false;
-  if (!await deleteUserDB(selectedUser.value!.id)) {
+  if (!(await deleteUserDB(selectedUser.value!.id))) {
     return;
   }
 

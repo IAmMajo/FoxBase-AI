@@ -16,17 +16,17 @@ export default defineEventHandler(async (event) => {
   if (page) {
     await requireUserSession(event);
     if (
-        !(await checkUserAuthority(await getUserSession(event), [
-          "curator",
-          "admin",
-          "observer"
-        ]))
-      ) {
-        throw createError({
-          status: 401,
-          statusMessage: "You are not authorized for this action",
-        });
-      }
+      !(await checkUserAuthority(await getUserSession(event), [
+        "curator",
+        "admin",
+        "observer",
+      ]))
+    ) {
+      throw createError({
+        status: 401,
+        statusMessage: "You are not authorized for this action",
+      });
+    }
     const { rows } = await db.sql<DbResult<Prompt>>`
       SELECT prompts.id, prompts.text, users.username AS user
       FROM prompts, users ON prompts.user = users.id ORDER BY prompts.text

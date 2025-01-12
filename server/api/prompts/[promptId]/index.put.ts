@@ -9,16 +9,16 @@ export default defineEventHandler(async (event): Promise<Prompt> => {
   await requireUserSession(event);
 
   if (
-      !(await checkUserAuthority(await getUserSession(event), [
-        "curator",
-        "admin"
-      ]))
-    ) {
-      throw createError({
-        status: 401,
-        statusMessage: "You are not authorized for this action",
-      });
-    }
+    !(await checkUserAuthority(await getUserSession(event), [
+      "curator",
+      "admin",
+    ]))
+  ) {
+    throw createError({
+      status: 401,
+      statusMessage: "You are not authorized for this action",
+    });
+  }
   const { promptId } = await getValidatedRouterParams(event, (routeParams) =>
     routeParamsSchema.parse(routeParams),
   );
