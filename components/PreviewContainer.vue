@@ -24,7 +24,7 @@ defineProps<{
       :background-color="Background"
       :text-color="Text"
       :primary-color="Primary"
-      :hero-top-content ="topText"
+      :hero-top-content="topText"
       :hero-bottom-content="bottomText"
       :hero-top-highlight-content="topHighlight"
       :hero-bottom-highlight-content="bottomHighlight"
