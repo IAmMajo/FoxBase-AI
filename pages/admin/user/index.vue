@@ -60,7 +60,11 @@ const deleteUser = async () => {
 
 async function deleteUserDB
   (id: number) {
-  const response = await fetch(`/api/prompts/${id}`, { method: "DELETE" });
+  const response = await fetch(`/api/users/`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: id })
+  });
   return response.ok;
 }
 </script>
