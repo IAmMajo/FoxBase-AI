@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Dialog, InputText, Button, Password, Select } from "primevue";
+import { Dialog, InputText, Button, Select } from "primevue";
 
 interface User {
   id: number;
