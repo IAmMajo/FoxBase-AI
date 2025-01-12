@@ -22,10 +22,10 @@ async function addPrompt() {
   if (newPrompt.value) {
     const prompt = await postPrompt(newPrompt.value);
     prompts.value?.push(prompt);
-    newPrompt.value = ""; 
+    newPrompt.value = "";
     dialogVisible.value = false;
   } else {
-    alert("Please fill all fields!"); 
+    alert("Please fill all fields!");
   }
 }
 
@@ -88,11 +88,7 @@ const deletePrompt = async () => {
           <Textarea v-model="data[field]" rows="4" cols="80" fluid />
         </template>
       </Column>
-      <Column
-        field="user"
-        header="User"
-        style="font-weight: normal"
-      ></Column>
+      <Column field="user" header="User" style="font-weight: normal"></Column>
       <Column
         :row-editor="true"
         style="width: 10%; min-width: 8rem"
