@@ -65,12 +65,11 @@ const deleteUser = async () => {
   users.value = users.value!.filter((p) => p.id !== selectedUser.value!.id);
   selectedUser.value = null;
 };
-async function deleteUserDB
-  (id: number) {
+async function deleteUserDB(id: number) {
   const response = await fetch(`/api/users/`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id: id })
+    body: JSON.stringify({ id: id }),
   });
   return response.ok;
 }
@@ -83,8 +82,12 @@ async function deleteUserDB
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <Button label="Add or Edit User" style="border: 1px solid transparent" class="upload-button button"
-        @click="dialogVisible = true" />
+      <Button
+        label="Add or Edit User"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        @click="dialogVisible = true"
+      />
     </div>
 
     <!-- PrimeVue DataTable -->
@@ -95,30 +98,59 @@ async function deleteUserDB
       <Column :exportable="false">
         <template #body="slotProps">
           <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2"  @click="editingRows.push(slotProps.data)" /> -->
-          <Button icon="pi pi-trash" outlined rounded severity="danger" class="delete-button flex jc-ai-center"
-            @click="confirmDeleteUser(slotProps.data)" />
+          <Button
+            icon="pi pi-trash"
+            outlined
+            rounded
+            severity="danger"
+            class="delete-button flex jc-ai-center"
+            @click="confirmDeleteUser(slotProps.data)"
+          />
         </template>
       </Column>
     </DataTable>
 
-    <Dialog v-model:visible="deleteDialogVis" :style="{ width: '450px' }" header="Bestätigung" :modal="true">
+    <Dialog
+      v-model:visible="deleteDialogVis"
+      :style="{ width: '450px' }"
+      header="Bestätigung"
+      :modal="true"
+    >
       <div class="flex flex-column gap">
         <div class="flex items-center gap-4">
           <i class="pi pi-exclamation-triangle !text-3xl" />
-          <span v-if="selectedUser" style="font-family: Inter, sans-serif; font-weight: normal">Are you sure that you
-            want
-            to delete the prompt template?</span>
+          <span
+            v-if="selectedUser"
+            style="font-family: Inter, sans-serif; font-weight: normal"
+            >Are you sure that you want to delete the prompt template?</span
+          >
         </div>
         <div class="p-dialog-footer">
-          <Button label="No" icon="pi pi-times" class="flex gap p-button cancel-button" text
-            @click="deleteDialogVis = false" />
-          <Button label="Yes" icon="pi pi-check" class="flex gap p-button button" @click="deleteUser" />
+          <Button
+            label="No"
+            icon="pi pi-times"
+            class="flex gap p-button cancel-button"
+            text
+            @click="deleteDialogVis = false"
+          />
+          <Button
+            label="Yes"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="deleteUser"
+          />
         </div>
       </div>
     </Dialog>
 
     <!-- Dialog für neuen Benutzer -->
-    <Dialog v-model:visible="dialogVisible" header="Add new User" style="width: 30vw" modal :draggable="false">
+    <Dialog
+      v-model:visible="dialogVisible"
+      header="Add new User"
+      style="width: 30vw"
+      modal
+      :draggable="false"
+    >
       <div class="p-fluid">
         <div class="field flex flex-column">
           <label for="name">Name</label>
@@ -126,7 +158,11 @@ async function deleteUserDB
         </div>
         <div class="field flex flex-column">
           <label for="role">Role</label>
-          <Select id="role" v-model="newUser.role" :options="['admin', 'curator', 'observer']">
+          <Select
+            id="role"
+            v-model="newUser.role"
+            :options="['admin', 'curator', 'observer']"
+          >
           </Select>
         </div>
         <div class="field flex flex-column">
@@ -135,7 +171,11 @@ async function deleteUserDB
         </div>
       </div>
       <div class="p-dialog-footer">
-        <Button label="Cancel" class="p-button" @click="dialogVisible = false" />
+        <Button
+          label="Cancel"
+          class="p-button"
+          @click="dialogVisible = false"
+        />
         <Button label="Confirm" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>
