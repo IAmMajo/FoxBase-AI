@@ -1,47 +1,19 @@
 <script setup>
 import { ref } from "vue";
-import { parseCSV } from "../../../utils/csv-parser";
 import { Dialog, InputText, Button } from "primevue";
 
 const users = ref([]);
-const dialogVisible = ref(false); // Steuert die Sichtbarkeit des Dialogs
-const newUser = ref({ id: "", name: "", role: "" }); // Temporäre Daten für den neuen Eintrag
-
-// Default CSV laden
-loadDefaultCSV();
-
-async function loadDefaultCSV() {
-  try {
-    const response = await fetch("/default.csv");
-    if (!response.ok) throw new Error("Fehler beim Laden der Datei.");
-    const csvData = await response.text();
-    users.value = parseCSV(csvData);
-  } catch (error) {
-    console.error("Fehler beim Laden der Default-CSV:", error);
-  }
-}
-
-// Datei hochladen
-function onFileChange(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const csvData = e.target.result;
-      users.value = parseCSV(csvData);
-    };
-    reader.readAsText(file);
-  }
-}
+const dialogVisible = ref(false); // Controlls dialog visibility
+const newUser = ref({ id: "", name: "", role: "" }); // Temporary Data for new Entry
 
 // Neuen Benutzer hinzufügen
 function addUser() {
   if (newUser.value.id && newUser.value.name && newUser.value.role) {
-    users.value.push({ ...newUser.value }); // Neuen Benutzer zur Liste hinzufügen
-    newUser.value = { id: "", name: "", role: "" }; // Formular zurücksetzen
-    dialogVisible.value = false; // Dialog schließen
+    users.value.push({ ...newUser.value });
+    newUser.value = { id: "", name: "", role: "" };
+    dialogVisible.value = false;
   } else {
-    alert("Bitte alle Felder ausfüllen!"); // Alternativ kann eine elegantere Validierung implementiert werden
+    alert("Please fill all fields!");
   }
 }
 </script>
@@ -49,25 +21,12 @@ function addUser() {
 <template>
   <div>
     <!-- Titel -->
-    <h2>Benutzerverwaltung</h2>
+    <h2>User Configuration</h2>
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <label
-        for="file-upload"
-        style="border: 1px solid transparent"
-        class="upload-button button"
-        >Neue CSV hochladen</label
-      >
-      <input
-        id="file-upload"
-        type="file"
-        accept=".csv"
-        style="display: none"
-        @change="onFileChange"
-      />
       <Button
-        label="Neuen Benutzer hinzufügen"
+        label="Add new User"
         style="border: 1px solid transparent"
         class="upload-button button"
         @click="dialogVisible = true"
@@ -78,13 +37,13 @@ function addUser() {
     <DataTable :value="users" striped-rows table-style="min-width: 50rem">
       <Column field="id" header="ID"></Column>
       <Column field="name" header="Name"></Column>
-      <Column field="role" header="Rolle"></Column>
+      <Column field="role" header="Role"></Column>
     </DataTable>
 
     <!-- Dialog für neuen Benutzer -->
     <Dialog
       v-model:visible="dialogVisible"
-      header="Neuen Benutzer hinzufügen"
+      header="Add new User"
       style="width: 30vw"
       modal
       draggable="false"
@@ -105,11 +64,11 @@ function addUser() {
       </div>
       <div class="p-dialog-footer">
         <Button
-          label="Abbrechen"
-          class="p-button-text"
+          label="Cancel"
+          class="p-button"
           @click="dialogVisible = false"
         />
-        <Button label="Hinzufügen" class="p-button-primary" @click="addUser" />
+        <Button label="Confirm" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>
   </div>
@@ -142,9 +101,11 @@ function addUser() {
   text-align: center;
   display: inline-block;
 }
+
 .upload-button:hover {
   background-color: var(--dark-primary-hover);
 }
+
 .field {
   margin-bottom: 1rem;
 }

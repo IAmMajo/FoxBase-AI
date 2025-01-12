@@ -17,23 +17,15 @@ const onRowEditSave = async (event: DataTableRowEditSaveEvent) => {
   prompts.value![index] = await putPrompt(newData);
 };
 
-// Datei hochladen
-function onFileChange(event: Event) {
-  const file = (event.target as HTMLInputElement).files?.[0];
-  if (!file) {
-    return;
-  }
-}
-
-// Neuen text hinzufügen
+// Add new prompt
 async function addPrompt() {
   if (newPrompt.value) {
     const prompt = await postPrompt(newPrompt.value);
-    prompts.value?.push(prompt); // Neuen text zur Liste hinzufügen
-    newPrompt.value = ""; // Formular zurücksetzen
-    dialogVisible.value = false; // Dialog schließen
+    prompts.value?.push(prompt);
+    newPrompt.value = "";
+    dialogVisible.value = false;
   } else {
-    alert("Bitte alle Felder ausfüllen!"); // Alternativ kann eine elegantere Validierung implementiert werden
+    alert("Please fill all fields!");
   }
 }
 
@@ -55,32 +47,16 @@ const deletePrompt = async () => {
 <template>
   <div>
     <!-- Titel -->
-    <h2>Prompt-Templates Konfiguration</h2>
+    <h2>Prompt Template Configuration</h2>
 
     <Toolbar class="mb-6">
       <template #start>
         <Button
-          label="Neue Template"
+          label="New Template"
           icon="pi pi-plus"
           class="flex gap p-button button"
           @click="dialogVisible = true"
         />
-      </template>
-
-      <template #end>
-        <label for="file-upload" class="upload-button button"
-          >CSV hochladen</label
-        >
-        <input
-          id="file-upload"
-          type="file"
-          accept=".csv"
-          style="display: none"
-          @change="onFileChange"
-        />
-        <!-- <FileUpload mode="basic" accept="image/*" :maxFileSize="1000000" label="CSV hochladen" customUpload
-          chooseLabel="CSV hochladen" class="mr-2 flex gap p-button" auto
-          :chooseButtonProps="{ severity: 'secondary' }" /> -->
       </template>
     </Toolbar>
 
@@ -112,11 +88,7 @@ const deletePrompt = async () => {
           <Textarea v-model="data[field]" rows="4" cols="80" fluid />
         </template>
       </Column>
-      <Column
-        field="user"
-        header="Benutzer"
-        style="font-weight: normal"
-      ></Column>
+      <Column field="user" header="User" style="font-weight: normal"></Column>
       <Column
         :row-editor="true"
         style="width: 10%; min-width: 8rem"
@@ -149,19 +121,19 @@ const deletePrompt = async () => {
           <span
             v-if="selectedPrompt"
             style="font-family: Inter, sans-serif; font-weight: normal"
-            >Bist du sicher, dass du die Prompt-Template löschen möchtest?</span
+            >Are you sure that you want to delete the prompt template?</span
           >
         </div>
         <div class="p-dialog-footer">
           <Button
-            label="Nein"
+            label="No"
             icon="pi pi-times"
             class="flex gap p-button cancel-button"
             text
             @click="deletePromptDialog = false"
           />
           <Button
-            label="Ja"
+            label="Yes"
             icon="pi pi-check"
             class="flex gap p-button button"
             @click="deletePrompt"
@@ -172,7 +144,7 @@ const deletePrompt = async () => {
 
     <Dialog
       v-model:visible="dialogVisible"
-      header="Neue Prompt-Template hinzufügen"
+      header="Create new Prompt-Template"
       style="width: 30vw"
       modal
       :draggable="false"
@@ -194,12 +166,12 @@ const deletePrompt = async () => {
 
         <div class="p-dialog-footer">
           <Button
-            label="Abbrechen"
+            label="Cancel"
             class="p-button-text cancel-button"
             @click="dialogVisible = false"
           />
           <Button
-            label="Hinzufügen"
+            label="Confirm creation"
             class="p-button-primary button"
             @click="addPrompt"
           />
