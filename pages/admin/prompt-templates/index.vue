@@ -19,11 +19,15 @@ const onRowEditSave = async (event: DataTableRowEditSaveEvent) => {
 
 // Add new prompt
 async function addPrompt() {
+  dialogVisible.value = false;
   if (newPrompt.value) {
-    const prompt = await postPrompt(newPrompt.value);
-    prompts.value?.push(prompt);
+    const result = await postPrompt(newPrompt.value);
+    if (!result.ok) {
+      return;
+    }
+    const prompt = result.json() as Promise<Prompt>;
+    prompts.value?.push(await prompt);
     newPrompt.value = "";
-    dialogVisible.value = false;
   } else {
     alert("Please fill all fields!");
   }
@@ -35,12 +39,14 @@ const confirmDeletePrompt = (prompt: Prompt) => {
 };
 
 const deletePrompt = async () => {
-  await deletePromptDb(selectedPrompt.value!.id);
+  deletePromptDialog.value = false;
+  if (!(await deletePromptDb(selectedPrompt.value!.id))) {
+    return;
+  }
   prompts.value = prompts.value!.filter(
     (p) => p.id !== selectedPrompt.value!.id,
   );
   selectedPrompt.value = null;
-  deletePromptDialog.value = false;
 };
 </script>
 

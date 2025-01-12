@@ -7,7 +7,6 @@ const uploadSchema = z.object({
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
-  console.log("a");
   const { apiUrl } = useAppConfig();
 
   const body = await readValidatedBody(event, (body) =>
