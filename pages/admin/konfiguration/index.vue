@@ -30,6 +30,13 @@ const lightTextSecondary = ref(
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
+// Speichern der Hero Texte
+const heroTextTop = ref(data.value?.heroTextTop || "");
+console.log(heroTextTop);
+const heroTextBottom = ref(data.value?.heroTextBottom || "");
+const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
+const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
+
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
@@ -49,6 +56,12 @@ async function onSave() {
 
     // Check, ob der Button im FE angezeigt werden soll
     showPaletteSwitch: boolToString(stringCheckState),
+
+    // Hero Texts
+    heroTextTop: heroTextTop?.value,
+    heroHighlightTop: heroHighlightTop?.value,
+    heroTextBottom: heroTextBottom?.value,
+    heroHighlightBottom: heroHighlightBottom?.value,
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -75,9 +88,60 @@ async function onSave() {
         :Text="textPrimary"
         :TextSecondary="textSecondary"
         :button-state="stringCheckState"
+        :top-text="heroTextTop"
+        :bottom-text="heroTextBottom"
+        :top-highlight="heroHighlightTop"
+        :bottom-highlight="heroHighlightBottom"
       />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
+        <h5>Texte im Hero</h5>
+        <form action="" style="width: 100%">
+          <div class="heroset-input-container">
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label1"
+                v-model="heroTextTop"
+                class="heroset-input"
+                variant="filled"
+              />
+              <label for="in_label1">Hero Top</label>
+            </FloatLabel>
+
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label4"
+                v-model="heroHighlightTop"
+                class="heroset-input"
+                variant="filled"
+              />
+              <label for="in_label4">Hero Highlight Top</label>
+            </FloatLabel>
+          </div>
+
+          <div class="mt heroset-input-container">
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label2"
+                v-model="heroTextBottom"
+                class="heroset-input"
+                variant="filled"
+              />
+              <label for="in_label2">Hero Bottom</label>
+            </FloatLabel>
+
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label3"
+                v-model="heroHighlightBottom"
+                class="heroset-input"
+                variant="filled"
+              />
+              <label for="in_label3">Hero Highlight Bottom</label>
+            </FloatLabel>
+          </div>
+        </form>
+
         <h5>Farbpalette</h5>
         <div class="flex jc-ai-center gap flex-wrap">
           <div class="flex flex-column jc-ai-center color-field">
@@ -183,6 +247,17 @@ async function onSave() {
 </template>
 
 <style>
+.heroset-input-container {
+}
+
+.heroset-input-container label {
+  font-size: 16px;
+}
+
+.heroset-input {
+  width: 50%;
+}
+
 input[type="checkbox"] {
   width: 20px;
   height: 20px;

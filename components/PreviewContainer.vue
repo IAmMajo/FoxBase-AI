@@ -5,6 +5,10 @@ defineProps<{
   Text: string;
   TextSecondary: string;
   buttonState: boolean | undefined;
+  topText: string;
+  topHighlight: string;
+  bottomHighlight: string;
+  bottomText: string;
 }>();
 </script>
 
@@ -20,6 +24,10 @@ defineProps<{
       :background-color="Background"
       :text-color="Text"
       :primary-color="Primary"
+      :hero-top-content="topText"
+      :hero-bottom-content="bottomText"
+      :hero-top-highlight-content="topHighlight"
+      :hero-bottom-highlight-content="bottomHighlight"
     />
     <PreviewResponse
       :background-color="Background"
