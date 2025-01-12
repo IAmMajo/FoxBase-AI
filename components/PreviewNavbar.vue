@@ -4,6 +4,7 @@ defineProps<{
   primaryColor: string;
   backgroundColor: string;
   navState: boolean | undefined;
+  
 }>();
 </script>
 

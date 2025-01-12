@@ -30,6 +30,14 @@ const lightTextSecondary = ref(
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
+
+// Speichern der Hero Texte
+const heroTextTop = ref(data.value?.heroTextTop || "");
+console.log(heroTextTop);
+const heroTextBottom = ref(data.value?.heroTextBottom || "");
+const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
+const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
+
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
@@ -49,6 +57,12 @@ async function onSave() {
 
     // Check, ob der Button im FE angezeigt werden soll
     showPaletteSwitch: boolToString(stringCheckState),
+
+    // Hero Texts
+    heroTextTop: heroTextTop?.value,
+    heroHighlightTop: heroHighlightTop?.value,
+    heroTextBottom: heroTextBottom?.value,
+    heroHighlightBottom: heroHighlightBottom?.value
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -75,6 +89,10 @@ async function onSave() {
         :Text="textPrimary"
         :TextSecondary="textSecondary"
         :button-state="stringCheckState"
+        :top-text="heroTextTop"
+        :bottom-text="heroTextBottom"
+        :top-highlight="heroHighlightTop"
+        :bottom-highlight="heroHighlightBottom"
       />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
@@ -86,13 +104,21 @@ async function onSave() {
                 id="in_label1"
                 class="heroset-input"
                 variant="filled"
+                v-model="heroTextTop"
               />
               <label for="in_label1">Hero Top</label>
             </FloatLabel>
-            <div class="flex jc-start-ai-center">
-              <input name="TopHighlight" type="checkbox" />
-              <label for="TopHighlight">Letztes Wort hervorheben</label>
-            </div>
+
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label4"
+                class="heroset-input"
+                variant="filled"
+                v-model="heroHighlightTop"
+              />
+              <label for="in_label4">Hero Highlight Top</label>
+            </FloatLabel>
+
           </div>
 
           <div class="mt heroset-input-container">
@@ -101,14 +127,20 @@ async function onSave() {
                 id="in_label2"
                 class="heroset-input"
                 variant="filled"
+                v-model="heroTextBottom"
               />
               <label for="in_label2">Hero Bottom</label>
             </FloatLabel>
 
-            <div class="flex jc-start-ai-center">
-              <input name="BottomHighlight" type="checkbox" />
-              <label for="BottomHighlight">Letztes Wort hervorheben</label>
-            </div>
+            <FloatLabel variant="in">
+              <InputText
+                id="in_label3"
+                class="heroset-input"
+                variant="filled"
+                v-model="heroHighlightBottom"
+              />
+              <label for="in_label3">Hero Highlight Bottom</label>
+            </FloatLabel>
           </div>
         </form>
 
