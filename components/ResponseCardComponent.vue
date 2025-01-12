@@ -69,4 +69,44 @@ html.light .response-header {
 html.light .color-response-card {
   color: var(--light-text-secondary);
 }
+
+
+@media (max-width: 1000px) {
+  .response-container{
+    padding: 3vh;
+  }
+
+  .response-box {
+    width: 95vw;
+}
+
+}
+
+@media (max-width: 746px) {
+  .response-container{
+    padding: 3vh;
+  }
+
+  .response-box {
+    width: 95vw;
+}
+
+}
+
+
+@media (max-width: 360px) {
+  .response-container{
+    padding: 1vh;
+  }
+
+}
+
+@media (max-width: 340px) {
+  
+
+}
+
+
+
+
 </style>
