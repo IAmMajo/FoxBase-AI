@@ -6,7 +6,6 @@ const users = ref([]);
 const dialogVisible = ref(false); // Controlls dialog visibility
 const newUser = ref({ id: "", name: "", role: "" }); // Temporary Data for new Entry
 
-
 // Neuen Benutzer hinzufügen
 function addUser() {
   if (newUser.value.id && newUser.value.name && newUser.value.role) {
@@ -26,8 +25,12 @@ function addUser() {
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <Button label="Add new User" style="border: 1px solid transparent" class="upload-button button"
-        @click="dialogVisible = true" />
+      <Button
+        label="Add new User"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        @click="dialogVisible = true"
+      />
     </div>
 
     <!-- PrimeVue DataTable -->
@@ -38,7 +41,13 @@ function addUser() {
     </DataTable>
 
     <!-- Dialog für neuen Benutzer -->
-    <Dialog v-model:visible="dialogVisible" header="Add new User" style="width: 30vw" modal draggable="false">
+    <Dialog
+      v-model:visible="dialogVisible"
+      header="Add new User"
+      style="width: 30vw"
+      modal
+      draggable="false"
+    >
       <div class="p-fluid">
         <div class="field flex flex-column">
           <label for="id">ID</label>
@@ -54,7 +63,11 @@ function addUser() {
         </div>
       </div>
       <div class="p-dialog-footer">
-        <Button label="Cancel" class="p-button" @click="dialogVisible = false" />
+        <Button
+          label="Cancel"
+          class="p-button"
+          @click="dialogVisible = false"
+        />
         <Button label="Confirm" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>
