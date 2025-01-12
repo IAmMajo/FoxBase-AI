@@ -65,7 +65,7 @@ defineEmits(["searchInput", "searchSubmit"]);
 
 @media (max-width: 1279px) {
   .searchbar-container {
-    width: 80%;
+    width: 100%;
   }
 
   .searchbar-input {
@@ -73,12 +73,17 @@ defineEmits(["searchInput", "searchSubmit"]);
   }
   .searchbar-container a {
     height: 52px;
+  }
+
+  .searchbar-container .submit-btn {
+    height: 50px;
+    width: 50px;
   }
 }
 
 @media (max-width: 768px) {
   .searchbar-container {
-    width: 85%;
+    width: 100%;
   }
 
   .searchbar-input {
@@ -86,6 +91,11 @@ defineEmits(["searchInput", "searchSubmit"]);
   }
   .searchbar-container a {
     height: 52px;
+  }
+
+  .searchbar-container .submit-btn {
+    height: 50px;
+    width: 50px;
   }
 }
 
@@ -100,18 +110,28 @@ defineEmits(["searchInput", "searchSubmit"]);
   .searchbar-container a {
     height: 52px;
   }
+
+  .searchbar-container .submit-btn {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 @media (max-width: 400px) {
   .searchbar-container {
-    width: 93%;
+    width: 100%;
   }
 
   .searchbar-input {
     height: 50px;
+    font-size: 16px;
   }
   .searchbar-container a {
     height: 52px;
+  }
+  .searchbar-container .submit-btn {
+    height: 50px;
+    width: 50px;
   }
 }
 </style>
