@@ -20,7 +20,7 @@ const selectedUser = ref<User | null>(null);
 
 async function addUser() {
   if (newUser.value!.name && newUser.value!.role && newUser.value!.password) {
-    const createdUser = await fetch(`/api/users`, {
+    const fetchResult = await fetch(`/api/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -28,10 +28,14 @@ async function addUser() {
         password: newUser.value.password,
         role: newUser.value.role,
       }),
-    }).then((json) => json.json() as Promise<User>);
-    console.log(createdUser);
-    users.value = users.value!.filter((p) => p.id !== createdUser.id);
-    users.value?.push({ ...createdUser });
+    });
+    if (!fetchResult.ok) {
+      alert("You are not authorized!");
+      return;
+    }
+    const createdUser = fetchResult.json() as Promise<User>;
+    users.value = users.value!.filter(async (p) => p.id !== (await createdUser).id);
+    users.value?.push(await { ...createdUser });
     dialogVisible.value = false;
   } else {
     alert("Please fill all fields!");
@@ -53,10 +57,13 @@ const confirmDeleteUser = (user: User) => {
 };
 
 const deleteUser = async () => {
-  await deleteUserDB(selectedUser.value!.id);
+  deleteDialogVis.value = false;
+  if (!await deleteUserDB(selectedUser.value!.id)) {
+    return;
+  }
+
   users.value = users.value!.filter((p) => p.id !== selectedUser.value!.id);
   selectedUser.value = null;
-  deleteDialogVis.value = false;
 };
 async function deleteUserDB
   (id: number) {

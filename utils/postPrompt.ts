@@ -4,5 +4,5 @@ export default async (text: string) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text }),
   });
-  return response.json() as Promise<Prompt>;
+  return response;
 };

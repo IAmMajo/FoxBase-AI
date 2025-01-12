@@ -4,6 +4,19 @@ const promptSchema = z.object({ text: z.string() });
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
+
+  if (
+      !(await checkUserAuthority(await getUserSession(event), [
+        "curator",
+        "admin"
+      ]))
+    ) {
+      throw createError({
+        status: 401,
+        statusMessage: "You are not authorized for this action",
+      });
+    }
+
   const db = useDatabase();
   const { text } = await readValidatedBody(event, (body) =>
     promptSchema.parse(body),
