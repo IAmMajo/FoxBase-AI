@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-const userSchema = z.object({ username: z.string(), password: z.string() , role: z.string()});
+const userSchema = z.object({
+  username: z.string(),
+  password: z.string(),
+  role: z.string(),
+});
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
@@ -18,8 +22,10 @@ export default defineEventHandler(async (event) => {
   const { rows } = await db.sql<DbResult<User>>`
   SELECT id, username AS name, role FROM users WHERE username = ${body.username}
 `;
-if (!rows.success || !rows.results.length) {
-  throw createError("Something went wrong while fetching the result. Input was successful");
-}
-return rows.results[0];
+  if (!rows.success || !rows.results.length) {
+    throw createError(
+      "Something went wrong while fetching the result. Input was successful",
+    );
+  }
+  return rows.results[0];
 });

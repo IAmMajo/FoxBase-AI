@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const userSchema = z.object({id: z.number()});
+const userSchema = z.object({ id: z.number() });
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
