@@ -16,10 +16,16 @@ defineProps<{
     class="redesign-nav-preview-content-container flex flex-column jc-ai-center"
   >
     <h1 class="mb-0" :style="{ color: textColor }">
-      {{ heroTopContent }} <span :style="{ color: primaryColor }">{{ heroTopHighlightContent }}</span>
+      {{ heroTopContent }}
+      <span :style="{ color: primaryColor }">{{
+        heroTopHighlightContent
+      }}</span>
     </h1>
     <h2 class="mt-0" :style="{ color: textColor }">
-      {{ heroBottomContent }} <span :style="{ color: primaryColor }">{{ heroBottomHighlightContent }}</span>
+      {{ heroBottomContent }}
+      <span :style="{ color: primaryColor }">{{
+        heroBottomHighlightContent
+      }}</span>
     </h2>
 
     <PreviewSearchbar class="mb-5" />

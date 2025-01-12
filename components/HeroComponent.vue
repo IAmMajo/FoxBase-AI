@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-
 defineProps<{
   prompts: string[];
   query: string;
@@ -19,7 +18,6 @@ const heroTextTop = data.value?.heroTextTop;
 const heroHighlightTop = data.value?.heroHighlightTop;
 const heroTextBottom = data.value?.heroTextBottom;
 const heroHighlightBottom = data.value?.heroHighlightBottom;
-
 </script>
 
 <template>
@@ -34,14 +32,22 @@ const heroHighlightBottom = data.value?.heroHighlightBottom;
       data-aos="fade-up"
       class="flex flex-column gap hero-size debugging-red jc-ai-center"
     >
-
-      <p id="hero-headline-content" class="dark-heading text-shadow header-title no-spacing">
-         {{ heroTextTop }} <span id="hero-headline-highlight" class="dark-highlight"> {{ heroHighlightTop }} </span>
+      <p
+        id="hero-headline-content"
+        class="dark-heading text-shadow header-title no-spacing"
+      >
+        {{ heroTextTop }}
+        <span id="hero-headline-highlight" class="dark-highlight">
+          {{ heroHighlightTop }}
+        </span>
       </p>
       <h1 id="hero-subline-content" class="dark-heading text-shadow no-spacing">
-       {{ heroTextBottom }} <span id="hero-subline-highlight" class="dark-highlight"> {{ heroHighlightBottom }} </span>
+        {{ heroTextBottom }}
+        <span id="hero-subline-highlight" class="dark-highlight">
+          {{ heroHighlightBottom }}
+        </span>
       </h1>
-      
+
       <div class="searchbar-wrapper flex flex-column gap">
         <PromptSuggestionsComponent
           :prompts="prompts"

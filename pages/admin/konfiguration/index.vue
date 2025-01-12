@@ -30,7 +30,6 @@ const lightTextSecondary = ref(
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
-
 // Speichern der Hero Texte
 const heroTextTop = ref(data.value?.heroTextTop || "");
 console.log(heroTextTop);
@@ -62,7 +61,7 @@ async function onSave() {
     heroTextTop: heroTextTop?.value,
     heroHighlightTop: heroHighlightTop?.value,
     heroTextBottom: heroTextBottom?.value,
-    heroHighlightBottom: heroHighlightBottom?.value
+    heroHighlightBottom: heroHighlightBottom?.value,
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -102,9 +101,9 @@ async function onSave() {
             <FloatLabel variant="in">
               <InputText
                 id="in_label1"
+                v-model="heroTextTop"
                 class="heroset-input"
                 variant="filled"
-                v-model="heroTextTop"
               />
               <label for="in_label1">Hero Top</label>
             </FloatLabel>
@@ -112,22 +111,21 @@ async function onSave() {
             <FloatLabel variant="in">
               <InputText
                 id="in_label4"
+                v-model="heroHighlightTop"
                 class="heroset-input"
                 variant="filled"
-                v-model="heroHighlightTop"
               />
               <label for="in_label4">Hero Highlight Top</label>
             </FloatLabel>
-
           </div>
 
           <div class="mt heroset-input-container">
             <FloatLabel variant="in">
               <InputText
                 id="in_label2"
+                v-model="heroTextBottom"
                 class="heroset-input"
                 variant="filled"
-                v-model="heroTextBottom"
               />
               <label for="in_label2">Hero Bottom</label>
             </FloatLabel>
@@ -135,9 +133,9 @@ async function onSave() {
             <FloatLabel variant="in">
               <InputText
                 id="in_label3"
+                v-model="heroHighlightBottom"
                 class="heroset-input"
                 variant="filled"
-                v-model="heroHighlightBottom"
               />
               <label for="in_label3">Hero Highlight Bottom</label>
             </FloatLabel>
