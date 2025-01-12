@@ -1,7 +1,6 @@
 declare interface Collection {
   id: number;
-  name: Text;
-  key: Text;
-  creator: Text;
-  description: Text;
+  collection_name: string;
+  collection_key: string;
+  collection_description: string;
 }

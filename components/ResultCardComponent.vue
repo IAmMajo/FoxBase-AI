@@ -79,19 +79,25 @@ function getLabel(score: number): string {
           </p>
 
           <label class="label-result" for="">{{
-            getLabel(product.score)
+            getLabel(product.score!)
           }}</label>
         </div>
 
-        <div class="flex flex-column gapSmall">
-          <div class="category-attributes flex">
+        <div
+          v-if="product.category || product.attributes"
+          class="flex flex-column gapSmall"
+        >
+          <div v-if="product.category" class="category-attributes flex">
             <span class="dot" />
             <p class="dark-bottomtext no-spacing">
               Type: <span class="dark-heading">{{ product.category }}</span>
             </p>
           </div>
-          <span class="line-mobile" />
-          <div class="category-attributes flex">
+          <span
+            v-if="product.category && product.attributes"
+            class="line-mobile"
+          />
+          <div v-if="product.attributes" class="category-attributes flex">
             <span class="dot" />
             <div class="attributes flex gapSmall">
               <template
@@ -107,7 +113,7 @@ function getLabel(score: number): string {
             </div>
           </div>
         </div>
-        <div class="use-cases flex gap">
+        <div v-if="product.typicalUseCases" class="use-cases flex gap">
           <p
             v-for="(useCase, indexUseCase) in product.typicalUseCases"
             :key="indexUseCase"

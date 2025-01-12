@@ -12,7 +12,7 @@ import NavListElement from "~/pages/admin/components/NavListElement.vue";
           link="/admin/konfiguration"
           icon="pi-cog"
         />
-        <NavListElement title="Katalog" link="/admin/katalog" icon="pi-shop" />
+        <NavListElement title="Catalog" link="/admin/catalog" icon="pi-shop" />
         <NavListElement title="Users" link="/admin/user" icon="pi-user" />
         <NavListElement
           title="Prompt-Templates"
