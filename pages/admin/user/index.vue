@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "vue";
-import { parseCSV } from "../../../utils/csv-parser";
 import { Dialog, InputText, Button } from "primevue";
 
 const users = ref([]);
