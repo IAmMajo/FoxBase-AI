@@ -111,7 +111,6 @@ defineEmits(["searchInput", "searchSubmit"]);
     height: 52px;
   }
 
-
   .searchbar-container .submit-btn {
     height: 50px;
     width: 50px;
@@ -134,6 +133,5 @@ defineEmits(["searchInput", "searchSubmit"]);
     height: 50px;
     width: 50px;
   }
-
 }
 </style>

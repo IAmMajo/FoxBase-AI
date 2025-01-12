@@ -152,16 +152,14 @@ html.light .waves::after {
   }
 }
 
-
 @media (max-width: 360px) {
-  .searchbar-wrapper{
+  .searchbar-wrapper {
     width: 80%;
   }
 
   .header-title {
     text-align: center;
   }
-
 }
 
 @media (max-width: 340px) {
@@ -169,5 +167,4 @@ html.light .waves::after {
     text-align: center;
   }
 }
-
 </style>

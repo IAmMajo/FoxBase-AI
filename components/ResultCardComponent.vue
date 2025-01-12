@@ -304,7 +304,6 @@ html.light .dot {
   background-color: color-mix(in srgb, var(--dark-bg-search), transparent 40%);
 }
 
-
 .arrowUp:hover path {
   stroke: var(--dark-primary);
   /* fill: color-mix(in srgb, var(--dark-primary), transparent 80%); */
@@ -353,7 +352,6 @@ html.light .dot {
     border: none;
     flex-direction: column;
     margin: 100px 0;
-
   }
 }
 

@@ -8,16 +8,13 @@ defineEmits(["searchInput", "searchSubmit"]);
 
 let collapsed = true;
 
-
 const width = ref("0vw");
 const borderBottom = ref("none");
 
 function onClick(event: MouseEvent) {
-
-
   collapsed = !collapsed;
-  const screenWidth =  window.innerWidth;
-  console.log(screenWidth)
+  const screenWidth = window.innerWidth;
+  console.log(screenWidth);
 
   if (collapsed) {
     width.value = "0vw";
@@ -26,20 +23,20 @@ function onClick(event: MouseEvent) {
   }
   event.preventDefault();
   if (screenWidth >= 360 && screenWidth <= 600) {
-    console.log("Screen ist zwischen 360 und 600")
+    console.log("Screen ist zwischen 360 und 600");
     width.value = "50vw";
     borderBottom.value = "1.5px solid var(--dark-text-secondary)";
-    return
-  }if (screenWidth >= 601 && screenWidth <= 1000) {
-    console.log("Screen ist zwischen 601 und 1000")
+    return;
+  }
+  if (screenWidth >= 601 && screenWidth <= 1000) {
+    console.log("Screen ist zwischen 601 und 1000");
     width.value = "30vw";
     borderBottom.value = "1.5px solid var(--dark-text-secondary)";
-    return
-  }
-  else {
+    return;
+  } else {
     width.value = "15vw";
     borderBottom.value = "1.5px solid var(--dark-text-secondary)";
-    return
+    return;
   }
 }
 </script>
