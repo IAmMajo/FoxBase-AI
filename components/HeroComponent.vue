@@ -8,7 +8,7 @@ defineProps<{
 }>();
 defineEmits(["promptClick", "searchInput", "searchSubmit"]);
 
-const { data, error } = await useFetch<Record<string, string>>("/api/settings");
+const { data } = await useFetch<Record<string, string>>("/api/settings");
 
 const settings = ref<Record<string, string>>({});
 if (data.value) {
