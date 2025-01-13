@@ -62,6 +62,7 @@ async function onSave() {
     heroHighlightTop: heroHighlightTop?.value,
     heroTextBottom: heroTextBottom?.value,
     heroHighlightBottom: heroHighlightBottom?.value,
+
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -69,6 +70,9 @@ async function onSave() {
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
+
+
+  location.reload();
 }
 </script>
 
