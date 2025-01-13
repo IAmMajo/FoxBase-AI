@@ -75,11 +75,15 @@ async function onSave() {
 </script>
 
 <template>
+  <div class="no-y-scroll">
+
+
+
+  
   <div>
-    <h2>Konfiguration</h2>
+    <h2>Configuration</h2>
     <p>
-      Auf dieser Seite können Konfigurationen über das Aussehen und Verhalten
-      der Seite festgelegt werden.
+     On this page changes about the content of the hero and the color palette can be made.
     </p>
 
     <h3>Preview</h3>
@@ -97,7 +101,7 @@ async function onSave() {
       />
 
       <div class="flex jc-ai-center flex-column" style="width: 22%">
-        <h5>Texte im Hero</h5>
+        <h5>Text in Hero Component</h5>
         <form action="" style="width: 100%">
           <div class="heroset-input-container">
             <FloatLabel variant="in">
@@ -144,7 +148,7 @@ async function onSave() {
           </div>
         </form>
 
-        <h5>Farbpalette</h5>
+        <h5>Color Palette</h5>
         <div class="flex jc-ai-center gap flex-wrap">
           <div class="flex flex-column jc-ai-center color-field">
             <input id="primary" v-model="primary" type="color" />
@@ -158,17 +162,17 @@ async function onSave() {
               type="color"
             />
 
-            <label for="backgroundSecondary">Hintergrund</label>
+            <label for="backgroundSecondary">Background</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
             <input id="textPrimary" v-model="textPrimary" type="color" />
-            <label for="textPrimary">Überschriften</label>
+            <label for="textPrimary">Headings</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
             <input id="textSecondary" v-model="textSecondary" type="color" />
-            <label for="textSecondary">Texte</label>
+            <label for="textSecondary">Text</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
@@ -183,7 +187,7 @@ async function onSave() {
 
           <div class="flex flex-column jc-ai-center color-field">
             <input id="textSecondary" v-model="lightTextPrimary" type="color" />
-            <label for="textSecondary">Light Überschriften</label>
+            <label for="textSecondary">Light Heading</label>
           </div>
 
           <div class="flex flex-column jc-ai-center color-field">
@@ -202,11 +206,10 @@ async function onSave() {
                 name="Lightmode"
                 type="checkbox"
               />
-              <label for="Lightmode">Wechselbutton</label>
+              <label for="Lightmode">Switch Button</label>
             </div>
             <p>
-              Wird diese Funktion aktiviert, haben die User die Möglichkeit über
-              die Navbar die Farbpalette zu wechseln.
+              When enabled, the user can switch between the generated Light and Dark Palette over a button inside of the Navbar.
             </p>
           </div>
         </div>
@@ -216,7 +219,7 @@ async function onSave() {
             class="upload-button button bold-text"
             @click="onSave"
           >
-            Speichern
+            Save changes
           </button>
         </div>
 
@@ -229,7 +232,7 @@ async function onSave() {
             <div class="icon-container flex jc-ai-center">
               <div class="green-icon pi pi-check text-xl"></div>
             </div>
-            <p class="flex-grow text-center">Speichern erfolgreich</p>
+            <p class="flex-grow text-center">Saving Successful</p>
           </div>
 
           <div
@@ -240,16 +243,27 @@ async function onSave() {
             <div class="icon-container-red flex jc-ai-center">
               <div class="red-icon pi pi-times text-xl"></div>
             </div>
-            <p class="flex-grow text-center">Speichern fehlgeschlagen</p>
+            <p class="flex-grow text-center">Error while Saving</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style>
-.heroset-input-container {
+
+.no-y-scroll{
+  overflow-x: hidden;
+}
+
+.p-floatlabel{
+  width: 100%;
+}
+
+.heroset-input-container{
+  width: 100%;
 }
 
 .heroset-input-container label {
@@ -257,7 +271,7 @@ async function onSave() {
 }
 
 .heroset-input {
-  width: 50%;
+  width: 100%;
 }
 
 input[type="checkbox"] {

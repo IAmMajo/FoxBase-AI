@@ -17,7 +17,7 @@ defineProps<{
       class="preview-response relative flex jc-ai-center relative"
     >
       <div :style="{ color: textColor }" class="flex jc-ai-center z-2 text-xl">
-        Das ist eine Response!
+        This is a Response!
       </div>
       <div
         :style="{ backgroundColor: primaryColor }"
