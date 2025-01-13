@@ -24,31 +24,42 @@ export default defineEventHandler(async (event) => {
 
   const json = (await response.json()) as ApiProduct[];
 
-  const products = [];
-  for (const product of json) {
-    const { rows } = await db.sql<DbResult<Product>>`
-      SELECT * FROM products
-      WHERE collection = ${collection.id}
-      AND foxbase_id = ${product.id}
+  const products: Product[] = [];
+  for (const apiProduct of json) {
+    const { rows: productsRows } = await db.sql<DbResult<Product>>`
+      SELECT * FROM products WHERE collection = ${collection.id}
+      AND foxbase_id = ${apiProduct.payload.id}
     `;
-  }
+    if (!productsRows.success) {
+      throw createError("Something went wrong during database operation");
+    }
+    const product = productsRows.results[0];
 
-  return json.map<Product>((product) => {
     const attributes: Record<string, string> = {};
-
-    product.payload.Technical_Attributes.split(", ").forEach((attribute) => {
-      const [key, value] = attribute.split(": ");
-      attributes[key] = value;
+    const { rows: productAttributesRows } = await db.sql<
+      DbResult<ProductAttribute>
+    >`SELECT * FROM product_attributes WHERE product = ${product.id}`;
+    if (!productAttributesRows.success) {
+      throw createError("Something went wrong during database operation");
+    }
+    productAttributesRows.results.forEach((attribute) => {
+      attributes[attribute.name] = attribute.value;
     });
+    product.attributes = attributes;
 
-    return {
-      foxbase_id: Number(product.payload.id),
-      name: product.payload.productName,
-      category: product.payload.Product_Category,
-      description: product.payload.Description,
-      attributes,
-      typicalUseCases: product.payload.Typical_Use_Cases.split(", "),
-      score: product.score,
-    };
-  });
+    const { rows: productTypicalUseCasesRows } = await db.sql<
+      DbResult<ProductTypicalUseCase>
+    >`SELECT * FROM product_typical_use_cases WHERE product = ${product.id}`;
+    if (!productTypicalUseCasesRows.success) {
+      throw createError("Something went wrong during database operation");
+    }
+    product.typical_use_cases = productTypicalUseCasesRows.results.map(
+      (typicalUseCase) => typicalUseCase.name,
+    );
+
+    product.score = apiProduct.score;
+
+    products.push(product);
+  }
+  return products;
 });

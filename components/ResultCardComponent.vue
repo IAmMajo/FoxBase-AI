@@ -113,9 +113,9 @@ function getLabel(score: number): string {
             </div>
           </div>
         </div>
-        <div v-if="product.typicalUseCases" class="use-cases flex gap">
+        <div v-if="product.typical_use_cases" class="use-cases flex gap">
           <p
-            v-for="(useCase, indexUseCase) in product.typicalUseCases"
+            v-for="(useCase, indexUseCase) in product.typical_use_cases"
             :key="indexUseCase"
             class="light-highlight no-spacing"
           >

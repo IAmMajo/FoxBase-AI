@@ -108,7 +108,8 @@ export default defineEventHandler(async (event) => {
   }
 
   const settingsResult = await db.sql<DbExecResult>`
-      INSERT INTO settings (name, value) VALUES ('activeCollection', ${id})
+      INSERT INTO settings (name, value)
+      VALUES ('activeCollection', ${String(id)})
       ON CONFLICT (name) DO NOTHING
     `;
   if (!settingsResult.success) {

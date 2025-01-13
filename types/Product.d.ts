@@ -5,6 +5,6 @@ declare interface Product {
   category: string;
   description: string;
   attributes: Record<string, string>?;
-  typicalUseCases: string[]?;
+  typical_use_cases: string[]?;
   score: number?;
 }
