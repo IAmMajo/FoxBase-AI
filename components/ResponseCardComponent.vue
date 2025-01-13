@@ -1,5 +1,40 @@
 <script setup lang="ts">
-defineProps<{ text: string }>();
+import { ref, onMounted, watch } from 'vue';
+
+// Props definieren
+let props = defineProps<{ text: string }>();
+
+// Reaktive Zustände
+const displayedText = ref(''); // Der Text, der schrittweise angezeigt wird
+const plainText = ref(''); // Nur der Textinhalt ohne HTML
+const i = ref(0); // Index für die Animation
+const speed = 100; // Geschwindigkeit der Animation in Millisekunden
+
+// Funktion für die Typewriter-Animation
+function typeWriter() {
+  if (i.value < plainText.value.length) {
+    displayedText.value += plainText.value.charAt(i.value);
+    i.value++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+// Startet die Animation erst, wenn die Komponente gemountet wird
+onMounted(() => {
+  displayedText.value = ''; // Leeren, falls nötig
+});
+
+// Beobachtet Änderungen am übergebenen Text und startet die Animation neu
+watch(
+  () => props.text,
+  (newText) => {
+    plainText.value = newText.replace(/<[^>]*>?/gm, ''); // Nur der reine Text wird animiert
+    displayedText.value = ''; // Anzeige zurücksetzen
+    i.value = 0; // Index zurücksetzen
+    typeWriter(); // Animation starten
+  },
+  { immediate: true } // Sofort starten
+);
 </script>
 
 <template>
@@ -7,8 +42,8 @@ defineProps<{ text: string }>();
     <div class="darkening-layer-secondary full-size-percent absolute z-0"></div>
     <div class="response-box flex jc-ai-center dark-subheading relative">
       <div class="shade-layer absolute full-size-percent"></div>
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="dark-subheading color-response-card z-2" v-html="text" />
+      <!-- Animierter Text mit HTML-Inhalt -->
+      <div class="dark-subheading color-response-card z-2" v-html="displayedText" />
     </div>
   </div>
 </template>
@@ -63,10 +98,12 @@ html.light .response-header {
 }
 
 .color-response-card {
+  font-family: "asap", sans-serif;
   color: var(--dark-text-secondary);
 }
 
 html.light .color-response-card {
+  font-family: "asap", sans-serif;
   color: var(--light-text-secondary);
 }
 
