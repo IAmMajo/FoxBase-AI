@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch } from "vue";
 
 // Props definieren
-let props = defineProps<{ text: string }>();
+const props = defineProps<{ text: string }>();
 
 // Reaktive Zustände
-const displayedText = ref(''); // Der Text, der schrittweise angezeigt wird
-const plainText = ref(''); // Nur der Textinhalt ohne HTML
+const displayedText = ref(""); // Der Text, der schrittweise angezeigt wird
+const plainText = ref(""); // Nur der Textinhalt ohne HTML
 const i = ref(0); // Index für die Animation
 const speed = 100; // Geschwindigkeit der Animation in Millisekunden
 
@@ -21,19 +21,19 @@ function typeWriter() {
 
 // Startet die Animation erst, wenn die Komponente gemountet wird
 onMounted(() => {
-  displayedText.value = ''; // Leeren, falls nötig
+  displayedText.value = ""; // Leeren, falls nötig
 });
 
 // Beobachtet Änderungen am übergebenen Text und startet die Animation neu
 watch(
   () => props.text,
   (newText) => {
-    plainText.value = newText.replace(/<[^>]*>?/gm, ''); // Nur der reine Text wird animiert
-    displayedText.value = ''; // Anzeige zurücksetzen
+    plainText.value = newText.replace(/<[^>]*>?/gm, ""); // Nur der reine Text wird animiert
+    displayedText.value = ""; // Anzeige zurücksetzen
     i.value = 0; // Index zurücksetzen
     typeWriter(); // Animation starten
   },
-  { immediate: true } // Sofort starten
+  { immediate: true }, // Sofort starten
 );
 </script>
 
@@ -43,7 +43,10 @@ watch(
     <div class="response-box flex jc-ai-center dark-subheading relative">
       <div class="shade-layer absolute full-size-percent"></div>
       <!-- Animierter Text mit HTML-Inhalt -->
-      <div class="dark-subheading color-response-card z-2" v-html="displayedText" />
+      <div
+        class="dark-subheading color-response-card z-2"
+        v-html="displayedText"
+      />
     </div>
   </div>
 </template>
