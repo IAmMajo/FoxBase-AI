@@ -13,8 +13,8 @@
     "deploy-only": "wrangler pages deploy",
     "cf-typegen": "wrangler types",
     "typecheck": "nuxt typecheck",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier . --write",
     "create-migration": "wrangler d1 migrations create DB",
     "migrate": "wrangler d1 migrations apply DB --local"
