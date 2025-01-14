@@ -8,8 +8,11 @@ interface User {
   role: string;
 }
 
+const errorMessage = ref<string | null>(null);
+
 const users = ref<User[]>([]);
 const deleteDialogVis = ref(false);
+const updateDialogVis = ref(false);
 const dialogVisible = ref(false); // Controlls dialog visibility
 const newUser = ref({
   name: "Max Musterman",
@@ -18,10 +21,21 @@ const newUser = ref({
 }); // Temporary Data for new Entry
 const selectedUser = ref<User | null>(null);
 
+const changeRole = ref(false);
+const changeUsername = ref(false);
+const changePassword = ref(false);
+const updateUser = ref({
+  name: "Max Musterman",
+  role: "admin",
+  password: "Password",
+});
+const updateID = ref(0);
+const changeErrorMessage = ref("");
+
 async function addUser() {
   if (newUser.value!.name && newUser.value!.role && newUser.value!.password) {
     const fetchResult = await fetch(`/api/users`, {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: newUser.value.name,
@@ -30,7 +44,7 @@ async function addUser() {
       }),
     });
     if (!fetchResult.ok) {
-      alert("You are not authorized!");
+      errorMessage.value = fetchResult.statusText;
       return;
     }
     const createdUser = fetchResult.json() as Promise<User>;
@@ -39,8 +53,9 @@ async function addUser() {
     );
     users.value?.push(await { ...createdUser });
     dialogVisible.value = false;
+    errorMessage.value = null;
   } else {
-    alert("Please fill all fields!");
+    errorMessage.value = "Please fill all fields!";
   }
 }
 
@@ -63,7 +78,6 @@ const deleteUser = async () => {
   if (!(await deleteUserDB(selectedUser.value!.id))) {
     return;
   }
-
   users.value = users.value!.filter((p) => p.id !== selectedUser.value!.id);
   selectedUser.value = null;
 };
@@ -75,6 +89,56 @@ async function deleteUserDB(id: number) {
   });
   return response.ok;
 }
+
+const editUser = async () => {
+  changeErrorMessage.value = "";
+  if (changeUsername.value) {
+    const response = await fetch(`/api/users/admin/change-name`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: updateID.value,
+        newName: updateUser.value.name,
+      }),
+    });
+
+    if (!response.ok) {
+      changeErrorMessage.value += response.statusText + "\n";
+    }
+  }
+
+  if (changeRole.value) {
+    const response = await fetch(`/api/users/admin/change-role`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: updateID.value,
+        newRole: updateUser.value.role,
+      }),
+    });
+    if (!response.ok) {
+      changeErrorMessage.value += response.statusText + "\n";
+    }
+  }
+
+  if (changePassword.value) {
+    const response = await fetch(`/api/users/admin/change-password`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: updateID.value,
+        newPassword: updateUser.value.password,
+      }),
+    });
+
+    if (!response.ok) {
+      changeErrorMessage.value += response.statusText;
+    }
+  }
+  if (changeErrorMessage.value == "") {
+    updateDialogVis.value = false;
+  }
+};
 </script>
 
 <template>
@@ -85,10 +149,16 @@ async function deleteUserDB(id: number) {
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
       <Button
-        label="Add or Edit User"
+        label="Add User"
         style="border: 1px solid transparent"
         class="upload-button button"
         @click="dialogVisible = true"
+      />
+      <Button
+        label="Update User"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        @click="updateDialogVis = true"
       />
     </div>
 
@@ -112,10 +182,76 @@ async function deleteUserDB(id: number) {
       </Column>
     </DataTable>
 
+    <!--- Dialog to update users --->
+    <Dialog
+      v-model:visible="updateDialogVis"
+      :style="{ width: '450px' }"
+      header="What do you want to change?"
+      :modal="true"
+    >
+      <div class="flex flex-column gap">
+        <label for="chID">Username</label>
+        <InputNumber id="chID" v-model="updateID" :style="{ width: '20px' }" />
+        <div class="field flex flex-column">
+          <div class="flex flex-row">
+            <label for="chName">Username</label>
+            <input v-model="changeUsername" type="checkbox" />
+          </div>
+          <InputText
+            v-if="changeUsername"
+            id="chName"
+            v-model="updateUser.name"
+          />
+        </div>
+        <div class="field flex flex-column">
+          <div class="flex flex-row">
+            <label for="chRole">Role</label>
+            <input v-model="changeRole" type="checkbox" />
+          </div>
+          <Select
+            v-if="changeRole"
+            id="chRole"
+            v-model="updateUser.role"
+            :options="['admin', 'curator', 'observer']"
+          >
+          </Select>
+        </div>
+        <div class="field flex flex-column">
+          <div class="flex flex-row">
+            <label for="chName">Password</label>
+            <input v-model="changePassword" type="checkbox" />
+          </div>
+          <Password
+            v-if="changePassword"
+            id="password"
+            v-model="updateUser.password"
+            :toggle-mask="true"
+          />
+        </div>
+        <p v-if="changeErrorMessage" class="error">{{ changeErrorMessage }}</p>
+        <div class="p-dialog-footer">
+          <Button
+            label="Cancel"
+            icon="pi pi-times"
+            class="flex gap p-button cancel-button"
+            text
+            @click="updateDialogVis = false"
+          />
+          <Button
+            label="Confirm"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="editUser"
+          />
+        </div>
+      </div>
+    </Dialog>
+
+    <!-- Dialog to delete User-->
     <Dialog
       v-model:visible="deleteDialogVis"
       :style="{ width: '450px' }"
-      header="Bestätigung"
+      header="Confirm"
       :modal="true"
     >
       <div class="flex flex-column gap">
@@ -169,13 +305,20 @@ async function deleteUserDB(id: number) {
         </div>
         <div class="field flex flex-column">
           <label for="password">Password</label>
-          <InputText id="password" v-model="newUser.password" />
+          <Password
+            id="password"
+            v-model="newUser.password"
+            :toggle-mask="true"
+          />
         </div>
       </div>
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       <div class="p-dialog-footer">
         <Button
           label="Cancel"
-          class="p-button"
+          icon="pi pi-times"
+          class="flex gap p-button cancel-button"
+          text
           @click="dialogVisible = false"
         />
         <Button label="Confirm" class="p-button-primary" @click="addUser" />
