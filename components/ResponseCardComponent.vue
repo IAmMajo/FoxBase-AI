@@ -45,7 +45,7 @@ watch(
       <!-- Animierter Text mit HTML-Inhalt -->
       <div
         class="dark-subheading color-response-card z-2"
-        v-html="displayedText"
+        v-html="displayedText /* eslint-disable-line vue/no-v-html */"
       />
     </div>
   </div>
