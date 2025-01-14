@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
-  Primary: string;
-  Background: string;
-  Text: string;
-  TextSecondary: string;
+  primary: string;
+  background: string;
+  text: string;
+  textSecondary: string;
   buttonState: boolean | undefined;
   topText: string;
   topHighlight: string;
@@ -16,41 +16,41 @@ defineProps<{
   <div class="preview-container-redesign relative">
     <PreviewNavbar
       :nav-state="buttonState"
-      :background-color="Background"
-      :text-color="TextSecondary"
-      :primary-color="Primary"
+      :background-color="background"
+      :text-color="textSecondary"
+      :primary-color="primary"
     />
     <PreviewContent
-      :background-color="Background"
-      :text-color="Text"
-      :primary-color="Primary"
+      :background-color="background"
+      :text-color="text"
+      :primary-color="primary"
       :hero-top-content="topText"
       :hero-bottom-content="bottomText"
       :hero-top-highlight-content="topHighlight"
       :hero-bottom-highlight-content="bottomHighlight"
     />
     <PreviewResponse
-      :background-color="Background"
-      :text-color="Text"
-      :primary-color="Primary"
+      :background-color="background"
+      :text-color="text"
+      :primary-color="primary"
     />
     <PreviewResult
-      :text-color="Text"
-      :primary-color="Primary"
-      :text-secondary-color="TextSecondary"
-      :background-color="Background"
+      :text-color="text"
+      :primary-color="primary"
+      :text-secondary-color="textSecondary"
+      :background-color="background"
     />
     <PreviewResult
-      :text-color="Text"
-      :primary-color="Primary"
-      :text-secondary-color="TextSecondary"
-      :background-color="Background"
+      :text-color="text"
+      :primary-color="primary"
+      :text-secondary-color="textSecondary"
+      :background-color="background"
     />
     <PreviewResult
-      :text-color="Text"
-      :primary-color="Primary"
-      :text-secondary-color="TextSecondary"
-      :background-color="Background"
+      :text-color="text"
+      :primary-color="primary"
+      :text-secondary-color="textSecondary"
+      :background-color="background"
     />
   </div>
 </template>

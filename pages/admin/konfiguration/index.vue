@@ -86,10 +86,10 @@ async function onSave() {
       <h3>Preview</h3>
       <div class="flex jc-center-ai-start gap">
         <PreviewContainer
-          :Primary="primary"
-          :Background="backgroundSecondary"
-          :Text="textPrimary"
-          :TextSecondary="textSecondary"
+          :primary="primary"
+          :background="backgroundSecondary"
+          :text="textPrimary"
+          :text-secondary="textSecondary"
           :button-state="stringCheckState"
           :top-text="heroTextTop"
           :bottom-text="heroTextBottom"
