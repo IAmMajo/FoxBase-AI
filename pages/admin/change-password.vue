@@ -7,11 +7,7 @@ const newPassword = ref("");
 const rNewPassword = ref("");
 async function handlePasswordChange() {
   // Basic validation
-  if (
-    !password.value ||
-    !newPassword.value ||
-    !rNewPassword.value
-  ) {
+  if (!password.value || !newPassword.value || !rNewPassword.value) {
     errorMessage.value = "Please fill out all fields.";
     return;
   }

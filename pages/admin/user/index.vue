@@ -98,24 +98,22 @@ const editUser = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: updateID.value,
-        newName: updateUser.value.name
+        newName: updateUser.value.name,
       }),
     });
 
-    
     if (!response.ok) {
       changeErrorMessage.value += response.statusText + "\n";
     }
   }
 
   if (changeRole.value) {
-
     const response = await fetch(`/api/users/admin/change-role`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: updateID.value,
-        newRole: updateUser.value.role
+        newRole: updateUser.value.role,
       }),
     });
     if (!response.ok) {
@@ -129,20 +127,18 @@ const editUser = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: updateID.value,
-        newPassword: updateUser.value.password
+        newPassword: updateUser.value.password,
       }),
     });
 
     if (!response.ok) {
       changeErrorMessage.value += response.statusText;
     }
-
   }
   if (changeErrorMessage.value == "") {
     updateDialogVis.value = false;
   }
-}
-
+};
 </script>
 
 <template>
@@ -152,10 +148,18 @@ const editUser = async () => {
 
     <!-- Buttons für Upload und Hinzufügen -->
     <div style="margin-bottom: 1rem; display: flex; gap: 1rem">
-      <Button label="Add User" style="border: 1px solid transparent" class="upload-button button"
-        @click="dialogVisible = true" />
-      <Button label="Update User" style="border: 1px solid transparent" class="upload-button button"
-        @click="updateDialogVis = true" />
+      <Button
+        label="Add User"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        @click="dialogVisible = true"
+      />
+      <Button
+        label="Update User"
+        style="border: 1px solid transparent"
+        class="upload-button button"
+        @click="updateDialogVis = true"
+      />
     </div>
 
     <!-- PrimeVue DataTable -->
@@ -166,68 +170,125 @@ const editUser = async () => {
       <Column :exportable="false">
         <template #body="slotProps">
           <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2"  @click="editingRows.push(slotProps.data)" /> -->
-          <Button icon="pi pi-trash" outlined rounded severity="danger" class="delete-button flex jc-ai-center"
-            @click="confirmDeleteUser(slotProps.data)" />
+          <Button
+            icon="pi pi-trash"
+            outlined
+            rounded
+            severity="danger"
+            class="delete-button flex jc-ai-center"
+            @click="confirmDeleteUser(slotProps.data)"
+          />
         </template>
       </Column>
     </DataTable>
 
     <!--- Dialog to update users --->
-    <Dialog v-model:visible="updateDialogVis" :style="{ width: '450px' }" header="What do you want to change?"
-      :modal="true">
+    <Dialog
+      v-model:visible="updateDialogVis"
+      :style="{ width: '450px' }"
+      header="What do you want to change?"
+      :modal="true"
+    >
       <div class="flex flex-column gap">
         <label for="chID">Username</label>
         <InputNumber id="chID" v-model="updateID" :style="{ width: '20px' }" />
         <div class="field flex flex-column">
-          <div class=" flex flex-row">
+          <div class="flex flex-row">
             <label for="chName">Username</label>
-            <input type="checkbox" v-model="changeUsername" />
+            <input v-model="changeUsername" type="checkbox" />
           </div>
-          <InputText v-if="changeUsername" id="chName" v-model="updateUser.name" />
+          <InputText
+            v-if="changeUsername"
+            id="chName"
+            v-model="updateUser.name"
+          />
         </div>
         <div class="field flex flex-column">
-          <div class=" flex flex-row">
+          <div class="flex flex-row">
             <label for="chRole">Role</label>
-            <input type="checkbox" v-model="changeRole" />
+            <input v-model="changeRole" type="checkbox" />
           </div>
-          <Select v-if="changeRole" id="chRole" v-model="updateUser.role" :options="['admin', 'curator', 'observer']">
+          <Select
+            v-if="changeRole"
+            id="chRole"
+            v-model="updateUser.role"
+            :options="['admin', 'curator', 'observer']"
+          >
           </Select>
         </div>
         <div class="field flex flex-column">
-          <div class=" flex flex-row">
+          <div class="flex flex-row">
             <label for="chName">Password</label>
-            <input type="checkbox" v-model="changePassword" />
+            <input v-model="changePassword" type="checkbox" />
           </div>
-          <Password v-if="changePassword" id="password" v-model="updateUser.password" :toggle-mask="true" />
+          <Password
+            v-if="changePassword"
+            id="password"
+            v-model="updateUser.password"
+            :toggle-mask="true"
+          />
         </div>
         <p v-if="changeErrorMessage" class="error">{{ changeErrorMessage }}</p>
         <div class="p-dialog-footer">
-          <Button label="Cancel" icon="pi pi-times" class="flex gap p-button cancel-button" text
-            @click="updateDialogVis = false" />
-          <Button label="Confirm" icon="pi pi-check" class="flex gap p-button button" @click="editUser" />
+          <Button
+            label="Cancel"
+            icon="pi pi-times"
+            class="flex gap p-button cancel-button"
+            text
+            @click="updateDialogVis = false"
+          />
+          <Button
+            label="Confirm"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="editUser"
+          />
         </div>
       </div>
     </Dialog>
 
     <!-- Dialog to delete User-->
-    <Dialog v-model:visible="deleteDialogVis" :style="{ width: '450px' }" header="Confirm" :modal="true">
+    <Dialog
+      v-model:visible="deleteDialogVis"
+      :style="{ width: '450px' }"
+      header="Confirm"
+      :modal="true"
+    >
       <div class="flex flex-column gap">
         <div class="flex items-center gap-4">
           <i class="pi pi-exclamation-triangle !text-3xl" />
-          <span v-if="selectedUser" style="font-family: Inter, sans-serif; font-weight: normal">Are you sure that you
-            want
-            to delete the prompt template?</span>
+          <span
+            v-if="selectedUser"
+            style="font-family: Inter, sans-serif; font-weight: normal"
+            >Are you sure that you want to delete the prompt template?</span
+          >
         </div>
         <div class="p-dialog-footer">
-          <Button label="No" icon="pi pi-times" class="flex gap p-button cancel-button" text
-            @click="deleteDialogVis = false" />
-          <Button label="Yes" icon="pi pi-check" class="flex gap p-button button" @click="deleteUser" />
+          <Button
+            label="No"
+            icon="pi pi-times"
+            class="flex gap p-button cancel-button"
+            text
+            @click="deleteDialogVis = false"
+          />
+          <Button
+            label="Yes"
+            icon="pi pi-check"
+            class="flex gap p-button button"
+            @click="deleteUser"
+          />
         </div>
       </div>
     </Dialog>
 
     <!-- Dialog für neuen Benutzer -->
-    <Dialog v-model:visible="dialogVisible" header="Add new User" style="width: 30vw" modal :draggable="false">
+    <Dialog
+      v-model:visible="dialogVisible"
+      header="Add new User"
+      style="width: 30vw"
+      modal
+      :draggable="false"
+    >
       <div class="p-fluid">
         <div class="field flex flex-column">
           <label for="name">Name</label>
@@ -235,18 +296,31 @@ const editUser = async () => {
         </div>
         <div class="field flex flex-column">
           <label for="role">Role</label>
-          <Select id="role" v-model="newUser.role" :options="['admin', 'curator', 'observer']">
+          <Select
+            id="role"
+            v-model="newUser.role"
+            :options="['admin', 'curator', 'observer']"
+          >
           </Select>
         </div>
         <div class="field flex flex-column">
           <label for="password">Password</label>
-          <Password id="password" v-model="newUser.password" :toggle-mask="true" />
+          <Password
+            id="password"
+            v-model="newUser.password"
+            :toggle-mask="true"
+          />
         </div>
       </div>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       <div class="p-dialog-footer">
-        <Button label="Cancel" icon="pi pi-times" class="flex gap p-button cancel-button" text
-          @click="dialogVisible = false" />
+        <Button
+          label="Cancel"
+          icon="pi pi-times"
+          class="flex gap p-button cancel-button"
+          text
+          @click="dialogVisible = false"
+        />
         <Button label="Confirm" class="p-button-primary" @click="addUser" />
       </div>
     </Dialog>

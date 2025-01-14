@@ -8,10 +8,10 @@ const userSchema = z.object({
 
 export default defineEventHandler(async (event) => {
   console.log("a");
-  
+
   await requireUserSession(event);
   console.log("b");
-  
+
   if (!(await checkUserAuthority(await getUserSession(event), ["admin"]))) {
     throw createError({
       status: 401,
@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
   const r = await db.sql<DbResult<User>>`
   SELECT * FROM users WHERE username = ${body.newName}
  `;
- console.log("d");
+  console.log("d");
   if (r.rows.results[0]?.username) {
     throw createError({
       status: 500,
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     });
   }
   console.log("e");
-  
+
   const result = await db.sql<DbExecResult>`
     UPDATE users 
     SET username = ${body.newName}
