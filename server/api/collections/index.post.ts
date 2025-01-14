@@ -9,6 +9,18 @@ const uploadSchema = z.object({
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
 
+  if (
+    !(await checkUserAuthority(await getUserSession(event), [
+      "curator",
+      "admin",
+    ]))
+  ) {
+    throw createError({
+      status: 401,
+      statusMessage: "You are not authorized for this action",
+    });
+  }
+
   const { apiUrl } = useAppConfig();
   const db = useDatabase();
 

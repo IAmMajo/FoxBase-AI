@@ -6,6 +6,18 @@ const querySchema = z.object({
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
+  if (
+    !(await checkUserAuthority(await getUserSession(event), [
+      "observer",
+      "curator",
+      "admin",
+    ]))
+  ) {
+    throw createError({
+      status: 401,
+      statusMessage: "You are not authorized for this action",
+    });
+  }
   const { adminPagesSize } = useAppConfig();
   const { page } = await getValidatedQuery(event, (query) =>
     querySchema.parse(query),
