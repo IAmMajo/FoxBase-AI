@@ -8,7 +8,7 @@ const props = defineProps<{ text: string }>();
 const displayedText = ref(""); // Der Text, der schrittweise angezeigt wird
 const plainText = ref(""); // Nur der Textinhalt ohne HTML
 const i = ref(0); // Index für die Animation
-const speed = 500; // Geschwindigkeit der Animation in Millisekunden
+const speed = 20; // Geschwindigkeit der Animation in Millisekunden
 
 // Funktion für die Typewriter-Animation
 function typeWriter() {
