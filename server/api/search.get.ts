@@ -33,6 +33,9 @@ export default defineEventHandler(async (event) => {
     if (!productsRows.success) {
       throw createError("Something went wrong during database operation");
     }
+    if (!productsRows.results.length) {
+      continue;
+    }
     const product = productsRows.results[0];
 
     const attributes: Record<string, string> = {};

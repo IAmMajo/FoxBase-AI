@@ -7,11 +7,10 @@ const querySchema = z.object({
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
   const { adminPagesSize } = useAppConfig();
-  const db = useDatabase();
   const { page } = await getValidatedQuery(event, (query) =>
     querySchema.parse(query),
   );
-  const { rows } = await db.sql<DbResult<Product>>`
+  const { rows } = await useDatabase().sql<DbResult<Product>>`
     SELECT * FROM products
     WHERE collection = ${getRouterParam(event, "collectionId")}
     ORDER BY name

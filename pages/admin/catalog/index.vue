@@ -123,10 +123,22 @@ async function deleteCollection() {
         selection-mode="single"
         @row-select="navigateTo(`/admin/catalog/${$event.data.id}`)"
       >
-        <Column field="id" header="ID" />
-        <Column field="collection_name" header="Name" />
-        <Column field="collection_description" header="Description" />
-        <Column field="collection_key" header="Key" />
+        <Column field="id" header="ID" style="font-weight: normal" />
+        <Column
+          field="collection_name"
+          header="Name"
+          style="font-weight: normal"
+        />
+        <Column
+          field="collection_description"
+          header="Description"
+          style="font-weight: normal"
+        />
+        <Column
+          field="collection_key"
+          header="Key"
+          style="font-weight: normal"
+        />
         <Column>
           <template #body="slotProps">
             <Button
