@@ -2,18 +2,12 @@
 import type { NuxtError } from "#app";
 
 const errorMessage = ref("");
-const username = ref("");
 const password = ref("");
 const newPassword = ref("");
 const rNewPassword = ref("");
 async function handlePasswordChange() {
   // Basic validation
-  if (
-    !username.value ||
-    !password.value ||
-    !newPassword.value ||
-    !rNewPassword.value
-  ) {
+  if (!password.value || !newPassword.value || !rNewPassword.value) {
     errorMessage.value = "Please fill out all fields.";
     return;
   }
@@ -24,18 +18,12 @@ async function handlePasswordChange() {
     return;
   }
 
-  if (newPassword.value === password.value) {
-    errorMessage.value = "New password can not be the old password";
-    return;
-  }
-
   const result = await fetch(`/api/users/change-password`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: username.value,
       password: password.value,
       newPassword: newPassword.value,
     }),
@@ -55,15 +43,6 @@ async function handlePasswordChange() {
   <div class="login-container">
     <h2>Change Password</h2>
     <form @submit.prevent="handlePasswordChange">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <InputText
-          id="username"
-          v-model="username"
-          placeholder="Enter your username"
-          class="p-inputtext-lg"
-        />
-      </div>
       <div class="form-group">
         <label for="password">Old Password:</label>
         <Password
