@@ -8,6 +8,8 @@ interface User {
   role: string;
 }
 
+const errorMessage = ref<string | null>(null);
+
 const users = ref<User[]>([]);
 const deleteDialogVis = ref(false);
 const dialogVisible = ref(false); // Controlls dialog visibility
@@ -21,7 +23,7 @@ const selectedUser = ref<User | null>(null);
 async function addUser() {
   if (newUser.value!.name && newUser.value!.role && newUser.value!.password) {
     const fetchResult = await fetch(`/api/users`, {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: newUser.value.name,
@@ -30,7 +32,7 @@ async function addUser() {
       }),
     });
     if (!fetchResult.ok) {
-      alert("You are not authorized!");
+      errorMessage.value = fetchResult.statusText;
       return;
     }
     const createdUser = fetchResult.json() as Promise<User>;
@@ -39,8 +41,9 @@ async function addUser() {
     );
     users.value?.push(await { ...createdUser });
     dialogVisible.value = false;
+    errorMessage.value = null;
   } else {
-    alert("Please fill all fields!");
+    errorMessage.value = ("Please fill all fields!");
   }
 }
 
@@ -58,12 +61,13 @@ const confirmDeleteUser = (user: User) => {
   deleteDialogVis.value = true;
 };
 
+
+
 const deleteUser = async () => {
   deleteDialogVis.value = false;
   if (!(await deleteUserDB(selectedUser.value!.id))) {
     return;
   }
-
   users.value = users.value!.filter((p) => p.id !== selectedUser.value!.id);
   selectedUser.value = null;
 };
@@ -172,6 +176,7 @@ async function deleteUserDB(id: number) {
           <InputText id="password" v-model="newUser.password" />
         </div>
       </div>
+      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       <div class="p-dialog-footer">
         <Button
           label="Cancel"

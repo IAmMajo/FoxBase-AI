@@ -20,21 +20,39 @@ export default defineEventHandler(async (event) => {
   const body = await readValidatedBody(event, (body) => userSchema.parse(body));
   const password = await hashPassword(body.password);
   const db = useDatabase();
+
+  const r = await db.sql<DbResult<User>>`
+   SELECT * FROM users WHERE username = ${body.username}
+  `;
+
+  if (r.rows.results[0]?.username) {
+    throw createError({
+      status: 500,
+      statusMessage: "User with this name already exists",
+    });
+  }
+
   const result = await db.sql<DbExecResult>`
     INSERT INTO users (username, password, role) VALUES (${body.username}, ${password}, ${body.role})
-    ON CONFLICT (username) DO UPDATE SET password = ${password}, role = ${body.role}
+    ON CONFLICT (username) DO NOTHING
   `;
+
   if (!result.success) {
-    throw createError("Something went wrong during creation");
+    throw createError({
+      status: 500,
+      statusMessage: "Something went wrong during creation",
+    });
   }
 
   const { rows } = await db.sql<DbResult<User>>`
   SELECT id, username AS name, role FROM users WHERE username = ${body.username}
 `;
   if (!rows.success || !rows.results.length) {
-    throw createError(
-      "Something went wrong while fetching the result. Input was successful",
-    );
+    throw createError({
+      status: 500,
+      statusMessage:
+        "Something went wrong while fetching the result. Input was successful",
+    });
   }
   return rows.results[0];
 });
