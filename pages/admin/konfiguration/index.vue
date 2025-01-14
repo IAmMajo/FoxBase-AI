@@ -30,6 +30,13 @@ const lightTextSecondary = ref(
 const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
+// Speichern der Hero Texte
+const heroTextTop = ref(data.value?.heroTextTop || "");
+console.log(heroTextTop);
+const heroTextBottom = ref(data.value?.heroTextBottom || "");
+const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
+const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
+
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
@@ -49,6 +56,12 @@ async function onSave() {
 
     // Check, ob der Button im FE angezeigt werden soll
     showPaletteSwitch: boolToString(stringCheckState),
+
+    // Hero Texts
+    heroTextTop: heroTextTop?.value,
+    heroHighlightTop: heroHighlightTop?.value,
+    heroTextBottom: heroTextBottom?.value,
+    heroHighlightBottom: heroHighlightBottom?.value,
   });
 
   saveStatus.value = success ? "sucess" : "error";
@@ -56,125 +69,188 @@ async function onSave() {
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
+
+  location.reload();
 }
 </script>
 
 <template>
-  <div>
-    <h2>Konfiguration</h2>
-    <p>
-      Auf dieser Seite können Konfigurationen über das Aussehen und Verhalten
-      der Seite festgelegt werden.
-    </p>
+  <div class="no-y-scroll">
+    <div>
+      <h2>Configuration</h2>
+      <p>
+        On this page changes about the content of the hero and the color palette
+        can be made.
+      </p>
 
-    <h3>Preview</h3>
-    <div class="flex jc-center-ai-start gap">
-      <PreviewContainer
-        :Primary="primary"
-        :Background="backgroundSecondary"
-        :Text="textPrimary"
-        :TextSecondary="textSecondary"
-        :button-state="stringCheckState"
-      />
+      <h3>Preview</h3>
+      <div class="flex jc-center-ai-start gap">
+        <PreviewContainer
+          :Primary="primary"
+          :Background="backgroundSecondary"
+          :Text="textPrimary"
+          :TextSecondary="textSecondary"
+          :button-state="stringCheckState"
+          :top-text="heroTextTop"
+          :bottom-text="heroTextBottom"
+          :top-highlight="heroHighlightTop"
+          :bottom-highlight="heroHighlightBottom"
+        />
 
-      <div class="flex jc-ai-center flex-column" style="width: 22%">
-        <h5>Farbpalette</h5>
-        <div class="flex jc-ai-center gap flex-wrap">
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="primary" v-model="primary" type="color" />
-            <label for="primary">Primary</label>
-          </div>
+        <div class="flex jc-ai-center flex-column" style="width: 22%">
+          <h5>Text in Hero Component</h5>
+          <form action="" style="width: 100%">
+            <div class="heroset-input-container">
+              <FloatLabel variant="in">
+                <InputText
+                  id="in_label1"
+                  v-model="heroTextTop"
+                  class="heroset-input"
+                  variant="filled"
+                />
+                <label for="in_label1">Hero Top</label>
+              </FloatLabel>
 
-          <div class="flex flex-column jc-ai-center color-field">
-            <input
-              id="backgroundSecondary"
-              v-model="backgroundSecondary"
-              type="color"
-            />
+              <FloatLabel variant="in">
+                <InputText
+                  id="in_label4"
+                  v-model="heroHighlightTop"
+                  class="heroset-input"
+                  variant="filled"
+                />
+                <label for="in_label4">Hero Highlight Top</label>
+              </FloatLabel>
+            </div>
 
-            <label for="backgroundSecondary">Hintergrund</label>
-          </div>
+            <div class="mt heroset-input-container">
+              <FloatLabel variant="in">
+                <InputText
+                  id="in_label2"
+                  v-model="heroTextBottom"
+                  class="heroset-input"
+                  variant="filled"
+                />
+                <label for="in_label2">Hero Bottom</label>
+              </FloatLabel>
 
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="textPrimary" v-model="textPrimary" type="color" />
-            <label for="textPrimary">Überschriften</label>
-          </div>
+              <FloatLabel variant="in">
+                <InputText
+                  id="in_label3"
+                  v-model="heroHighlightBottom"
+                  class="heroset-input"
+                  variant="filled"
+                />
+                <label for="in_label3">Hero Highlight Bottom</label>
+              </FloatLabel>
+            </div>
+          </form>
 
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="textSecondary" type="color" />
-            <label for="textSecondary">Texte</label>
-          </div>
+          <h5>Color Palette</h5>
+          <div class="flex jc-ai-center gap flex-wrap">
+            <div class="flex flex-column jc-ai-center color-field">
+              <input id="primary" v-model="primary" type="color" />
+              <label for="primary">Primary</label>
+            </div>
 
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightPrimary" type="color" />
-            <label for="textSecondary">Light Primary</label>
-          </div>
-
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightBackground" type="color" />
-            <label for="textSecondary">Light Background</label>
-          </div>
-
-          <div class="flex flex-column jc-ai-center color-field">
-            <input id="textSecondary" v-model="lightTextPrimary" type="color" />
-            <label for="textSecondary">Light Überschriften</label>
-          </div>
-
-          <div class="flex flex-column jc-ai-center color-field">
-            <input
-              id="textSecondary"
-              v-model="lightTextSecondary"
-              type="color"
-            />
-            <label for="textSecondary">Light Text</label>
-          </div>
-
-          <div class="full-width checkbox-container">
-            <div class="flex gap jc-start-ai-center">
+            <div class="flex flex-column jc-ai-center color-field">
               <input
-                v-model="stringCheckState"
-                name="Lightmode"
-                type="checkbox"
+                id="backgroundSecondary"
+                v-model="backgroundSecondary"
+                type="color"
               />
-              <label for="Lightmode">Wechselbutton</label>
-            </div>
-            <p>
-              Wird diese Funktion aktiviert, haben die User die Möglichkeit über
-              die Navbar die Farbpalette zu wechseln.
-            </p>
-          </div>
-        </div>
-        <div class="flex jc-ai-center w-100 mt">
-          <button
-            style="border: 1px solid transparent"
-            class="upload-button button bold-text"
-            @click="onSave"
-          >
-            Speichern
-          </button>
-        </div>
 
-        <div class="confirm-container mt">
-          <div
-            v-if="saveStatus === 'sucess'"
-            data-aos="fade-up"
-            class="confirm-green flex jc-ai-center"
-          >
-            <div class="icon-container flex jc-ai-center">
-              <div class="green-icon pi pi-check text-xl"></div>
+              <label for="backgroundSecondary">Background</label>
             </div>
-            <p class="flex-grow text-center">Speichern erfolgreich</p>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input id="textPrimary" v-model="textPrimary" type="color" />
+              <label for="textPrimary">Headings</label>
+            </div>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input id="textSecondary" v-model="textSecondary" type="color" />
+              <label for="textSecondary">Text</label>
+            </div>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input id="textSecondary" v-model="lightPrimary" type="color" />
+              <label for="textSecondary">Light Primary</label>
+            </div>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input
+                id="textSecondary"
+                v-model="lightBackground"
+                type="color"
+              />
+              <label for="textSecondary">Light Background</label>
+            </div>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input
+                id="textSecondary"
+                v-model="lightTextPrimary"
+                type="color"
+              />
+              <label for="textSecondary">Light Heading</label>
+            </div>
+
+            <div class="flex flex-column jc-ai-center color-field">
+              <input
+                id="textSecondary"
+                v-model="lightTextSecondary"
+                type="color"
+              />
+              <label for="textSecondary">Light Text</label>
+            </div>
+
+            <div class="full-width checkbox-container">
+              <div class="flex gap jc-start-ai-center">
+                <input
+                  v-model="stringCheckState"
+                  name="Lightmode"
+                  type="checkbox"
+                />
+                <label for="Lightmode">Switch Button</label>
+              </div>
+              <p>
+                When enabled, the user can switch between the generated Light
+                and Dark Palette over a button inside of the Navbar.
+              </p>
+            </div>
+          </div>
+          <div class="flex jc-ai-center w-100 mt">
+            <button
+              style="border: 1px solid transparent"
+              class="upload-button button bold-text"
+              @click="onSave"
+            >
+              Save changes
+            </button>
           </div>
 
-          <div
-            v-if="saveStatus === 'error'"
-            data-aos="fade-up"
-            class="confirm-red flex jc-ai-center"
-          >
-            <div class="icon-container-red flex jc-ai-center">
-              <div class="red-icon pi pi-times text-xl"></div>
+          <div class="confirm-container mt">
+            <div
+              v-if="saveStatus === 'sucess'"
+              data-aos="fade-up"
+              class="confirm-green flex jc-ai-center"
+            >
+              <div class="icon-container flex jc-ai-center">
+                <div class="green-icon pi pi-check text-xl"></div>
+              </div>
+              <p class="flex-grow text-center">Saving Successful</p>
             </div>
-            <p class="flex-grow text-center">Speichern fehlgeschlagen</p>
+
+            <div
+              v-if="saveStatus === 'error'"
+              data-aos="fade-up"
+              class="confirm-red flex jc-ai-center"
+            >
+              <div class="icon-container-red flex jc-ai-center">
+                <div class="red-icon pi pi-times text-xl"></div>
+              </div>
+              <p class="flex-grow text-center">Error while Saving</p>
+            </div>
           </div>
         </div>
       </div>
@@ -183,6 +259,26 @@ async function onSave() {
 </template>
 
 <style>
+.no-y-scroll {
+  overflow-x: hidden;
+}
+
+.p-floatlabel {
+  width: 100%;
+}
+
+.heroset-input-container {
+  width: 100%;
+}
+
+.heroset-input-container label {
+  font-size: 16px;
+}
+
+.heroset-input {
+  width: 100%;
+}
+
 input[type="checkbox"] {
   width: 20px;
   height: 20px;

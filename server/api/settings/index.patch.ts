@@ -8,6 +8,18 @@ export default defineEventHandler(async (event) => {
     settingSchema.parse(body),
   );
 
+  if (
+    !(await checkUserAuthority(await getUserSession(event), [
+      "curator",
+      "admin",
+    ]))
+  ) {
+    throw createError({
+      status: 401,
+      statusMessage: "You are not authorized for this action",
+    });
+  }
+
   const settings = Object.entries(body);
   const db = useDatabase();
   for (const [name, value] of settings) {

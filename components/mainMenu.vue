@@ -8,7 +8,7 @@ import NavListElement from "~/pages/admin/components/NavListElement.vue";
       <ul class="list-none p-0 m-0 overflow-hidden">
         <NavListElement title="Dashboard" link="/admin" icon="pi-home" />
         <NavListElement
-          title="Konfiguration"
+          title="Configuration"
           link="/admin/konfiguration"
           icon="pi-cog"
         />
@@ -19,7 +19,7 @@ import NavListElement from "~/pages/admin/components/NavListElement.vue";
           link="/admin/prompt-templates"
           icon="pi-code"
         />
-        <NavListElement title="Hilfe" link="/admin/help" icon="pi-question" />
+        <NavListElement title="Help" link="/admin/help" icon="pi-question" />
       </ul>
     </ul>
   </div>

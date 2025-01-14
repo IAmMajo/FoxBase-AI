@@ -51,17 +51,17 @@
     <!-- Footer Main Content -->
     <div class="footer-main-content flex gap-lg">
       <div>
-        <p class="footer-new-heading"><b>Unsere Plattformen</b></p>
+        <p class="footer-new-heading"><b>Out Platforms</b></p>
         <ul>
-          <li><a href="#">Startseite</a></li>
-          <li><a href="#">Produkt</a></li>
+          <li><a href="#">Landing Page</a></li>
+          <li><a href="#">Products</a></li>
           <li><a href="#">FoxBase AI</a></li>
-          <li><a href="#">Erfolgstories</a></li>
+          <li><a href="#">Case Studies</a></li>
         </ul>
       </div>
 
       <div>
-        <p class="footer-new-heading"><b>Ressourcen</b></p>
+        <p class="footer-new-heading"><b>Ressources</b></p>
         <ul>
           <li><a href="#">White Paper</a></li>
           <li><a href="#">Webinar</a></li>
@@ -73,20 +73,20 @@
       <div>
         <p class="footer-new-heading"><b>Inside FoxBase</b></p>
         <ul>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Über uns</a></li>
-          <li><a href="#">Karriereseite</a></li>
-          <li><a href="#">Stellenangebote</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Carreer</a></li>
+          <li><a href="#">Jobs</a></li>
         </ul>
       </div>
 
       <div>
-        <p class="footer-new-heading"><b>Kundenbereich</b></p>
+        <p class="footer-new-heading"><b>Customers Area</b></p>
         <ul>
           <li><a href="#">Knowledge Hub</a></li>
           <li><a href="#">Dokumentation</a></li>
-          <li><a href="#">Zur Workbench</a></li>
-          <li><a href="#">Technischer Support</a></li>
+          <li><a href="#">Workbench</a></li>
+          <li><a href="#">Technical Support</a></li>
         </ul>
       </div>
     </div>
@@ -126,8 +126,8 @@
         ></div>
         <b><p class="footer-bottom-left">@ FoxBase GmbH 2024</p></b>
         <div class="footer-bottom-right flex gap">
-          <b><a class="dark-bottomtext" href="#">Datenschutz</a></b>
-          <b><a class="dark-bottomtext" href="#">Impressum</a></b>
+          <b><a class="dark-bottomtext" href="#">Terms of service</a></b>
+          <b><a class="dark-bottomtext" href="#">Imprint</a></b>
         </div>
       </div>
     </div>
@@ -269,5 +269,73 @@ html.light .footer-aside-content {
 .footer-locations p {
   margin: 6px 0;
   padding: 0;
+}
+
+@media (max-width: 1000px) {
+  footer {
+    height: auto;
+    padding-bottom: 320px;
+  }
+  .footer-main-content {
+    flex-direction: column;
+  }
+
+  .footer-aside-content {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 800px) {
+  footer {
+    height: auto;
+    padding-bottom: 320px;
+  }
+  .footer-main-content {
+    flex-direction: column;
+  }
+
+  .footer-aside-content {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  footer {
+    height: auto;
+    padding-bottom: 320px;
+  }
+  .footer-main-content {
+    flex-direction: column;
+  }
+
+  .footer-aside-content {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    height: auto;
+    padding-bottom: 320px;
+  }
+  .footer-main-content {
+    flex-direction: column;
+  }
+
+  .footer-aside-content {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

@@ -309,9 +309,6 @@ html.light .dot {
   border-radius: var(--border-radius-default);
   background-color: color-mix(in srgb, var(--dark-bg-search), transparent 40%);
 }
-.feedback-mobile {
-  display: none;
-}
 
 .arrowUp:hover path {
   stroke: var(--dark-primary);
@@ -353,6 +350,15 @@ html.light .dot {
   :root {
     --result-card-width: 90vw;
   }
+
+  .result-card {
+    /* height: 215px; */
+    height: max-content;
+    padding: 0px;
+    border: none;
+    flex-direction: column;
+    margin: 100px 0;
+  }
 }
 
 /* Handys */
@@ -367,6 +373,8 @@ html.light .dot {
     height: max-content;
     padding: 0px;
     border: none;
+    flex-direction: column;
+    margin: 100px 0;
   }
 
   .title {
@@ -387,37 +395,9 @@ html.light .dot {
     display: none;
   }
 
-  .use-cases {
-    display: none;
-  }
-
-  .feedback {
-    display: none;
-  }
-
   .left-mobile {
     height: 215px;
     /* height: max-content; */
   }
-
-  .feedback-mobile {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    aspect-ratio: 3.22 / 1;
-    width: 75px;
-    border-radius: var(--border-radius-default);
-    background-color: color-mix(
-      in srgb,
-      var(--dark-bg-search),
-      transparent 40%
-    );
-    margin-top: auto;
-  }
-}
-
-/* kleine Handys */
-
-@media (max-width: 400px) {
 }
 </style>
