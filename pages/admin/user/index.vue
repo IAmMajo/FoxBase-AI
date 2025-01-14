@@ -43,7 +43,7 @@ async function addUser() {
     dialogVisible.value = false;
     errorMessage.value = null;
   } else {
-    errorMessage.value = ("Please fill all fields!");
+    errorMessage.value = "Please fill all fields!";
   }
 }
 
@@ -60,8 +60,6 @@ const confirmDeleteUser = (user: User) => {
   selectedUser.value = user;
   deleteDialogVis.value = true;
 };
-
-
 
 const deleteUser = async () => {
   deleteDialogVis.value = false;
