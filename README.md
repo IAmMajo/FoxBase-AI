@@ -14,7 +14,7 @@ https://www.figma.com/proto/kDtdJAlwppDFAL0fTpwsNM/FoxBase-AI-Platform?node-id=1
 
 ### Abschlusspräsentation
 
-https://nico-puelacher-presentations.netlify.app/foxbaseai
+https://nico-puelacher-presentations.netlify.app/foxbaseaifinal
 
 # Installation und Inbetriebnahme
 
