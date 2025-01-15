@@ -1,10 +1,33 @@
-# Nuxt Minimal Starter
+# Anlagen des Projekts
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### stage Umgebung
 
-## Setup
+https://foxbaseai-stage.maxoverlack.dev/
 
-Make sure to install dependencies:
+### Figma Board
+
+https://www.figma.com/design/kDtdJAlwppDFAL0fTpwsNM/FoxBase-AI-Platform?node-id=4-2&t=MjXy6yqfxvTdj1Me-1
+
+### Figma Prototyp
+
+https://www.figma.com/proto/kDtdJAlwppDFAL0fTpwsNM/FoxBase-AI-Platform?node-id=114-85&t=MjXy6yqfxvTdj1Me-0&scaling=scale-down&content-scaling=fixed&page-id=4%3A2&starting-point-node-id=114%3A85
+
+### Abschlusspräsentation
+
+https://nico-puelacher-presentations.netlify.app/foxbaseaifinal
+
+# Installation und Inbetriebnahme
+
+Das lokale Betreiben der Software Umgebung ist auf zwei Wege möglich.
+Beide Wege setzen voraus, dass sich das Repository über ein
+
+```bash
+git clone
+```
+
+auf die lokale Umgebung geholt wird.
+
+Daraufhin müssen die Dependencies des Projekts installiert werden, was über den gewohnten Weg möglich ist.
 
 ```bash
 # npm
@@ -20,9 +43,15 @@ yarn install
 bun install
 ```
 
-## Development Server
+Um die Anwendung nun zu starten kann entweder eine Docker Umgebung gestartet werden oder der Dev Server gestartet werden.
 
-Start the development server on `http://localhost:3000`:
+## Docker Umgebung
+
+```bash
+docker compose up
+```
+
+## Dev Server
 
 ```bash
 # npm
@@ -38,38 +67,6 @@ yarn dev
 bun run dev
 ```
 
-## Production
+---
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Beide Commands öfnnen die Anwendung auf `http://localhost:3000`.

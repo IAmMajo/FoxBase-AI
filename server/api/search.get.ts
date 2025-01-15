@@ -1,40 +1,56 @@
 import checkApiResponse from "../utils/checkApiResponse";
+import convertDbProductToProduct from "../utils/convertDbProductToProduct";
+import getActiveCollection from "../utils/getActiveCollection";
 
 export default defineEventHandler(async (event) => {
-  const { apiUrl, collection, resultsLimit } = useAppConfig();
+  const { apiUrl, resultsLimit } = useAppConfig();
+  const db = useDatabase();
+  const collection = await getActiveCollection();
 
-  const response = await fetch(`${apiUrl}/collections/${collection}/search`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${event.context.cloudflare.env.API_TOKEN}`,
-      "Content-Type": "application/json",
+  const response = await fetch(
+    `${apiUrl}/collections/${collection.collection_key}/search`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${event.context.cloudflare.env.API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: getQuery(event).q,
+        limit: resultsLimit,
+        consider_feedback: true,
+      }),
     },
-    body: JSON.stringify({
-      query: getQuery(event).q,
-      limit: resultsLimit,
-    }),
-  });
+  );
   await checkApiResponse(response);
 
   const json = (await response.json()) as ApiProduct[];
 
-  return json.map<Product>((product) => {
-    const attributes: Record<string, string> = {};
-
-    product.payload.Technical_Attributes.split(", ").forEach((attribute) => {
-      const [key, value] = attribute.split(": ");
-      attributes[key] = value;
-      return attributes;
-    });
-
-    return {
-      id: Number(product.payload.id),
-      name: product.payload.productName,
-      category: product.payload.Product_Category,
-      description: product.payload.Description,
-      attributes,
-      typicalUseCases: product.payload.Typical_Use_Cases.split(", "),
-      score: product.score,
-    };
-  });
+  const products: Product[] = [];
+  for (const apiProduct of json) {
+    const { rows } = await db.sql<DbResult<DbProduct>>`
+      SELECT
+        *,
+        (
+          SELECT json_group_object (name, value) FROM product_attributes
+          WHERE product = products.id
+        ) AS attributes,
+        (
+          SELECT json_group_array (name) FROM product_typical_use_cases
+          WHERE product = products.id
+        ) AS typical_use_cases
+      FROM products WHERE collection = ${collection.id}
+      AND foxbase_id = ${apiProduct.payload.id}
+    `;
+    if (!rows.success) {
+      throw createError("Something went wrong during database operation");
+    }
+    if (!rows.results.length) {
+      continue;
+    }
+    const product = convertDbProductToProduct(rows.results[0]);
+    product.score = apiProduct.score;
+    products.push(product);
+  }
+  return products;
 });

@@ -1,33 +1,24 @@
 import { z } from "zod";
+import changePassword from "~/server/utils/changePassword";
 
 const userSchema = z.object({
-  username: z.string(),
   password: z.string(),
   newPassword: z.string(),
 });
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
+
   const body = await readValidatedBody(event, (body) => userSchema.parse(body));
-  //checks if you give the correct original password as extra security measure
-  const { rows } = await useDatabase().sql<DbResult<User>>`
-    SELECT * FROM users WHERE username = ${body.username}
-  `;
-  if (!rows.success) {
-    throw createError("Something went wrong during database operation");
+  if (body.password.length == 0 || body.newPassword.length == 0) {
+    throw createError({
+      status: 401,
+      message: "You have to give a password.",
+    });
   }
-  if (!rows.results.length) {
-    throw createError({ status: 401, message: "Invalid username or password" });
-  }
-  if (!(await verifyPassword(rows.results[0].password, body.password))) {
-    throw createError({ status: 401, message: "Invalid username or password" });
-  }
-  const result = await useDatabase().sql<DbExecResult>`
-    UPDATE users 
-    SET password = ${await hashPassword(body.newPassword)}
-    WHERE username = ${body.username}
-  `;
-  if (!result.success) {
-    throw createError("Something went wrong during database operation");
-  }
+  changePassword(
+    (await getUserSession(event)).user.id,
+    body.newPassword,
+    body.password,
+  );
 });

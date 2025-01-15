@@ -4,5 +4,5 @@ CREATE TABLE settings (
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
   value TEXT NOT NULL,
-  UNIQUE(name)
+  UNIQUE (name)
 ) STRICT;

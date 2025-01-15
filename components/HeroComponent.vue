@@ -1,15 +1,23 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 defineProps<{
   prompts: string[];
   query: string;
 }>();
 defineEmits(["promptClick", "searchInput", "searchSubmit"]);
 
-const headline = "Finden Sie die";
-const headlineSpan = " richtige Lösung";
+const { data } = await useFetch<Record<string, string>>("/api/settings");
 
-const subheadline = "Für Ihr";
-const subheadlineSpan = " Fallbeispiel";
+const settings = ref<Record<string, string>>({});
+if (data.value) {
+  settings.value = data.value;
+}
+
+const heroTextTop = data.value?.heroTextTop;
+const heroHighlightTop = data.value?.heroHighlightTop;
+const heroTextBottom = data.value?.heroTextBottom;
+const heroHighlightBottom = data.value?.heroHighlightBottom;
 </script>
 
 <template>
@@ -24,12 +32,20 @@ const subheadlineSpan = " Fallbeispiel";
       data-aos="fade-up"
       class="flex flex-column gap hero-size debugging-red jc-ai-center"
     >
-      <p class="dark-heading text-shadow header-title no-spacing">
-        {{ headline }}<span class="dark-highlight">{{ headlineSpan }}</span>
+      <p
+        id="hero-headline-content"
+        class="dark-heading text-shadow header-title no-spacing"
+      >
+        {{ heroTextTop }}
+        <span id="hero-headline-highlight" class="dark-highlight">
+          {{ heroHighlightTop }}
+        </span>
       </p>
-      <h1 class="dark-heading text-shadow no-spacing">
-        {{ subheadline
-        }}<span class="dark-highlight">{{ subheadlineSpan }}</span>
+      <h1 id="hero-subline-content" class="dark-heading text-shadow no-spacing">
+        {{ heroTextBottom }}
+        <span id="hero-subline-highlight" class="dark-highlight">
+          {{ heroHighlightBottom }}
+        </span>
       </h1>
 
       <div class="searchbar-wrapper flex flex-column gap">
@@ -149,6 +165,22 @@ html.light .waves::after {
 
   100% {
     transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
+@media (max-width: 360px) {
+  .searchbar-wrapper {
+    width: 80%;
+  }
+
+  .header-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 340px) {
+  .header-title {
+    text-align: center;
   }
 }
 </style>

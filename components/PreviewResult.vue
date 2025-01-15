@@ -23,7 +23,7 @@ defineProps<{
         <div>
           <div class="flex jc-start-ai-center gap">
             <h5 :style="{ color: textColor }" class="m-0 pt-2">
-              Computer mit Bildschirm
+              Computer with Monitor
             </h5>
             <div
               :style="{ backgroundColor: primaryColor, color: textColor }"

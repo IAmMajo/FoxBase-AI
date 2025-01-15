@@ -4,7 +4,7 @@ CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL,
   password TEXT NOT NULL,
-  UNIQUE(username)
+  UNIQUE (username)
 ) STRICT;
 
 INSERT INTO users (username, password) VALUES (
