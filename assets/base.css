@@ -203,6 +203,11 @@ html {
   align-items: center;
 }
 
+.jc-ai-start {
+  justify-content: start;
+  align-items: start;
+}
+
 .jc-space-between-ai-center {
   justify-content: space-between;
   align-items: center;
