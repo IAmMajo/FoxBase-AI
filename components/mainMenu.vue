@@ -6,20 +6,14 @@ import NavListElement from "~/pages/admin/components/NavListElement.vue";
   <div class="overflow-y-auto">
     <ul class="list-none p-3 m-0">
       <ul class="list-none p-0 m-0 overflow-hidden">
-        <NavListElement title="Dashboard" link="/admin" icon="pi-home" />
-        <NavListElement
-          title="Configuration"
-          link="/admin/konfiguration"
-          icon="pi-cog"
-        />
+        <NavListElement title="Configuration" link="/admin" icon="pi-cog" />
         <NavListElement title="Catalog" link="/admin/catalog" icon="pi-shop" />
         <NavListElement title="Users" link="/admin/user" icon="pi-user" />
         <NavListElement
-          title="Prompt-Templates"
+          title="Prompt Templates"
           link="/admin/prompt-templates"
           icon="pi-code"
         />
-        <NavListElement title="Help" link="/admin/help" icon="pi-question" />
       </ul>
     </ul>
   </div>
