@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import "primeicons/primeicons.css";
+
 // Custom Layout, um nicht das Admin Layout zu erhalten
 definePageMeta({
   layout: "custom",
