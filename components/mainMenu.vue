@@ -18,15 +18,14 @@ import NavListElement from "~/pages/admin/components/NavListElement.vue";
     </ul>
   </div>
 
-  <div class="mt-auto">
-    <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
-    <a
-      v-ripple
-      class="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
-    >
-      <span class="font-bold">Maxine Mustermann</span>
-    </a>
-  </div>
+  <AuthState v-slot="{ user }">
+    <div class="mt-auto">
+      <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
+      <div class="m-3 p-3">
+        <span class="font-bold">{{ user.username }}</span>
+      </div>
+    </div>
+  </AuthState>
 </template>
 
 <style>
