@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { SunIcon } from "@heroicons/vue/24/outline";
-
 defineProps<{
   query: string;
 }>();

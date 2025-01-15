@@ -12,7 +12,7 @@
 //       Storage: "256 GB",
 //       Display: "Liquid Retina Display",
 //     },
-//     typical_use_cases: ["Remote work", "Business travel", "Office use"],
+//     typicalUseCases: ["Remote work", "Business travel", "Office use"],
 //     score: 1,
 //   },
 //   {
@@ -26,7 +26,7 @@
 //       Storage: "512 GB SSD",
 //       GPU: "UHD 630",
 //     },
-//     typical_use_cases: ["Productivity", "Portability", "Office use"],
+//     typicalUseCases: ["Productivity", "Portability", "Office use"],
 //     score: 85,
 //   },
 //   {
@@ -40,7 +40,7 @@
 //       batteryLife: "20 hours",
 //       connectivity: "Bluetooth 5.0",
 //     },
-//     typical_use_cases: ["Music", "Podcasts", "Video Calls"],
+//     typicalUseCases: ["Music", "Podcasts", "Video Calls"],
 //     score: 88,
 //   },
 // ]);

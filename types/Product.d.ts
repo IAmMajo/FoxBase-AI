@@ -1,10 +1,10 @@
 declare interface Product {
   id: number;
-  foxbase_id: number;
+  foxbaseId: number;
   name: string;
   category: string;
   description: string;
-  attributes: Record<string, string>?;
-  typical_use_cases: string[]?;
-  score: number?;
+  attributes?: Record<string, string>;
+  typicalUseCases?: string[];
+  score?: number;
 }

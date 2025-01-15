@@ -5,7 +5,7 @@ definePageMeta({
 
 const { data: prompts } = await useFetch<string[]>("/api/prompts");
 const filteredPrompts = ref<string[]>(prompts.value ?? []);
-const query = ref("");
+const query = ref(String(useRoute().query.q ?? ""));
 const textResponse = ref("");
 const results = ref<Product[]>([]);
 
@@ -28,15 +28,26 @@ async function onSearchInput(event: UIEvent) {
 async function onSearchSubmit() {
   textResponse.value = "";
   results.value = [];
+  const params = new URLSearchParams(location.search);
   if (!query.value) {
+    params.delete("q");
+    history.pushState(null, "", `?${params}`);
     return;
   }
+  params.set("q", query.value);
+  history.pushState(null, "", `?${params}`);
   document.getElementById("searchState")!.scrollIntoView({
     behavior: "smooth",
   });
   results.value = await fetchResults(query.value);
   textResponse.value = await fetchTextResponse(query.value, results.value);
 }
+
+onMounted(() => {
+  if (query.value) {
+    onSearchSubmit();
+  }
+});
 </script>
 
 <template>

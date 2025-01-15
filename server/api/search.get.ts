@@ -1,4 +1,5 @@
 import checkApiResponse from "../utils/checkApiResponse";
+import convertDbProductToProduct from "../utils/convertDbProductToProduct";
 import getActiveCollection from "../utils/getActiveCollection";
 
 export default defineEventHandler(async (event) => {
@@ -17,6 +18,7 @@ export default defineEventHandler(async (event) => {
       body: JSON.stringify({
         query: getQuery(event).q,
         limit: resultsLimit,
+        consider_feedback: true,
       }),
     },
   );
@@ -26,42 +28,28 @@ export default defineEventHandler(async (event) => {
 
   const products: Product[] = [];
   for (const apiProduct of json) {
-    const { rows: productsRows } = await db.sql<DbResult<Product>>`
-      SELECT * FROM products WHERE collection = ${collection.id}
+    const { rows } = await db.sql<DbResult<DbProduct>>`
+      SELECT
+        *,
+        (
+          SELECT json_group_object (name, value) FROM product_attributes
+          WHERE product = products.id
+        ) AS attributes,
+        (
+          SELECT json_group_array (name) FROM product_typical_use_cases
+          WHERE product = products.id
+        ) AS typical_use_cases
+      FROM products WHERE collection = ${collection.id}
       AND foxbase_id = ${apiProduct.payload.id}
     `;
-    if (!productsRows.success) {
+    if (!rows.success) {
       throw createError("Something went wrong during database operation");
     }
-    if (!productsRows.results.length) {
+    if (!rows.results.length) {
       continue;
     }
-    const product = productsRows.results[0];
-
-    const attributes: Record<string, string> = {};
-    const { rows: productAttributesRows } = await db.sql<
-      DbResult<ProductAttribute>
-    >`SELECT * FROM product_attributes WHERE product = ${product.id}`;
-    if (!productAttributesRows.success) {
-      throw createError("Something went wrong during database operation");
-    }
-    productAttributesRows.results.forEach((attribute) => {
-      attributes[attribute.name] = attribute.value;
-    });
-    product.attributes = attributes;
-
-    const { rows: productTypicalUseCasesRows } = await db.sql<
-      DbResult<ProductTypicalUseCase>
-    >`SELECT * FROM product_typical_use_cases WHERE product = ${product.id}`;
-    if (!productTypicalUseCasesRows.success) {
-      throw createError("Something went wrong during database operation");
-    }
-    product.typical_use_cases = productTypicalUseCasesRows.results.map(
-      (typicalUseCase) => typicalUseCase.name,
-    );
-
+    const product = convertDbProductToProduct(rows.results[0]);
     product.score = apiProduct.score;
-
     products.push(product);
   }
   return products;

@@ -79,7 +79,7 @@ export default defineEventHandler(async (event) => {
     if (!productsResult.success) {
       throw createError("Something went wrong during database operation");
     }
-    const { rows: productsRows } = await db.sql<DbResult<Product>>`
+    const { rows: productsRows } = await db.sql<DbResult<DbProduct>>`
       SELECT * FROM products
       WHERE collection = ${id} AND foxbase_id = ${productFoxbaseId}
     `;

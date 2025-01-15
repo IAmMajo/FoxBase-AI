@@ -3,9 +3,9 @@
 <template>
   <div>
     <div class="flex jc-ai-center">
-      <a href="/">
+      <NuxtLink to="/">
         <i class="detail-back-button pi pi-angle-left"></i>
-      </a>
+      </NuxtLink>
       <p class="back-button-text">Zurück zur Startseite</p>
     </div>
   </div>
