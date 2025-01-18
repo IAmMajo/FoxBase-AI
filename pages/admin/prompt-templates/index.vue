@@ -134,7 +134,7 @@ const deletePrompt = async () => {
           <Button
             label="No"
             icon="pi pi-times"
-            class="flex gap p-button cancel-button"
+            class="flex gap p-button inversive-button"
             text
             @click="deletePromptDialog = false"
           />
@@ -160,6 +160,7 @@ const deletePrompt = async () => {
           <label for="text" class="block font-bold mb-3">Prompt</label>
           <Textarea
             id="text"
+            class="prompt-textarea"
             v-model="newPrompt"
             required="true"
             rows="4"
@@ -173,7 +174,7 @@ const deletePrompt = async () => {
         <div class="p-dialog-footer">
           <Button
             label="Cancel"
-            class="p-button-text cancel-button"
+            class="p-button-text inversive-button"
             @click="dialogVisible = false"
           />
           <Button
@@ -188,8 +189,22 @@ const deletePrompt = async () => {
 </template>
 
 <style>
+
 :root {
   --p-message-error-simple-color: #dc2626;
+}
+
+
+.p-button-icon-only{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+} 
+
+
+.p-textarea:focus{
+  border: 1px solid var(--dark-primary) !important;
 }
 
 .p-dialog-header span {
@@ -231,6 +246,24 @@ const deletePrompt = async () => {
 }
 
 .button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--dark-primary),
+    transparent 85%
+  ) !important;
+  color: var(--dark-primary) !important;
+  border:
+    1px,
+    solid var(--dark-primary) !important;
+}
+
+.inversive-button {
+  background-color: transparent;
+  color: var(--dark-primary);
+  border: 1px solid white;
+}
+
+.inversive-button:hover{
   background-color: color-mix(
     in srgb,
     var(--dark-primary),

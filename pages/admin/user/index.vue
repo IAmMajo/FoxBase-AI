@@ -233,7 +233,7 @@ const editUser = async () => {
           <Button
             label="Cancel"
             icon="pi pi-times"
-            class="flex gap p-button cancel-button"
+            class="flex gap p-button inversive-button"
             text
             @click="updateDialogVis = false"
           />
@@ -267,7 +267,7 @@ const editUser = async () => {
           <Button
             label="No"
             icon="pi pi-times"
-            class="flex gap p-button cancel-button"
+            class="flex gap p-button inversive-button"
             text
             @click="deleteDialogVis = false"
           />
@@ -317,11 +317,11 @@ const editUser = async () => {
         <Button
           label="Cancel"
           icon="pi pi-times"
-          class="flex gap p-button cancel-button"
+          class="flex gap p-button inversive-button"
           text
           @click="dialogVisible = false"
         />
-        <Button label="Confirm" class="p-button-primary" @click="addUser" />
+        <Button label="Confirm" class="p-button-primary button" @click="addUser" />
       </div>
     </Dialog>
   </div>

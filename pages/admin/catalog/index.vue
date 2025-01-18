@@ -103,7 +103,7 @@ async function deleteCollection() {
             <Button
               label="Cancel"
               style="border: 1px solid transparent"
-              class="upload-button button"
+              class="upload-button inversive-button"
               @click="dialogVisible = false"
             />
             <Button
@@ -168,7 +168,7 @@ async function deleteCollection() {
       <Dialog
         v-model:visible="deleteVisible"
         :style="{ width: '450px' }"
-        header="Delete collection"
+        header="Delete Collection"
         :modal="true"
       >
         <div class="flex flex-column gap">
@@ -183,7 +183,7 @@ async function deleteCollection() {
             <Button
               label="No"
               icon="pi pi-times"
-              class="flex gap p-button cancel-button"
+              class="flex gap p-button inversive-button"
               text
               @click="deleteVisible = false"
             />

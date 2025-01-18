@@ -13,7 +13,7 @@ const menuProfileItems = ref<MenuItem[]>([
     label: "Profil",
     items: [
       {
-        label: "Change password",
+        label: "Change Password",
         icon: "pi pi-key",
         route: "/admin/change-password",
       },

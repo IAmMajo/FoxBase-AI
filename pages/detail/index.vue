@@ -146,6 +146,7 @@ html.light .content-container-detail p {
 .detail-container {
   height: 100vh;
   width: 100%;
+  overflow-y: scroll;
   background-color: var(--dark-bg-secondary);
 }
 
