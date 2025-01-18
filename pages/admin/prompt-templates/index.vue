@@ -160,8 +160,8 @@ const deletePrompt = async () => {
           <label for="text" class="block font-bold mb-3">Prompt</label>
           <Textarea
             id="text"
-            class="prompt-textarea"
             v-model="newPrompt"
+            class="prompt-textarea"
             required="true"
             rows="4"
             cols="20"
@@ -189,21 +189,18 @@ const deletePrompt = async () => {
 </template>
 
 <style>
-
 :root {
   --p-message-error-simple-color: #dc2626;
 }
 
-
-.p-button-icon-only{
+.p-button-icon-only {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   padding: 0 !important;
-} 
+}
 
-
-.p-textarea:focus{
+.p-textarea:focus {
   border: 1px solid var(--dark-primary) !important;
 }
 
@@ -263,7 +260,7 @@ const deletePrompt = async () => {
   border: 1px solid white;
 }
 
-.inversive-button:hover{
+.inversive-button:hover {
   background-color: color-mix(
     in srgb,
     var(--dark-primary),

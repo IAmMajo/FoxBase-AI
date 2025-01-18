@@ -321,7 +321,11 @@ const editUser = async () => {
           text
           @click="dialogVisible = false"
         />
-        <Button label="Confirm" class="p-button-primary button" @click="addUser" />
+        <Button
+          label="Confirm"
+          class="p-button-primary button"
+          @click="addUser"
+        />
       </div>
     </Dialog>
   </div>
