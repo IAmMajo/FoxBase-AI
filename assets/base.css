@@ -379,6 +379,10 @@ img {
   border-radius: var(--border-radius-default);
 }
 
+.asap{
+  font-family: "asap", sans-serif;
+}
+
 /** Value Classes **/
 
 .display-none {

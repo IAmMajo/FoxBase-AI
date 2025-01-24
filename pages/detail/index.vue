@@ -18,7 +18,7 @@ definePageMeta({
         <div class="flex flex-column jc-ai-start gap">
           <div class="flex gap jc-start-ai-center">
             <h1>Titel des Produkts</h1>
-            <div class="label-result">Best</div>
+            <div class="label-result asap">Best</div>
           </div>
 
           <div class="text-xl">
@@ -38,7 +38,7 @@ definePageMeta({
               </div>
             </div>
           </div>
-          <p class="text-xl">
+          <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
@@ -49,10 +49,6 @@ definePageMeta({
             accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
             no sea takimata sanctus est Lorem ipsum dolor sit amet.
           </p>
-          <div class="flex gap">
-            <button class="detail-button">Button 1</button>
-            <button class="detail-button">Button 2</button>
-          </div>
           <div
             class="mt response-box-detail flex jc-ai-center dark-subheading relative"
           >
@@ -100,6 +96,7 @@ html.light .detail-button {
 }
 
 .dot-element-text {
+  font-family: "asap", sans-serif;
   color: var(--dark-text-secondary);
 }
 

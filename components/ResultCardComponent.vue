@@ -250,6 +250,7 @@ html.light .dot {
   padding: var(--gap);
   border-left: 1.5px solid var(--color-line);
   border-right: 1.5px solid var(--color-line);
+  text-decoration: none;
 }
 .result-card:hover {
   border-radius: var(--border-radius-default);
