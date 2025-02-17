@@ -154,6 +154,7 @@ deploy-wiki:
         git commit -m 'Update wiki'
         git push origin HEAD:main
       fi
+    - rm -rf .git
 
 create-environment-commit:
   stage: create-environment
