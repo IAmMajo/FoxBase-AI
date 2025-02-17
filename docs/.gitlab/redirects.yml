@@ -1,0 +1,9 @@
+---
+Git-Workflow: Development/Git-Workflow
+"[Figma]-Ausarbeitung-des-Prototypens": Figma/Ausarbeitung-des-Prototypens
+Development: Front-End
+Front-End/Git-Workflow: Organisation/Git-Workflow
+Figma/Ausarbeitung-des-Prototypens: Figma/Aufbau-unseres-Figma-Projekts
+Figma/Aufbau-unseres-Figma-Projekts: Figma/Aufbau-des-Figma-Projekts
+Front-End/Light-Mode-Generierung: Front-End/Generierung-einer-komplementären-Palette
+Light-Dark-Switch-Button: Front-End/Light-Dark-Switch-Button
