@@ -1,6 +1,7 @@
 ---
 title: Detailseite-Results
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird es um die Implementierung einer dynamischen Detailseite für die Results gehen, die dafür gedacht ist weitere Informationen über Produkte anzeigen zu können und die AI weiter in den Userflow zu integrieren, indem Für das einzelne Produkt ein weiterer Prompt generiert werden kann.
@@ -28,7 +29,7 @@ Nachdem die angepasste Navbar also eingearbeitet wurde, kann damit begonnen werd
 ```xml
 <div>
             <div class="content-container-detail flex gap-lg jc-ai-center">
-                <img 
+                <img
                 src="@/assets/graphics/mock.webp"
                 alt="Mock Image"
                 >
@@ -89,94 +90,92 @@ Nachdem die angepasste Navbar also eingearbeitet wurde, kann damit begonnen werd
 Selbiges gilt auch für das Styling der Seite:
 
 ```css
+.detail-button {
+  font-size: 1.2rem;
+  background-color: var(--dark-primary);
+  color: var(--dark-text-primary);
+  padding: 16px 100px;
+  border-radius: 1000px;
+  border: none;
+}
 
-    .detail-button{
-        font-size: 1.2rem;
-        background-color: var(--dark-primary);
-        color: var(--dark-text-primary);
-        padding: 16px 100px;
-        border-radius: 1000px;
-        border: none;
-    }
+html.light .detail-button {
+  font-size: 1.2rem;
+  background-color: var(--light-primary);
+  color: var(--dark-text-primary);
+  padding: 16px 100px;
+  border-radius: 1000px;
+  border: none;
+}
 
-    html.light .detail-button{
-        font-size: 1.2rem;
-        background-color: var(--light-primary);
-        color: var(--dark-text-primary);
-        padding: 16px 100px;
-        border-radius: 1000px;
-        border: none;
-    }
+.detail-button:hover {
+  cursor: pointer;
+}
 
-    .detail-button:hover{
-       cursor: pointer;
-    }
+.dot-element-text {
+  color: var(--dark-text-secondary);
+}
 
-    .dot-element-text{
-        color: var(--dark-text-secondary);
-    }
+html.light .dot-element-text {
+  color: var(--light-text-secondary);
+}
 
-    html.light .dot-element-text{
-        color: var(--light-text-secondary);
-    }
+.dot-element-text b {
+  color: var(--dark-text-primary);
+}
 
-    .dot-element-text b{
-        color: var(--dark-text-primary);
-    }
+html.light .dot-element-text b {
+  color: var(--light-text-primary);
+}
 
-    html.light .dot-element-text b{
-        color: var(--light-text-primary);
-    }
+.response-box-detail {
+  border: 2px solid var(--dark-primary);
+  padding: var(--gap);
+  width: 80%;
+  min-height: 12vh;
+  border-radius: var(--border-radius-default);
+}
 
-    .response-box-detail {
-        border: 2px solid var(--dark-primary);
-        padding: var(--gap);
-        width: 80%;
-        min-height: 12vh;
-        border-radius: var(--border-radius-default);
-        }
+.content-container-detail {
+  padding-left: 20px;
+}
 
-    .content-container-detail{
-        padding-left: 20px;
+.content-container-detail h1 {
+  color: var(--dark-text-primary);
+}
 
-    }
+html.light .content-container-detail h1 {
+  color: var(--light-text-primary);
+}
 
-    .content-container-detail h1{
-        color: var(--dark-text-primary);
-    }
+.content-container-detail p {
+  color: var(--dark-text-primary);
+}
 
-    html.light .content-container-detail h1{
-        color: var(--light-text-primary);
-    }
+html.light .content-container-detail p {
+  color: var(--light-text-primary);
+}
 
-    .content-container-detail p{
-        color: var(--dark-text-primary);
-    }
+.detail-container {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--dark-bg-secondary);
+}
 
-    html.light .content-container-detail p{
-        color: var(--light-text-primary);
-    }
+html.light .detail-container {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--light-bg-secondary);
+}
 
-    .detail-container{
-        height: 100vh;
-        width: 100%;
-        background-color: var(--dark-bg-secondary);
-    }
+.detail-container img {
+  height: 70vh;
+  width: 45vw;
+}
 
-    html.light .detail-container{
-        height: 100vh;
-        width: 100%;
-        background-color: var(--light-bg-secondary);
-    }
-
-    .detail-container img{
-        height: 70vh;
-        width: 45vw;
-    }
-
-    .detail-container p{
-        width: 70%;
-    }
+.detail-container p {
+  width: 70%;
+}
 ```
 
 @31699

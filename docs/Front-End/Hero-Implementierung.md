@@ -1,6 +1,7 @@
 ---
 title: Hero Implementierung
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird thematisiert, wie der Hero des Front Ends umgesetzt und implementiert wurde. Der Hero ist der Dreh- und Angelpunkt unserer Anwendung, der User soll hier die Kernfunktion der Seite verwenden. Entsprechend sollte diese Sektion auch die schönste und ansprechenste der Seite sein. Dieser Eintrag ist in drei Kernsektionen unterteilt. **Den Wellen**, der **Searchbar** und den **Prompt Templates**. Ich werde die Funktionalität nicht in diesem Eintrag thematisieren, das ist Teil der entsprechenden Back End Sektion. Des Weiteren baut dieser Artikel auf dem Design Artikel zum Thema[ Hero Design](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Figma/Hero-Design) auf.
@@ -29,7 +30,6 @@ Die Wellen sollen für das gewisse Etwas des Heros sorgen. Der root Container de
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
   transition: 50ms;
 }
-
 
 @keyframes waves {
   0% {
@@ -67,7 +67,7 @@ Die Searchbar ist ein abgewandeltes Formular und leitet den Input an unser Back 
 
 # Prompt Templates
 
-Mit den VueJS Paradigmen `v-for` und `v-if`  lässt sich die Liste an Prompt Templates über der Searchbar rendern.
+Mit den VueJS Paradigmen `v-for` und `v-if` lässt sich die Liste an Prompt Templates über der Searchbar rendern.
 
 ```vue
 <script setup lang="ts">

@@ -1,13 +1,14 @@
 ---
 title: Footer Implementierung
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird thematisiert, wie der Footer im Front End der Seite implementiert wurde. Die visuellen Gesichtspunkte des Footers werden im entsprechenden [Wiki Eintrag zum Footer](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Figma/Footer-Design) weitreichend thematisiert. Dieser Artikel beschäftigt sich mit der Implementierung des Footers.
 
 # Die Wellen
 
-Der Footer verfügt über mehrere übereinanderliegende Wellen. Hier macht es Sinn dem `footer-Tag` mit dem `position: relative` Attribut zu versehen und die einzelnen Wellen über `position: absolute` und den `top` bzw. `bottom` Werten auszurichten. Das Übereinanderliegen der Elemente wird automatisch über die DOM Hierarchie gewehrleistet.  
+Der Footer verfügt über mehrere übereinanderliegende Wellen. Hier macht es Sinn dem `footer-Tag` mit dem `position: relative` Attribut zu versehen und die einzelnen Wellen über `position: absolute` und den `top` bzw. `bottom` Werten auszurichten. Das Übereinanderliegen der Elemente wird automatisch über die DOM Hierarchie gewehrleistet.
 
 # Quick Links
 
@@ -299,4 +300,4 @@ html.light .footer-aside-content {
 }
 ```
 
-Das meiste Styling thematisiert den [Light und Dark Converter ](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Front-End/Generierung-einer-komplement%C3%A4ren-Palette)des Front-Ends. 
+Das meiste Styling thematisiert den [Light und Dark Converter ](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Front-End/Generierung-einer-komplement%C3%A4ren-Palette)des Front-Ends.

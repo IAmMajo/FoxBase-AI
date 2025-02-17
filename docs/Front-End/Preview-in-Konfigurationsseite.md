@@ -1,6 +1,7 @@
 ---
 title: Preview in Konfigurationsseite
 ---
+
 # Einleitung
 
 Damit die gewählten Farben vor dem abschicken an unsere Datenbank überprüft werden können, macht es Sinn eine Preview zu etablieren, die sich live aktualisiert, um so ein erstes Gefühl für das Ergebnis im Front-End zu liefern.
@@ -19,7 +20,7 @@ Damit die Farben dennoch aus der `konfiguration/index.vue` Datei verwendet werde
 
 # Implementierung
 
-Ich zeige die Implementierung am Beispiel `PreviewNavbar.vue` . 
+Ich zeige die Implementierung am Beispiel `PreviewNavbar.vue` .
 
 Die Datei `PreviewNavbar.vue` ist in diesem Fall das Atom und ist wie folgt aufgebaut:
 
@@ -108,7 +109,7 @@ Dieses "Atom" wird mit seinen Props dann abermals im "Molekül" `PreviewContaine
 In der `konfiguration/index.vue` muss dem "Molekül" dann nur noch der entsprechende Farbwert vergeben werden. Hier der entsprechende Code Schnipsel dazu (die gesamte Datei ist zu lang):
 
 ```xml
- <PreviewContainer 
+ <PreviewContainer
           :Primary="primary"
           :Background="backgroundSecondary"
           :Text="textPrimary"

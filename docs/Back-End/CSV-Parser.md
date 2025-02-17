@@ -1,6 +1,7 @@
 ---
 title: CSV-Parser
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird thematisiert, wie der CSV Parser der Anwendung funktioniert.
@@ -13,9 +14,9 @@ Im Grunde sind CSV Dateien Stringketten, die man unter Berücksichtigung von zwe
 
 Die einzelnen Einträge einer CSV Datei müssen in irgendeiner Form getrennt werden.
 
-Beispiel: 1, 2, 3, 4 
+Beispiel: 1, 2, 3, 4
 
-Hier wird das `,` als Trennelement gewählt. Alternativ kann aber auch `;` oder `|` verwendet werden. Wichtig ist nur, dass entweder alle Varianten vom Converter abgedeckt werden können, oder im Vorfeld klar definiert ist, welches Trennelement von den CSV Dateien verwendet wird. Ersteres liefert Flexibilität, Zweiteres spart Zeit und im Zweifel Aufwand, der nicht nötig ist. 
+Hier wird das `,` als Trennelement gewählt. Alternativ kann aber auch `;` oder `|` verwendet werden. Wichtig ist nur, dass entweder alle Varianten vom Converter abgedeckt werden können, oder im Vorfeld klar definiert ist, welches Trennelement von den CSV Dateien verwendet wird. Ersteres liefert Flexibilität, Zweiteres spart Zeit und im Zweifel Aufwand, der nicht nötig ist.
 
 ### Regel 2 - Header oder kein Header?
 
@@ -23,7 +24,7 @@ CSV Dateien orientieren sich am Format von Tabellen, das bedeutet auch, dass ein
 
 ### Ziel des Skripts
 
-Ziel ist es aus dieser ebenen genannten String Kette ein Sammlung an Objekten zu generieren, die über Key-Value Pairs effizient gefunden werden können, auch wenn die Datei groß werden sollte. 
+Ziel ist es aus dieser ebenen genannten String Kette ein Sammlung an Objekten zu generieren, die über Key-Value Pairs effizient gefunden werden können, auch wenn die Datei groß werden sollte.
 
 # Implementierung
 
@@ -33,7 +34,6 @@ Unter den Gesichtspunkten der Theorie wurde dieses Skript programmiert:
 export function parseCSV<T = Record<string, string | null>>(
   csvString: string,
 ): T[] {
-
   // CSV-String in Zeilen unterteilen
   const rows = csvString.split("\n");
   // Die Header Zeile entfernen, wenn diese denn vorhanden ist
@@ -50,11 +50,11 @@ export function parseCSV<T = Record<string, string | null>>(
       // Start über " erkannt
       if (char === '"' && !insideQuotes) {
         insideQuotes = true;
-      } 
+      }
       // Ende über weiteres " erkannt
       else if (char === '"' && insideQuotes) {
         insideQuotes = false;
-      } 
+      }
       // Wenn ein Komma außerhalb von Anführungszeichen gefunden wird, ist der aktuelle Wert abgeschlossen
       else if (char === "," && !insideQuotes) {
         values.push(current.trim());

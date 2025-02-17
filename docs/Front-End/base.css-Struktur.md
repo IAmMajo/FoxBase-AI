@@ -23,29 +23,31 @@ html {
 ```
 
 # Schriftarten importieren
+
 Um die Performance der Seite zu erhöhen, werden die zwei Schriftarten, die im Projekt verwendet werden (Asap und Inter) lokal konfiguriert und nicht über fonts.google.com importiert.
 
 ```css
 @font-face {
-  font-family: 'asap';
-  src: url('fonts/Asap.ttf');
+  font-family: "asap";
+  src: url("fonts/Asap.ttf");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/inter.ttf');
+  font-family: "Inter";
+  src: url("fonts/inter.ttf");
   font-style: normal;
   font-weight: bold;
 }
-````
+```
+
 Die ttf Dateien der Schriftarten liegen im Verzeichnis `src -> assets -> fonts`.
 
 # Root
+
 Standardmäßig werden variable Werte zu z.B. Schriften, Farben, Abständen und Schriftgrößen in einer `:root` Klasse gespeichert. Hier wurden alle relevanten Werte des [Identity Boards](https://www.figma.com/design/kDtdJAlwppDFAL0fTpwsNM/FoxBase-AI-Platform?node-id=4-2&t=jBGeSWdLzKxoIOIp-1) in eine solche ``:root` Klasse übernommen.
 
 ```css
-
 :root {
   /*Colors Light Mode*/
 
@@ -97,32 +99,33 @@ Standardmäßig werden variable Werte zu z.B. Schriften, Farben, Abständen und 
 }
 ```
 
-# Standardklassen 
+# Standardklassen
+
 Um die Lesbarkeit des geschriebenen Codes weiter zu verbessern, wurden Standardklassen für Überschriften (h1-h3), Paragraphen und Bilder (border-radius) definiert, wo Schriftart und Schriftgröße bereits abgedeckt sind.
 
 ```css
 .header-title {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-header);
 }
 
 h1 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h1);
 }
 
 h2 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h2);
 }
 
 h3 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-h3);
 }
 
 p {
-  font-family: 'asap', sans-serif;
+  font-family: "asap", sans-serif;
   font-size: var(--fs-paragraph);
 }
 
@@ -165,7 +168,9 @@ img {
 ```
 
 # Flexbox Klassen
+
 Im Projekt wird mit dem Layout Konzept Flexbox gearbeitet. Auch dafür wurden Klassen in der `base.css` definiert, um unnötige Konfigurationen in einzelnen Komponenten zu vermeiden.
+
 ```css
 .flex {
   display: flex;
@@ -184,10 +189,13 @@ Im Projekt wird mit dem Layout Konzept Flexbox gearbeitet. Auch dafür wurden Kl
   gap: var(--gap);
 }
 ```
+
 Stand: 29.10.2024 - Es ist gut möglich, dass diese Klassen erweitern werden, wenn Bedarf besteht.
 
 # Debugging Klassen
+
 Um die Entwicklung zu vereinfachen, wurden zwei debugging Klassen definiert. Eine Klasse, die den Hintergrund der Komponente rot färbt und eine Klasse, die ein Element mit einer grünen Border umrandet.
+
 ```css
 .db-borders {
   border: 2px solid green;
@@ -197,11 +205,12 @@ Um die Entwicklung zu vereinfachen, wurden zwei debugging Klassen definiert. Ein
   background-color: rgb(253, 142, 142);
 }
 ```
+
 # Media Queries
 
 Das Endprodukt soll am Ende auf sämtlichen Bildschirmgrößen funktionieren. Da wir nicht nach dem Ansatz Mobile-First entwickeln, wird er Bildschirm mit jeder Media Query kleiner. Folgende Resolutionen werden berücksichtigt.
 
-Große Desktops =  >1279px width
+Große Desktops = >1279px width
 
 Kleine Desktops = max-width: 1279px
 
@@ -214,7 +223,6 @@ Kleine Handys = max-width: 400px
 Die Schriftgrößen werden entsprechend angepasst.
 
 ```css
-
 /* Kleine Desktops */
 @media (max-width: 1279px) {
   p {
@@ -306,5 +314,4 @@ Die Schriftgrößen werden entsprechend angepasst.
     font-size: 1em;
   }
 }
-
 ```

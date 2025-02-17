@@ -1,6 +1,7 @@
 ---
 title: Hero Design
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird thematisiert, wie der Hero des Projekts konzipiert wurde. In diesem Eintrag wird es ebenfalls über den bereits erstellten [3D Hintergrund](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Spline/3D-Elemente-im-Hero) gehen.
