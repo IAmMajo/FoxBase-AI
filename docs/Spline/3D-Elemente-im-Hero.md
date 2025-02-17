@@ -1,6 +1,7 @@
 ---
 title: 3D Elemente im Hero
 ---
+
 # Einleitung
 
 In diesem Wikieintrag wird thematisiert, wie mit Hilfe von Spline leuchtende 3D Stripes entworfen werden, die dann im Hero der Seite verwendet werden können.
@@ -77,4 +78,4 @@ Spline stellt ein Script Tag bereit, welches die Illustration basierend auf der 
 
 ### Anmerkung
 
-Leider hat es diese Komponente nicht in das finale Projekt geschafft, was Einzig und allein daran gelegen hat, dass die Spline Views mit VueJS nicht customizable sind. In einer NEXTJS Umgebung wäre dies möglich gewesen, aber ich bin mir sicher, dass ich diesen View in einem anderen Projekt verwenden kann. 
+Leider hat es diese Komponente nicht in das finale Projekt geschafft, was Einzig und allein daran gelegen hat, dass die Spline Views mit VueJS nicht customizable sind. In einer NEXTJS Umgebung wäre dies möglich gewesen, aber ich bin mir sicher, dass ich diesen View in einem anderen Projekt verwenden kann.

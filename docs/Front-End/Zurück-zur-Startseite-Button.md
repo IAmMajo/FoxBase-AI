@@ -1,6 +1,7 @@
 ---
 title: Zurück zur Startseite Button
 ---
+
 # Einleitung
 
 In diesem Wiki Eintrag wird gezeigt, wie die `DetailBackButtonComponent.vue` erstellt und in die Navbar der [Detailseite](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Front-End/Detailseite-Results) eingearbeitet wird.
@@ -28,32 +29,32 @@ Dieser Code lässt sich mit diesem Styling dann zu einem finalen Ergebnis führe
 
 ```css
 .back-button-text {
-    color: var(--dark-bg-secondary);
-    white-space: nowrap;
-    transition: 0.75s ease;
+  color: var(--dark-bg-secondary);
+  white-space: nowrap;
+  transition: 0.75s ease;
 }
 
 html.light .back-button-text {
-    color: var(--light-bg-secondary);
-    white-space: nowrap;
+  color: var(--light-bg-secondary);
+  white-space: nowrap;
 }
 
 .detail-back-button {
-    color: var(--dark-text-secondary);
-    font-size: 26px;
+  color: var(--dark-text-secondary);
+  font-size: 26px;
 }
 
 html.light .detail-back-button {
-    color: var(--light-text-primary);
-    font-size: 26px;
+  color: var(--light-text-primary);
+  font-size: 26px;
 }
 
 a:hover + .back-button-text {
-    color: var(--dark-text-secondary);
+  color: var(--dark-text-secondary);
 }
 
 html.light a:hover + .back-button-text {
-    color: var(--light-text-primary);
+  color: var(--light-text-primary);
 }
 ```
 

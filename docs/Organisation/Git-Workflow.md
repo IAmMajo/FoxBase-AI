@@ -94,7 +94,7 @@ git add . # Fügt alle veränderten Dateien in den Staging Bereich
 
 ############### oder ###############
 
-git add Dateiname.css, Dateiname.html # Fügt einzelne Dateien in den Staging Bereich 
+git add Dateiname.css, Dateiname.html # Fügt einzelne Dateien in den Staging Bereich
 ```
 
 ### Dateien committen
@@ -109,7 +109,7 @@ git commit -m "Fix #123 - Finished Layout of Navbar"
 
 ############### oder ###############
 
-git commit -m "Connected to #<Issue Nummer> - <Commit Nachricht>" 
+git commit -m "Connected to #<Issue Nummer> - <Commit Nachricht>"
 # Bindet den Commit an das entsprechende Issue, schließt es aber nicht
 # CONNECTED TO TAG
 

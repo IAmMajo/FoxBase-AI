@@ -13,7 +13,7 @@ CREATE TABLE settings (
   value TEXT NOT NULL,
   UNIQUE(name)
 ) STRICT;
-``` 
+```
 
 Wenn jemand Änderungen an der Struktur der Datenbank vornehmen möchte (beispielsweise eine neue Tabelle erstellen oder eine Spalte zu einer bestehenden Tabelle hinzufügen), kann mit `npm run create-migration <name>` eine neue Migration zum `migrations`-Ordner hinzufügt und diese anschließend mit dem gewünschten Inhalt befüllt werden. Alle führen dann bei sich `npm run migrate` aus, um die Änderungen in ihre eigene Datenbank zu übernehmen. Stage und Production haben auch jeweils eine eigene Datenbank. Beim Deployment auf Stage beziehungsweise Production werden auch automatisch immer alle neuen Migrationen auf der Stage-Datenbank beziehungsweise Production-Datenbank ausgeführt.
 

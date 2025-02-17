@@ -1,6 +1,7 @@
 ---
 title: Generierung einer komplementären Palette
 ---
+
 # Einleitung
 
 In diesem Wiki-Eintrag wird thematisiert, nach welchen Prinzipien die drei Farbspektren **RGB**, **HEX** und **HSL** arbeiten und wie mit der Umrechnung dieser ein Algorithmus geschrieben werden kann, der basierend auf einer Palette die in der Helligkeit komplementäre Palette generiert.
@@ -69,8 +70,8 @@ Zu aller Erst ändere ich das Farbsystem in der `base.css` Datei von HEX zu HSL,
 ```css
 /* base.css */
 
-.root{
-/**Primary Colors**/
+.root {
+  /**Primary Colors**/
   --dark-primary: hsl(154, 100%, 43%);
   --dark-primary-hover: hsl(154, 94%, 38%);
 
@@ -85,8 +86,7 @@ Zu aller Erst ändere ich das Farbsystem in der `base.css` Datei von HEX zu HSL,
   --dark-text-secondary: hsl(210, 27%, 83%);
   --dark-text-tertiary: hsl(154, 100%, 43%);
 
-/** Weitere nicht relevante Werte **/
-
+  /** Weitere nicht relevante Werte **/
 }
 ```
 
@@ -195,7 +195,7 @@ export function generateComplementaryColor(color:string | undefined) {
     compare = 50;
     result = Math.abs(l - compare);
     result = result + compare;
-  } 
+  }
   // Wenn l größer als 50 ist, geht die Farbe Richtung weiß
   else if (l > 50){
     compare = 100;
@@ -217,10 +217,18 @@ Das Zusammenspiel aus beiden Funktionen kann nun auf der Konfigurationsseite des
 //konfiguration/index.vue
 
 // Light Mode Constants
-const lightPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorPrimary)));
-const lightBackground = ref(hslToHex(generateComplementaryColor(data.value?.colorBackgroundSecondary)));
-const lightTextPrimary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextPrimary)));
-const lightTextSecondary = ref(hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)));
+const lightPrimary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorPrimary)),
+);
+const lightBackground = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorBackgroundSecondary)),
+);
+const lightTextPrimary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorTextPrimary)),
+);
+const lightTextSecondary = ref(
+  hslToHex(generateComplementaryColor(data.value?.colorTextSecondary)),
+);
 ```
 
 Auf der Website sieht das Ergebnis dann so aus:
@@ -236,7 +244,6 @@ Wie man sehen kann, geht die Rechnung auf und die Gegenpalette wird generiert.
 
 async function onSave() {
   const success = await patchSettings({
-
     // Dark Mode Colors
     colorPrimary: hexToHsl(primary.value),
     colorBackgroundSecondary: hexToHsl(backgroundSecondary.value),
@@ -247,12 +254,11 @@ async function onSave() {
     colorLightPrimary: hexToHsl(lightPrimary.value),
     colorLightBackground: hexToHsl(lightBackground.value),
     colorLightTextPrimary: hexToHsl(lightTextPrimary.value),
-    colorlightTextSecondary: hexToHsl(lightTextSecondary.value)
+    colorlightTextSecondary: hexToHsl(lightTextSecondary.value),
   });
 
-// Weiterer Code //
-
-};
+  // Weiterer Code //
+}
 ```
 
 ### Das Front End abstimmen
@@ -281,7 +287,7 @@ onMounted(() => {
     });
   } else {
     console.error("Button not found!");
-  };
+  }
 });
 ```
 

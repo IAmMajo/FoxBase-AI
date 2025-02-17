@@ -1,9 +1,10 @@
 ---
 title: Variable Texte im Hero
 ---
+
 # Einleitung
 
-In diesem Wiki Eintrag soll es darum gehen, wie im Admin Panel auf der Konfigurationsseite das Feature eingebunden werden kann, die Texte im Hero selbst zu konfigurieren. 
+In diesem Wiki Eintrag soll es darum gehen, wie im Admin Panel auf der Konfigurationsseite das Feature eingebunden werden kann, die Texte im Hero selbst zu konfigurieren.
 
 # Theorie
 
@@ -13,7 +14,7 @@ Das große Problem, was hier gelöst werden soll, lässt sich in drei Unterpunkt
 
 ### Text entgegen nehmen und in die Datenbank pushen
 
-Die Konfigurationsseite wurde um Inputfelder erweitert, die es möglich machen den **Top Text** des Heros und den **Bottom Text** des Heros zu konfigurieren. Hierfür wurden die FloatLable Tags aus der [Prime Vue Library ](https://primevue.org/floatlabel/)verwendet. 
+Die Konfigurationsseite wurde um Inputfelder erweitert, die es möglich machen den **Top Text** des Heros und den **Bottom Text** des Heros zu konfigurieren. Hierfür wurden die FloatLable Tags aus der [Prime Vue Library ](https://primevue.org/floatlabel/)verwendet.
 
 ```xml
 <FloatLabel variant="in">
@@ -27,9 +28,9 @@ Die Konfigurationsseite wurde um Inputfelder erweitert, die es möglich machen d
 </FloatLabel>
 ```
 
-Da der Großteil des Admin Panels bereits aus Prime Vue Komponenten besteht hat es sich nur angeboten das Designsystem beizubehalten. 
+Da der Großteil des Admin Panels bereits aus Prime Vue Komponenten besteht hat es sich nur angeboten das Designsystem beizubehalten.
 
-Die Texte werden auf dem selben Weg in die Datenbank geladen, wie auch Farben und Booleans. Näheres dazu ist im Eintrag [Datenbank](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Back-End/Datenbank) nachzulesen. 
+Die Texte werden auf dem selben Weg in die Datenbank geladen, wie auch Farben und Booleans. Näheres dazu ist im Eintrag [Datenbank](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Back-End/Datenbank) nachzulesen.
 
 ### Texte im Front End anzeigen
 
@@ -50,7 +51,10 @@ const heroHighlightBottom = data.value?.heroHighlightBottom;
 ```
 
 ```vue
-<p id="hero-headline-content" class="dark-heading text-shadow header-title no-spacing">
+<p
+  id="hero-headline-content"
+  class="dark-heading text-shadow header-title no-spacing"
+>
    {{ heroTextTop }}
    <span id="hero-headline-highlight" class="dark-highlight">
      {{ heroHighlightTop }}
