@@ -152,7 +152,7 @@ deploy-wiki:
         git config user.email ci@noreply.gitlab.com
         git add .
         git commit -m 'Update wiki'
-        git push HEAD:main
+        git push origin HEAD:main
       fi
 
 create-environment-commit:
