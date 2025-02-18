@@ -1,3 +1,18 @@
+# Copyright 2025 Alina Marie Hartmann, Max Josef Overlack, Nils Paaßen,
+# Nico Puelacher, Hanna Steffen, Lena Weuste
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 openapi: 3.1.0
 info:
   title: Foxbase Semantic Search Frontend
@@ -11,7 +26,7 @@ paths:
         created which collection and what key this collection has. Access is limited to admins and curators.
       operationId: collection_get
       responses:
-        '200':
+        "200":
           description: Returns an array of information relating to the collections.
           content:
             json:
@@ -48,7 +63,7 @@ paths:
                 key:
                   type: string
       responses:
-        '200':
+        "200":
           description: Returns an array of information relating to the collections.
           content:
             json:
@@ -67,12 +82,12 @@ paths:
                       type: string
       tags:
         - collections
-        
+
   /api/collections/{collectionID}:
     get:
       summary: Returns information about a specific collection.
       description: >-
-        Returns information about a specific collection. The ID is the ID from the front end database, not the foxbase key. 
+        Returns information about a specific collection. The ID is the ID from the front end database, not the foxbase key.
       operationId: collection_ID_get
       parameters:
         - name: collectionID
@@ -82,7 +97,7 @@ paths:
           required: true
           description: The ID of the collection to access.
       responses:
-        '200':
+        "200":
           description: Returns information about the collection in the form of an object.
           content:
             json:
@@ -109,15 +124,14 @@ paths:
       description: >-
         This deletes all information in the front end database about the specific collection. Does not delete the collection in foxbases database. Does not delete the front end copy of the products and use cases. The ID is the ID from the front end database, not the foxbase key. Access is limited to admins and curators.
       operationId: collection_ID_delete
-            
       tags:
         - collections
-        
+
   /api/collections/{collectionID}/products:
     get:
       summary: Returns all products in a specific collection.
       description: >-
-        Returns all products from a collection. The ID is the ID from the front end database, not the foxbase key. 
+        Returns all products from a collection. The ID is the ID from the front end database, not the foxbase key.
       operationId: collection_ID_products_get
       parameters:
         - name: collectionID
@@ -133,7 +147,7 @@ paths:
             type: integer
           description: The currently displayed page. Must be a positive integer, exclusive zero.
       responses:
-        '200':
+        "200":
           description: Returns information about the products in the form of an object array.
           content:
             json:
@@ -156,7 +170,7 @@ paths:
     get:
       summary: Returns a specif product in a specific collection.
       description: >-
-        Returns a product from a collection. The ID is the ID from the front end database, not the foxbase key. 
+        Returns a product from a collection. The ID is the ID from the front end database, not the foxbase key.
       operationId: collection_ID_products_ID_get
       parameters:
         - name: collectionID
@@ -172,7 +186,7 @@ paths:
           required: true
           description: The ID of the product to access.
       responses:
-        '200':
+        "200":
           description: Returns information about the product in the form of an object.
           content:
             json:
@@ -193,12 +207,12 @@ paths:
                     type: string
       tags:
         - collections
-  
+
   /api/prompts:
     get:
       summary: Returns all prompts.
       description: >-
-        Returns all promptsthat fit the parameters or all if no parameter is set. 
+        Returns all promptsthat fit the parameters or all if no parameter is set.
       operationId: prompts_get
       parameters:
         - name: text
@@ -207,9 +221,9 @@ paths:
             type: string
           required: false
           description: A query to search the content of a prompt.
-        
+
       responses:
-        '200 page':
+        "200 page":
           description: Returns all prompts on current page. Is used if page is set.
           content:
             json:
@@ -224,7 +238,7 @@ paths:
                       type: string
                     user:
                       type: string
-        '200 q':
+        "200 q":
           description: Returns all prompts that fit the query. Is used if q is set.
           content:
             json:
@@ -232,7 +246,7 @@ paths:
                 type: array
                 items:
                   type: string
-        '200 default':
+        "200 default":
           description: Returns all prompts. Is used if neither page nor q is set.
           content:
             json:
@@ -248,12 +262,12 @@ paths:
                     user:
                       type: string
       tags:
-          - prompts
-                      
+        - prompts
+
     post:
       summary: Creates a new prompt template.
       description: >-
-       Creates a new prompt template and returns it.
+        Creates a new prompt template and returns it.
       operationId: prompts_post
       requestBody:
         content:
@@ -264,7 +278,7 @@ paths:
                 text:
                   type: string
       responses:
-        '200':
+        "200":
           description: Returns the create prompt.
           content:
             json:
@@ -279,12 +293,12 @@ paths:
                     type: string
       tags:
         - prompts
-        
+
   /api/prompts/{promptID}:
     put:
       summary: Updates a prompt template.
       description: >-
-       Updates a prompt template and returns it.
+        Updates a prompt template and returns it.
       operationId: prompts_ID_put
       requestBody:
         content:
@@ -302,7 +316,7 @@ paths:
             type: string
           required: true
       responses:
-        '200':
+        "200":
           description: Returns the create prompt.
           content:
             json:
@@ -320,7 +334,7 @@ paths:
     delete:
       summary: Deletes a prompt template.
       description: >-
-       Deletes a prompt template.
+        Deletes a prompt template.
       operationId: prompts_ID_delete
       parameters:
         - name: promptID
@@ -335,7 +349,7 @@ paths:
     patch:
       summary: Updates the settings.
       description: >-
-       Updates the settings. Gets key/value pairs from the string in the request body. If a setting with a given key does not yet exist it will be created in the database.
+        Updates the settings. Gets key/value pairs from the string in the request body. If a setting with a given key does not yet exist it will be created in the database.
       operationId: settings_patch
       requestBody:
         content:
@@ -347,10 +361,10 @@ paths:
     get:
       summary: Returns the settings.
       description: >-
-       Returns all settings.
+        Returns all settings.
       operationId: settings_get
       responses:
-        '200':
+        "200":
           description: Returns key/value pairs.
           content:
             key/value:
@@ -359,23 +373,22 @@ paths:
                 items:
                   type: object
                   properties:
-                    name: 
+                    name:
                       type: string
                     value:
                       type: string
-                      
-                
+
       tags:
         - settings
-    
+
   /api/users:
     get:
       summary: Returns all users.
       description: >-
-       Returns all users.
+        Returns all users.
       operationId: users_get
       responses:
-        '200':
+        "200":
           description: Returns all users.
           content:
             json:
@@ -384,7 +397,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: integer
                     name:
                       type: string
@@ -395,7 +408,7 @@ paths:
     put:
       summary: Creates a new users.
       description: >-
-       Creates a new users and returns it.
+        Creates a new users and returns it.
       operationId: users_put
       requestBody:
         content:
@@ -410,14 +423,14 @@ paths:
                 role:
                   type: string
       responses:
-        '200':
+        "200":
           description: Returns key/value pairs.
           content:
             json:
               schema:
                 type: object
                 properties:
-                  id: 
+                  id:
                     type: integer
                   name:
                     type: string
@@ -428,7 +441,7 @@ paths:
     delete:
       summary: Deletes a  users.
       description: >-
-       Creates a new users and returns it.
+        Creates a new users and returns it.
       operationId: users_delete
       requestBody:
         content:
@@ -444,7 +457,7 @@ paths:
     put:
       summary: Changes the password of the currently logged in user.
       description: >-
-       Creates a new users and returns it.
+        Creates a new users and returns it.
       operationId: users_cp_put
       requestBody:
         content:
@@ -460,70 +473,70 @@ paths:
         - users
   /api/users/admin/change-name:
     put:
-        summary: Changes the name of a specified user.
-        description: >-
-         Changes the name of a specified user.
-        operationId: users_acn_put
-        requestBody:
-          content:
-            json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  newName:
-                    type: string
-        tags:
-          - users
+      summary: Changes the name of a specified user.
+      description: >-
+        Changes the name of a specified user.
+      operationId: users_acn_put
+      requestBody:
+        content:
+          json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                newName:
+                  type: string
+      tags:
+        - users
   /api/users/admin/change-password:
     put:
-        summary: Changes the password of a specified user.
-        description: >-
-         Changes the name of a specified user.
-        operationId: users_acp_put
-        requestBody:
-          content:
-            json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  newPassword:
-                    type: string
-        tags:
-          - users
+      summary: Changes the password of a specified user.
+      description: >-
+        Changes the name of a specified user.
+      operationId: users_acp_put
+      requestBody:
+        content:
+          json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                newPassword:
+                  type: string
+      tags:
+        - users
   /api/users/admin/change-role:
     put:
-        summary: Changes the role of a specified user.
-        description: >-
-         Changes the role of a specified user.
-        operationId: users_acr_put
-        requestBody:
-          content:
-            json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  newRole:
-                    type: string
-        tags:
-          - users
-          
+      summary: Changes the role of a specified user.
+      description: >-
+        Changes the role of a specified user.
+      operationId: users_acr_put
+      requestBody:
+        content:
+          json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                newRole:
+                  type: string
+      tags:
+        - users
+
   /api/generate-response:
     get:
       summary: Returns a response from foxbases API for a given query.
       description: >-
-       Returns a response from foxbases API for a given query.
+        Returns a response from foxbases API for a given query.
       operationId: get_response
       parameters:
         - name: q
           description: The query the user entert to search a collection.
       responses:
-        '200':
+        "200":
           description: Returns the markdown from the ai as html.
           content:
             json:
@@ -533,12 +546,12 @@ paths:
                   response:
                     type: string
       tags:
-        - product view               
+        - product view
   /api/insert-feedback:
     post:
       summary: Inserts feedback into foxbases database.
       description: >-
-       Inserts feedback into foxbases database. query is the query the user used to search the collection. The value of feedback has to be -1 or 1. id is the foxbase ID of the product.
+        Inserts feedback into foxbases database. query is the query the user used to search the collection. The value of feedback has to be -1 or 1. id is the foxbase ID of the product.
       operationId: post_ins_feedback
       requestBody:
         content:
@@ -548,20 +561,20 @@ paths:
               properties:
                 query:
                   type: string
-                id: 
+                id:
                   type: integer
                 feedback:
                   type: integer
       tags:
-        - product view              
+        - product view
   /api/search:
     get:
       summary: Sends a search request to foxbases API and the uses the frontend databases copy of the collection to display the products.
       description: >-
-       Returns all settings.
+        Returns all settings.
       operationId: search
       responses:
-        '200':
+        "200":
           description: Returns key/value pairs.
           content:
             key/value:
@@ -570,11 +583,11 @@ paths:
                 items:
                   type: object
                   properties:
-                    id: 
+                    id:
                       type: integer
                     foxbaseId:
                       type: integer
-                    name: 
+                    name:
                       type: string
                     category:
                       type: string
@@ -601,7 +614,7 @@ paths:
     post:
       summary: Logs the user in.
       description: >-
-       Logs the user into the admin panel by setting a user session.
+        Logs the user into the admin panel by setting a user session.
       operationId: login
       requestBody:
         content:
@@ -609,13 +622,13 @@ paths:
             schema:
               type: object
               properties:
-                username: 
+                username:
                   type: string
-                password: 
+                password:
                   type: string
       tags:
         - users
-                          
+
 tags:
   - name: collections
     description: These are API endpoints to manipulate and view collections. Only the information that is stored in the front end database can be manipulated. Not the actual content of the collection.
@@ -627,8 +640,3 @@ tags:
     description: These are API endpoints to manipulate and view users.
   - name: product view
     description: These are API endpoints that interact with foxbase to display the products based on the LLMs output.
-    
-    
-    
-    
-    
