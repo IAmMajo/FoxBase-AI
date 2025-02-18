@@ -74,19 +74,19 @@ license-lint-and-format-job:
 
   script:
     - |
-      git ls-files *.vue | while read file; do
+      git ls-files '*.vue' | while read file; do
         if ! grep 'Apache License' $file -q; then
           echo "$VUE_LICENSE$(cat $file)" > $file
         fi
       done
     - |
-      git ls-files *.js *.mjs *.ts *.css *.sql | while read file; do
+      git ls-files '*.js' '*.mjs' '*.ts' '*.css' '*.sql' | while read file; do
         if ! grep 'Apache License' $file -q; then
           echo "$JS_LICENSE$(cat $file)" > $file
         fi
       done
     - |
-      git ls-files *.yaml *.yml *.toml .gitignore .dev.vars.example .editorconfig | while read file; do
+      git ls-files '*.yaml' '*.yml' '*.toml' '*.gitignore' '*.dev.vars.example' '*.editorconfig' | while read file; do
         if ! grep 'Apache License' $file -q; then
           echo "$YAML_LICENSE$(cat $file)" > $file
         fi
@@ -141,6 +141,8 @@ deploy-app:
 deploy-wiki:
   rules:
     - if: $CI_COMMIT_BRANCH == 'main'
+      changes:
+        - docs/**/*
   stage: deploy
   script:
     - git clone "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.wiki.git"
