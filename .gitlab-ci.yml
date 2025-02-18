@@ -3,7 +3,7 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 stages:
-  - lint-and-format
+  - license-lint-and-format
   - build
   - migrate
   - deploy
@@ -17,16 +17,87 @@ default:
     paths:
       - node_modules
 
-lint-and-format-job:
-  stage: lint-and-format
+license-lint-and-format-job:
+  stage: license-lint-and-format
+  variables:
+    VUE_LICENSE: |+
+      <!---
+      Copyright 2025 Alina Marie Hartmann, Max Josef Overlack, Nils Paaßen,
+      Nico Puelacher, Hanna Steffen, Lena Weuste
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+      -->
+
+    JS_LICENSE: |+
+      /*
+       * Copyright 2025 Alina Marie Hartmann, Max Josef Overlack, Nils Paaßen,
+       * Nico Puelacher, Hanna Steffen, Lena Weuste
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *    http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+    YAML_LICENSE: |+
+      # Copyright 2025 Alina Marie Hartmann, Max Josef Overlack, Nils Paaßen,
+      # Nico Puelacher, Hanna Steffen, Lena Weuste
+      #
+      # Licensed under the Apache License, Version 2.0 (the "License");
+      # you may not use this file except in compliance with the License.
+      # You may obtain a copy of the License at
+      #
+      #     http://www.apache.org/licenses/LICENSE-2.0
+      #
+      # Unless required by applicable law or agreed to in writing, software
+      # distributed under the License is distributed on an "AS IS" BASIS,
+      # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      # See the License for the specific language governing permissions and
+      # limitations under the License.
+
   script:
+    - |
+      git ls-files *.vue | while read file; do
+        if ! grep 'Apache License' $file -q; then
+          echo "$VUE_LICENSE$(cat $file)" > $file
+        fi
+      done
+    - |
+      git ls-files *.js *.mjs *.ts *.css *.sql | while read file; do
+        if ! grep 'Apache License' $file -q; then
+          echo "$JS_LICENSE$(cat $file)" > $file
+        fi
+      done
+    - |
+      git ls-files *.yaml *.yml *.toml .gitignore .dev.vars.example .editorconfig | while read file; do
+        if ! grep 'Apache License' $file -q; then
+          echo "$YAML_LICENSE$(cat $file)" > $file
+        fi
+      done
     - npm run lint:fix || lint_failed=1
     - npm run format
     - |
       if [[ $(git status --porcelain) ]]; then
         git config user.name 'GitLab CI'
         git config user.email ci@noreply.gitlab.com
-        git commit -am 'Lint and format'
+        git commit -am 'License, lint and format'
         git push "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" HEAD:$CI_COMMIT_BRANCH
         exit 1
       fi
@@ -59,13 +130,31 @@ migrate-production:
   script:
     - npx wrangler d1 migrations apply DB --env=production --remote
 
-deploy-job:
+deploy-app:
   stage: deploy
   script:
     - npm run deploy-only -- --branch=$CI_COMMIT_BRANCH | tee deploy.log
   artifacts:
     paths:
       - deploy.log
+
+deploy-wiki:
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'main'
+  stage: deploy
+  script:
+    - git clone "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.wiki.git"
+    - mv $CI_PROJECT_NAME.wiki/.git docs
+    - cd docs
+    - |
+      if [[ $(git status --porcelain) ]]; then
+        git config user.name 'GitLab CI'
+        git config user.email ci@noreply.gitlab.com
+        git add .
+        git commit -m 'Update wiki'
+        git push origin HEAD:main
+      fi
+    - rm -rf .git
 
 create-environment-commit:
   stage: create-environment

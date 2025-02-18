@@ -1,3 +1,20 @@
+<!---
+Copyright 2025 Alina Marie Hartmann, Max Josef Overlack, Nils Paaßen,
+Nico Puelacher, Hanna Steffen, Lena Weuste
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
 <script setup lang="ts">
 import type { DataTableRowEditSaveEvent } from "primevue";
 import deletePromptDb from "~/utils/deletePrompt";
@@ -134,7 +151,7 @@ const deletePrompt = async () => {
           <Button
             label="No"
             icon="pi pi-times"
-            class="flex gap p-button cancel-button"
+            class="flex gap p-button inversive-button"
             text
             @click="deletePromptDialog = false"
           />
@@ -161,6 +178,7 @@ const deletePrompt = async () => {
           <Textarea
             id="text"
             v-model="newPrompt"
+            class="prompt-textarea"
             required="true"
             rows="4"
             cols="20"
@@ -173,7 +191,7 @@ const deletePrompt = async () => {
         <div class="p-dialog-footer">
           <Button
             label="Cancel"
-            class="p-button-text cancel-button"
+            class="p-button-text inversive-button"
             @click="dialogVisible = false"
           />
           <Button
@@ -190,6 +208,17 @@ const deletePrompt = async () => {
 <style>
 :root {
   --p-message-error-simple-color: #dc2626;
+}
+
+.p-button-icon-only {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.p-textarea:focus {
+  border: 1px solid var(--dark-primary) !important;
 }
 
 .p-dialog-header span {
@@ -231,6 +260,24 @@ const deletePrompt = async () => {
 }
 
 .button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--dark-primary),
+    transparent 85%
+  ) !important;
+  color: var(--dark-primary) !important;
+  border:
+    1px,
+    solid var(--dark-primary) !important;
+}
+
+.inversive-button {
+  background-color: transparent;
+  color: var(--dark-primary);
+  border: 1px solid white;
+}
+
+.inversive-button:hover {
   background-color: color-mix(
     in srgb,
     var(--dark-primary),
