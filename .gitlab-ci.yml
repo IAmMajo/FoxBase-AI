@@ -86,7 +86,7 @@ license-lint-and-format-job:
         fi
       done
     - |
-      git ls-files '*.yaml' '*.yml' '*.toml' '.gitignore' '.dev.vars.example' '.editorconfig' | while read file; do
+      git ls-files '*.yaml' '*.yml' '*.toml' '*.gitignore' '*.dev.vars.example' '*.editorconfig' | while read file; do
         if ! grep 'Apache License' $file -q; then
           echo "$YAML_LICENSE$(cat $file)" > $file
         fi
