@@ -116,7 +116,6 @@ onMounted(async () => {
 </template>
 
 <style>
-
 .detail-button {
   font-size: 1.2rem;
   background-color: var(--dark-primary);
@@ -140,7 +139,6 @@ html.light .detail-button {
 }
 
 .dot-element-text {
-
   color: var(--dark-text-secondary);
 }
 
