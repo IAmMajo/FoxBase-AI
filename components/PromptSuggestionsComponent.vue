@@ -47,4 +47,8 @@ input {
   font-family: "asap", sans-serif;
   border-style: none;
 }
+
+input:hover {
+  cursor: pointer;
+}
 </style>

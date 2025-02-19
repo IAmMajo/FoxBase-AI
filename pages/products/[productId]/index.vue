@@ -53,13 +53,13 @@ onMounted(async () => {
       <LightDarkSwitchComponent />
     </div>
 
-    <div>
-      <div class="content-container-detail flex gap-lg jc-ai-center">
+    <div class="flex full-width jc-ai-center">
+      <div class="content-container-detail flex gap-lg jc-center-ai-start">
         <img src="@/assets/graphics/mock.webp" alt="Mock Image" />
         <div class="flex flex-column jc-ai-start gap">
           <div class="flex gap jc-start-ai-center">
-            <h1>{{ product?.name ?? "Product not found" }}</h1>
-            <div v-if="query.label" class="label-result">
+            <h2>{{ product?.name ?? "Product not found" }}</h2>
+            <div v-if="query.label" class="label-result asap">
               {{ query.label }}
             </div>
           </div>
@@ -71,7 +71,7 @@ onMounted(async () => {
                 class="mt-2 flex gap jc-start-ai-center"
               >
                 <div class="dot"></div>
-                <div class="dot-element-text">
+                <div class="dot-element-text asap">
                   Type: <b>{{ product.category }}</b>
                 </div>
               </div>
@@ -81,7 +81,7 @@ onMounted(async () => {
                 class="mt-1 flex gap jc-start-ai-center"
               >
                 <div class="dot"></div>
-                <div class="dot-element-text">
+                <div class="dot-element-text asap">
                   <template
                     v-for="(value, name, index) in product.attributes"
                     :key="index"
@@ -95,12 +95,8 @@ onMounted(async () => {
             <p v-if="product.description" class="text-xl">
               {{ product.description }}
             </p>
-            <div class="flex gap">
-              <button class="detail-button">Button 1</button>
-              <button class="detail-button">Button 2</button>
-            </div>
             <div v-if="q" class="mt text-response">
-              <h2 class="dark-subheading">Does the product fit your query?</h2>
+              <h3 class="dark-subheading">Does the product fit your query?</h3>
               <p>{{ q }}</p>
               <div
                 class="mt response-box-detail flex jc-ai-center dark-subheading relative"
@@ -120,6 +116,7 @@ onMounted(async () => {
 </template>
 
 <style>
+
 .detail-button {
   font-size: 1.2rem;
   background-color: var(--dark-primary);
@@ -143,6 +140,7 @@ html.light .detail-button {
 }
 
 .dot-element-text {
+
   color: var(--dark-text-secondary);
 }
 
@@ -162,7 +160,6 @@ html.light .dot-element-text b {
   border: 2px solid var(--dark-primary);
   padding: var(--gap);
   width: 80%;
-  min-height: 12vh;
   border-radius: var(--border-radius-default);
 }
 
@@ -170,7 +167,7 @@ html.light .dot-element-text b {
   padding-left: 20px;
 }
 
-.content-container-detail h1 {
+.content-container-detail h2 {
   color: var(--dark-text-primary);
 }
 
@@ -187,14 +184,16 @@ html.light .content-container-detail p {
 }
 
 .detail-container {
-  height: 100vh;
+  height: auto;
   width: 100%;
+  padding-bottom: 20vh;
   background-color: var(--dark-bg-secondary);
 }
 
 html.light .detail-container {
-  height: 100vh;
+  height: auto;
   width: 100%;
+  padding-bottom: 20vh;
   background-color: var(--light-bg-secondary);
 }
 
