@@ -124,6 +124,7 @@ async function onSave() {
                   v-model="heroTextTop"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="46"
                 />
                 <label for="in_label1">Hero Top</label>
               </FloatLabel>
@@ -134,6 +135,7 @@ async function onSave() {
                   v-model="heroHighlightTop"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="18"
                 />
                 <label for="in_label4">Hero Highlight Top</label>
               </FloatLabel>
@@ -146,6 +148,7 @@ async function onSave() {
                   v-model="heroTextBottom"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="56"
                 />
                 <label for="in_label2">Hero Bottom</label>
               </FloatLabel>
@@ -156,6 +159,7 @@ async function onSave() {
                   v-model="heroHighlightBottom"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="22"
                 />
                 <label for="in_label3">Hero Highlight Bottom</label>
               </FloatLabel>

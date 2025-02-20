@@ -186,14 +186,14 @@ html.light .content-container-detail p {
 .detail-container {
   height: auto;
   width: 100%;
-  padding-bottom: 20vh;
+  padding-bottom: 25vh;
   background-color: var(--dark-bg-secondary);
 }
 
 html.light .detail-container {
   height: auto;
   width: 100%;
-  padding-bottom: 20vh;
+  padding-bottom: 25vh;
   background-color: var(--light-bg-secondary);
 }
 
