@@ -16,11 +16,9 @@ limitations under the License.
 -->
 
 <script setup lang="ts">
-
 defineProps<{
   products: Product[];
 }>();
-
 </script>
 
 <template>
