@@ -52,11 +52,10 @@ In dieser Sektion geht es um die Steuerung der Suchmaschine über das Admin Pane
 
 ## Wie kann der Text auf der Startseite verändert werden?
 
-!!!!HIER MUSS EIN IMAGE HIN; WENN DIE PREVIEW FERTIG IST!!!!
+![Catalog](/docs/BilderVideos/Config1.png)
 
 Nach dem einloggen in das Admin Panel wird der User auf die erste Seite des Admin Panels navigiert. Der _Configuration_ Seite. Dort kann der User eine Preview der aktuellen Angaben zur Startseite sehen. Rechts befinden sich Textfelder. Die oberen beiden bestimmen über die erste Zeile des Heros, die unteren beiden über die Zeile darunter. Jede Zeile entsteht aus 2 Input-Felder, um den letzten Teil des Satzes farblich hervorheben zu können. Keines der Felder muss ausgefüllt werden, allerdings besteht für alle Inputfelder eine Zeichenbegrenzung.
 
-!!!!HIER MUSS EIN IMAGE HIN; WENN DIE PREVIEW FERTIG IST!!!!
 
 Mit einem Klick auf den Speicherbutton unten auf der Seite, können die Änderungen bestätigt und an die Datenbank gesendet werden.
 
@@ -64,9 +63,9 @@ Wird die Startseite nun wieder aufgerufen, hat sich der Text bereits verändert.
 
 ## Wie kann die Farbe der Anwendung verändert werden?
 
-!!!!HIER MUSS EIN IMAGE HIN; WENN DIE PREVIEW FERTIG IST!!!!
-
 Auf der selben Seite kann ein neus Farbthema über die entsprechenden Selektoren eingearbeitet und in der Preview eingesehen werden.
+
+Mit einem Klick auf den *Save Changes* Button wird auch diese Änderung an das Front End gepusht.
 
 ## Wie kann eine neue Collection verwaltet werden (neue hinzufügen, bestehende bearbeiten, löschen)?
 
