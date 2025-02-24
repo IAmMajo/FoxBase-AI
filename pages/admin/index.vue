@@ -49,7 +49,6 @@ let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
 // Speichern der Hero Texte
 const heroTextTop = ref(data.value?.heroTextTop || "");
-console.log(heroTextTop);
 const heroTextBottom = ref(data.value?.heroTextBottom || "");
 const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
 const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
@@ -58,7 +57,7 @@ const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
 async function onSave() {
-  const success = await patchSettings({
+  let success = await patchSettings({
     // Dark Mode Colors
     colorPrimary: hexToHsl(primary.value),
     colorBackgroundSecondary: hexToHsl(backgroundSecondary.value),
@@ -80,13 +79,16 @@ async function onSave() {
     heroTextBottom: heroTextBottom?.value,
     heroHighlightBottom: heroHighlightBottom?.value,
   });
-
+  
+  
+  
   saveStatus.value = success ? "sucess" : "error";
-
+  
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
 
+  
   location.reload();
 }
 </script>
@@ -249,7 +251,9 @@ async function onSave() {
               Save changes
             </button>
           </div>
-
+          <div>
+            <p>In the current version "Save Changes" has to be clicked twice, due to database issues.</p>
+          </div>
           <div class="confirm-container mt">
             <div
               v-if="saveStatus === 'sucess'"
