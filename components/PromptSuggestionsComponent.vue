@@ -23,7 +23,7 @@ defineEmits(["promptClick"]);
 </script>
 
 <template>
-  <div v-if="prompts.length" class="prompt-suggestions flex gap">
+  <div v-if="prompts.length" class="prompt-suggestions flex gap flex-wrap jc-ai-center">
     <input
       v-for="(prompt, index) in prompts"
       :key="index"
@@ -37,7 +37,9 @@ defineEmits(["promptClick"]);
 
 <style scoped>
 .prompt-suggestions {
-  overflow: auto;
+  overflow-x: hidden;
+  padding: 35px;
+  max-height: 300px;
 }
 input {
   padding: 8px 16px;
