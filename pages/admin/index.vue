@@ -57,7 +57,7 @@ const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
 const saveStatus = ref<"sucess" | "error" | null>(null);
 
 async function onSave() {
-  let success = await patchSettings({
+  const success = await patchSettings({
     // Dark Mode Colors
     colorPrimary: hexToHsl(primary.value),
     colorBackgroundSecondary: hexToHsl(backgroundSecondary.value),
@@ -79,16 +79,13 @@ async function onSave() {
     heroTextBottom: heroTextBottom?.value,
     heroHighlightBottom: heroHighlightBottom?.value,
   });
-  
-  
-  
+
   saveStatus.value = success ? "sucess" : "error";
-  
+
   setTimeout(() => {
     saveStatus.value = null;
   }, 3000);
 
-  
   location.reload();
 }
 </script>
@@ -252,7 +249,10 @@ async function onSave() {
             </button>
           </div>
           <div>
-            <p>In the current version "Save Changes" has to be clicked twice, due to database issues.</p>
+            <p>
+              In the current version "Save Changes" has to be clicked twice, due
+              to database issues.
+            </p>
           </div>
           <div class="confirm-container mt">
             <div
