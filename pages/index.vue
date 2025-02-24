@@ -83,6 +83,13 @@ onMounted(() => {
     />
     <ResponseCardComponent v-if="results.length" :text="textResponse" />
     <ResultCardsComponent :products="results" />
+    <CallToSpecification
+      :prompts="filteredPrompts"
+      :query="query"
+      @prompt-click="onPromptClick"
+      @search-input="onSearchInput"
+      @search-submit="onSearchSubmit"
+    />
     <FooterComponent />
   </div>
 </template>
