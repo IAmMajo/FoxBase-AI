@@ -23,7 +23,10 @@ defineEmits(["promptClick"]);
 </script>
 
 <template>
-  <div v-if="prompts.length" class="prompt-suggestions flex gap flex-wrap jc-ai-center">
+  <div
+    v-if="prompts.length"
+    class="prompt-suggestions flex gap flex-wrap jc-ai-center"
+  >
     <input
       v-for="(prompt, index) in prompts"
       :key="index"
