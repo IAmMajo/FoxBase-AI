@@ -19,7 +19,7 @@ limitations under the License.
 import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
 
 // Zustand für den Dark Mode
-let isDarkMode = ref(true);
+const isDarkMode = ref(true);
 
 onMounted(() => {
   const toggleBtn = document.getElementById("toggle-button");
@@ -27,7 +27,6 @@ onMounted(() => {
 
   // Initiale Überprüfung des Dark Modes
   isDarkMode.value = root.classList.contains("dark");
-  
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -53,10 +52,10 @@ onMounted(() => {
 <template>
   <!-- Light/DarkMode Button-->
   <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
-      <div class="nav-icon-container flex jc-ai-center">
-        <MoonIcon v-if="isDarkMode" />
-        <SunIcon v-else />
-      </div>
+    <div class="nav-icon-container flex jc-ai-center">
+      <MoonIcon v-if="isDarkMode" />
+      <SunIcon v-else />
+    </div>
   </div>
 </template>
 
