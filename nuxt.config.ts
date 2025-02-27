@@ -50,12 +50,7 @@ export default defineNuxtConfig({
 
   primevue: {
     options: {
-      theme: {
-        preset: Aura,
-        options: {
-          darkModeSelector: ".my-app-dark",
-        },
-      },
+      theme: { preset: Aura },
     },
   },
 
