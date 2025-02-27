@@ -16,8 +16,9 @@
  */
 
 export default defineEventHandler((event) => {
-  const sessionPassword: string | undefined =
-    event.context.cloudflare.env.SESSION_PASSWORD;
+  const sessionPassword = event.context.cloudflare.env.SESSION_PASSWORD as
+    | string
+    | undefined;
   if (!sessionPassword) {
     throw createError(
       "Server configuration incomplete: SESSION_PASSWORD variable is not " +
