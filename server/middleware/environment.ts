@@ -16,6 +16,19 @@
  */
 
 export default defineEventHandler((event) => {
-  useRuntimeConfig(event).session.password = event.context.cloudflare.env
-    .SESSION_PASSWORD as string;
+  const sessionPassword: string | undefined =
+    event.context.cloudflare.env.SESSION_PASSWORD;
+  if (!sessionPassword) {
+    throw createError(
+      "Server configuration incomplete: SESSION_PASSWORD variable is not " +
+        "set. Did you forget to copy .dev.vars.example to .dev.vars?",
+    );
+  }
+  useRuntimeConfig(event).session.password = sessionPassword;
+  if (!event.context.cloudflare.env.API_TOKEN) {
+    throw createError(
+      "Server configuration incomplete: API_TOKEN variable is not set. Did " +
+        "you forget to add an API token to .dev.vars?",
+    );
+  }
 });

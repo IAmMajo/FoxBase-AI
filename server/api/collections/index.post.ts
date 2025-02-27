@@ -46,6 +46,40 @@ export default defineEventHandler(async (event) => {
     (body) => uploadSchema.parse(body),
   );
 
+  let collectionsResult: DbExecResult;
+  try {
+    collectionsResult = await db.sql<DbExecResult>`
+      INSERT INTO collection_creator_relation
+      (collection_name, collection_key, collection_description)
+      VALUES (${collectionName}, ${key}, ${description})
+    `;
+  } catch (error) {
+    if (
+      !(
+        error instanceof Error &&
+        error.message.includes("UNIQUE constraint failed")
+      )
+    ) {
+      throw error;
+    }
+    throw createError({
+      status: 409,
+      message: "A collection with this name or key already exists",
+    });
+  }
+  if (!collectionsResult.success) {
+    throw createError("Something went wrong during database operation");
+  }
+  const { rows: collectionsRows } = await db.sql<DbResult<Collection>>`
+    SELECT * FROM collection_creator_relation
+    WHERE collection_name = ${collectionName}
+  `;
+  if (!collectionsRows.success || !collectionsRows.results.length) {
+    throw createError("Something went wrong during database operation");
+  }
+  const collection = collectionsRows.results[0];
+  const id = collection.id;
+
   const response = await fetch(`${apiUrl}/collections/${key}/search`, {
     method: "POST",
     headers: {
@@ -60,26 +94,6 @@ export default defineEventHandler(async (event) => {
   await checkApiResponse(response);
 
   const json = (await response.json()) as ApiProduct[];
-
-  const collectionsResult = await db.sql<DbExecResult>`
-    INSERT INTO collection_creator_relation (collection_name,collection_key,collection_description)
-    VALUES (${collectionName},${key},${description})
-  `;
-  if (!collectionsResult) {
-    throw createError({
-      status: 500,
-      statusMessage: "Something went wrong during database operation",
-    });
-  }
-  const { rows: collectionsRows } = await db.sql<DbResult<Collection>>`
-    SELECT * FROM collection_creator_relation
-    WHERE collection_name = ${collectionName}
-  `;
-  if (!collectionsRows.success || !collectionsRows.results.length) {
-    throw createError("Something went wrong during database operation");
-  }
-  const collection = collectionsRows.results[0];
-  const id = collection.id;
 
   for (const product of json) {
     const productFoxbaseId = product.payload.id;

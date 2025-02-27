@@ -23,3 +23,16 @@ services:
     command: sh -c "npm i && npm run migrate && npm run dev"
     ports:
       - 3000:3000
+    healthcheck:
+      start_period: 1h
+      test: curl localhost:3000 -s -w %{http_code} | grep -Ev '(000|503)'
+
+  import-products:
+    depends_on:
+      app:
+        condition: service_healthy
+    image: node:22-bookworm
+    network_mode: service:app
+    volumes:
+      - ./import-products.sh:/import-products.sh
+    command: bash import-products.sh

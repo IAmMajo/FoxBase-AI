@@ -41,3 +41,5 @@ logs
 # wrangler files
 .wrangler
 .dev.vars
+
+cookies.txt
