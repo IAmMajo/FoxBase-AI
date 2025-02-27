@@ -23,18 +23,14 @@ export default defineNuxtPlugin(async () => {
 
   // Light / Dark Mode Switch anzeigen
   const toggleBtn = document.getElementById("toggle-button");
-  const navState = data.value?.showPaletteSwitch;
-
-  if (navState == "false") {
-    console.log("Nav State = false");
-    toggleBtn?.classList.add("display-none");
-    toggleBtn?.classList.remove("light-dark-switch");
-  }
-
-  if (navState == "true") {
+  if (data.value?.showPaletteSwitch == "true") {
     console.log("Nav State = true");
     toggleBtn?.classList.remove("display-none");
     toggleBtn?.classList.add("light-dark-switch");
+  } else {
+    console.log("Nav State = false");
+    toggleBtn?.classList.add("display-none");
+    toggleBtn?.classList.remove("light-dark-switch");
   }
 
   const documentStyle = document.documentElement.style;
