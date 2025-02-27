@@ -12,7 +12,7 @@ Dieser Ordner enthält alle Dateien die unsere API Endpunkte ausmachen. Eine gen
 
 ### middleware
 
-Dieser Ordner enthält die Datei [sessionPassword.ts](../server/middleware/sessionPassword.ts), welche dafür zustandig ist das Session Password, mit welchem der Login verschlüsselt wird vom Cloudflare Backend zu ziehen und in der Runtime Config Variable session.password abzuspeichern.
+Dieser Ordner enthält die Datei [environment.ts](../server/middleware/environment.ts), welche dafür zustandig ist das Vorhandensein aller notwendigen Umgebungsvariablen zu überprüfen. Zusätzlich speichert die Datei das Session Password, mit welchem der Login verschlüsselt wird, in der Runtime Config Variable session.password ab.
 
 ### utils
 

@@ -58,9 +58,8 @@ export function hexToHsl(hex: string): string {
 export function hslToHex(hsl: string | undefined): string {
   // HSL in der Form "hsl(h, s%, l%)"
   const match = hsl?.match(/hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/);
-  const noLightColors = "#FFFFFF";
   if (!match) {
-    return noLightColors;
+    return hsl ?? "";
   }
 
   const [h, s, l] = match.slice(1).map(Number);

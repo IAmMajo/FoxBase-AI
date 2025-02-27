@@ -277,7 +277,7 @@ const editUser = async () => {
           <span
             v-if="selectedUser"
             style="font-family: Inter, sans-serif; font-weight: normal"
-            >Are you sure that you want to delete the prompt template?</span
+            >Are you sure that you want to delete the user?</span
           >
         </div>
         <div class="p-dialog-footer">

@@ -15,10 +15,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<script setup lang="ts">
-import NavListElement from "~/pages/admin/components/NavListElement.vue";
-</script>
-
 <template>
   <div class="overflow-y-auto">
     <ul class="list-none p-3 m-0">
