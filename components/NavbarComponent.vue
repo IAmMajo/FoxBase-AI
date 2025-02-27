@@ -93,14 +93,6 @@ nav {
   width: 100%;
 }
 
-.nav-icon-container {
-  height: 90%;
-  width: 90%;
-  color: var(--dark-primary);
-  transform: rotate(0deg);
-  transition: 1.4s ease transform;
-}
-
 .light-dark-switch {
   margin-right: var(--gap);
   background-color: var(--dark-bg-secondary);
@@ -108,11 +100,6 @@ nav {
   width: 4vh;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--box-shadow);
-}
-
-.light-dark-switch:hover .nav-icon-container {
-  cursor: pointer;
-  transform: rotate(160deg);
 }
 
 .nav-thumb {
@@ -141,14 +128,6 @@ html.light .light-dark-switch {
   width: 4vh;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--box-shadow);
-}
-
-html.light .nav-icon-container {
-  height: 90%;
-  width: 90%;
-  color: var(--light-primary);
-  transform: rotate(0deg);
-  transition: 1.4s ease transform;
 }
 
 html.light .nav-thumb {

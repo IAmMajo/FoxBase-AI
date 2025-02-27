@@ -16,24 +16,33 @@ limitations under the License.
 -->
 
 <script setup lang="ts">
-import { SunIcon } from "@heroicons/vue/24/outline";
+import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
+
+// Zustand für den Dark Mode
+let isDarkMode = ref(true);
 
 onMounted(() => {
   const toggleBtn = document.getElementById("toggle-button");
   const root = document.documentElement; // Das <html>-Tag
 
+  // Initiale Überprüfung des Dark Modes
+  isDarkMode.value = root.classList.contains("dark");
+  
+
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       // Prüfen, ob der Dark Mode aktiv ist
-      const isDarkMode = root.classList.contains("dark");
+      // const isDarkMode = root.classList.contains("dark");
 
-      if (isDarkMode) {
+      if (isDarkMode.value) {
         root.classList.remove("dark");
         root.classList.add("light");
       } else {
         root.classList.remove("light");
         root.classList.add("dark");
       }
+      // Update des Zustands für das Icon
+      isDarkMode.value = !isDarkMode.value;
     });
   } else {
     console.error("Button not found!");
@@ -42,11 +51,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <!--Light / Dark Button-->
+  <!-- Light/DarkMode Button-->
   <div id="toggle-button" class="light-dark-switch flex jc-ai-center z-2">
-    <div class="nav-icon-container flex jc-ai-center">
-      <SunIcon />
-    </div>
+      <div class="nav-icon-container flex jc-ai-center">
+        <MoonIcon v-if="isDarkMode" />
+        <SunIcon v-else />
+      </div>
   </div>
 </template>
 
@@ -58,11 +68,28 @@ onMounted(() => {
   width: 4vh;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--box-shadow);
+  transition-duration: 0.8s;
+}
+
+.nav-icon-container {
+  height: 90%;
+  width: 90%;
+  color: var(--dark-primary);
+  transform: rotate(0deg);
+  transition: 1.4s ease transform;
 }
 
 .light-dark-switch:hover .nav-icon-container {
   cursor: pointer;
-  transform: rotate(160deg);
+  transform: rotate(260deg);
+}
+
+html.light .nav-icon-container {
+  height: 90%;
+  width: 90%;
+  color: var(--light-primary);
+  transform: rotate(0deg);
+  transition: 1.4s ease transform;
 }
 
 html.light .light-dark-switch {
