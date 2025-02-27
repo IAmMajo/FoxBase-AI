@@ -31,10 +31,10 @@ if (data.value) {
   settings.value = data.value;
 }
 
-const heroTextTop = data.value?.heroTextTop;
-const heroHighlightTop = data.value?.heroHighlightTop;
-const heroTextBottom = data.value?.heroTextBottom;
-const heroHighlightBottom = data.value?.heroHighlightBottom;
+const heroTextTop = data.value?.heroTextTop || "Welcome to";
+const heroHighlightTop = data.value?.heroHighlightTop || "FoxSearch";
+const heroTextBottom = data.value?.heroTextBottom || "Finds Absolutely";
+const heroHighlightBottom = data.value?.heroHighlightBottom || "Everything!";
 </script>
 
 <template>

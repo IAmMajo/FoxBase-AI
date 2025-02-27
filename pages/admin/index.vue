@@ -48,10 +48,12 @@ const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
 // Speichern der Hero Texte
-const heroTextTop = ref(data.value?.heroTextTop || "");
-const heroTextBottom = ref(data.value?.heroTextBottom || "");
-const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
-const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
+const heroTextTop = ref(data.value?.heroTextTop || "Welcome to");
+const heroHighlightTop = ref(data.value?.heroHighlightTop || "FoxSearch");
+const heroTextBottom = ref(data.value?.heroTextBottom || "Finds Absolutely");
+const heroHighlightBottom = ref(
+  data.value?.heroHighlightBottom || "Everything!",
+);
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
