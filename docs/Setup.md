@@ -32,11 +32,11 @@ Nach dem Start des Projekts ist der Admin-Bereich unter
 http://localhost:3000/admin erreichbar. Folgende Standard-Benutzerkonten sind
 zum Einloggen verfügbar:
 
-Benutzername | Passwort | Rolle
------------- | -------- | -------
-admin        | admin    | admin
-curator      | curator  | curator
-observer     | observer | observer
+| Benutzername | Passwort | Rolle    |
+| ------------ | -------- | -------- |
+| admin        | admin    | admin    |
+| curator      | curator  | curator  |
+| observer     | observer | observer |
 
 Jedes Benutzerkonto hat die Rolle, die dem Benutzernamen entspricht. Über den
 Admin-Bereich können Benutzerkonten in der lokalen Umgebung jederzeit erstellt,
