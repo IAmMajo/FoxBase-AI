@@ -161,6 +161,7 @@ deploy-wiki:
   stage: deploy
   script:
     - git clone "https://gitlab-ci-token:$PROJECT_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.wiki.git"
+    - rm -rf docs/.git
     - mv $CI_PROJECT_NAME.wiki/.git docs
     - cd docs
     - |
