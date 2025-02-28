@@ -95,7 +95,7 @@ license-lint-and-format-job:
         fi
       done
     - |
-      git ls-files '*.js' '*.mjs' '*.ts' '*.css' '*.sql' | while read file; do
+      git ls-files '*.js' '*.mjs' '*.ts' '*.css' | while read file; do
         if ! grep 'Apache License' $file -q; then
           echo "$JS_LICENSE$(cat $file)" > $file
         fi
