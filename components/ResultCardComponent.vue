@@ -191,14 +191,14 @@ function getLabel(score: number): string {
 :root {
   --color-line: color-mix(in srgb, var(--dark-bg-search), transparent 30%);
   --result-card-width: 50vw;
-  --result-card-height: 22vh;
+  --result-card-height: auto;
   --padding-result-card: 4vh 0;
 }
 
 html.light :root {
   --color-line: color-mix(in srgb, var(--light-bg-search), transparent 30%);
   --result-card-width: 50vw;
-  --result-card-height: 22vh;
+  --result-card-height: auto;
   --padding-result-card: 4vh 0;
 }
 

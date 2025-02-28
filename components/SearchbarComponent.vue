@@ -48,6 +48,10 @@ defineEmits(["searchInput", "searchSubmit"]);
   width: 60px;
 }
 
+.submit-btn:hover {
+  cursor: pointer;
+}
+
 .searchbar-input {
   height: 70px;
   border: none;

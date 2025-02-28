@@ -48,11 +48,12 @@ const checkState = ref(data.value?.showPaletteSwitch);
 let stringCheckState = stringToBoolean(checkState); // eslint-disable-line
 
 // Speichern der Hero Texte
-const heroTextTop = ref(data.value?.heroTextTop || "");
-console.log(heroTextTop);
-const heroTextBottom = ref(data.value?.heroTextBottom || "");
-const heroHighlightTop = ref(data.value?.heroHighlightTop || "");
-const heroHighlightBottom = ref(data.value?.heroHighlightBottom || "");
+const heroTextTop = ref(data.value?.heroTextTop || "Welcome to");
+const heroHighlightTop = ref(data.value?.heroHighlightTop || "FoxSearch");
+const heroTextBottom = ref(data.value?.heroTextBottom || "Finds Absolutely");
+const heroHighlightBottom = ref(
+  data.value?.heroHighlightBottom || "Everything!",
+);
 
 // Speichern und pushen in die Datenbank
 const saveStatus = ref<"sucess" | "error" | null>(null);
@@ -124,6 +125,7 @@ async function onSave() {
                   v-model="heroTextTop"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="46"
                 />
                 <label for="in_label1">Hero Top</label>
               </FloatLabel>
@@ -134,6 +136,7 @@ async function onSave() {
                   v-model="heroHighlightTop"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="18"
                 />
                 <label for="in_label4">Hero Highlight Top</label>
               </FloatLabel>
@@ -146,6 +149,7 @@ async function onSave() {
                   v-model="heroTextBottom"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="56"
                 />
                 <label for="in_label2">Hero Bottom</label>
               </FloatLabel>
@@ -156,6 +160,7 @@ async function onSave() {
                   v-model="heroHighlightBottom"
                   class="heroset-input"
                   variant="filled"
+                  maxlength="22"
                 />
                 <label for="in_label3">Hero Highlight Bottom</label>
               </FloatLabel>
@@ -245,7 +250,12 @@ async function onSave() {
               Save changes
             </button>
           </div>
-
+          <div>
+            <p>
+              In the current version "Save Changes" has to be clicked twice, due
+              to database issues.
+            </p>
+          </div>
           <div class="confirm-container mt">
             <div
               v-if="saveStatus === 'sucess'"

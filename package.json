@@ -22,11 +22,9 @@
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
     "@nuxt/eslint": "^0.6.1",
-    "@primevue/forms": "^4.2.1",
     "@primevue/nuxt-module": "^4.2.2",
     "@primevue/themes": "^4.2.2",
     "aos": "^2.3.4",
-    "chart.js": "^4.4.6",
     "micromark": "^4.0.1",
     "nuxt": "^3.13.2",
     "nuxt-auth-utils": "^0.5.5",
