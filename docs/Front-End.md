@@ -29,11 +29,11 @@ Der Footer dient auf der Startseite [pages/index.vue](../pages/index.vue) dazu v
 ### [HeroComponent.vue](../components/HeroComponent.vue)
 
 Der Hero ist der Kernpunkt der Anwendung und enthält sowohl die [Navbar](../components/NavbarComponent.vue), die [Prompttempates](../components/PromptSuggestionsComponent.vue) und die [Searchbar](../components/SearchbarComponent.vue). Diese Komponente enthält eine Wellen Animation.
-Weitere Hintergründe zur Komponente: [Hero Implementierung](./Front-End/Hero-Implementierung.md).
+Weitere Hintergründe zur Komponente: [Hero Implementierung](./Front-End/Hero-Implementierung).
 
 ### [LightDarkSwitchComponent.vue](../components/LightDarkSwitchComponent.vue)
 
-Diese Komponente wird in der [Navbar](../components/NavbarComponent.vue) verwendet, um zwischen Light und Dark Mode zu wechseln. Weitere Hintergründe zur Komponente: [Light Dark Switch Implementierung](./Front-End/Light-Dark-Switch-Button.md).
+Diese Komponente wird in der [Navbar](../components/NavbarComponent.vue) verwendet, um zwischen Light und Dark Mode zu wechseln. Weitere Hintergründe zur Komponente: [Light Dark Switch Implementierung](./Front-End/Light-Dark-Switch-Button).
 
 ### [mainMenu.vue](../components/mainMenu.vue)
 
@@ -53,7 +53,7 @@ Der Preview Container ist der Sammelort für alle anderen Elemente der Preview, 
 
 > **WICHTIG**
 >
-> Weitere Information zur Preview sind unter [docs/Front-End/Preview-in-Konfigurationsseite](./Front-End/Preview-in-Konfigurationsseite.md) zu finden. Dort wird ebenfalls erläutert, wie das Routing genau funktioniert.
+> Weitere Information zur Preview sind unter [docs/Front-End/Preview-in-Konfigurationsseite](./Front-End/Preview-in-Konfigurationsseite) zu finden. Dort wird ebenfalls erläutert, wie das Routing genau funktioniert.
 
 ### [PreviewContent.vue](../components/PreviewContent.vue)
 
