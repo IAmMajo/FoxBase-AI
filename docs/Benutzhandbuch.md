@@ -42,8 +42,6 @@ Wird eine Suche abgeschickt scrollt die Website nach unten, gibt eine KI-Beratun
 
 ## Wie kann mehr über ein Produkt erfahren werden?
 
-!!!!BILD VON DER DETAILSEITE, DIE IST NOCH BUGGY!!!
-
 Nachdem sich zuvor für ein Produkt entschieden wurde, kann die Karte angeklickt werden, was den User auf eine **Detailseite** weiterleitet. Dort wird eine weitere Response des KI-Beraters spezifisch für dieses Produkt definiert. Auf dieser Seite werden weitere Informationen zum entsprechenden Produkt angegeben.
 
 # Admin Panel
