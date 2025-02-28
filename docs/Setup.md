@@ -62,7 +62,7 @@ npm install
 
 Anschließend müssen die Datenbank-Migrationen ausgeführt werden. Mehr
 Informationen zu den Migrationen gibt es in der
-[Datenbank-Dokumentation](./Back-End/Datenbank.md).
+[Datenbank-Dokumentation](./Back-End/Datenbank).
 
 ```sh
 npm run migrate

@@ -2,7 +2,7 @@
 
 Für das Setup des Projekts lesen Sie sich den Setup-Artikel im
 [Wiki](https://gitlab.hsrw.eu/lv-webentwicklung/2024-25/mi/foxbase-semantische-suche/-/wikis/Setup)
-des GitLab-Projekts oder im [docs-Ordner](./docs/Setup.md) durch. Dort finden
+des GitLab-Projekts oder im [docs-Ordner](./docs/Setup) durch. Dort finden
 Sie auch jeweils die restliche Dokumentation des Projekts.
 
 ## Anlagen des Projekts
