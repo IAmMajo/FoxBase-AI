@@ -14,8 +14,8 @@ Die **Detailseite** zeigt die ausführlichen Informationen zu einem Suchergebnis
 
 ### Desktop-Version
 
-![ResultCardsDark](/docs/BilderVideos/ResultCards_DetailView_Logo/DetailViewDark.png)
-![ResultCardsLight](/docs/BilderVideos/ResultCards_DetailView_Logo/DetailViewLight.png)
+![ResultCardsDark](../BilderVideos/ResultCards_DetailView_Logo/DetailViewDark.png)
+![ResultCardsLight](../BilderVideos/ResultCards_DetailView_Logo/DetailViewLight.png)
 
 ### Struktur der Detailseite
 
@@ -100,6 +100,6 @@ Die **Detailseite** zeigt die ausführlichen Informationen zu einem Suchergebnis
 | **Bildergalerie**           | Horizontal scrollbar      | Direkt sichtbar               |
 | **Platzierung des Buttons** | Unterhalb der Tags        | Neben und unter den Infos     |
 
-| Mobile Darkmode                                                                                   | Mobile Lightmode                                                                                    |
-| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| ![ResultCardsMobileDark](/docs/BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileDark.png) | ![ResultCardsMobileLight](/docs/BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileLight.png) |
+| Mobile Darkmode                                                                                | Mobile Lightmode                                                                                 |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| ![ResultCardsMobileDark](../BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileDark.png) | ![ResultCardsMobileLight](../BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileLight.png) |
