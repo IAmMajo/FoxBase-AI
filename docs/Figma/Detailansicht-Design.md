@@ -100,6 +100,6 @@ Die **Detailseite** zeigt die ausführlichen Informationen zu einem Suchergebnis
 | **Bildergalerie**           | Horizontal scrollbar      | Direkt sichtbar               |
 | **Platzierung des Buttons** | Unterhalb der Tags        | Neben und unter den Infos     |
 
-| Mobile Darkmode                                                                                   | Mobile Lightmode                                                                                    |
-| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Mobile Darkmode                                                                                | Mobile Lightmode                                                                                 |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | ![ResultCardsMobileDark](../BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileDark.png) | ![ResultCardsMobileLight](../BilderVideos/ResultCards_DetailView_Logo/DetailViewMobileLight.png) |

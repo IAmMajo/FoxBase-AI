@@ -78,6 +78,6 @@ Jede Result Card zeigt relevante Produktinformationen in einer kompakten, aber i
 | **Tags für Verwendungszweck** | Nicht vorhanden                | Tags unter den Spezifikationen      |
 | **Platzierung der Buttons**   | Unterhalb der Produktdetails   | Rechtsbündig                        |
 
-| Mobile Darkmode                                                                                    | Mobile Lightmode                                                                                     |
-| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Mobile Darkmode                                                                                 | Mobile Lightmode                                                                                  |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | ![ResultCardsMobileDark](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileDark.png) | ![ResultCardsMobileLight](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileLight.png) |
