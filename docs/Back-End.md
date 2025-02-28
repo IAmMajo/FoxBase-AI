@@ -8,7 +8,7 @@ In diesem Ordner liegt die Datei [auth.global.ts](https://gitlab.hsrw.eu/lv-webe
 
 ### api
 
-Dieser Ordner enthält alle Dateien die unsere API Endpunkte ausmachen. Eine genaue Erklärung zu allen Endpunkten gibt es im [Bereich API](./api/openapi.yaml).
+Dieser Ordner enthält alle Dateien die unsere API Endpunkte ausmachen. Eine genaue Erklärung zu allen Endpunkten gibt es im [Bereich API](./api/openapi).
 
 ### middleware
 
