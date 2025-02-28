@@ -6,7 +6,7 @@ title: Logo - Design
 
 Das **FoxSearchAI-Logo** ist ein zentraler Bestandteil der visuellen Identität der Website. Es symbolisiert **Intelligenz, Schnelligkeit und Präzision**, indem es die Form eines **Fuchses** mit einem modernen, minimalistischen Design kombiniert.
 
-![Logo](/docs/BilderVideos/ResultCards_DetailView_Logo/FoxFindLogo.svg){width="500"}
+![Logo](../BilderVideos/ResultCards_DetailView_Logo/FoxFindLogo.svg){width="500"}
 
 ## Logo-Beschreibung
 

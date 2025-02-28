@@ -15,8 +15,8 @@ Jede Result Card zeigt relevante Produktinformationen in einer kompakten, aber i
 
 ### Desktop-Version
 
-![ResultCardsDark](/docs/BilderVideos/ResultCards_DetailView_Logo/ResultCardsDark.png)
-![ResultCardsLight](/docs/BilderVideos/ResultCards_DetailView_Logo/ResultCardsLight.png)
+![ResultCardsDark](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsDark.png)
+![ResultCardsLight](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsLight.png)
 
 ### Struktur der Result Cards
 
@@ -80,4 +80,4 @@ Jede Result Card zeigt relevante Produktinformationen in einer kompakten, aber i
 
 | Mobile Darkmode                                                                                    | Mobile Lightmode                                                                                     |
 | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| ![ResultCardsMobileDark](/docs/BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileDark.png) | ![ResultCardsMobileLight](/docs/BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileLight.png) |
+| ![ResultCardsMobileDark](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileDark.png) | ![ResultCardsMobileLight](../BilderVideos/ResultCards_DetailView_Logo/ResultCardsMobileLight.png) |
