@@ -68,37 +68,37 @@ Mit einem Klick auf den _Save Changes_ Button wird auch diese Änderung an das F
 
 ## Wie kann eine neue Collection verwaltet werden (neue hinzufügen, bestehende bearbeiten, löschen)?
 
-![Catalog](/docs/BilderVideos/Catalog.png)
+![Catalog](./BilderVideos/Catalog.png)
 
 Navigiert der User auf die Seite _Catalog_, kann dieser in die aktuellem im System gepflegten Collections - tabellarisch organisiert - einsehen und verschieden mit ihr interagieren.
 
 Mit einem Klick auf das _Mülltonnen-Icon_ wird die eingearbeitete Collection gelöscht.
 
-![Catalog2](/docs/BilderVideos/Catalog2.png)
+![Catalog2](./BilderVideos/Catalog2.png)
 
 Klickt der User auf das _Augen-Icon_ kann er die entsprechende Collection einsehen.
 
-![Catalog3](/docs/BilderVideos/Catalog3.png)
+![Catalog3](./BilderVideos/Catalog3.png)
 
 Klickt der User auf den _Import Collection Button_, öffnet sich dieses Pop, mit dem die neue Collection eingebunden werden kann.
 
 ## Wie können Prompts verwaltet werden (erstellen, löschen)?
 
-![Prompts](/docs/BilderVideos/Prompts.png)
+![Prompts](./BilderVideos/Prompts.png)
 
 Navigiert der User auf die Seite _Prompt Templates_ werden nach ähnlichem Prinzip, wie bei den _Collections_ auch die aktuell verfügbaren Prompts angezeigt. Der Button mit dem _Mülltonnen Icon_ löscht den Prompt Eintrag.
 
-![Prompts2](/docs/BilderVideos/Prompts2.png)
+![Prompts2](./BilderVideos/Prompts2.png)
 
 Sowohl bei einem Click auf den _New Template Button_, wie auch auf den _Bleistift Button_ öffnet sich ein Pop-Up, wo der Prompt erstellt, beziehungsweise bearbeitet werden kann.
 
 ## Wie können neue Nutzer verwaltet werden (erstellen, löschen, Daten bearbeiten)
 
-![Users ](/docs/BilderVideos/Users.png)
+![Users ](./BilderVideos/Users.png)
 
 Auf der Users Seite, hat der User zwei Button zur Auswahl.
 
-![Users2](/docs/BilderVideos/Users2.png)
+![Users2](./BilderVideos/Users2.png)
 
 Mit einem Klick auf den _Add User Button_ öffnet sich ein Pop Up. Dort können Name, Rolle und Passwort definiert werden. Die verfügbaren Rollen sind **Admin, Curator oder** **Observer**.
 
